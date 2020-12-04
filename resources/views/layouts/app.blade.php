@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ Session::token() }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/dark-logo.png') }}">
-    <title>{{  config('app.name', 'PetMatch') }}</title>
+    <title>{{env('APP_NAME')}}</title>
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
     <link href="{{asset('dist/css/style.min.css')}}" media=print rel="stylesheet">
@@ -46,7 +46,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">{{ config('app.name', 'Laravel') }}</p>
+            <p class="loader__label">{{env('APP_NAME')}}</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -265,7 +265,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor" style="font-family: 'Oregano' ; font-size:33px">PetMatch Dashboard</h4>
+                        <h4 class="text-themecolor" style="font-family: 'Oregano' ; font-size:33px">{{env('APP_NAME')}} Dashboard</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
@@ -332,7 +332,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-            © 2019 {{config('app.name', 'PetMatch')}} by mSquareApps
+            © 2019 {{env('APP_NAME')}} by mSquareApps
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

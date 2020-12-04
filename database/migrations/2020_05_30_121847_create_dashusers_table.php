@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateDashusersTable extends Migration
@@ -15,9 +16,13 @@ class CreateDashusersTable extends Migration
     {
 
         Schema::create('dash_types', function (Blueprint $table){
-            $table->increments('id');
+            $table->id();
             $table->string('DHTP_NAME');
         });
+
+        DB::table("dash_types")->insert([
+            "DHTP_NAME" => "admin"
+        ]);
 
         Schema::create('dash_users', function (Blueprint $table) {
             $table->increments('id');
@@ -25,7 +30,9 @@ class CreateDashusersTable extends Migration
             $table->string('DASH_FLNM');
             $table->string('DASH_PASS');
             $table->string('DASH_IMGE')->nullable();
-            $table->unsignedInteger('DASH_TYPE_ID')->default(1);
+            $table->tinyInteger('DASH_ACTV')->default(1);
+            $table->softDeletes();
+            $table->foreignId('DASH_TYPE_ID')->constrained('dash_types');
             $table->rememberToken();
             $table->timestamps();
         });
