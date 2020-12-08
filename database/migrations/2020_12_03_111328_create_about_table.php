@@ -15,7 +15,7 @@ class CreateAboutTable extends Migration
     {
         Schema::create('about', function (Blueprint $table) {
             $table->id();
-            $table->string('ABUT_ITEM');
+            $table->string('ABUT_ITEM')->unique();
             $table->text("ABUT_CNTN")->nullable();
         });
     }

@@ -15,7 +15,7 @@ class CreateTypesTable extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string("TYPE_NAME");
+            $table->string("TYPE_NAME")->unique();
             $table->string("TYPE_ARBC_NAME")->nullable();
             $table->tinyInteger("TYPE_MAIN")->default(1);
         });

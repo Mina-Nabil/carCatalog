@@ -16,8 +16,27 @@ class DashUsersController extends Controller
         $this->data['types'] = DashType::all();
         $this->data['title'] = "Dashboard Users";
         $this->data['subTitle'] = "Manage All Dashboard Users";
-        $this->data['cols'] = ['Username', 'Fullname', 'Type', 'Edit'];
-        $this->data['atts'] = ['DASH_USNM', 'DASH_FLNM', ['foreign' => ['dash_types', 'DHTP_NAME']], ['edit' => ['url' => 'dash/users/edit/', 'att' => 'id']]];
+        $this->data['cols'] = ['Username', 'Fullname', 'Type', 'Active', 'Edit'];
+        $this->data['atts'] = ['DASH_USNM', 'DASH_FLNM', ['foreign' => ['dash_types', 'DHTP_NAME']], 
+        [
+            'toggle' => [
+                "att"   =>  "DASH_ACTV",
+                "url"   =>  "dash/users/toggle/",
+                "states" => [
+                    "1" => "Active",
+                    "0" => "De-activated",
+                ],
+                "actions" => [
+                    "1" => "disable the user",
+                    "0" => "activate the user",
+                ],
+                "classes" => [
+                    "1" => "label-success",
+                    "0" => "label-danger",
+                ],
+            ]
+        ],
+        ['edit' => ['url' => 'dash/users/edit/', 'att' => 'id']]];
         $this->data['homeURL'] = 'dash/users/all';
     }
 

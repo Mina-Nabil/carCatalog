@@ -15,14 +15,14 @@ class CreateMaindataTable extends Migration
     {
         Schema::create('home_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('SECT_NAME');
+            $table->string('SECT_NAME')->unique();
             $table->tinyInteger('SECT_ACTV')->default(1);
         });
 
         Schema::create('maindata', function (Blueprint $table) {
             $table->id();
             $table->foreignId('MAIN_SECT_ID')->constrained('home_sections');
-            $table->string("MAIN_ITEM");
+            $table->string("MAIN_ITEM")->unique();
             $table->text("MAIN_CNTN")->nullable();
         });
     }

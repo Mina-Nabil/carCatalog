@@ -18,9 +18,11 @@ class CreateModelsTable extends Migration
             $table->string('MODL_NAME');
             $table->string('MODL_YEAR');
             $table->foreignId("MODL_BRND_ID")->constrained("brands");
+            $table->foreignId("MODL_TYPE_ID")->constrained("types");
             $table->string('MODL_ARBC_NAME')->nullable();
             $table->text('MODL_OVRV')->nullable();
             $table->tinyInteger('MODL_MAIN')->default(0);
+            $table->string('MODL_IMGE')->nullable(); //home page car png 346 * 224
             $table->tinyInteger('MODL_ACTV')->default(1);
         });
     }

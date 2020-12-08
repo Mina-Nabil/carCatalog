@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-7">
-        <x-datatable :title="$title" :subtitle="$subTitle" :cols="$cols" :items="$items" :atts="$atts" />
+        <x-datatable :id="$id??'myTable'"  :title="$title" :subtitle="$subTitle" :cols="$cols" :items="$items" :atts="$atts" />
     </div>
 
     <div class="col-lg-5">
@@ -52,15 +52,7 @@
                         </div>
                         <small class="text-danger">{{$errors->first('type')}}</small>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="exampleInputEmail1">Mobile Number</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon22"><i class="mdi mdi-cellphone-iphone"></i></span>
-                            </div>
-                            <input type="text" class="form-control" name=mobNumber placeholder="Mobile Number" aria-label="Mobile Number" aria-describedby="basic-addon22" value="{{ (isset($user)) ? $user->mobNumber : old('mobNumber')}}" >
-                        </div>
-                    </div> -->
+                  
                     <div class="form-group">
                       <label for="input-file-now-custom-1">User Photo</label>
                         <div class="input-group mb-3">

@@ -15,7 +15,7 @@ class CreateBrandsTable extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
-            $table->string('BRND_NAME');
+            $table->string('BRND_NAME')->unique();
             $table->tinyInteger('BRND_ACTV')->default(1);
             $table->string('BRND_ARBC_NAME')->nullable();
             $table->string('BRND_LOGO')->nullable();

@@ -121,8 +121,8 @@
                 <!-- User Profile-->
                 <div class="user-profile">
                     <div class="user-pro-body">
-                        @if(isset(Auth::user()->image))
-                        <div><img src="{{ asset( 'storage/'. Auth::user()->image ) }} " alt="user-img" class="img-circle"></div>
+                        @if(isset(Auth::user()->DASH_IMGE))
+                        <div><img src="{{ asset( 'storage/'. Auth::user()->DASH_IMGE ) }} " alt="user-img" class="img-circle"></div>
                         @else
                         <div><img src="{{ asset('assets/images/users/def-user.png') }} " alt="user-img" class="img-circle"></div>
                         @endif
@@ -142,106 +142,40 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-list"></i><span class="hide-menu">الحسابات</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-list"></i><span class="hide-menu">Cars</span></a>
                             <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{url('cars/show')}}">Show All</a></li>
                                 <li>
-                                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)">الخزينه</a>
+                                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)">Models</a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{url('cash/show')}}">رصيد</a></li>
-                                        <li><a href="{{url('cash/prepare/report')}}">كشف حساب</a></li>
-                                        <li><a href="{{url('cash/add')}}">اضافه</a></li>
+                                        <li><a href="{{url('models/show')}}">Show</a></li>
+                                        <li><a href="{{url('models/add')}}">Add</a></li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)">البنك</a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{url('bank/show')}}">رصيد</a></li>
-                                        <li><a href="{{url('bank/prepare/report')}}">كشف حساب</a></li>
-                                        <li><a href="{{url('bank/add')}}">اضافه</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{url('transtype/show')}}">اعدادات</a></li>
                             </ul>
                         </li>
 
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-newspaper"></i><span class="hide-menu">حساب
-                                    عام</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cogs"></i><span class="hide-menu">Cars Settings</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('ledger/show')}}">رصيد</a></li>
-                                <li><a href="{{url('ledger/prepare/report')}}">كشف حساب</a></li>
-                                <li><a href="{{url('ledger/add')}}">اضافه</a></li>
-                                <li><a href="{{url('ledger/types/show')}}">انواع حسابات</a></li>
+                                <li><a href="{{url('brands/show')}}">Brands</a></li>
+                                <li><a href="{{url('types/show')}}">Types</a></li>
+                                <li><a href="{{url('accessories/show')}}">Accessories</a></li>
                             </ul>
                         </li>
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">الموردين</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Website Info</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('suppliers/trans/prepare')}}">كشف حساب</a></li>
-                                <li><a href="{{url('suppliers/trans/quick')}}">تعاملات</a></li>
-                                <li><a href="{{url('suppliers/show')}}">اجماليات موردين</a></li>
-                                <li><a href="{{url('suppliers/add')}}">اضافه مورد</a></li>
-                                <li><a href="{{url('suppliers/trans/add')}}">عمليه جديده</a></li>
-                                <li><a href="{{url('suppliers/types/show')}}">انواع</a></li>
-                            </ul>
-                        </li>
-
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti ti-package"></i><span class="hide-menu">مخزن
-                                    قماش</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('rawinventory/show')}}">متاح قماش</a></li>
-                                <li><a href="{{url('rawinventory/tran')}}">مجمع تعاملات</a></li>
-                                <li><a href="{{url('rawinventory/add')}}">وارد جديد</a></li>
-                                <li><a href="{{url('raw/tran/add')}}">عمليه جديده</a></li>
-
-                                <li>
-                                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)">اعدادات</a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{url('models/show')}}">متاح مجمع موديلات</a></li>
-                                        <li><a href="{{url('types/show')}}">اصناف خامات</a></li>
-                                        <li><a href="{{url('colors/show')}}">الوان</a></li>
-                                        <li><a href="{{url('raw/show')}}">انواع خامات</a></li>
-                                    </ul>
-                                </li>
-
+                                <li><a href="{{url('suppliers/trans/prepare')}}">Home Sections</a></li>
+                                <li><a href="{{url('suppliers/trans/quick')}}">Home Info</a></li>
                             </ul>
                         </li>
 
 
-                        <li> <a href="{{url('raw/prod/show')}}" aria-expanded="false"><i class=" fas fa-cogs"></i><span class="hide-menu">انتاج </span></a>
 
-                        </li>
+                        <li> <a href="{{url('raw/prod/show')}}" aria-expanded="false"><i class=" fas fa-cogs"></i><span class="hide-menu">About Us </span></a></li>
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Market</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('shops/show')}}">Shops</a></li>
-                                <li><a href="{{url('products/show')}}">Products</a></li>
-                                <li><a href="{{url('vets/show')}}">Vets</a></li>
-                            </ul>
-                        </li>
-
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-barcode"></i><span class="hide-menu">Settings</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li>
-                                <li><a href="{{url('breeds/show')}}">Breeds</a></li>
-                                <li><a href="{{url('cities/show')}}">Cities</a></li>
-                        </li>
-                    </ul>
-                    </li>
-
-                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-boxes"></i><span class="hide-menu">Users</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{url('users/show')}}">All App Users</a></li>
-                            <li><a href="{{url('users/show/1')}}">Pet Owners</a></li>
-                            <li><a href="{{url('users/show/2')}}">Trainers</a></li>
-                            <li><a href="{{url('users/add')}}">Add New User</a></li>
-                        </ul>
-                    </li>
-
-
-                    <li> <a href="{{url('dash/users/all')}}" ><i class=" fas fa-users"></i>Admins</a>
-                      
-                    </li>
+                        <li> <a href="{{url('dash/users/all')}}"><i class=" fas fa-users"></i><span class="hide-menu">Admins</span></a></li>
 
                     </ul>
                 </nav>
