@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class CarTypesController extends Controller
 {
     protected $data;
-    protected $homeURL = 'types/show';
+    protected $homeURL = 'admin/types/show';
 
     private function initDataArr()
     {
@@ -23,7 +23,7 @@ class CarTypesController extends Controller
             [
                 'toggle' => [
                     "att"   =>  "TYPE_MAIN",
-                    "url"   =>  "types/toggle/",
+                    "url"   =>  "admin/types/toggle/",
                     "states" => [
                         "1" => "True",
                         "0" => "False",
@@ -38,8 +38,8 @@ class CarTypesController extends Controller
                     ],
                 ]
             ],
-            ['edit' => ['url' => 'types/edit/', 'att' => 'id']],
-            ['del' => ['url' => 'types/delete/', 'att' => 'id', 'msg' => 'delete the car type, system will not delete if there is any model linked with the type']],
+            ['edit' => ['url' => 'admin/types/edit/', 'att' => 'id']],
+            ['del' => ['url' => 'admin/types/delete/', 'att' => 'id', 'msg' => 'delete the car type, system will not delete if there is any model linked with the type']],
         ];
         $this->data['homeURL'] = $this->homeURL;
     }
@@ -48,7 +48,7 @@ class CarTypesController extends Controller
     {
         $this->initDataArr();
         $this->data['formTitle'] = "Add Type";
-        $this->data['formURL'] = "types/insert";
+        $this->data['formURL'] = "admin/types/insert";
         $this->data['isCancel'] = false;
         return view('settings.types', $this->data);
     }
@@ -58,7 +58,7 @@ class CarTypesController extends Controller
         $this->initDataArr();
         $this->data['type'] = CarType::findOrFail($id);
         $this->data['formTitle'] = "Edit Type ( " . $this->data['type']->TYPE_NAME . " )";
-        $this->data['formURL'] = "types/update";
+        $this->data['formURL'] = "admin/types/update";
         $this->data['isCancel'] = false;
         return view('settings.types', $this->data);
     }

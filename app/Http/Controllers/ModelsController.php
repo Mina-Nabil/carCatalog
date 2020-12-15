@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Car;
 use App\Models\CarModel;
 use App\Models\CarType;
 use Illuminate\Http\Request;
@@ -11,11 +12,16 @@ use Illuminate\Validation\Rule;
 class ModelsController extends Controller
 {
     protected $data;
-    protected $homeURL = 'models/show';
-    protected $profileURL = 'models/profile/';
+    protected $homeURL = 'admin/models/show';
+    protected $profileURL = 'admin/models/profile/';
 
-    public function profile($id){
+    public function profile($id)
+    {
         $this->initProfileArr($id);
+        $this->initAddArr($id);
+        $this->data['formTitle'] = "Edit Model(" . $this->data['model']->MODL_NAME . ")";
+        $this->data['formURL'] = "admin/models/update";
+        $this->data['isCancel'] = false;
         return view('models.profile', $this->data);
     }
 
@@ -29,7 +35,7 @@ class ModelsController extends Controller
     {
         $this->initAddArr();
         $this->data['formTitle'] = "Add Car Model";
-        $this->data['formURL'] = "models/insert";
+        $this->data['formURL'] = "admin/models/insert";
         $this->data['isCancel'] = false;
         return view('models.add', $this->data);
     }
@@ -51,6 +57,7 @@ class ModelsController extends Controller
         $model->MODL_TYPE_ID = $request->type;
         $model->MODL_NAME = $request->name;
         $model->MODL_ARBC_NAME = $request->arbcName;
+        $model->MODL_BRCH = $request->brochureCode;
         $model->MODL_YEAR = $request->year;
         $model->MODL_OVRV = $request->overview;
         if ($request->hasFile('image')) {
@@ -85,6 +92,7 @@ class ModelsController extends Controller
         $model->MODL_TYPE_ID = $request->type;
         $model->MODL_NAME = $request->name;
         $model->MODL_ARBC_NAME = $request->arbcName;
+        $model->MODL_BRCH = $request->brochureCode;
         $model->MODL_YEAR = $request->year;
         if ($request->hasFile('image')) {
             $model->MODL_IMGE = $request->image->store('images/models/' . $model->MODL_NAME, 'public');
@@ -110,10 +118,21 @@ class ModelsController extends Controller
         return back();
     }
 
-    ////////?Data functions
-    private function initProfileArr($modelID){
+    //////////////////// Data functions
+    private function initProfileArr($modelID)
+    {
         $this->data['model'] = CarModel::with('cars', 'type', 'brand')->findOrFail($modelID);
-
+        //Model Categories
+        $this->data['items'] = $this->data['model']->cars;
+        $this->data['title'] = "Available Categories";
+        $this->data['subTitle'] = "Check all Available Model categories";
+        $this->data['cols'] = ['Sort Value', 'Category', 'Price', 'Discount'];
+        $this->data['atts'] = [
+            'CAR_VLUE',
+            ['dynamicUrl' => ['att' => 'CAR_CATG', 'val' => 'id', 'baseUrl' => 'cars/profile/']],
+            ['number' =>[ 'att' => 'CAR_PRCE', 'decimals' => 0]],
+            ['number' =>[ 'att' => 'CAR_DISC', 'decimals' => 0]]
+        ];
     }
 
     private function initDataArr()
@@ -124,13 +143,13 @@ class ModelsController extends Controller
         $this->data['cols'] = ['Image', 'Name', 'Arabic', 'Year', 'Active', 'Main', 'Overview'];
         $this->data['atts'] = [
             ['assetImg' => ['att' => 'MODL_IMGE']],
-            ['dynamicUrl' => ['att' => 'MODL_NAME', 'val' => 'id', 'baseUrl' => 'models/profile/']],
-            ['dynamicUrl' => ['att' => 'MODL_ARBC_NAME', 'val' => 'id', 'baseUrl' => 'models/profile/']],
+            ['dynamicUrl' => ['att' => 'MODL_NAME', 'val' => 'id', 'baseUrl' => 'admin/models/profile/']],
+            ['dynamicUrl' => ['att' => 'MODL_ARBC_NAME', 'val' => 'id', 'baseUrl' => 'admin/models/profile/']],
             'MODL_YEAR',
             [
                 'toggle' => [
                     "att"   =>  "MODL_ACTV",
-                    "url"   =>  "models/toggle/active/",
+                    "url"   =>  "admin/models/toggle/active/",
                     "states" => [
                         "1" => "Active",
                         "0" => "Hidden",
@@ -148,7 +167,7 @@ class ModelsController extends Controller
             [
                 'toggle' => [
                     "att"   =>  "MODL_MAIN",
-                    "url"   =>  "models/toggle/main/",
+                    "url"   =>  "admin/models/toggle/main/",
                     "states" => [
                         "1" => "True",
                         "0" => "False",
@@ -163,7 +182,7 @@ class ModelsController extends Controller
                     ],
                 ]
             ],
-            ['comment'=>['att' => 'MODL_OVRV', 'title' => 'Overview']]
+            ['comment' => ['att' => 'MODL_OVRV', 'title' => 'Overview']]
         ];
         $this->data['homeURL'] = $this->homeURL;
     }

@@ -142,14 +142,15 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-list"></i><span class="hide-menu">Cars</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-car"></i><span class="hide-menu">Cars</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('cars/show')}}">Show All</a></li>
+                                <li><a href="{{url('admin/cars/show')}}">Show All</a></li>
+                                <li><a href="{{url('admin/cars/add')}}">Add New</a></li>
                                 <li>
                                     <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)">Models</a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{url('models/show')}}">Show</a></li>
-                                        <li><a href="{{url('models/add')}}">Add</a></li>
+                                        <li><a href="{{url('admin/models/show')}}">Show</a></li>
+                                        <li><a href="{{url('admin/models/add')}}">Add</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -158,24 +159,24 @@
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cogs"></i><span class="hide-menu">Cars Settings</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('brands/show')}}">Brands</a></li>
-                                <li><a href="{{url('types/show')}}">Types</a></li>
-                                <li><a href="{{url('accessories/show')}}">Accessories</a></li>
+                                <li><a href="{{url('admin/brands/show')}}">Brands</a></li>
+                                <li><a href="{{url('admin/types/show')}}">Types</a></li>
+                                <li><a href="{{url('admin/accessories/show')}}">Accessories</a></li>
                             </ul>
                         </li>
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Website Info</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('suppliers/trans/prepare')}}">Home Sections</a></li>
-                                <li><a href="{{url('suppliers/trans/quick')}}">Home Info</a></li>
+                                <li><a href="{{url('admin/suppliers/trans/prepare')}}">Home Sections</a></li>
+                                <li><a href="{{url('admin/suppliers/trans/quick')}}">Home Info</a></li>
                             </ul>
                         </li>
 
 
 
-                        <li> <a href="{{url('raw/prod/show')}}" aria-expanded="false"><i class=" fas fa-cogs"></i><span class="hide-menu">About Us </span></a></li>
+                        <li> <a href="{{url('admin/raw/prod/show')}}" aria-expanded="false"><i class=" fas fa-info"></i><span class="hide-menu">About Us </span></a></li>
 
-                        <li> <a href="{{url('dash/users/all')}}"><i class=" fas fa-users"></i><span class="hide-menu">Admins</span></a></li>
+                        <li> <a href="{{url('admin/dash/users/all')}}"><i class=" fas fa-users"></i><span class="hide-menu">Admins</span></a></li>
 
                     </ul>
                 </nav>
@@ -203,11 +204,11 @@
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
-                            <a style="font-family: 'Oswald'" href="{{url('clients/trans/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Pet</a>
-                            <a style="font-family: 'Oswald'" href="{{url('suppliers/trans/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add User</a>
-                            <a style="font-family: 'Oswald'" href="{{url('sales/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Shop
+                            <a style="font-family: 'Oswald'" href="{{url('admin/clients/trans/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Pet</a>
+                            <a style="font-family: 'Oswald'" href="{{url('admin/suppliers/trans/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add User</a>
+                            <a style="font-family: 'Oswald'" href="{{url('admin/sales/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Shop
                             </a>
-                            <a style="font-family: 'Oswald'" href="{{url('rawinventory/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Vet
+                            <a style="font-family: 'Oswald'" href="{{url('admin/rawinventory/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Vet
                             </a>
                         </div>
                     </div>
@@ -266,7 +267,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-            © 2019 {{env('APP_NAME')}} by mSquareApps
+            © 2020 {{env('APP_NAME')}} by mSquareApps
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

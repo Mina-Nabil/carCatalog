@@ -42,7 +42,7 @@
                         @elseif(array_key_exists('del', $att))
                         <td><div onclick="confirmAndGoTo('{{url( $att['del']['url'] . $item->{$att['del']['att']})}}', '{{$att['del']['msg'] ?? 'delete this row'}}')" ><a href="javascript::void(0)"><img src="{{ asset('images/del.png') }}" width=25 height=25></a></div></td>
                         @elseif(array_key_exists('foreign', $att))
-                        <td>{{ $item->{$att['foreign'][0]}->{$att['foreign'][1]} ?? '' }}</td>
+                        <td>{{ $item->{$att['foreign']['rel']}->{$att['foreign']['att']} ?? '' }}</td>
                         @elseif(array_key_exists('sumForeign', $att))
                         <td>{{ $item->{$att['sumForeign']['rel']}->sum($att['sumForeign']['att'])  }}</td>
                         @elseif(array_key_exists('url', $att))
@@ -82,7 +82,7 @@
                         @elseif(array_key_exists('date', $att))
                         <td>{{  $item->{$att['date']['att']}->format($att['date']['format'] ?? 'd-M-y h:i A')  }}</a></td>
                         @elseif(array_key_exists('number', $att))
-                        <td>{{ number_format($item->{$att['number']['att']}, $att['nums'] ?? 2)  }}</a></td>
+                        <td>{{ number_format($item->{$att['number']['att']}, $att['number']['decimals'] ?? 2)  }}</a></td>
                         @elseif(array_key_exists('attUrl', $att))
                         <td><a href="{{ url($att['attUrl']['url'] . '/' . $item->{$att['attUrl']['urlAtt']}) }}">{{ $item->{$att['attUrl']['shownAtt']}  }}</a></td>
                         @elseif(array_key_exists('modelFunc', $att))
@@ -94,7 +94,7 @@
                         <td>{{ $item->{$att['urlOrStatic']['static']}  }}</td>
                         @endisset
                         @elseif(array_key_exists('foreignUrl', $att))
-                        <td><a href="{{ url($att['foreignUrl'][0] . '/' . $item->{$att['foreignUrl']['1']}) }}">{{ $item->{$att['foreignUrl'][2]}->{$att['foreignUrl'][3]}  }}</a></td>
+                        <td><a href="{{ url($att['foreignUrl']['baseUrl'] . '/' . $item->{$att['foreignUrl']['urlAtt']}) }}">{{ $item->{$att['foreignUrl']['rel']}->{$att['foreignUrl']['att']}  }}</a></td>
                         @elseif(array_key_exists('assetImg', $att))
                         <td>
                             @isset($item->{$att['assetImg']['att']})

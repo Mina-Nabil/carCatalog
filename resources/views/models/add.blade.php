@@ -16,7 +16,7 @@
                         <label>Brand*</label>
                         <div class="input-group mb-3">
                             <select name=brand class="select2 form-control custom-select" style="width: 100%; height:36px;" required>
-                                <option value="" disabled selected>Pick From Active Brands</option>
+                                <option value="" disabled selected>Pick From Brands</option>
                                 @foreach($brands as $brand)
                                 <option value="{{ $brand->id }}" @if(isset($model) && $brand->id == $model->MODL_BRND_ID)
                                     selected
@@ -80,6 +80,19 @@
                         <small class="text-danger">{{$errors->first('arbcName')}}</small>
                     </div>
 
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Interactive Brochure</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon22"><i class="fas fa-barcode"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name=brochureCode placeholder="Interactive brochure code, example: 452336e5-81ed-43be-a4be-f7552f6366fd "
+                                value="{{ (isset($model)) ? $model->MODL_BRCH : old('brochureCode')}}">
+                        </div>
+                        <small class="text-muted">Use only the code written after the indesign url, https://indd.adobe.com/view/<strong>452336e5-81ed-43be-a4be-f7552f6366fd</strong> </small><br>
+                        <small class="text-danger">{{$errors->first('brochureCode')}}</small>
+                    </div>
+
 
                     <div class="form-group bt-switch">
                         <div class="col-md-5 m-b-15">
@@ -92,7 +105,7 @@
                     <div class="form-group bt-switch">
                         <div class="col-md-5 m-b-15">
                             <h4 class="card-title">Main</h4>
-                            <input type="checkbox" data-size="large" checked data-on-color="success" data-off-color="danger" data-on-text="Yes" data-off-text="No" name="isMain">
+                            <input type="checkbox" data-size="large" data-on-color="success" data-off-color="danger" data-on-text="Yes" data-off-text="No" name="isMain">
                         </div>
                         <small class="text-muted">The model can be published on the home page using this option</small>
                     </div>
@@ -103,7 +116,8 @@
                             <input type="file" id="input-file-now-custom-1" name=image class="dropify"
                                 data-default-file="{{ (isset($model->MODL_LOGO)) ? asset( 'storage/'. $model->MODL_LOGO ) : old('image') }}" />
                         </div>
-                        <small class="text-muted">Image size should be 346 * 224 -- It appears on the home page if this is a main model -- The background should be transparent (.png) format</small><br>
+                        <small class="text-muted">Image size should be 346 * 224 -- It appears on the home page if this is a main model -- The background should be transparent (.png)
+                            format</small><br>
                         <small class="text-danger">{{$errors->first('image')}}</small>
 
                     </div>

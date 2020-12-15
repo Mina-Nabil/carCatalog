@@ -21,7 +21,7 @@ class DashUsersController extends Controller
         [
             'toggle' => [
                 "att"   =>  "DASH_ACTV",
-                "url"   =>  "dash/users/toggle/",
+                "url"   =>  "admin/dash/users/toggle/",
                 "states" => [
                     "1" => "Active",
                     "0" => "De-activated",
@@ -36,8 +36,8 @@ class DashUsersController extends Controller
                 ],
             ]
         ],
-        ['edit' => ['url' => 'dash/users/edit/', 'att' => 'id']]];
-        $this->data['homeURL'] = 'dash/users/all';
+        ['edit' => ['url' => 'admin/dash/users/edit/', 'att' => 'id']]];
+        $this->data['homeURL'] = 'admin/dash/users/all';
     }
 
     public function index()
@@ -46,7 +46,7 @@ class DashUsersController extends Controller
         $this->initDataArr();
         $this->data['formTitle'] = "Add Admins";
         $this->data['isPassNeeded'] = true;
-        $this->data['formURL'] = "dash/users/insert";
+        $this->data['formURL'] = "admin/dash/users/insert";
         $this->data['isCancel'] = false;
         return view("auth.dashusers", $this->data);
     }
@@ -57,7 +57,7 @@ class DashUsersController extends Controller
         $this->data['user'] = DashUser::findOrFail($id);
         $this->data['formTitle'] = "Manage Admin(" . $this->data['user']->DASH_USNM . ')';
         $this->data['isPassNeeded'] = false;
-        $this->data['formURL'] = "dash/users/update";
+        $this->data['formURL'] = "admin/dash/users/update";
         $this->data['isCancel'] = true;
         return view("auth.dashusers", $this->data);
     }
@@ -84,7 +84,7 @@ class DashUsersController extends Controller
 
         $dashUser->save();
 
-        return redirect("dash/users/all");
+        return redirect("admin/dash/users/all");
     }
 
     public function update(Request $request){
@@ -115,6 +115,6 @@ class DashUsersController extends Controller
 
         $dashUser->save();
 
-        return redirect("dash/users/all");
+        return redirect("admin/dash/users/all");
     }
 }

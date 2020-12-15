@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 class BrandsController extends Controller
 {
     protected $data;
-    protected $homeURL = 'brands/show';
+    protected $homeURL = 'admin/brands/show';
 
     private function initDataArr()
     {
@@ -25,7 +25,7 @@ class BrandsController extends Controller
             [
                 'toggle' => [
                     "att"   =>  "BRND_ACTV",
-                    "url"   =>  "brands/toggle/",
+                    "url"   =>  "admin/brands/toggle/",
                     "states" => [
                         "1" => "True",
                         "0" => "False",
@@ -40,8 +40,8 @@ class BrandsController extends Controller
                     ],
                 ]
             ],
-            ['edit' => ['url' => 'brands/edit/', 'att' => 'id']],
-            ['del' => ['url' => 'brands/delete/', 'att' => 'id', 'msg' => 'delete the brand, system will not delete if there is any model linked with the brand']],
+            ['edit' => ['url' => 'admin/brands/edit/', 'att' => 'id']],
+            ['del' => ['url' => 'admin/brands/delete/', 'att' => 'id', 'msg' => 'delete the brand, system will not delete if there is any model linked with the brand']],
         ];
         $this->data['homeURL'] = $this->homeURL;
     }
@@ -50,7 +50,7 @@ class BrandsController extends Controller
     {
         $this->initDataArr();
         $this->data['formTitle'] = "Add Brand";
-        $this->data['formURL'] = "brands/insert";
+        $this->data['formURL'] = "admin/brands/insert";
         $this->data['isCancel'] = false;
         return view('settings.brands', $this->data);
     }
@@ -60,7 +60,7 @@ class BrandsController extends Controller
         $this->initDataArr();
         $this->data['brand'] = Brand::findOrFail($id);
         $this->data['formTitle'] = "Edit Brand ( " . $this->data['brand']->BRND_NAME . " )";
-        $this->data['formURL'] = "brands/update";
+        $this->data['formURL'] = "admin/brands/update";
         $this->data['isCancel'] = false;
         return view('settings.brands', $this->data);
     }

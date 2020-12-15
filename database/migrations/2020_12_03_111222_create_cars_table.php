@@ -14,6 +14,7 @@ class CreateCarsTable extends Migration
     public function up()
     {
         Schema::create('cars', function (Blueprint $table) {
+            
             $table->id();
             $table->foreignId('CAR_MODL_ID')->constrained('models');
             $table->string('CAR_CATG');
@@ -25,13 +26,16 @@ class CreateCarsTable extends Migration
             $table->tinyInteger('CAR_ACTV')->default(0);
 
             //Car specs -- all nullable as they can add car before publish
-            $table->integer('CAR_HPWR')->nullable();
+            $table->string('CAR_HPWR')->nullable();
             $table->integer('CAR_SEAT')->nullable();
-            $table->integer('CAR_ENCC')->nullable();
-            $table->integer('CAR_ENTQ')->nullable();
-            $table->integer('CAR_TRNS')->nullable();
-            $table->integer('CAR_TPSP')->nullable();
+            $table->string('CAR_ACC')->nullable(); //0-100 acceleration
+            $table->string('CAR_ENCC')->nullable();
+            $table->string('CAR_TORQ')->nullable();
+            $table->string('CAR_TRNS')->nullable(); //transmission type
+            $table->integer('CAR_TPSP')->nullable(); //top speed
             $table->integer('CAR_HEIT')->nullable();
+            $table->integer('CAR_RIMS')->nullable(); //wheel raduis
+            $table->integer('CAR_TRNK')->nullable(); //fuel trunk capacity
 
             //Car marketing info
             $table->string('CAR_TTL1')->nullable();

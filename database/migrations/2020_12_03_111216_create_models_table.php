@@ -21,6 +21,7 @@ class CreateModelsTable extends Migration
             $table->foreignId("MODL_TYPE_ID")->constrained("types");
             $table->string('MODL_ARBC_NAME')->nullable();
             $table->text('MODL_OVRV')->nullable();
+            $table->string('MODL_BRCH')->nullable();
             $table->tinyInteger('MODL_MAIN')->default(0);
             $table->string('MODL_IMGE')->nullable(); //home page car png 346 * 224
             $table->tinyInteger('MODL_ACTV')->default(1);

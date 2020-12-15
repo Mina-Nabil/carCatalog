@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class AccessoriesController extends Controller
 {
     protected $data;
-    protected $homeURL = 'accessories/show';
+    protected $homeURL = 'admin/accessories/show';
 
     private function initDataArr()
     {
@@ -20,7 +20,7 @@ class AccessoriesController extends Controller
         $this->data['atts'] = [
             'ACCS_NAME',
             'ACCS_ARBC_NAME',
-            ['edit' => ['url' => 'accessories/edit/', 'att' => 'id']],
+            ['edit' => ['url' => 'admin/accessories/edit/', 'att' => 'id']],
         ];
         $this->data['homeURL'] = $this->homeURL;
     }
@@ -29,7 +29,7 @@ class AccessoriesController extends Controller
     {
         $this->initDataArr();
         $this->data['formTitle'] = "Add Type";
-        $this->data['formURL'] = "accessories/insert";
+        $this->data['formURL'] = "admin/accessories/insert";
         $this->data['isCancel'] = false;
         return view('settings.accessories', $this->data);
     }
@@ -39,7 +39,7 @@ class AccessoriesController extends Controller
         $this->initDataArr();
         $this->data['accessory'] = Accessories::findOrFail($id);
         $this->data['formTitle'] = "Edit Type ( " . $this->data['accessory']->ACCS_NAME . " )";
-        $this->data['formURL'] = "accessories/update";
+        $this->data['formURL'] = "admin/accessories/update";
         $this->data['isCancel'] = false;
         return view('settings.accessories', $this->data);
     }
