@@ -208,7 +208,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title 1*</label>
                         <div class="input-group mb-3">
-                            <input type="number" class="form-control" name=title1 placeholder="First Paragraph title" value="{{ (isset($car)) ? $car->CAR_TTL1 : old('title1')}}">
+                            <input type="text" class="form-control" name=title1 placeholder="First Paragraph title" value="{{ (isset($car)) ? $car->CAR_TTL1 : old('title1')}}">
                         </div>
                         <small class="text-muted">First Car Title in overview section, shown on the car details page</small><br>
                         <small class="text-danger">{{$errors->first('title1')}}</small>
@@ -224,7 +224,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title 2</label>
                         <div class="input-group mb-3">
-                            <input type="number" class="form-control" name=title2 placeholder="Second Paragraph title" value="{{ (isset($car)) ? $car->CAR_TTL2 : old('title2')}}">
+                            <input type="text" class="form-control" name=title2 placeholder="Second Paragraph title" value="{{ (isset($car)) ? $car->CAR_TTL2 : old('title2')}}">
                         </div>
                         <small class="text-muted">Second Overview paragraph shown on the car details page, leave empty if not needed</small><br>
 

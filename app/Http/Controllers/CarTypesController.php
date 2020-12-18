@@ -59,7 +59,7 @@ class CarTypesController extends Controller
         $this->data['type'] = CarType::findOrFail($id);
         $this->data['formTitle'] = "Edit Type ( " . $this->data['type']->TYPE_NAME . " )";
         $this->data['formURL'] = "admin/types/update";
-        $this->data['isCancel'] = false;
+        $this->data['isCancel'] = true;
         return view('settings.types', $this->data);
     }
 

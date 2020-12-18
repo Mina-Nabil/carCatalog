@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accessories;
 use App\Models\Car;
+use App\Models\CarAccessory;
+use App\Models\CarImage;
 use App\Models\CarModel;
 use Illuminate\Http\Request;
 
@@ -12,12 +15,23 @@ class CarsController extends Controller
     protected $data;
     protected $homeURL = "admin/cars/show";
 
-    public function home(){
+    public function home()
+    {
         $this->initDataArr();
         return view('cars.show', $this->data);
     }
 
-    public function insert(Request $request){
+    public function profile($id)
+    {
+        $this->initProfileArr($id);
+        $this->data['formTitle'] = "Edit " . $this->data['car']->model->MODL_NAME . ' ' . $this->data['car']->CAR_CATG;
+        $this->data['formURL'] = "admin/cars/update";
+        $this->data['isCancel'] = false;
+        return view('cars.profile', $this->data);
+    }
+
+    public function insert(Request $request)
+    {
         $request->validate([
             "model"     => "required|exists:models,id",
             "category"  => "required",
@@ -43,7 +57,7 @@ class CarsController extends Controller
         $car->CAR_PRCE      =   $request->price;
         $car->CAR_DISC      =   $request->discount ?? 0;
         $car->CAR_VLUE      =   $request->sort ?? 500;
-        
+
         //specs
         $car->CAR_ENCC      =   $request->cc;
         $car->CAR_HPWR      =   $request->hpwr;
@@ -55,7 +69,7 @@ class CarsController extends Controller
         $car->CAR_TRNK      =   $request->tank;
         $car->CAR_RIMS      =   $request->rims;
         $car->CAR_SEAT      =   $request->seat;
-        
+
         //overview
         $car->CAR_TTL1      =   $request->title1;
         $car->CAR_PRG1      =   $request->prgp1;
@@ -65,10 +79,10 @@ class CarsController extends Controller
         $car->save();
 
         return redirect('admin/cars/profile/' . $car->id);
-
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $request->validate([
             "id"        => "required",
             "model"     => "required|exists:models,id",
@@ -85,7 +99,7 @@ class CarsController extends Controller
             "seat"      =>  "required_if:isActive,on",
             "title1"    =>  "required_if:isActive,on",
             "prgp1"    =>  "required_if:isActive,on",
-            "prgp2"    =>  "required_if:title2",
+            "prgp2"    =>  "required_if:title2,true",
         ]);
 
         $car = Car::findOrFail($request->id);
@@ -94,9 +108,9 @@ class CarsController extends Controller
         $car->CAR_MODL_ID   =   $request->model;
         $car->CAR_CATG      =   $request->category;
         $car->CAR_PRCE      =   $request->price;
-        $car->CAR_DISC      =   $request->discount;
-        $car->CAR_VLUE      =   $request->sort;
-        
+        $car->CAR_DISC      =   $request->discount ?? 0;
+        $car->CAR_VLUE      =   $request->sort ?? 500;
+
         //specs
         $car->CAR_ENCC      =   $request->cc;
         $car->CAR_HPWR      =   $request->hpwr;
@@ -108,7 +122,7 @@ class CarsController extends Controller
         $car->CAR_TRNK      =   $request->tank;
         $car->CAR_RIMS      =   $request->rims;
         $car->CAR_SEAT      =   $request->seat;
-        
+
         //overview
         $car->CAR_TTL1      =   $request->title1;
         $car->CAR_PRG1      =   $request->prgp1;
@@ -118,11 +132,11 @@ class CarsController extends Controller
         $car->save();
 
         return redirect('admin/cars/profile/' . $car->id);
-
     }
 
 
-    public function add(){
+    public function add()
+    {
         $this->initAddArr();
         $this->data['formTitle'] = "New Car Profile";
         $this->data['formURL'] = "admin/cars/insert";
@@ -130,20 +144,92 @@ class CarsController extends Controller
         return view('cars.add', $this->data);
     }
 
-    //////////////////// Data functions
-    private function initProfileArr($modelID)
+
+    ///////////images functions
+    public function attachImage(Request $request)
     {
-        $this->data['model'] = Car::with('model', 'model.brand', 'model.type', 'accessories')->findOrFail($modelID);
+        $request->validate([
+            "carID" => "required|exists:cars,id",
+            "photo" => "file",
+            'value' => 'required'
+        ]);
+        $car = Car::findOrFail($request->carID);
+        $newImage = new CarImage();
+        if ($request->hasFile('photo')) {
+            $newImage->CIMG_URL = $request->photo->store('images/cars/' . $car->CAR_CATG, 'public');
+        }
+        $newImage->CIMG_CAR_ID = $request->carID;
+        $newImage->CIMG_VLUE = $request->value;
+        $newImage->save();
+        return back();
+    }
+
+
+    public function deleteImage($id)
+    {
+        $image = CarImage::findOrFail($id);
+        $image->deleteImage();
+        return back();
+    }
+
+    public function linkAccessory(Request $request)
+    {
+        $request->validate([
+            'carID' => 'required|exists:cars,id',
+            'accessID' => 'required|exists:accessories,id'
+        ]);
+
+        $car = Car::findOrFail($request->carID);
+        $accessory = Accessories::findOrFail($request->accessID);
+        $res = $car->accessories()->syncWithoutDetaching([$accessory->id => ['ACCR_VLUE' => ($request->value ?? '')]]);
+        if (count($res["attached"]) > 0 || count($res["updated"]) > 0)
+            echo 1;
+        else
+            echo 0;
+    }
+
+    public function deleteAccessoryLink($carID, $accessoryId)
+    {
+        $car = Car::findOrFail($carID);
+        $accessory = Accessories::findOrFail($accessoryId);
+        echo $car->accessories()->detach($accessory);
+    }
+
+
+
+
+    //////////////////// Data functions
+    private function initProfileArr($carID)
+    {
+        $this->data['car'] = Car::with('model', 'model.brand', 'model.type', 'accessories', 'images')->findOrFail($carID);
 
         //Accessories table
-        $this->data['items'] = $this->data['model']->cars;
-        $this->data['title'] = "Available Categories";
-        $this->data['subTitle'] = "Check all Available Model categories";
-        $this->data['cols'] = ['#', 'Category'];
-        $this->data['atts'] = [
-            'CAR_VLUE',
-            ['dynamicUrl' => ['att' => 'CAR_NAME', 'val' => 'id', 'baseUrl' => 'admin/cars/profile/']],
-        ];
+        $allAccessories = Accessories::all();
+        $carAccessories = $this->data['car']->getAccessories()->pluck('ACCR_VLUE', 'ACCR_ACSR_ID')->toArray();
+
+
+        $accessories = [];
+        foreach ($allAccessories as $accessory) {
+            if (key_exists($accessory->id, $carAccessories)) {
+                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => true, 'ACCR_VLUE' => $carAccessories[$accessory->id]];
+            } else {
+                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => false];
+            }
+        }
+
+        $this->data['accessories'] = $accessories;
+        $this->data['unlinkAccessoryURL'] = url('admin/cars/unlink/accessory/');
+        $this->data['linkAccessoryURL'] = url('admin/cars/link/accessory');
+
+        //Images table
+        $this->data['images'] = $this->data['car']->images;
+
+        //edit form
+        $this->data['models'] = CarModel::with('brand', 'type')->get();
+
+        //add photo form
+        $this->data['imageFormURL'] = url('admin/cars/images/add');
+        $this->data['delImageUrl']  = url('admin/cars/images/del/');
     }
 
     private function initDataArr()
@@ -151,22 +237,17 @@ class CarsController extends Controller
         $this->data['items'] = Car::with(["model.brand", "model.type"])->orderBy('CAR_VLUE', 'desc')->get();
         $this->data['title'] = "Available Cars";
         $this->data['subTitle'] = "Check all Available Cars";
-        $this->data['cols'] = ['Category', 'Model', 'Year', 'Active'];
+        $this->data['cols'] = ['Category', 'Model', 'Year', 'Active?'];
         $this->data['atts'] = [
             ['dynamicUrl' => ['att' => 'CAR_CATG', 'val' => 'id', 'baseUrl' => 'admin/cars/profile/']],
             ['foreignUrl' => ['rel' => 'model', 'att' => 'MODL_NAME', 'baseUrl' => 'admin/models/profile', 'urlAtt' => 'id']],
             ['foreign' => ['rel' => 'model', 'att' => 'MODL_YEAR']],
             [
-                'toggle' => [
+                'state' => [
                     "att"   =>  "CAR_ACTV",
-                    "url"   =>  "admin/cars/toggle/",
-                    "states" => [
+                    "text" => [
                         "1" => "Active",
                         "0" => "Hidden",
-                    ],
-                    "actions" => [
-                        "1" => "hide the car",
-                        "0" => "publish the model",
                     ],
                     "classes" => [
                         "1" => "label-success",
@@ -181,6 +262,5 @@ class CarsController extends Controller
     private function initAddArr()
     {
         $this->data['models'] = CarModel::with('brand', 'type')->get();
-        return view('cars.add', $this->data);
     }
 }

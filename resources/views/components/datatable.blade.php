@@ -61,6 +61,8 @@
                         @elseif(array_key_exists('dynamicUrl', $att))
                         <td><a href="{{ url($att['dynamicUrl']['baseUrl'].$item->{$att['dynamicUrl']['val']}) }}">{{ $item->{$att['dynamicUrl']['att']}  }}</a></td>
                         @elseif(array_key_exists('state', $att))
+                        <td><span class="label {{ $att['state']['classes'][$item->{$att['state']['att']}] }}">{{ $att['state']['text'][$item->{$att['state']['att']}]  }}</span></td>
+                        @elseif(array_key_exists('relState', $att))
                         <td><span class="label {{ $att['state']['classes'][$item->{$att['state']['att']}] }}">{{ $item->{$att['state']['rel']}->{$att['state']['foreignAtt']}  }}</span></td>
                         @elseif(array_key_exists('stateQuery', $att))
                         <td>

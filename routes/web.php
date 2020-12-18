@@ -18,11 +18,14 @@ use Illuminate\Support\Facades\Route;
 //Cars routes
 Route::get('admin/cars/show', 'CarsController@home');
 Route::get('admin/cars/add', 'CarsController@add');
+Route::post('admin/cars/images/add', 'CarsController@attachImage');
+Route::get('admin/cars/images/del/{id}', 'CarsController@deleteImage');
 Route::get('admin/cars/profile/{id}', 'CarsController@profile');
 Route::post('admin/cars/update', 'CarsController@update');
 Route::post('admin/cars/insert', 'CarsController@insert');
 Route::get('admin/cars/toggle/main/{id}', 'CarsController@toggleMain');
-Route::get('admin/cars/toggle/active/{id}', 'CarsController@toggleActive');
+Route::get('admin/cars/unlink/accessory/{carID}/{accessoryID}', 'CarsController@deleteAccessoryLink');
+Route::post('admin/cars/link/accessory', 'CarsController@linkAccessory');
 
 //Accessories routes
 Route::get('admin/models/show', 'ModelsController@home');

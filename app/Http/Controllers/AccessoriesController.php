@@ -18,8 +18,8 @@ class AccessoriesController extends Controller
         $this->data['subTitle'] = "Manage all Available Accessories/Options such as: Power Steering - ABS - Airbags";
         $this->data['cols'] = ['Name', 'Arabic', 'Edit'];
         $this->data['atts'] = [
-            'ACCS_NAME',
-            'ACCS_ARBC_NAME',
+            'ACSR_NAME',
+            'ACSR_ARBC_NAME',
             ['edit' => ['url' => 'admin/accessories/edit/', 'att' => 'id']],
         ];
         $this->data['homeURL'] = $this->homeURL;
@@ -38,9 +38,9 @@ class AccessoriesController extends Controller
     {
         $this->initDataArr();
         $this->data['accessory'] = Accessories::findOrFail($id);
-        $this->data['formTitle'] = "Edit Type ( " . $this->data['accessory']->ACCS_NAME . " )";
+        $this->data['formTitle'] = "Edit Type ( " . $this->data['accessory']->ACSR_NAME . " )";
         $this->data['formURL'] = "admin/accessories/update";
-        $this->data['isCancel'] = false;
+        $this->data['isCancel'] = true;
         return view('settings.accessories', $this->data);
     }
 
@@ -48,12 +48,12 @@ class AccessoriesController extends Controller
     {
 
         $request->validate([
-            "name"      => "required|unique:accessories,ACCS_NAME",
+            "name"      => "required|unique:accessories,ACSR_NAME",
         ]);
 
         $accessory = new Accessories();
-        $accessory->ACCS_NAME = $request->accessory;
-        $accessory->ACCS_ARBC_NAME = $request->arbcName;
+        $accessory->ACSR_NAME = $request->name;
+        $accessory->ACSR_ARBC_NAME = $request->arbcName;
 
         $accessory->save();
         return redirect($this->homeURL);
@@ -67,12 +67,12 @@ class AccessoriesController extends Controller
         $accessory = Accessories::findOrFail($request->id);
 
         $request->validate([
-            "name" => ["required",  Rule::unique('accessories', "ACCS_NAME")->ignore($accessory->ACCS_NAME, "ACCS_NAME"),],
+            "name" => ["required",  Rule::unique('accessories', "ACSR_NAME")->ignore($accessory->ACSR_NAME, "ACSR_NAME"),],
             "id"        => "required",
         ]);
 
-        $accessory->ACCS_NAME = $request->accessory;
-        $accessory->ACCS_ARBC_NAME = $request->arbcName;
+        $accessory->ACSR_NAME = $request->name;
+        $accessory->ACSR_ARBC_NAME = $request->arbcName;
         $accessory->save();
 
         return redirect($this->homeURL);

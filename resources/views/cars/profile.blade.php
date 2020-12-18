@@ -6,10 +6,10 @@
 <div class="row">
     <!-- Column -->
     <div class="col-lg-4 col-xlg-3 col-md-5">
-        <div class="card"> <img class="card-img" src="{{  (isset($model->MODL_IMGE)) ? asset( 'storage/'. $model->MODL_IMGE ) : asset('images/def-car.png')}}" alt="Card image">
+        <div class="card"> <img class="card-img" src="{{  (isset($car->model->MODL_IMGE)) ? asset( 'storage/'. $car->model->MODL_IMGE ) : asset('images/def-car.png')}}" alt="Card image">
         </div>
         <div class="card"> <img class="card-img"
-                src="{{  (isset($car->model->MODL_BRCH)) ? "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Findd.adobe.com%2Fview%2F{$model->MODL_BRCH}&choe=UTF-8"  : asset('images/def-car.png')}}"
+                src="{{  (isset($car->model->MODL_BRCH)) ? "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Findd.adobe.com%2Fview%2F{$car->model->MODL_BRCH}&choe=UTF-8"  : asset('images/def-car.png')}}"
                 alt="Card image">
         </div>
     </div>
@@ -19,8 +19,9 @@
         <div class="card">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs profile-tab" role="tablist">
-                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Model Info</a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#cars" role="tab">Cars</a> </li>
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Car Info</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#images" role="tab">Images</a> </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a> </li>
             </ul>
             <!-- Tab panes -->
@@ -29,13 +30,29 @@
                 <div class="tab-pane active" id="profile" role="tabpanel">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6 col-xs-6 b-r"> <strong>Car Status</strong>
+                            <div class="col-md-3 col-xs-6 b-r"> <strong>Car Status</strong>
                                 <br>
                                 <p class="text-muted">{{$car->CAR_ACTV && $car->model->MODL_ACTV ? 'Active' : "Hidden"}}</p>
                             </div>
-                            <div class="col-md-6 col-xs-6"> <strong>Model Status</strong>
+                            <div class="col-md-3 col-xs-6"> <strong>Model Status</strong>
                                 <br>
-                                <p class="text-muted">{{$model->MODL_ACTV ? 'Active' : "Hidden"}}</p>
+                                <p class="text-muted">{{$car->model->MODL_ACTV ? 'Active' : "Hidden"}}</p>
+                            </div>
+                            <div title="Place in offer tab in the home page" class="col-md-3 col-xs-6 b-r"> <strong>Offer</strong>
+                                <br>
+                                @if(isset($car->CAR_OFFR))
+                                <button title="Remove from the offer tab in the home page" class="label label-success" id="unsetOfferButton">Appears in Offers</button>
+                                @else
+                                <button title="Place the car in the offer tab on the home page" class="label label-danger" id="setOfferButton">Not in Offers</button>
+                                @endif
+                            </div>
+                            <div class="col-md-3 col-xs-6"> <strong>Trending</strong>
+                                <br>
+                                @if(isset($car->CAR_TRND))
+                                <button title="Remove from the trend tab in the home page" class="label label-success">Appears in Trending</button>
+                                @else
+                                <button title="Place the car in the trend tab on the home page" class="label label-danger">Not Trending</button>
+                                @endif
                             </div>
                             <div class="col-md-3 col-xs-6 b-r"> <strong>Model Name</strong>
                                 <br>
@@ -77,14 +94,13 @@
                                 <br>
                                 <p class="text-muted">{{$car->updated_at ?? ''}}</p>
                             </div>
-                
+
                         </div>
-                        <hr>
                         <hr>
                         <div class=row>
                             <div class="col-md-12 col-xs-12 b-r ">
-                                @if(isset($model->MODL_BRCH))
-                                <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
+                                @if(isset($car->model->MODL_BRCH))
+                                <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$car->model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
                                     frameborder="0" allowfullscreen=""></iframe>
                                 @else
                                 <p class="text-muted">Interactive Brochure Area</p>
@@ -95,22 +111,156 @@
                         <hr>
                         <div class=row>
                             <div class="col-12 b-r">
-                                <strong>Overview</strong>
-                                <p class="text-muted">{{$model->MODL_NOTE ?? ''}}</p>
+                                <strong>Car Overview </strong>
+                                <p class="text-muted"><strong>{{$car->CAR_TTL1 ?? ''}}</strong></p>
+                                <p class="text-muted">{{$car->CAR_PRG1 ?? ''}}</p>
+                                <p class="text-muted"><strong>{{$car->CAR_TTL2 ?? ''}}</strong></p>
+                                <p class="text-muted">{{$car->CAR_PRG2 ?? ''}}</p>
                             </div>
                         </div>
                         <hr>
                     </div>
                 </div>
 
-
-
-
-                <div class="tab-pane" id="cars" role="tabpanel">
+                <div class="tab-pane" id="accessories" role="tabpanel">
                     <div class="card-body">
-                        <h4 class="card-title">All Categories</h4>
+                        <div>
+                            <div class=col>
+                                <h4 class="card-title">Accessories</h4>
+                                <div class="table-responsive m-t-40">
+                                    <table class="table color-bordered-table table-striped full-color-table full-primary-table hover-table" data-display-length='-1' data-order="[]">
+                                        <thead>
+                                            <th>Accessory</th>
+                                            <th>Available</th>
+                                            <th>Value</th>
+                                            <th>Actions</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($accessories as $accessID => $accessory)
+                                            <tr>
+                                                <td> {{$accessory['ACSR_NAME']}} </td>
+                                                <td>
+                                                    @if ($accessory['isAvailable'])
+                                                    <label id="accssLabel{{$accessID}}" class="label label-success">Available</label>
+                                                    @else
+                                                    <label id="accssLabel{{$accessID}}" class="label label-danger">Unavailable</label>
+                                                    @endif
+                                                </td>
+                                                <td id="valueCell{{$accessID}}"> {{$accessory['ACCR_VLUE'] ?? 'N/A' }}</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select </button>
+                                                        <div class="dropdown-menu" id="group{{$accessID}}">
+                                                            @if($accessory['isAvailable'])
+                                                            <button class="dropdown-item" onclick="unlinkAccessory('{{$accessID}}')">Unlink!</button>
+                                                            @endif
+                                                            <button class="open-AccessoryEditDialog  dropdown-item" data-toggle="modal" data-id="{{$accessID}}%%{{$accessory['ACCR_VLUE']??''}}"
+                                                                data-target="#setAccessory">
+                                                                {{$accessory['isAvailable'] ? 'Set Value' : 'Link Accessory'}}
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                            <tr>
+                                                @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="images" role="tabpanel">
+                    <div class="card-body">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <?php $i=0; ?>
+                                @foreach($car->images as $image)
+                                <li data-target="#carouselExampleIndicators2" data-slide-to="{{$i}}" {{($i==0) ? 'class="active"' : ''}}></li>
+                                <?php $i++; ?>
+                                @endforeach
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <?php $i=0; ?>
+                                @foreach($car->images as $image)
+                                <div class="carousel-item {{($i==0) ? 'active' : ''}}">
+                                    <img class="img-fluid" src="{{ asset( 'storage/'. $image->CIMG_URL ) }} "
+                                        style="max-height:560px; max-width:900px; display: block;  margin-left: auto;  margin-right: auto;">
+                                </div>
+                                <?php $i++; ?>
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev" style="background-color:#DCDCDC">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next" style="background-color:#DCDCDC">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                         <hr>
-                        <x-datatable id="myTable" :title="$title" :subtitle="$subTitle" :cols="$cols" :items="$items" :atts="$atts" />
+                        <h4 class="card-title">Add New Car Image</h4>
+                        <form class="form pt-3" method="post" action="{{ url($imageFormURL) }}" enctype="multipart/form-data">
+                            @csrf
+                            <input type=hidden name=carID value="{{(isset($car)) ? $car->id : ''}}">
+                            <div class="form-group">
+                                <label>Sort Value*</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon11"><i class="fas fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="Example: 900" name=value value="{{ (isset($car)) ? $car->CAR_VLUE : old('value') ?? 500}}" required>
+                                </div>
+                                <small class="text-muted">Default is 500, the image with the higher value appears before other image</small>
+                                <small class="text-danger">{{$errors->first('price')}}</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-file-now-custom-1">New Photo</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" id="input-file-now-custom-1" name=photo class="dropify" data-default-file="{{ old('photo') }}" />
+                                </div>
+                                <small class="text-muted">Optimum Resolution is 900 * 560</small>
+                            </div>
+
+                            <button type="submit" class="btn btn-success mr-2">Submit</button>
+                            @if($isCancel)
+                            <a href="{{url($homeURL) }}" class="btn btn-dark">Cancel</a>
+                            @endif
+                        </form>
+                    </div>
+                    <hr>
+                    <div>
+                        <div class=col>
+                            <h4 class="card-title">Car Images</h4>
+                            <div class="table-responsive m-t-40">
+                                <table class="table color-bordered-table table-striped full-color-table full-primary-table hover-table" data-display-length='-1' data-order="[]">
+                                    <thead>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>Url</th>
+                                        <th>Action</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($car->images as $image)
+                                        <tr>
+                                            <td> {{$image->CIMG_VLUE}} </td>
+                                            <td> <img src="{{ asset( 'storage/'. $image->CIMG_URL ) }} " width="60px"> </td>
+                                            <td><a target="_blank" href="{{ asset( 'storage/'. $image->CIMG_URL ) }}">
+                                                    {{(strlen($image->CIMG_URL) < 25) ? $image->CIMG_URL : substr($image->CIMG_URL, 0, 25).'..' }}
+                                                </a></td>
+                                            <td>
+                                                <a href="javascript:void(0);" onclick="deleteImage({{$image->id}})">
+                                                    <img src="{{ asset('images/del.png') }}" width=25 height=25>
+                                                </a>
+                                            </td>
+                                        <tr>
+                                            @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -120,22 +270,35 @@
                             <h4 class="card-title">{{ $formTitle }}</h4>
                             <form class="form pt-3" method="post" action="{{ url($formURL) }}" enctype="multipart/form-data">
                                 @csrf
-                                @isset($model)
-                                <input type=hidden name=id value="{{(isset($model)) ? $model->id : ''}}">
+                                @isset($car)
+                                <input type=hidden name=id value="{{(isset($car)) ? $car->id : ''}}">
                                 @endisset
 
+                                <h4 class="card-title">Car Profile Status</h4>
+
+                                <div class="form-group bt-switch">
+                                    <div class="col-md-5 m-b-15">
+                                        <h4 class="card-title">Active</h4>
+                                        <input type="checkbox" data-size="large" {{(isset($car) && $car->CAR_ACTV) ? 'checked' : ''}} data-on-color="success" data-off-color="danger"
+                                            data-on-text="Active" data-off-text="Hidden" name="isActive">
+                                    </div>
+                                    <small class="text-muted">Use this option when the car is ready for publishing</small>
+                                </div>
+                                <hr>
+                                <h4 class="card-title">Main Car Info.</h4>
+
                                 <div class="form-group">
-                                    <label>Brand*</label>
+                                    <label>Model*</label>
                                     <div class="input-group mb-3">
-                                        <select name=brand class="select2 form-control custom-select" style="width: 100%; height:36px;" required>
-                                            <option value="" disabled selected>Pick From Active Brands</option>
-                                            @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}" @if(isset($model) && $brand->id == $model->MODL_BRND_ID)
+                                        <select name=model class="select2 form-control custom-select" style="width: 100%; height:36px;" required>
+                                            <option value="" disabled selected>Pick From Models</option>
+                                            @foreach($models as $model)
+                                            <option value="{{ $model->id }}" @if(isset($car) && $model->id == $car->CAR_MODL_ID)
                                                 selected
-                                                @elseif($brand->id == old('brand'))
+                                                @elseif($model->id == old('model'))
                                                 selected
                                                 @endif
-                                                >{{$brand->BRND_NAME}} ({{$brand->BRND_ACTV ? 'Active' : 'In-Active'}})</option>
+                                                >{{$model->brand->BRND_NAME}} {{$model->brand->BRND_ACTV ? '' : '(In-Active) '}}: {{$model->MODL_NAME}} - {{$model->MODL_YEAR}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -143,118 +306,218 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Type*</label>
+                                    <label>Category*</label>
                                     <div class="input-group mb-3">
-                                        <select name=type class="select2 form-control custom-select" style="width: 100%; height:36px;" required>
-                                            <option value="" disabled selected>Pick From Car Types</option>
-                                            @foreach($types as $type)
-                                            <option value="{{ $type->id }}" @if(isset($model) && $type->id == $model->MODL_TYPE_ID)
-                                                selected
-                                                @elseif($type->id == old('type'))
-                                                selected
-                                                @endif
-                                                >{{$type->TYPE_NAME}}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon11"><i class="fas fa-car"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Category Name - Example: Allure+" name=category
+                                            value="{{ (isset($car)) ? $car->CAR_CATG : old('category')}}" required>
                                     </div>
-                                    <small class="text-danger">{{$errors->first('group')}}</small>
+                                    <small class="text-danger">{{$errors->first('category')}}</small>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Model Name*</label>
+                                    <label>Price*</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon11"><i class="far fa-copyright"></i></span>
+                                            <span class="input-group-text" id="basic-addon11"><i class="fas fa-dollar-sign"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Model Name" name=name value="{{ (isset($model)) ? $model->MODL_NAME : old('name')}}" required>
+                                        <input type="number" class="form-control" placeholder="Car Price" name=price value="{{ (isset($car)) ? $car->CAR_PRCE : old('price')}}" required>
                                     </div>
-                                    <small class="text-danger">{{$errors->first('name')}}</small>
+                                    <small class="text-danger">{{$errors->first('price')}}</small>
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Year*</label>
+                                    <label>Discount</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon11"><i class="far fa-calendar"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Model Year" name=year value="{{ (isset($model)) ? $model->MODL_YEAR : old('year')}}" required>
+                                        <input type="number" class="form-control" placeholder="Enter discount amount" name=disc value="{{ (isset($car)) ? $car->CAR_DISC : old('disc')}}">
                                     </div>
-                                    <small class="text-danger">{{$errors->first('year')}}</small>
+                                    <small class="text-muted">Use only to show <span style="text-decoration:line-through">old price</span> and <strong>new price</strong></small><br>
+                                    <small class="text-danger">{{$errors->first('disc')}}</small>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Arabic Name</label>
+                                    <label for="exampleInputEmail1">Sorting Value</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-font"></i></span>
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-list"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name=arbcName placeholder="Arabic Name" value="{{ (isset($model)) ? $model->MODL_ARBC_NAME : old('arbcName')}}">
+                                        <input type="number" class="form-control" name=sort placeholder="Default is 500" value="{{ (isset($car)) ? $car->CAR_VLUE : old('sort')}}">
                                     </div>
-                                    <small class="text-danger">{{$errors->first('arbcName')}}</small>
+                                    <small class="text-muted">Higher value means higher priority, cars with higher value will appear before others on search pages</small><br>
+                                    <small class="text-danger">{{$errors->first('sort')}}</small>
                                 </div>
+                                <hr>
+                                <h4 class="card-title">Car Specifications</h4>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Interactive Brochure</label>
+                                    <label for="exampleInputEmail1">Engine CC</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-barcode"></i></span>
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-database"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name=brochureCode placeholder="Interactive brochure code, example: 452336e5-81ed-43be-a4be-f7552f6366fd "
-                                            value="{{ (isset($model)) ? $model->MODL_BRCH : old('brochureCode')}}">
+                                        <input type="text" class="form-control" name=cc placeholder="Enter Engine CC Specs, Example: 1500 Turbo"
+                                            value="{{ (isset($car)) ? $car->CAR_ENCC : old('cc')}}">
                                     </div>
-                                    <small class="text-muted">Use only the code written after the indesign url, https://indd.adobe.com/view/<strong>452336e5-81ed-43be-a4be-f7552f6366fd</strong>
-                                    </small><br>
-                                    <small class="text-danger">{{$errors->first('brochureCode')}}</small>
-                                </div>
-
-
-                                <div class="form-group bt-switch">
-                                    <div class="col-md-5 m-b-15">
-                                        <h4 class="card-title">Active</h4>
-                                        <input type="checkbox" data-size="large" {{(isset($model) && $model->MODL_ACTV) ? 'checked' : ''}} data-on-color="success" data-off-color="danger"
-                                            data-on-text="Active" data-off-text="Hidden" name="isActive">
-                                    </div>
-                                    <small class="text-muted">This model and all its linked cars can be hidden/published using this option</small>
-                                </div>
-
-                                <div class="form-group bt-switch">
-                                    <div class="col-md-5 m-b-15">
-                                        <h4 class="card-title">Main</h4>
-                                        <input type="checkbox" data-size="large" {{(isset($model) && $model->MODL_MAIN) ? 'checked' : ''}} data-on-color="success" data-off-color="danger"
-                                            data-on-text="Yes" data-off-text="No" name="isMain">
-                                    </div>
-                                    <small class="text-muted">The model can be published on the home page using this option</small>
+                                    <small class="text-danger">{{$errors->first('cc')}}</small>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="input-file-now-custom-1">Model Image</label>
+                                    <label for="exampleInputEmail1">Horse Power</label>
                                     <div class="input-group mb-3">
-                                        <input type="file" id="input-file-now-custom-1" name=image class="dropify"
-                                            data-default-file="{{ (isset($model->MODL_LOGO)) ? asset( 'storage/'. $model->MODL_LOGO ) : old('image') }}" />
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-horse"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name=hpwr placeholder="Enter Horse Power in Hp@rpm, Example: 129@6000"
+                                            value="{{ (isset($car)) ? $car->CAR_HPWR : old('hpwr')}}">
                                     </div>
-                                    <small class="text-muted">Image size should be 346 * 224 -- It appears on the home page if this is a main model -- The background should be transparent (.png)
-                                        format</small><br>
-                                    <small class="text-danger">{{$errors->first('image')}}</small>
-
+                                    <small class="text-danger">{{$errors->first('hpwr')}}</small>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Model Overview</label>
+                                    <label for="exampleInputEmail1">Engine Torque</label>
                                     <div class="input-group mb-3">
-                                        <textarea class="form-control" name=overview rows="5">{{(isset($model)) ? $model->MODL_OVRV : old('overview')}}</textarea>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-cog"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name=torq placeholder="Enter torque in Nm@rpm, Example: 230@1750"
+                                            value="{{ (isset($car)) ? $car->CAR_TORQ : old('torq')}}">
                                     </div>
-                                    <small class="text-muted">Model Overview paragraph, shown on the home page and on the model page</small><br>
-                                    <small class="text-danger">{{$errors->first('overview')}}</small>
+                                    <small class="text-danger">{{$errors->first('torq')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Transmission info</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-filter"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name=trns placeholder="Example: 6 Speed A/T" value="{{ (isset($car)) ? $car->CAR_TRNS : old('trns')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('trns')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">0-100 Acceleration</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-tachometer-alt"></i></span>
+                                        </div>
+                                        <input type="number" step=0.1 class="form-control" name=acc placeholder="Enter Car Acceleration in seconds, Example: 9.4"
+                                            value="{{ (isset($car)) ? $car->CAR_ACC : old('acc')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('acc')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Top Speed</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-flag-checkered"></i></span>
+                                        </div>
+                                        <input type="number" class="form-control" name=speed placeholder="Car Top Speed in Km/h, Example: 220"
+                                            value="{{ (isset($car)) ? $car->CAR_TPSP : old('speed')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('speed')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Car Height</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-long-arrow-alt-up"></i></span>
+                                        </div>
+                                        <input type="number" step=.1 class="form-control" name=height placeholder="Car height from the ground in cm, Example: 174.4"
+                                            value="{{ (isset($car)) ? $car->CAR_HEIT : old('height')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('height')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Rims Measure</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-life-ring"></i></span>
+                                        </div>
+                                        <input type="number" class="form-control" name=rims placeholder="Rims Tyre measure, Example: 16" value="{{ (isset($car)) ? $car->CAR_RIMS : old('rims')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('rims')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Gas Tank Capicity</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-flask"></i></span>
+                                        </div>
+                                        <input type="number" class="form-control" name=tank placeholder="Gas Tank Capicity in Litres, Example: 45"
+                                            value="{{ (isset($car)) ? $car->CAR_TRNK : old('tank')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('tank')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Seats</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-couch"></i></span>
+                                        </div>
+                                        <input type="number" class="form-control" name=seat placeholder="Car Seats, Example: 5" value="{{ (isset($car)) ? $car->CAR_SEAT : old('seat')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('seat')}}</small>
+                                </div>
+
+                                <hr>
+                                <h4 class="card-title">Car Overview</h4>
+
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Title 1*</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name=title1 placeholder="First Paragraph title" value="{{ (isset($car)) ? $car->CAR_TTL1 : old('title1')}}">
+                                    </div>
+                                    <small class="text-muted">First Car Title in overview section, shown on the car details page</small><br>
+                                    <small class="text-danger">{{$errors->first('title1')}}</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Paragraph 1*</label>
+                                    <div class="input-group mb-3">
+                                        <textarea class="form-control" name=prgp1 rows="3">{{(isset($car)) ? $car->CAR_PRG1 : old('prgp1')}}</textarea>
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('prgp1')}}</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Title 2</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name=title2 placeholder="Second Paragraph title" value="{{ (isset($car)) ? $car->CAR_TTL2 : old('title2')}}">
+                                    </div>
+                                    <small class="text-muted">Second Overview paragraph shown on the car details page, leave empty if not needed</small><br>
+
+                                    <small class="text-danger">{{$errors->first('title2')}}</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Paragraph 2</label>
+                                    <div class="input-group mb-3">
+                                        <textarea class="form-control" name=prgp2 rows="3">{{(isset($car)) ? $car->CAR_PRG2 : old('prgp2')}}</textarea>
+                                    </div>
+                                    <small class="text-muted">Required if second title is not empty</small><br>
+                                    <small class="text-danger">{{$errors->first('prgp2')}}</small>
                                 </div>
 
 
-                                <button type="submit" class="btn btn-success mr-2">Submit</button>
+                                <button type="submit" class="btn btn-success mr-2">Save</button>
                                 @if($isCancel)
                                 <a href="{{url($homeURL) }}" class="btn btn-dark">Cancel</a>
                                 @endif
                             </form>
                             <hr>
                             <h4 class="card-title">Delete User</h4>
-                            <button type="button" onclick="confirmAndGoTo('{{url('users/delete/'.$model->id )}}', 'delete this User and all his attendance and payment ?')"
+                            <button type="button" onclick="confirmAndGoTo('{{url('users/delete/'.$car->model->id )}}', 'delete this User and all his attendance and payment ?')"
                                 class="btn btn-danger mr-2">Delete
                                 All User Data</button>
                         </div>
@@ -265,4 +528,159 @@
     </div>
     <!-- Column -->
 </div>
+<div id="setAccessory" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Link Accessory</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="{{ $linkAccessoryURL }}" method=post>
+                @csrf
+                <div class="modal-body">
+                    <input type=hidden name=accessID id=accessIDField value="">
+
+                    <div class="form-group col-md-12 m-t-0">
+                        <h5>Value</h5>
+                        <input type="text" class="form-control form-control-line" name=value id=accessValue>
+                        <small class="text-muted">(optional)Use this option if you want to set a value to the accessory</small>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="submitAccessoryForm()" data-dismiss="modal" class="btn btn-warning waves-effect waves-light">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function deleteImage(id){
+        var http = new XMLHttpRequest();
+        var url = "{{$delImageUrl}}" + '/' +  id;
+        http.open('GET', url, true);
+        //Send the proper header information along with the request
+        http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText=='1')
+            Swal.fire({
+                title: "Deleted!",
+                text: "Image will disappear after reload..",
+                icon: "success"
+            })
+            else 
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong..",
+                icon: "error"
+            })
+           
+        }
+    };
+
+    http.send();
+}
+    function submitAccessoryForm(){
+        var http = new XMLHttpRequest();
+        var url = "{{$linkAccessoryURL}}" ;
+        var formdata = new FormData();
+        formdata.append('carID',{{$car->id}});
+        var accessIDVal = document.getElementById('accessIDField').value;
+        formdata.append('accessID',accessIDVal);
+        formdata.append('_token','{{ csrf_token() }}');
+   
+        var accessVal = document.getElementById('accessValue').value;
+        formdata.append('value',accessVal);
+  
+        http.open('POST', url, true);
+        //Send the proper header information along with the request
+        http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText=='1'){
+                Swal.fire({
+                title: "Success!",
+                text: "Accessory successfully updated",
+                icon: "success"
+            })
+            accessLabel = document.getElementById('accssLabel' + accessIDVal)
+            accessLabel.innerHTML = 'Available'
+            accessLabel.className = 'label label-success'
+            accessCell = document.getElementById('valueCell' + accessIDVal)
+            accessCell.innerHTML = accessVal.length>0 ? accessVal : 'N/A'
+            adjustMenu(accessIDVal, true, accessVal.length>0 ? accessVal : '')
+            } else {
+                Swal.fire({
+                title: "No Change!",
+                text: "Something went wrong.. Please refresh",
+                icon: "warning"
+            })
+            }
+
+        }
+    };
+
+    http.send(formdata, true);
+}
+
+    function unlinkAccessory(id){
+            var http = new XMLHttpRequest();
+            var url = "{{$unlinkAccessoryURL}}" + '/' + {{$car->id}} + '/' +  id;
+            http.open('GET', url, true);
+            //Send the proper header information along with the request
+            http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseText=='1'){
+                    accessLabel = document.getElementById('accssLabel' + id)
+                    accessLabel.innerHTML = 'Unavailable'
+                    accessLabel.className = 'label label-danger'
+                    accessCell = document.getElementById('valueCell' + id)
+                    accessCell.innerHTML = 'N/A'
+                    adjustMenu(id, false, '')
+                    Swal.fire({
+                        title: "Removed!",
+                        text: "Accessory not linked with the care",
+                        icon: "success"
+                    })
+                }
+                else 
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong.. Please refresh",
+                    icon: "error"
+                })
+            
+            }
+        };
+
+        http.send();
+    }
+
+    function adjustMenu(id, linked, value){
+        accessMenu = document.getElementById('group' + id);
+        if(linked){
+            accessMenu.innerHTML = `  <button class='dropdown-item' onclick='unlinkAccessory(${id})'>Unlink!</button>\
+                                     <button class='open-AccessoryEditDialog  dropdown-item' data-toggle='modal' data-id=${id}%%${value}\
+                                        data-target='#setAccessory'>Set Value</button>`;
+        } else {
+            accessMenu.innerHTML =  `  <button class='open-AccessoryEditDialog  dropdown-item' data-toggle='modal' data-id=${id}%%${value}\
+                                        data-target='#setAccessory'>Link Accessory</button>`;
+        }
+    }
+
+</script>
+@endsection
+
+@section('js_content')
+<script>
+    $(document).on("click", ".open-AccessoryEditDialog", function () {
+  
+        var accessData = $(this).data('id');
+        var accessArr = accessData.split('%%');
+        console.log(accessArr[1])
+        $(".modal-body #accessIDField").val( accessArr[0] );
+        $(".modal-body #accessValue").val( accessArr[1] );
+
+    });
+</script>
 @endsection
