@@ -2,8 +2,14 @@
 
 namespace App\Exceptions;
 
+use App\Models\AboutUs;
+use App\Models\SiteInfo;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\ViewErrorBag;
 use Throwable;
+
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 class Handler extends ExceptionHandler
 {
@@ -51,5 +57,24 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Render the given HttpException.
+     *
+     * @param  \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface  $e
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function renderHttpException(HttpExceptionInterface $e)
+    {
+        $this->registerErrorViewPaths();
+
+        if (view()->exists($view = $this->getHttpExceptionView($e))) {
+            $data['aboutUs'] = AboutUs::getAboutUs();
+            $data['siteData'] = SiteInfo::getSiteInfo();
+            return response()->view($view, $data, $e->getStatusCode(), $e->getHeaders());
+        }
+
+        return $this->convertExceptionToResponse($e);
     }
 }

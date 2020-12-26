@@ -16,7 +16,7 @@ class CarTypesController extends Controller
         $this->data['items'] = CarType::all();
         $this->data['title'] = "Available Types";
         $this->data['subTitle'] = "Manage all Available Types such as: SUV - Sedan - Hatchback";
-        $this->data['cols'] = ['Name', 'Arabic', 'Active', 'Edit', 'Delete'];
+        $this->data['cols'] = ['Name', 'Arabic', 'Main', 'Edit', 'Delete'];
         $this->data['atts'] = [
             'TYPE_NAME',
             'TYPE_ARBC_NAME',

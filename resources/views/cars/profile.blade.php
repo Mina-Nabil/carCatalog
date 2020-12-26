@@ -126,7 +126,6 @@
                     <div class="card-body">
                         <div>
                             <div class=col>
-                                <h4 class="card-title">Accessories</h4>
                                 <div class="table-responsive m-t-40">
                                     <table class="table color-bordered-table table-striped full-color-table full-primary-table hover-table" data-display-length='-1' data-order="[]">
                                         <thead>
@@ -267,7 +266,6 @@
                 <div class="tab-pane" id="settings" role="tabpanel">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ $formTitle }}</h4>
                             <form class="form pt-3" method="post" action="{{ url($formURL) }}" enctype="multipart/form-data">
                                 @csrf
                                 @isset($car)
@@ -575,7 +573,12 @@
                 text: "Something went wrong..",
                 icon: "error"
             })
-           
+        } else {
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong.. Please refresh",
+                icon: "error"
+            })
         }
     };
 
@@ -617,6 +620,12 @@
             })
             }
 
+        } else {
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong.. Please refresh",
+                icon: "error"
+            })
         }
     };
 
@@ -650,7 +659,13 @@
                     icon: "error"
                 })
             
-            }
+            } else {
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong.. Please refresh",
+                icon: "error"
+            })
+        }
         };
 
         http.send();

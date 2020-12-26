@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">{{ $formTitle }}</h4>
+                <h4 class="card-title">{{ $formTitle }}</h4>     
                 <form class="form pt-3" method="post" action="{{ url($formURL) }}" enctype="multipart/form-data">
                     @csrf
                     @isset($model)

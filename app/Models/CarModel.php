@@ -41,4 +41,9 @@ class CarModel extends Model
         }
         $this->save();
     }
+
+    static function getModelYears(){
+        return self::selectRaw('DISTINCT MODL_YEAR')->join('brands', 'brands.id', '=', 'MODL_BRND_ID')
+                    ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->get()->pluck('MODL_YEAR');
+    }
 }

@@ -58,17 +58,44 @@ Route::post('admin/brands/insert', 'BrandsController@insert');
 Route::get('admin/brands/toggle/{id}', 'BrandsController@toggle');
 Route::get('admin/brands/delete/{id}', 'BrandsController@delete');
 
+//Partners routes
+Route::get('admin/partners/show', 'PartnersController@home');
+Route::get('admin/partners/edit/{id}', 'PartnersController@edit');
+Route::post('admin/partners/update', 'PartnersController@update');
+Route::post('admin/partners/insert', 'PartnersController@insert');
+Route::get('admin/partners/toggle/{id}', 'PartnersController@toggle');
+
+//Customers routes
+Route::get('admin/customers/show', 'CustomersController@home');
+Route::get('admin/customers/edit/{id}', 'CustomersController@edit');
+Route::post('admin/customers/update', 'CustomersController@update');
+Route::post('admin/customers/insert', 'CustomersController@insert');
+Route::get('admin/customers/toggle/{id}', 'CustomersController@toggle');
+Route::get('admin/customers/delete/{id}', 'CustomersController@delete');
+
 
 
 //Dashboard users
-Route::get("dash/users/all", 'DashUsersController@index');
-Route::post("dash/users/insert", 'DashUsersController@insert');
-Route::get("dash/users/edit/{id}", 'DashUsersController@edit');
-Route::post("dash/users/update", 'DashUsersController@update');
+Route::get("admin/dash/users/all", 'DashUsersController@index');
+Route::post("admin/dash/users/insert", 'DashUsersController@insert');
+Route::get("admin/dash/users/edit/{id}", 'DashUsersController@edit');
+Route::post("admin/dash/users/update", 'DashUsersController@update');
 
+//About Us routes
+Route::get("admin/manage/about", 'AboutController@home');
+Route::post("admin/update/about", 'AboutController@update');
+
+//Website Section route
+Route::get("admin/manage/site", 'InfoController@home');
+Route::get("admin/toggle/section/{id}", 'InfoController@toggle');
+Route::post("admin/update/site", 'InfoController@update');
+Route::post("admin/add/field", 'InfoController@addNew');
 
 Route::get('admin/logout', 'HomeController@logout')->name('logout');
 Route::get('admin/login', 'HomeController@login')->name('login');
 Route::post('admin/login', 'HomeController@authenticate')->name('login');
-Route::get('admin', 'HomeController@index')->name('admin');
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('admin', 'HomeController@admin')->name('admin');
+
+/////////Website front end routes 
+
+Route::get('/', 'SiteController@home')->name('home');

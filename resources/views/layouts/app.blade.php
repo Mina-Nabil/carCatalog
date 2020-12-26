@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oregano" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
-
+    @yield('css_content')
     <!-- Sweet Alert Notification -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -165,16 +165,11 @@
                             </ul>
                         </li>
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Website Info</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{url('admin/suppliers/trans/prepare')}}">Home Sections</a></li>
-                                <li><a href="{{url('admin/suppliers/trans/quick')}}">Home Info</a></li>
-                            </ul>
-                        </li>
-
-
-
-                        <li> <a href="{{url('admin/raw/prod/show')}}" aria-expanded="false"><i class=" fas fa-info"></i><span class="hide-menu">About Us </span></a></li>
+                        <li> <a href="{{url('admin/manage/site')}}" aria-expanded="false"><i class="fas fa-globe"></i><span class="hide-menu">Home Page </span></a></li>
+                        
+                        <li> <a href="{{url('admin/manage/about')}}" aria-expanded="false"><i class="fas fa-info"></i><span class="hide-menu">About Us </span></a></li>
+                        <li> <a href="{{url('admin/customers/show')}}" aria-expanded="false"><i class="fas fa-donate"></i><span class="hide-menu">Customers </span></a></li>
+                        <li> <a href="{{url('admin/partners/show')}}" aria-expanded="false"><i class="fas fa-user-md"></i><span class="hide-menu">Partners </span></a></li>
 
                         <li> <a href="{{url('admin/dash/users/all')}}"><i class=" fas fa-users"></i><span class="hide-menu">Admins</span></a></li>
 
@@ -204,11 +199,11 @@
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
-                            <a style="font-family: 'Oswald'" href="{{url('admin/clients/trans/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Pet</a>
-                            <a style="font-family: 'Oswald'" href="{{url('admin/suppliers/trans/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add User</a>
-                            <a style="font-family: 'Oswald'" href="{{url('admin/sales/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Shop
+                            <a style="font-family: 'Oswald'" href="{{url('admin/cars/add')}}" class="btn btn-primary d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Car</a>
+                            <a style="font-family: 'Oswald'" href="{{url('admin/models/add')}}" class="btn btn-primary d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Model</a>
+                            <a style="font-family: 'Oswald'" href="{{url('admin/cars/show')}}" class="btn btn-primary d-none d-lg-block m-l-15"><i class="fas fa-info-circle"></i> Check Cars
                             </a>
-                            <a style="font-family: 'Oswald'" href="{{url('admin/rawinventory/add')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Vet
+                            <a style="font-family: 'Oswald'" href="{{url('admin/models/show')}}" class="btn btn-primary d-none d-lg-block m-l-15"><i class="fas fa-info-circle"></i> Check Models
                             </a>
                         </div>
                     </div>

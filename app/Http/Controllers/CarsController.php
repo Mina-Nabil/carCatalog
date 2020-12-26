@@ -161,6 +161,7 @@ class CarsController extends Controller
         $newImage->CIMG_CAR_ID = $request->carID;
         $newImage->CIMG_VLUE = $request->value;
         $newImage->save();
+        $newImage->compress();
         return back();
     }
 
@@ -168,8 +169,7 @@ class CarsController extends Controller
     public function deleteImage($id)
     {
         $image = CarImage::findOrFail($id);
-        $image->deleteImage();
-        return back();
+        echo $image->deleteImage();
     }
 
     public function linkAccessory(Request $request)

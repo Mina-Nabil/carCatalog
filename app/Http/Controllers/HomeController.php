@@ -57,7 +57,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function admin()
     {
         if (!Auth::check()) return redirect('admin/login');
         return view('home');

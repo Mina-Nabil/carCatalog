@@ -48,7 +48,7 @@
                         @elseif(array_key_exists('url', $att))
                         <td><a href="{{ url($att['url'][0]) }}">{{ $item->{$att['url']['att']}  }}</a></td>
                         @elseif(array_key_exists('remoteURL', $att))
-                        <td><a target="_blank" href="{{ url($item->{$att['remoteURL']['att']}) }}">
+                        <td><a target="_blank" href="http://{{ $item->{$att['remoteURL']['att']} }}">
                                 {{ (strlen($item->{$att['remoteURL']['att']}) < 15 ) ? $item->{$att['remoteURL']['att']} : substr($item->{$att['remoteURL']['att']},0,26).'..'  }}</a></td>
                         @elseif(array_key_exists('verified', $att))
                         <td>{{ $item->{$att['verified']['att']}  }}
