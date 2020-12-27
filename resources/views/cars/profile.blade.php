@@ -126,7 +126,7 @@
                     <div class="card-body">
                         <div>
                             <div class=row>
-                                <div class=7>
+                                <div class=col-7>
                                     <h4 class="card-title">Accessories</h4>
                                 </div>
                                 <div class=col-5>
