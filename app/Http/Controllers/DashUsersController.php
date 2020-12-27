@@ -17,26 +17,28 @@ class DashUsersController extends Controller
         $this->data['title'] = "Dashboard Users";
         $this->data['subTitle'] = "Manage All Dashboard Users";
         $this->data['cols'] = ['Username', 'Fullname', 'Type', 'Active', 'Edit'];
-        $this->data['atts'] = ['DASH_USNM', 'DASH_FLNM', ['foreign' => ['dash_types', 'DHTP_NAME']], 
-        [
-            'toggle' => [
-                "att"   =>  "DASH_ACTV",
-                "url"   =>  "admin/dash/users/toggle/",
-                "states" => [
-                    "1" => "Active",
-                    "0" => "De-activated",
-                ],
-                "actions" => [
-                    "1" => "disable the user",
-                    "0" => "activate the user",
-                ],
-                "classes" => [
-                    "1" => "label-success",
-                    "0" => "label-danger",
-                ],
-            ]
-        ],
-        ['edit' => ['url' => 'admin/dash/users/edit/', 'att' => 'id']]];
+        $this->data['atts'] = [
+            'DASH_USNM', 'DASH_FLNM', ['foreign' => ['rel' => 'dash_types', 'att' => 'DHTP_NAME']],
+            [
+                'toggle' => [
+                    "att"   =>  "DASH_ACTV",
+                    "url"   =>  "admin/dash/users/toggle/",
+                    "states" => [
+                        "1" => "Active",
+                        "0" => "De-activated",
+                    ],
+                    "actions" => [
+                        "1" => "disable the user",
+                        "0" => "activate the user",
+                    ],
+                    "classes" => [
+                        "1" => "label-success",
+                        "0" => "label-danger",
+                    ],
+                ]
+            ],
+            ['edit' => ['url' => 'admin/dash/users/edit/', 'att' => 'id']]
+        ];
         $this->data['homeURL'] = 'admin/dash/users/all';
     }
 
@@ -87,28 +89,29 @@ class DashUsersController extends Controller
         return redirect("admin/dash/users/all");
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
         $request->validate([
             'id' => 'required',
             'name' => 'required',
             'fullname' => "required",
             'type' => 'required'
-            ]);
-            
+        ]);
+
         $dashUser = DashUser::findOrFail($request->id);
-       
+
         $dashUser->DASH_USNM = $request->name;
         $dashUser->DASH_FLNM = $request->fullname;
         $dashUser->DASH_TYPE_ID = $request->type;
 
-        if(isset($request->password)  && strcmp(trim($request->password), '') != 0){
+        if (isset($request->password)  && strcmp(trim($request->password), '') != 0) {
             $dashUser->DASH_PASS = bcrypt($request->password);
         }
 
         if ($request->hasFile('photo')) {
             $dashUser->DASH_IMGE = $request->photo->store('images/users', 'public');
-            if (file_exists($request->oldPath)){
+            if (file_exists($request->oldPath)) {
                 unlink($request->oldPath);
             }
         }
