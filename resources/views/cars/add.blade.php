@@ -274,7 +274,7 @@
 
                     <hr>
                     <h4 class="card-title">Car Overview</h4>
-                    <small class="text-danger">(Optional) Not Required</small>
+                    <small class="text-muted">Optional</small>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title 1</label>
