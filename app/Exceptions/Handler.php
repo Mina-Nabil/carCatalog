@@ -3,6 +3,9 @@
 namespace App\Exceptions;
 
 use App\Models\AboutUs;
+use App\Models\Car;
+use App\Models\CarModel;
+use App\Models\Partner;
 use App\Models\SiteInfo;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\ViewErrorBag;
@@ -70,8 +73,15 @@ class Handler extends ExceptionHandler
         $this->registerErrorViewPaths();
 
         if (view()->exists($view = $this->getHttpExceptionView($e))) {
-            $data['aboutUs'] = AboutUs::getAboutUs();
-            $data['siteData'] = SiteInfo::getSiteInfo();
+            $data['carouselHeader'] = false;
+            $data['headerImage'] = asset('assets/frontend/images/custom/error404-page-header-img.jpg');
+            $data['pageTitle'] = 'Error 404';
+            $data['topCars'] =   Car::with(["model", "model.brand"])->orderByDesc('CAR_VLUE')->limit(5)->get();
+            $data['aboutUs']  =   AboutUs::getAboutUs();
+            $data['siteData'] =   SiteInfo::getSiteInfo();
+            $data['partners'] =   Partner::all();
+            $data['models']   =   CarModel::with(["brand"])->join("brands", "MODL_BRND_ID", '=', 'brands.id')
+                ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->get();
             return response()->view($view, $data, $e->getStatusCode(), $e->getHeaders());
         }
 

@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
 
 
-        // DB::table('dash_users')->insert([
-        //     "DASH_USNM" => "mina",
-        //     "DASH_FLNM" => "Mina Nabil",
-        //     "DASH_PASS" => bcrypt('mina@catalog'),
-        //     "DASH_TYPE_ID" => 1,
-        // ]);
+        DB::table('dash_users')->insert([
+            "DASH_USNM" => "mina",
+            "DASH_FLNM" => "Mina Nabil",
+            "DASH_PASS" => bcrypt('mina@catalog'),
+            "DASH_TYPE_ID" => 1,
+        ]);
 
 
         DB::table('home_sections')->insert([

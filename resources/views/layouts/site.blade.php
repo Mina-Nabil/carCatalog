@@ -91,7 +91,7 @@
     </header>
     <!-- /Header -->
 
-    @if($carouselHeader)
+    @if(isset($carouselHeader) && $carouselHeader)
     <section id="banner2">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Wrapper for slides -->

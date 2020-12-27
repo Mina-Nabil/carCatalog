@@ -42,7 +42,6 @@ class CarImage extends Model
             try {
                 $image = imagecreatefrompng($imagePath);
                 imagejpeg($image, public_path('storage/' . $newImagePath), $quality);
-                $this->CIMG_CMPS = 1;
                 $this->CIMG_URL = $newImagePath;
                 $this->save();
                 unlink($imagePath);
@@ -55,7 +54,6 @@ class CarImage extends Model
             $image = self::imagecreatefromjpegexif($imagePath);
             try {
                 imagejpeg($image, public_path('storage/' . $newImagePath), $quality);
-                $this->CIMG_CMPS = 1;
                 $this->CIMG_URL = $newImagePath;
                 $this->save();
                 unlink($imagePath);
