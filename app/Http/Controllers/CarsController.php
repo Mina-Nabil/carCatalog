@@ -45,9 +45,6 @@ class CarsController extends Controller
             "rims"      =>  "required_if:isActive,on",
             "tank"      =>  "required_if:isActive,on",
             "seat"      =>  "required_if:isActive,on",
-            "title1"    =>  "required_if:isActive,on",
-            "prgp1"    =>  "required_if:isActive,on",
-            "prgp2"    =>  "required_if:title2,true",
         ]);
 
         $car = new Car();
@@ -97,9 +94,6 @@ class CarsController extends Controller
             "rims"      =>  "required_if:isActive,on",
             "tank"      =>  "required_if:isActive,on",
             "seat"      =>  "required_if:isActive,on",
-            "title1"    =>  "required_if:isActive,on",
-            "prgp1"    =>  "required_if:isActive,on",
-            "prgp2"    =>  "required_if:title2,true",
         ]);
 
         $car = Car::findOrFail($request->id);
@@ -141,6 +135,7 @@ class CarsController extends Controller
         $this->data['formTitle'] = "New Car Profile";
         $this->data['formURL'] = "admin/cars/insert";
         $this->data['isCancel'] = false;
+        $this->data['loadCarURL'] = url("admin/cars/load/data");
         return view('cars.add', $this->data);
     }
 
@@ -195,7 +190,11 @@ class CarsController extends Controller
         echo $car->accessories()->detach($accessory);
     }
 
-
+    public function loadData(Request $request){
+        $car = Car::with(["model", "model.brand"])->findOrFail($request->carID);
+        echo json_encode($car);
+        return;
+    }
 
 
     //////////////////// Data functions
@@ -262,5 +261,6 @@ class CarsController extends Controller
     private function initAddArr()
     {
         $this->data['models'] = CarModel::with('brand', 'type')->get();
+        $this->data['cars'] = Car::with('model', 'model.brand')->get();
     }
 }

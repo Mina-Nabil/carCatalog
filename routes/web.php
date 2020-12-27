@@ -26,6 +26,7 @@ Route::post('admin/cars/insert', 'CarsController@insert');
 Route::get('admin/cars/toggle/main/{id}', 'CarsController@toggleMain');
 Route::get('admin/cars/unlink/accessory/{carID}/{accessoryID}', 'CarsController@deleteAccessoryLink');
 Route::post('admin/cars/link/accessory', 'CarsController@linkAccessory');
+Route::post('admin/cars/load/data', 'CarsController@loadData');
 
 //Accessories routes
 Route::get('admin/models/show', 'ModelsController@home');
