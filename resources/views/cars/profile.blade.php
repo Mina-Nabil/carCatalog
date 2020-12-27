@@ -126,10 +126,10 @@
                     <div class="card-body">
                         <div>
                             <div class=row>
-                                <div class=col-7>
+                                <div class=col-8>
                                     <h4 class="card-title">Accessories</h4>
                                 </div>
-                                <div class=col-5>
+                                <div class=col-4>
                                     <button type="button" data-toggle="modal" data-target="#accessories-modal" class="btn btn-info d-none d-lg-block m-l-15">
                                         <i class="fa fa-plus-circle"></i> Import Accessories
                                     </button>
@@ -361,10 +361,10 @@
                                     <small class="text-danger">{{$errors->first('sort')}}</small>
                                 </div>
                                 <div class=row>
-                                    <div class=col-7>
+                                    <div class=8>
                                         <h4 class="card-title">Car Specifications</h4>
                                     </div>
-                                    <div class=col-5>
+                                    <div class=col-4>
                                         <button type="button" data-toggle="modal" data-target="#cars-modal" class="btn btn-info d-none d-lg-block m-l-15">
                                             <i class="fa fa-plus-circle"></i> Import Car Profile
                                         </button>
