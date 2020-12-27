@@ -135,7 +135,6 @@ class CarsController extends Controller
         $this->data['formTitle'] = "New Car Profile";
         $this->data['formURL'] = "admin/cars/insert";
         $this->data['isCancel'] = false;
-        $this->data['loadCarURL'] = url("admin/cars/load/data");
         return view('cars.add', $this->data);
     }
 
@@ -196,11 +195,33 @@ class CarsController extends Controller
         return;
     }
 
+    public function loadAccessories(Request $request){
+
+        $request->validate([
+            "id"        =>  "required",
+            "carID"     =>  "required"
+        ]);
+
+        $otherCar = Car::findOrFail($request->carID);
+        $car = Car::findOrFail($request->id);
+
+        $otherAccessories = $otherCar->getAccessories();
+ 
+        $otherAccessories = $otherAccessories->mapWithKeys(function ($item){
+            return [$item->ACCR_ACSR_ID =>[ "ACCR_VLUE" => $item->ACCR_VLUE ]];
+        });
+
+        $car->accessories()->sync($otherAccessories->all());
+
+       return back();
+    }
+
 
     //////////////////// Data functions
     private function initProfileArr($carID)
     {
         $this->data['car'] = Car::with('model', 'model.brand', 'model.type', 'accessories', 'images')->findOrFail($carID);
+        $this->data['cars'] = Car::with('model', 'model.brand')->get();
 
         //Accessories table
         $allAccessories = Accessories::all();
@@ -219,6 +240,8 @@ class CarsController extends Controller
         $this->data['accessories'] = $accessories;
         $this->data['unlinkAccessoryURL'] = url('admin/cars/unlink/accessory/');
         $this->data['linkAccessoryURL'] = url('admin/cars/link/accessory');
+        $this->data['loadAccessoriesURL'] = url('admin/cars/load/accessories');
+        $this->data['loadCarURL'] = url("admin/cars/load/data");
 
         //Images table
         $this->data['images'] = $this->data['car']->images;
@@ -262,5 +285,6 @@ class CarsController extends Controller
     {
         $this->data['models'] = CarModel::with('brand', 'type')->get();
         $this->data['cars'] = Car::with('model', 'model.brand')->get();
+        $this->data['loadCarURL'] = url("admin/cars/load/data");
     }
 }

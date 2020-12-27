@@ -125,6 +125,17 @@
                 <div class="tab-pane" id="accessories" role="tabpanel">
                     <div class="card-body">
                         <div>
+                            <div class=row>
+                                <div class=col-9>
+                                    <h4 class="card-title">Accessories</h4>
+                                </div>
+                                <div class=col-3>
+                                    <button type="button" data-toggle="modal" data-target="#accessories-modal" class="btn btn-info d-none d-lg-block m-l-15">
+                                        <i class="fa fa-plus-circle"></i> Import Accessories
+                                    </button>
+                                </div>
+
+                            </div>
                             <div class=col>
                                 <div class="table-responsive m-t-40">
                                     <table class="table color-bordered-table table-striped full-color-table full-primary-table hover-table" data-display-length='-1' data-order="[]">
@@ -349,8 +360,17 @@
                                     <small class="text-muted">Higher value means higher priority, cars with higher value will appear before others on search pages</small><br>
                                     <small class="text-danger">{{$errors->first('sort')}}</small>
                                 </div>
-                                <hr>
-                                <h4 class="card-title">Car Specifications</h4>
+                                <div class=row>
+                                    <div class=col-9>
+                                        <h4 class="card-title">Car Specifications</h4>
+                                    </div>
+                                    <div class=col-3>
+                                        <button type="button" data-toggle="modal" data-target="#cars-modal" class="btn btn-info d-none d-lg-block m-l-15">
+                                            <i class="fa fa-plus-circle"></i> Import Car Profile
+                                        </button>
+                                    </div>
+
+                                </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Engine CC</label>
@@ -358,7 +378,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-database"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name=cc placeholder="Enter Engine CC Specs, Example: 1500 Turbo"
+                                        <input type="text" class="form-control" name=cc id=cc placeholder="Enter Engine CC Specs, Example: 1500 Turbo"
                                             value="{{ (isset($car)) ? $car->CAR_ENCC : old('cc')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('cc')}}</small>
@@ -370,7 +390,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-horse"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name=hpwr placeholder="Enter Horse Power in Hp@rpm, Example: 129@6000"
+                                        <input type="text" class="form-control" name=hpwr id=hpwr placeholder="Enter Horse Power in Hp@rpm, Example: 129@6000"
                                             value="{{ (isset($car)) ? $car->CAR_HPWR : old('hpwr')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('hpwr')}}</small>
@@ -382,7 +402,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-cog"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name=torq placeholder="Enter torque in Nm@rpm, Example: 230@1750"
+                                        <input type="text" class="form-control" name=torq id=torq placeholder="Enter torque in Nm@rpm, Example: 230@1750"
                                             value="{{ (isset($car)) ? $car->CAR_TORQ : old('torq')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('torq')}}</small>
@@ -394,7 +414,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-filter"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name=trns placeholder="Example: 6 Speed A/T" value="{{ (isset($car)) ? $car->CAR_TRNS : old('trns')}}">
+                                        <input type="text" class="form-control" name=trns id=trns placeholder="Example: 6 Speed A/T" value="{{ (isset($car)) ? $car->CAR_TRNS : old('trns')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('trns')}}</small>
                                 </div>
@@ -405,7 +425,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-tachometer-alt"></i></span>
                                         </div>
-                                        <input type="number" step=0.1 class="form-control" name=acc placeholder="Enter Car Acceleration in seconds, Example: 9.4"
+                                        <input type="number" step=0.1 class="form-control" name=acc id=acc placeholder="Enter Car Acceleration in seconds, Example: 9.4"
                                             value="{{ (isset($car)) ? $car->CAR_ACC : old('acc')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('acc')}}</small>
@@ -417,7 +437,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-flag-checkered"></i></span>
                                         </div>
-                                        <input type="number" class="form-control" name=speed placeholder="Car Top Speed in Km/h, Example: 220"
+                                        <input type="number" class="form-control" name=speed id=speed placeholder="Car Top Speed in Km/h, Example: 220"
                                             value="{{ (isset($car)) ? $car->CAR_TPSP : old('speed')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('speed')}}</small>
@@ -429,7 +449,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-long-arrow-alt-up"></i></span>
                                         </div>
-                                        <input type="number" step=.1 class="form-control" name=height placeholder="Car height from the ground in cm, Example: 174.4"
+                                        <input type="number" step=.1 class="form-control" name=height id=height placeholder="Car height from the ground in cm, Example: 174.4"
                                             value="{{ (isset($car)) ? $car->CAR_HEIT : old('height')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('height')}}</small>
@@ -441,7 +461,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-life-ring"></i></span>
                                         </div>
-                                        <input type="number" class="form-control" name=rims placeholder="Rims Tyre measure, Example: 16" value="{{ (isset($car)) ? $car->CAR_RIMS : old('rims')}}">
+                                        <input type="number" class="form-control" name=rims id=rims placeholder="Rims Tyre measure, Example: 16"
+                                            value="{{ (isset($car)) ? $car->CAR_RIMS : old('rims')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('rims')}}</small>
                                 </div>
@@ -452,7 +473,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-flask"></i></span>
                                         </div>
-                                        <input type="number" class="form-control" name=tank placeholder="Gas Tank Capicity in Litres, Example: 45"
+                                        <input type="number" class="form-control" name=tank id=tank placeholder="Gas Tank Capicity in Litres, Example: 45"
                                             value="{{ (isset($car)) ? $car->CAR_TRNK : old('tank')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('tank')}}</small>
@@ -464,7 +485,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon22"><i class="fas fa-couch"></i></span>
                                         </div>
-                                        <input type="number" class="form-control" name=seat placeholder="Car Seats, Example: 5" value="{{ (isset($car)) ? $car->CAR_SEAT : old('seat')}}">
+                                        <input type="number" class="form-control" name=seat id=seat placeholder="Car Seats, Example: 5" value="{{ (isset($car)) ? $car->CAR_SEAT : old('seat')}}">
                                     </div>
                                     <small class="text-danger">{{$errors->first('seat')}}</small>
                                 </div>
@@ -550,6 +571,65 @@
                     <button type="button" onclick="submitAccessoryForm()" data-dismiss="modal" class="btn btn-warning waves-effect waves-light">Submit</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<div id="cars-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Load Car Profile</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-12 m-t-0">
+                    <h5>Cars</h5>
+                    <select class="select2 form-control" style="width:100%" id=carID>
+                        <?php foreach ($cars as $carItem) { ?>
+                        <option value="{{$car->id}}">
+                            {{$carItem->model->brand->BRND_NAME}}: {{$carItem->model->MODL_NAME}} {{$carItem->CAR_CATG}} {{$carItem->model->MODL_YEAR}}
+                        </option>
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="form-group col-12 m-t-10">
+                        <button onclick="importCarProfile()" class="btn btn-success waves-effect waves-light m-r-20">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="accessories-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Load Accessories</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form class="form pt-3" method="post" action="{{ url($loadAccessoriesURL) }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type=hidden name=id value="{{(isset($car)) ? $car->id : ''}}">
+                    <div class="form-group col-md-12 m-t-0">
+                        <h5>Cars</h5>
+                        <select class="select2 form-control" style="width:100%" name=carID>
+                            <?php foreach ($cars as $carItem) { ?>
+                            <option value="{{$carItem->id}}">
+                                {{$carItem->model->brand->BRND_NAME}}: {{$carItem->model->MODL_NAME}} {{$carItem->CAR_CATG}} {{$carItem->model->MODL_YEAR}}
+                            </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group col-12 m-t-10">
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Submit</button>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
 </div>
@@ -682,7 +762,60 @@
                                         data-target='#setAccessory'>Link Accessory</button>`;
         }
     }
+    function IsValidJSONString(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+            return true;
+    }
+  
+    function importCarProfile(){
 
+        var http = new XMLHttpRequest();
+        var url = '{{$loadCarURL}}';
+        http.open('POST', url, true);
+        //Send the proper header information along with the request
+        //http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        var formdata = new FormData();
+        formdata.append('_token','{{ csrf_token() }}');
+        formdata.append('carID', document.getElementById('carID').value);
+
+        http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            if (IsValidJSONString(this.responseText)) {
+            var json = JSON.parse(this.responseText);
+            console.log(json)
+            Swal.fire({
+                title: "Success!",
+                text: "Car Specs loaded",
+                icon: "success"
+            })
+            document.getElementById("cc").value = json.CAR_ENCC;
+            document.getElementById("hpwr").value = json.CAR_HPWR;
+            document.getElementById("torq").value = json.CAR_TORQ;
+            document.getElementById("trns").value = json.CAR_TRNS;
+            document.getElementById("acc").value = json.CAR_ACC;
+            document.getElementById("speed").value = json.CAR_TPSP;
+            document.getElementById("height").value = json.CAR_HEIT;
+            document.getElementById("tank").value = json.CAR_TRNK;
+            document.getElementById("rims").value = json.CAR_RIMS;
+            document.getElementById("seat").value = json.CAR_SEAT;
+            } else {
+                Swal.fire({
+                title: "Error!",
+                text: "Loading Profile Failed ",
+                icon: "error"
+            })
+            }
+        };
+        }
+
+        http.send(formdata, true);
+}
 </script>
 @endsection
 

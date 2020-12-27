@@ -22,13 +22,15 @@ class Car extends Model
     }
 
     public function accessories(){
-        return $this->belongsToMany('App\Models\Accessories', "accessories_cars", "ACCR_CAR_ID", "ACCR_ACSR_ID");
+        return $this->belongsToMany('App\Models\Accessories', "accessories_cars", "ACCR_CAR_ID", "ACCR_ACSR_ID")
+                    ->withPivot('ACCR_VLUE');
     }
 
     public function getAccessories(){
         return $this->join('accessories_cars', 'cars.id', '=', 'ACCR_CAR_ID')
                     ->join('accessories', 'ACCR_ACSR_ID', '=', 'accessories.id')
                     ->select('ACCR_VLUE', 'ACCR_ACSR_ID', 'ACCR_CAR_ID', 'ACSR_NAME')
+                    ->where('ACCR_CAR_ID', $this->id)
                     ->get();
     }
 
