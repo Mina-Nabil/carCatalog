@@ -273,7 +273,7 @@
                     </div>
 
                     <hr>
-                    <h4 class="card-title">Car Overview -<small class="text-muted">Optional</small></h4>
+                    <h4 class="card-title">Car Overview <small class="text-muted">Optional</small></h4>
               
 
                     <div class="form-group">
