@@ -361,7 +361,7 @@
                                     <small class="text-danger">{{$errors->first('sort')}}</small>
                                 </div>
                                 <div class=row>
-                                    <div class=8>
+                                    <div class=col-8>
                                         <h4 class="card-title">Car Specifications</h4>
                                     </div>
                                     <div class=col-4>
