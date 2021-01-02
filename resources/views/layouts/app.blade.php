@@ -205,6 +205,8 @@
                             </a>
                             <a style="font-family: 'Oswald'" href="{{url('admin/models/show')}}" class="btn btn-primary d-none d-lg-block m-l-15"><i class="fas fa-info-circle"></i> Check Models
                             </a>
+                            <a style="font-family: 'Oswald'" target="_blank" href="{{url('')}}" class="btn btn-primary d-none d-lg-block m-l-15"><i class="fas fa-globe"></i> Check Website
+                            </a>
                         </div>
                     </div>
                 </div>
