@@ -91,7 +91,7 @@
     </header>
     <!-- /Header -->
 
-    @if(isset($carouselHeader) && $carouselHeader)
+    @if(isset($carouselHeader) && $carouselHeader && $frontendData['Landing Image']['Active'])
     <section id="banner2">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Wrapper for slides -->
@@ -130,7 +130,7 @@
         </a>
       </div>
     </section>
-    @else
+    @elseif($frontendData['Header']['Active'])
     <!--Page Header-->
     <section class="page-header" style="background-image: url('{{$headerImage ?? asset('assets/frontend/images/1920x250.jpg')}}');">
       <div class="container">

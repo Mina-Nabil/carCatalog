@@ -490,6 +490,17 @@
                                     <small class="text-danger">{{$errors->first('seat')}}</small>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Dimensions</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon22"><i class="fas fa-car"></i></span>
+                                        </div>
+                                        <input type="number" class="form-control" name=dimn id=dimn placeholder="Car Dimensions" value="{{ (isset($car)) ? $car->CAR_DIMN : old('dimn')}}">
+                                    </div>
+                                    <small class="text-danger">{{$errors->first('dimn')}}</small>
+                                </div>
+
                                 <hr>
                                 <h4 class="card-title">Car Overview</h4>
 
@@ -804,6 +815,7 @@
             document.getElementById("tank").value = json.CAR_TRNK;
             document.getElementById("rims").value = json.CAR_RIMS;
             document.getElementById("seat").value = json.CAR_SEAT;
+            document.getElementById("dimn").value = json.CAR_DIMN;
             } else {
                 Swal.fire({
                 title: "Error!",

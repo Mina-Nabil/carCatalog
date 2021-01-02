@@ -13,14 +13,15 @@ class SiteInfo extends Model
 
     static public function getSiteInfo()
     {
-        $infoArray = DB::table('maindata')->join('home_sections', 'MAIN_SECT_ID', '=', 'home_sections.id')
+        $infoArray = DB::table('maindata')->rightJoin('home_sections', 'MAIN_SECT_ID', '=', 'home_sections.id')
             ->select('maindata.id', 'MAIN_ITEM', 'MAIN_CNTN', 'MAIN_SECT_ID', 'SECT_NAME', 'SECT_ACTV')
-            // ->where('SECT_ACTV', 1)
+            ->where('SECT_ACTV', 1)
             ->get();
 
         $infoMap = [];
         foreach ($infoArray as $row) {
             $infoMap[$row->SECT_NAME][$row->MAIN_ITEM] = $row->MAIN_CNTN;
+            $infoMap[$row->SECT_NAME]['Active'] = $row->SECT_ACTV;
         }
         return $infoMap;
     }

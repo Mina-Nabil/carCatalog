@@ -127,6 +127,45 @@
         http.send(formdata, true);
     }
 
+    function deleteField(id){
+        var http = new XMLHttpRequest();
+        var url = "{{$deleteFieldURL}}" ;
+        var formdata = new FormData();
+        formdata.append('_token','{{ csrf_token() }}');
+        formdata.append('id',id);
+   
+        http.open('POST', url, true);
+
+        http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText=='1'){
+                Swal.fire({
+                title: "Success!",
+                text: "Info successfully updated",
+                icon: "success"
+            })
+            var divBlock = document.getElementById('div'+id);
+            divBlock.style="display:none";
+            } else {
+                Swal.fire({
+                title: "No Change!",
+                text: "Something went wrong.. Please refresh",
+                icon: "warning"
+            })
+            }
+
+        } else {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong.. Please refresh",
+                    icon: "error"
+                })
+            }
+        };
+
+        http.send(formdata, true);
+    }
+
     function toggleSection(id){
 
         var http = new XMLHttpRequest();
@@ -162,6 +201,7 @@
         http.send();
     }
 </script>
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -187,6 +227,7 @@
                                 <option value="1">One Line Text</option>
                                 <option value="2">Paragraph</option>
                                 <option value="3">Image</option>
+                                <option value="4">Button</option>
                             </select>
                         </div>
                         <input type="text" class="form-control" placeholder="Field Name, e.g Mission, Landing Image" id=fieldName>
@@ -220,7 +261,7 @@
                 @foreach ($maindata[$section->id] as $row)
                 @switch($row->MAIN_TYPE)
                 @case(2)
-                <div class="form-group">
+                <div class="form-group" id="div{{$row->id}}">
                     <label>{{$row->MAIN_ITEM}}</label>
                     <div class=row>
                         <div class="col-9 input-group mb-3">
@@ -228,12 +269,14 @@
                         </div>
                         <div class="col-3">
                             <button type="button" onclick="updateField('{{$row->id}}',false)" class="btn btn-success mr-2">Update</button>
+                            <button type="button" onclick="deleteField('{{$row->id}}')" class="btn btn-danger mr-2">Delete</button>
                         </div>
                     </div>
+                    <small class="text-muted">{{$row->MAIN_HINT}}</small><br>
                 </div>
                 @break
                 @case(3)
-                <div class="form-group">
+                <div class="form-group" id="div{{$row->id}}">
                     <div class=row>
                         <div class="col-9">
                             <label for="input-file-now-custom-1">{{$row->MAIN_ITEM}}</label>
@@ -243,12 +286,14 @@
                         </div>
                         <div class="col-3 align-self-end">
                             <button type="button" onclick="updateField('{{$row->id}}',true)" class="btn btn-success mr-2">Update</button>
+                            <button type="button" onclick="deleteField('{{$row->id}}')" class="btn btn-danger">Delete</button>
                         </div>
                     </div>
+                    <small class="text-muted">{{$row->MAIN_HINT}}</small><br>
                 </div>
                 @break
-                @default
-                <div class="form-group">
+                @case(4)
+                <div class="form-group" id="div{{$row->id}}">
                     <label>{{$row->MAIN_ITEM}}</label>
                     <div class=row>
                         <div class="col-9 input-group mb-3">
@@ -256,8 +301,28 @@
                         </div>
                         <div class="col-3">
                             <button type="button" onclick="updateField('{{$row->id}}',false)" class="btn btn-success mr-2">Update</button>
+                            <button type="button" onclick="deleteField('{{$row->id}}')" class="btn btn-danger">Delete</button>
                         </div>
                     </div>
+                    <small class="text-muted">{{$row->MAIN_HINT}}</small><br>
+                    <small class="text-muted"><strong>Please use the following format</strong></small><br>
+                    <small class="text-muted">[Button Text]<strong>-></strong>[go to url]</small><br>
+                    <small class="text-muted"><strong>Example: </strong>Read More->https://www.motorcity.com/car/profile/1</small>
+                </div>
+                @break
+                @default
+                <div class="form-group" id="div{{$row->id}}">
+                    <label>{{$row->MAIN_ITEM}}</label>
+                    <div class=row>
+                        <div class="col-9 input-group mb-3">
+                            <input type="text" class="form-control" id="Field{{$row->id}}" name=content value="{{ $row->MAIN_CNTN ?? '' }}">
+                        </div>
+                        <div class="col-3">
+                            <button type="button" onclick="updateField('{{$row->id}}',false)" class="btn btn-success mr-2">Update</button>
+                            <button type="button" onclick="deleteField('{{$row->id}}')" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                    <small class="text-muted">{{$row->MAIN_HINT}}</small><br>
                 </div>
                 @endswitch
                 @endforeach

@@ -44,7 +44,7 @@ class ModelsController extends Controller
     {
 
         $request->validate([
-            "name"      => "required|unique:models,MODL_NAME",
+            "name"      => "required",
             "brand"      => "required|exists:brands,id",
             "type"      => "required|exists:types,id",
             "year"      => "required",
@@ -79,8 +79,7 @@ class ModelsController extends Controller
         $model = CarModel::findOrFail($request->id);
 
         $request->validate([
-            "name" => ["required",  Rule::unique('models', "MODL_NAME")->ignore($model->MODL_NAME, "MODL_NAME"),],
-            "id"        => "required",
+            "name" => "required",
             "brand"      => "required|exists:brands,id",
             "type"      => "required|exists:types,id",
             "year"      => "required",
@@ -99,6 +98,8 @@ class ModelsController extends Controller
         }
         $model->MODL_ACTV = $request->isActive == 'on' ? 1 : 0;
         $model->MODL_MAIN = $request->isMain == 'on' ? 1 : 0;
+        $model->MODL_OVRV = $request->overview;
+
         $model->save();
 
         return redirect($this->profileURL . $model->id);
@@ -129,7 +130,7 @@ class ModelsController extends Controller
         $this->data['cols'] = ['Sort Value', 'Category', 'Price', 'Discount'];
         $this->data['atts'] = [
             'CAR_VLUE',
-            ['dynamicUrl' => ['att' => 'CAR_CATG', 'val' => 'id', 'baseUrl' => 'cars/profile/']],
+            ['dynamicUrl' => ['att' => 'CAR_CATG', 'val' => 'id', 'baseUrl' => 'admin/cars/profile/']],
             ['number' =>[ 'att' => 'CAR_PRCE', 'decimals' => 0]],
             ['number' =>[ 'att' => 'CAR_DISC', 'decimals' => 0]]
         ];

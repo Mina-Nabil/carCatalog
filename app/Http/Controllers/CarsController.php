@@ -45,6 +45,7 @@ class CarsController extends Controller
             "rims"      =>  "required_if:isActive,on",
             "tank"      =>  "required_if:isActive,on",
             "seat"      =>  "required_if:isActive,on",
+            "dimn"      =>  "required_if:isActive,on",
         ]);
 
         $car = new Car();
@@ -66,6 +67,7 @@ class CarsController extends Controller
         $car->CAR_TRNK      =   $request->tank;
         $car->CAR_RIMS      =   $request->rims;
         $car->CAR_SEAT      =   $request->seat;
+        $car->CAR_DIMN      =   $request->dimn;
 
         //overview
         $car->CAR_TTL1      =   $request->title1;
@@ -94,6 +96,7 @@ class CarsController extends Controller
             "rims"      =>  "required_if:isActive,on",
             "tank"      =>  "required_if:isActive,on",
             "seat"      =>  "required_if:isActive,on",
+            "dimn"      =>  "required_if:isActive,on",
         ]);
 
         $car = Car::findOrFail($request->id);
@@ -116,6 +119,7 @@ class CarsController extends Controller
         $car->CAR_TRNK      =   $request->tank;
         $car->CAR_RIMS      =   $request->rims;
         $car->CAR_SEAT      =   $request->seat;
+        $car->CAR_DIMN      =   $request->dimn;
 
         //overview
         $car->CAR_TTL1      =   $request->title1;

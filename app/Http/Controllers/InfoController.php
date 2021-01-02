@@ -11,6 +11,7 @@ class InfoController extends Controller
     protected $homeURL = 'admin/manage/site';
     protected $updateURL = 'admin/update/site';
     protected $addFieldURL = 'admin/add/field';
+    protected $deleteFieldURL = 'admin/delete/field/';
     protected $toggleSectionURL = 'admin/toggle/section/';
     protected $data;
 
@@ -23,8 +24,18 @@ class InfoController extends Controller
         $this->data['formTitle'] = 'Manage Home Page & Site data';
         $this->data['formURL'] = url($this->updateURL);
         $this->data['addFieldURL'] = url($this->addFieldURL);
+        $this->data['deleteFieldURL'] = url($this->deleteFieldURL);
         $this->data['toggleSectionURL'] = url($this->toggleSectionURL);
         return view('meta.siteinfo', $this->data);
+    }
+
+    function deleteField(Request $request)
+    {
+        $request->validate([
+            "id" => 'required|exists:maindata,id'
+        ]);
+        $siteInfoRow = SiteInfo::find($request->id);
+        echo $siteInfoRow->delete();
     }
 
     function addNew(Request $request)
@@ -44,13 +55,6 @@ class InfoController extends Controller
     {
         $section = Section::findOrFail($id);
         echo $section->toggle();
-    }
-
-    function deleteField($id)
-    {
-        $siteInfoRow = SiteInfo::findOrFail($id);
-        echo $siteInfoRow->delete();
-        echo 1;
     }
 
     function update(Request $request)

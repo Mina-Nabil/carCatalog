@@ -26,14 +26,16 @@ class HomeController extends Controller
 
     public function authenticate(Request $request)
     {
-        if (Auth::check()) return redirect('admin');
 
+        if (Auth::check()) return redirect('admin');
+  
         $userName = $request->input('userName');
         $passWord = $request->input('passWord');
 
         $data['first'] = true;
 
         if (isset($userName)) {
+
             if (Auth::attempt(array('DASH_USNM' => $userName, 'password' => $passWord), true)) {
                 return redirect('admin');
             } else {
@@ -59,7 +61,6 @@ class HomeController extends Controller
      */
     public function admin()
     {
-        if (!Auth::check()) return redirect('admin/login');
         return view('home');
     }
 }
