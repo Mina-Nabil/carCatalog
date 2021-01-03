@@ -93,7 +93,7 @@
             <p class="list-price">{{number_format($car->CAR_PRCE)}}EGP</p>
             <ul>
               <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}</li>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}}</li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->model->MODL_YEAR}}</li>
               <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
               <li><i class="fa fa-tachometer" aria-hidden="true"></i>{{$car->CAR_ACC}} sec to 100km/h</li>
               <li><i class="fa fa-superpowers" aria-hidden="true"></i>{{$car->CAR_TORQ}} kW</li>

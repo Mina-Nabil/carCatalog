@@ -17,9 +17,9 @@
         </div>
         <div class="col-md-3">
           <div class="price_info">
-            <p>{{number_format($car->CAR_PRCE-$car->CAR_DISC)}}</p>
+            <p>{{number_format($car->CAR_PRCE-$car->CAR_DISC)}}EGP</p>
             @if($car->CAR_DISC > 0)
-            <p class="old_price">{{number_format($car->CAR_PRCE)}}</p>
+            <p class="old_price">{{number_format($car->CAR_PRCE)}}EGP</p>
             @endif
           </div>
         </div>
@@ -86,7 +86,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group col-md-6 col-sm-6 black_input">
+                <div class="form-group col-md-9 col-sm-6 black_input">
                     <label class="form-label">Price Range ($)</label>
                     <input id="price_range" type="text" class="span2" value="" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]" />
                 </div>

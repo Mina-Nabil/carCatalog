@@ -95,7 +95,7 @@ class SiteController extends Controller
         $data['frontendData'] =   SiteInfo::getSiteInfo();
         $data['partners'] =   Partner::all();
         $data['models']   =   CarModel::with(["brand"])->join("brands", "MODL_BRND_ID", '=', 'brands.id')
-            ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->get();
+            ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->select('models.*', "brands.BRND_NAME")->get();
         $data['brands'] = Brand::where('BRND_ACTV', 1)->get();
         $data['types'] = CarType::with(['cars', 'cars.model'])->get();
         $data['years'] = CarModel::getModelYears();
