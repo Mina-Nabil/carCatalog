@@ -227,7 +227,7 @@ class CarsController extends Controller
         $this->data['car'] = Car::with('model', 'model.brand', 'model.type', 'accessories', 'images')->findOrFail($carID);
         $this->data['cars'] = Car::with('model', 'model.brand')->get();
 
-        $this->data['accessories'] = $$this->data['car']->getFullAccessoriesArray();
+        $this->data['accessories'] = $this->data['car']->getFullAccessoriesArray();
         $this->data['unlinkAccessoryURL'] = url('admin/cars/unlink/accessory/');
         $this->data['linkAccessoryURL'] = url('admin/cars/link/accessory');
         $this->data['loadAccessoriesURL'] = url('admin/cars/load/accessories');
