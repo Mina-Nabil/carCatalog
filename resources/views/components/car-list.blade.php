@@ -3,9 +3,7 @@
     $pagesCount = ceil($listCount/5);
 ?>
 @foreach($cars as $car)
-<div class="product-listing-m gray-bg" id="item{{$i}}"  
-style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}"
->
+<div class="product-listing-m gray-bg" id="item{{$i}}" style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}">
     <div class="product-listing-img"> <a href="{{url('car/' . $car->id)}}"><img src="{{($car->image) ? asset('storage/' . $car->image) : asset('assets/frontend/images/600x380.jpg')}}"
                 class="img-fluid" alt="image" />
         </a>
@@ -37,9 +35,10 @@ style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}"
 
 <div class="pagination">
     <ul>
-        @for ($page = 0; $page < $pagesCount; $page++) @if($page==0) <li id="page{{$page}}" class="current"><a href="javascript:void(0)" onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
+        @for ($page = 0; $page < $pagesCount; $page++) @if($page==0) <li id="page{{$page}}" class="current"><a href="javascript:void(0)"
+                onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
             @else
-            <li id="page{{$page}}"><a href="javascript:void(0)"  onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
+            <li id="page{{$page}}"><a href="javascript:void(0)" onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
             @endif
             @endfor
     </ul>
@@ -63,10 +62,10 @@ style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}"
         console.log("P=" + p + " " + "Index/5=" + startIndex/5)
         if(p==(startIndex/5)){
             console.log("GEET HNA")
-            pageDiv.className="current";
+            pageDiv.classList.add("current");
         }
         else
-            pageDiv.className="";
+            pageDiv.classList.remove("current");
 
     }
 
