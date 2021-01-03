@@ -47,7 +47,7 @@ style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}"
 
 
 <script>
-    function (startIndex, endIndex){
+    function showPage(startIndex, endIndex){
     for(i = 0 ; i<{{$listCount}} ; i++){
         itemDiv = document.getElementById('item' + i);
         if(startIndex<=i && i<=endIndex)
