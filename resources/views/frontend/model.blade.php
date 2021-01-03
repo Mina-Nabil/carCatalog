@@ -105,7 +105,7 @@
             <ul>
               <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}} cc</li>
               <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}} model</li>
-              <li><i class="fa fa-horse" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
               <li><i class="fa fa-tachometer" aria-hidden="true"></i>{{$car->CAR_ACC}}sec to 0-100km/hr</li>
               <li><i class="fa fa-superpowers" aria-hidden="true"></i>{{$car->CAR_TORQ}} kW</li>
               <li><i class="fa fa-car" aria-hidden="true"></i>{{$car->CAR_DIMN}}</li>
