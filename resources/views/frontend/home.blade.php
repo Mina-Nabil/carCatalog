@@ -12,7 +12,7 @@
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
               <select class="form-control">
-                <option value=0>All Car Types </option>
+                <option value=0>Type Of Car </option>
                 @foreach($types as $type)
                 <option value="{{$type->id}}">{{$type->TYPE_NAME}}</option>
                 @endforeach
@@ -22,7 +22,7 @@
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
               <select class="form-control">
-                <option>All Brands</option>
+                <option value=0>Select Brand</option>
                 @foreach($brands as $brand)
                 <option value="{{$brand->id}}">{{$brand->BRND_NAME}}</option>
                 @endforeach
@@ -32,7 +32,7 @@
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
               <select class="form-control">
-                <option>All Models</option>
+                <option value=0>Select Model</option>
                 @foreach($models as $model)
                 <option value="{{$model->id}}">{{$model->MODL_NAME}}</option>
                 @endforeach
@@ -42,7 +42,7 @@
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
               <select class="form-control">
-                <option>Year of Model </option>
+                <option value=0>Year of Model </option>
                 @foreach($years as $year)
                 <option value="{{$year}}">{{$year}}</option>
                 @endforeach

@@ -27,7 +27,7 @@
   <!-- Custom Colors -->
   {{-- <link rel="stylesheet" href="{{asset('assets/frontend/colors/red.css')}}"> --}}
   <!--<link rel="stylesheet" href="{{asset('assets/frontend/colors/orange.css')}}">-->
- 
+
   <!--<link rel="stylesheet" href="{{asset('assets/frontend/colors/pink.css')}}">-->
   <!--<link rel="stylesheet" href="{{asset('assets/frontend/colors/green.css')}}">-->
   <!--<link rel="stylesheet" href="{{asset('assets/frontend/colors/purple.css')}}">-->
@@ -73,7 +73,7 @@
                 <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cars</a>
                   <ul class="dropdown-menu">
                     @foreach ($models as $model)
-                    <li><a href="listing-grid.html">{{$model->MODL_NAME}}</a></li>
+                    <li><a href="{{url('model/' . $model->id)}}">{{$model->MODL_NAME}} - {{$model->MODL_YEAR}}</a></li>
                     @endforeach
                   </ul>
                 </li>
@@ -138,6 +138,11 @@
           <div class="page-heading">
             <h1>{{$pageTitle}}</h1>
           </div>
+          @if($pageSubtitle)
+          <ul class="coustom-breadcrumb">
+            <li>{{$pageSubtitle}}</li>
+          </ul>
+          @endif
         </div>
       </div>
       <!-- Dark Overlay-->
@@ -177,7 +182,7 @@
               <ul>
                 @foreach ($topCars as $car)
                 <li><a href="#">{{$car->model->brand->BRND_NAME}}: {{$car->model->MODL_NAME}}-{{$car->CAR_CATG}} {{$car->model->MODL_YEAR}}</a></li>
-                    
+
                 @endforeach
               </ul>
             </div>

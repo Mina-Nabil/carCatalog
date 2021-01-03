@@ -49,11 +49,38 @@ class SiteController extends Controller
         return view('frontend.home', $data);
     }
 
-    public static function getDefaultSiteInfo(bool $carouselHeader, string $pageTitle, string $headerImage=null)
+    function model($id){
+        $model = CarModel::with('cars', 'type', 'brand')->findOrFail($id);
+        $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories');
+        $data['model'] = $model;
+        $data['brands'] = Brand::where('BRND_ACTV', 1)->get();
+        $data['types'] = CarType::with(['cars', 'cars.model'])->get();
+        $data['years'] = CarModel::getModelYears();
+        return view('frontend.model', $data);
+    }
+
+    function car($id){
+
+    }
+
+    function compare(){
+
+    }
+
+    function aboutus(){
+
+    }
+
+    function search(){
+
+    }
+
+    public static function getDefaultSiteInfo(bool $carouselHeader, string $pageTitle, string $headerImage=null, string $pageSubtitle=null)
     {
         //make sure everychange here should be reflected on 404 page
         $data['carouselHeader'] = $carouselHeader;
         $data['headerImage'] = $headerImage;
+        $data['pageSubtitle'] = $pageSubtitle;
         $data['pageTitle'] = $pageTitle;
         $data['topCars']  =   Car::with(["model", "model.brand"])->orderByDesc('CAR_VLUE')->limit(5)->get();
 
