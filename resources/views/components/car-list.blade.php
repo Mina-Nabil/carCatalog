@@ -50,14 +50,17 @@ style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}"
     function showPage(startIndex, endIndex){
     for(i = 0 ; i<{{$listCount}} ; i++){
         itemDiv = document.getElementById('item' + i);
-        if(startIndex<=i && i<=endIndex)
+        if(startIndex<=i && i<=endIndex){
+            if(i==startIndex)
+                window.location.hash = '#' + 'item' + i;
             itemDiv.style="display:block";
+        }
         else
             itemDiv.style="display:none";
     }
     for(p=0 ; p < {{$pagesCount}} ; p++)
         pageDiv = document.getElementById("page" + (startIndex/5))
-    if(p==startIndex/5)
+    if(p==(startIndex/5))
         pageDiv.className="current";
     else
         pageDiv.className="";
