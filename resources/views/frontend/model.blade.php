@@ -15,52 +15,41 @@
               <form action="#" method="get">
                 <div class="form-group select">
                   <select class="form-control">
-                    <option>Select Location</option>
-                    <option>Location 1</option>
-                    <option>Location 2</option>
-                    <option>Location 3</option>
-                    <option>Location 4</option>
+                    <option value=0>Select Brand</option>
+                    @foreach($brands as $brand)
+                    <option value="{{$brand->id}}">{{$brand->BRND_NAME}}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group select">
                   <select class="form-control">
-                    <option>Select Brand</option>
-                    <option>Brand 1</option>
-                    <option>Brand 2</option>
-                    <option>Brand 3</option>
-                    <option>Brand 4</option>
+                    <option value=0>Select Model</option>
+                    @foreach($models as $model)
+                    <option value="{{$model->id}}">{{$model->MODL_NAME}}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group select">
                   <select class="form-control">
-                    <option>Select Model</option>
-                    <option>Series 1</option>
-                    <option>Series 2</option>
-                    <option>Series 3</option>
-                    <option>Series 4</option>
+                    <option value=0>Year of Model </option>
+                    @foreach($years as $year)
+                    <option value="{{$year}}">{{$year}}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group select">
                   <select class="form-control">
-                    <option>Year of Model </option>
-                    <option>2016</option>
-                    <option>2015</option>
-                    <option>2014</option>
-                    <option>2013</option>
+                    <option value=0>Type of Car </option>
+                    @foreach($types as $type)
+                    <option value="{{$type->id}}">{{$type->TYPE_NAME}}</option>
+                    @endforeach
                   </select>
                 </div>
-
                 <div class="form-group">
                   <label class="form-label">Price Range ($)</label>
-                  <input id="price_range1" type="text" class="span2" value="" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]" />
+                  <input id="price_range" type="text" class="span2" value="" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]" />
                 </div>
-                <div class="form-group select">
-                  <select class="form-control">
-                    <option>Type of Car </option>
-                    <option>New Car</option>
-                    <option>Used Car</option>
-                  </select>
-                </div>
+  
                 <div class="form-group">
                   <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
                 </div>
@@ -89,7 +78,7 @@
           </div> --}}
         @foreach($model->cars as $car)
         <div class="product-listing-m gray-bg">
-          <div class="product-listing-img"> <a href="#"><img src="{{($car->image) ? asset('storage/' . $car->image) : asset('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="image" />
+          <div class="product-listing-img"> <a href="{{url('car/' . $car->id)}}"><img src="{{($car->image) ? asset('storage/' . $car->image) : asset('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="image" />
             </a>
             <div class="label_icon">New</div>
             <div class="compare_item">
@@ -101,16 +90,16 @@
           </div>
           <div class="product-listing-content">
             <h5><a href="#">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h5>
-            <p class="list-price">{{$car->CAR_PRCE}}EGP</p>
+            <p class="list-price">{{number_format($car->CAR_PRCE)}}EGP</p>
             <ul>
-              <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}cc</li>
+              <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}</li>
               <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}}</li>
               <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
               <li><i class="fa fa-tachometer" aria-hidden="true"></i>{{$car->CAR_ACC}} sec to 100km/h</li>
               <li><i class="fa fa-superpowers" aria-hidden="true"></i>{{$car->CAR_TORQ}} kW</li>
               <li><i class="fa fa-car" aria-hidden="true"></i>{{$car->CAR_DIMN}}</li>
             </ul>
-            <a href="#" class="btn">View Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+            <a href="{{url('car/' . $car->id)}}" class="btn">View Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
           </div>
         </div>
 

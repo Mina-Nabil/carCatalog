@@ -83,7 +83,7 @@
           <div class="looking-car-content">
             <h3>{{$model->brand->BRND_NAME}} <span>{{ $model->MODL_NAME}}</span></h3>
             <p>{{ $model->MODL_OVRV}}</p>
-            <a href="" class="btn">View Listing<i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
+            <a href="{{url('model/' . $model->id)}}" class="btn">View Listing<i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -135,14 +135,14 @@
                   </div>
                 </div>
                 <ul>
-                  <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}cc</li>
+                  <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}</li>
                   <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}}</li>
                   <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
                 </ul>
               </div>
               <div class="car-title-m">
                 <h6><a href="#">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
-                <span class="price">{{$car->CAR_PRCE}}EGP</span>
+                <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
               </div>
               <div class="inventory_info_m">
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -231,10 +231,10 @@
           <div class="featured-car-content">
             <h6><a href="{{url('car/' . $trendCar->id)}}">{{$offerCar->MODL_NAME}} {{$offerCar->CAR_CATG}}</a></h6>
             <div class="price_info">
-              <p class="featured-price">{{$offerCar->CAR_PRCE}}EGP</p>
+              <p class="featured-price">{{number_format($offerCar->CAR_PRCE)}}EGP</p>
             </div>
             <ul>
-              <li><i class="fas fa-database" aria-hidden="true"></i>{{$offerCar->CAR_ENCC}} cc</li>
+              <li><i class="fas fa-database" aria-hidden="true"></i>{{$offerCar->CAR_ENCC}}</li>
               <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$offerCar->MODL_YEAR}} model</li>
               <li><i class="fas fa-horse" aria-hidden="true"></i>{{$offerCar->CAR_HPWR}} hp</li>
               <li><i class="fa fa-tachometer" aria-hidden="true"></i>{{$offerCar->CAR_ACC}}sec to 0-100km/hr</li>

@@ -60,6 +60,24 @@ class Car extends Model
         return $this->hasMany('App\Models\CarImage', 'CIMG_CAR_ID');
     }
 
+    public function getFullAccessoriesArray()
+    {
+        //Accessories table
+        $allAccessories = Accessories::all();
+        $carAccessories = $this->getAccessories()->pluck('ACCR_VLUE', 'ACCR_ACSR_ID')->toArray();
+
+
+        $accessories = [];
+        foreach ($allAccessories as $accessory) {
+            if (key_exists($accessory->id, $carAccessories)) {
+                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => true, 'ACCR_VLUE' => $carAccessories[$accessory->id]];
+            } else {
+                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => false];
+            }
+        }
+        return $accessories;
+    }
+
     public function setOffer()
     {
         if (isset($this->CAR_OFFR)) {

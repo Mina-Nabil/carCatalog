@@ -227,21 +227,7 @@ class CarsController extends Controller
         $this->data['car'] = Car::with('model', 'model.brand', 'model.type', 'accessories', 'images')->findOrFail($carID);
         $this->data['cars'] = Car::with('model', 'model.brand')->get();
 
-        //Accessories table
-        $allAccessories = Accessories::all();
-        $carAccessories = $this->data['car']->getAccessories()->pluck('ACCR_VLUE', 'ACCR_ACSR_ID')->toArray();
-
-
-        $accessories = [];
-        foreach ($allAccessories as $accessory) {
-            if (key_exists($accessory->id, $carAccessories)) {
-                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => true, 'ACCR_VLUE' => $carAccessories[$accessory->id]];
-            } else {
-                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => false];
-            }
-        }
-
-        $this->data['accessories'] = $accessories;
+        $this->data['accessories'] = $$this->data['car']->getFullAccessoriesArray();
         $this->data['unlinkAccessoryURL'] = url('admin/cars/unlink/accessory/');
         $this->data['linkAccessoryURL'] = url('admin/cars/link/accessory');
         $this->data['loadAccessoriesURL'] = url('admin/cars/load/accessories');

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 /////////Website front end routes 
 
+Route::get('/car/{id}', 'SiteController@car')->name('home');
 Route::get('/model/{id}', 'SiteController@model')->name('home');
 Route::get('/', 'SiteController@home')->name('home');
 

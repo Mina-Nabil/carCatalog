@@ -90,7 +90,7 @@
 
     </header>
     <!-- /Header -->
-
+    @if($isHeader)
     @if(isset($carouselHeader) && $carouselHeader && $frontendData['Landing Image']['Active'])
     <section id="banner2">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -150,6 +150,7 @@
     </section>
     <!-- /Page Header-->
 
+    @endif
     @endif
 
     @yield('content')
