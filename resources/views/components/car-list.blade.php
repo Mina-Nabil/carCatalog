@@ -37,9 +37,9 @@ style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}"
 
 <div class="pagination">
     <ul>
-        @for ($page = 0; $page < $pagesCount; $page++) @if($page==0) <li id="page{{$page}}" class="current"><a href="javascript::void(0)" onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
+        @for ($page = 0; $page < $pagesCount; $page++) @if($page==0) <li id="page{{$page}}" class="current"><a href="javascript:void(0)" onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
             @else
-            <li id="page{{$page}}"><a href="javascript::void(0)"  onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
+            <li id="page{{$page}}"><a href="javascript:void(0)"  onclick="showPage({{$page*5}}, {{($page+1)*5-1}})">{{$page+1}}</a></li>
             @endif
             @endfor
     </ul>
