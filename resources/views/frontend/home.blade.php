@@ -135,14 +135,14 @@
                   </div>
                 </div>
                 <ul>
-                  <li><i class="fa fa-road" aria-hidden="true"></i>20,000 km</li>
-                  <li><i class="fa fa-calendar" aria-hidden="true"></i>2005 Model</li>
-                  <li><i class="fa fa-map-marker" aria-hidden="true"></i>Colorado, USA</li>
+                  <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}cc</li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}}</li>
+                  <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
                 </ul>
               </div>
               <div class="car-title-m">
-                <h6><a href="#">Car Name</a></h6>
-                <span class="price">$45,000</span>
+                <h6><a href="#">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
+                <span class="price">{{$car->CAR_PRCE}}EGP</span>
               </div>
               <div class="inventory_info_m">
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>

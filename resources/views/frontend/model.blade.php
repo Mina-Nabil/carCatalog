@@ -100,8 +100,8 @@
             </div>
           </div>
           <div class="product-listing-content">
-            <h5><a href="#">Car Name Text</a></h5>
-            <p class="list-price">$90,000</p>
+            <h5><a href="#">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h5>
+            <p class="list-price">{{$car->CAR_PRCE}}EGP</p>
             <ul>
               <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}cc</li>
               <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}}</li>
@@ -111,7 +111,6 @@
               <li><i class="fa fa-car" aria-hidden="true"></i>{{$car->CAR_DIMN}}</li>
             </ul>
             <a href="#" class="btn">View Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
-            <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span></div>
           </div>
         </div>
 
