@@ -58,10 +58,8 @@
             itemDiv.style="display:none";
     }
     for(p=0 ; p < {{$pagesCount}} ; p++){
-        pageDiv = document.getElementById("page" + (startIndex/5))
-        console.log("P=" + p + " " + "Index/5=" + startIndex/5)
+        pageDiv = document.getElementById("page" + p)
         if(p==parseInt(startIndex/5)){
-            console.log("GEET HNA B3d el updates")
             pageDiv.classList.add("current");
         }
         else
