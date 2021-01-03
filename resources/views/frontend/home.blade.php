@@ -118,9 +118,11 @@
       </div>
       <!-- Recently Listed New Cars -->
       <div class="tab-content">
+        <?php $i=0?>
         @foreach ($types as $type)
         @if ($type->TYPE_MAIN)
-        <div role="tabpanel" class="tab-pane active" id="type{{$type->id}}">
+        <div role="tabpanel" class="tab-pane {{($i==0) ? 'active' : ''}}" id="type{{$type->id}}">
+          <?php $i++?>
           @foreach ($type->cars as $car)
           <div class="col-list-3">
             <div class="recent-car-list">
