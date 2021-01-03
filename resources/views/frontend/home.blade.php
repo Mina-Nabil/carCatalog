@@ -7,6 +7,7 @@
     <div class="main_bg white-text">
       <h3>Find Your Dream Car</h3>
       <form action="{{$searchURL}}" method="post">
+        @csrf
         <div class="row">
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">

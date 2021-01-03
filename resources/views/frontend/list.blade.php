@@ -13,6 +13,7 @@
             </div>
             <div class="sidebar_filter">
               <form action="{{$searchURL}}" method="post">
+                @csrf
                 <div class="form-group select">
                   <select class="form-control">
                     <option value=0>Select Brand</option>
