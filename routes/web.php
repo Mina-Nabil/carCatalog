@@ -18,8 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 /////////Website front end routes 
 
-Route::get('/car/{id}', 'SiteController@car')->name('home');
-Route::get('/model/{id}', 'SiteController@model')->name('home');
+Route::post('/search', 'SiteController@search');
+Route::get('/car/{id}', 'SiteController@car');
+Route::get('/model/{id}', 'SiteController@model');
 Route::get('/', 'SiteController@home')->name('home');
 
 //unauthenticated admin login pages

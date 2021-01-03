@@ -50,9 +50,9 @@ class SiteController extends Controller
     {
         $model = CarModel::with('cars', 'type', 'brand')->findOrFail($id);
         $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories');
-        $data['model'] = $model;
+        $data['carList'] = $model->cars;
 
-        return view('frontend.model', $data);
+        return view('frontend.list', $data);
     }
 
     function car($id)
@@ -77,8 +77,12 @@ class SiteController extends Controller
     {
     }
 
-    function search()
+    function search(Request $request)
     {
+        $data = self::getDefaultSiteInfo(false, "Find Your Car", null, "Find your search results below", true);
+        $prices = explode(',', $request->price);
+        $data['carList'] = self::getSearchResults($request->typeID, $request->brandID, $request->modelID, $request->year, $prices[0]??$data['carsMin'], $prices[1]??$data['carsMax']);
+        return view('frontend.list', $data);
     }
 
     public static function getDefaultSiteInfo(bool $carouselHeader, string $pageTitle, string $headerImage = null, string $pageSubtitle = null, $isHeader=true)
@@ -94,11 +98,58 @@ class SiteController extends Controller
         $data['aboutUs']  =   AboutUs::getAboutUs();
         $data['frontendData'] =   SiteInfo::getSiteInfo();
         $data['partners'] =   Partner::all();
+
+
+        //Search Form
         $data['models']   =   CarModel::with(["brand"])->join("brands", "MODL_BRND_ID", '=', 'brands.id')
             ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->select('models.*', "brands.BRND_NAME")->get();
         $data['brands'] = Brand::where('BRND_ACTV', 1)->get();
         $data['types'] = CarType::with(['cars', 'cars.model'])->get();
         $data['years'] = CarModel::getModelYears();
+        $data['carsMin'] = Car::selectRaw('MIN(CAR_PRCE) as mini')->first()->mini ?? 0;
+        $data['carsMax'] = Car::selectRaw('MAX(CAR_PRCE) as maxi')->first()->maxi ?? 1000000;
+        $data['carsShwya'] = round(($data['carsMax']-$data['carsMin'])/5);
+
+        //URLs
+        $data['searchURL'] = url('search');
+        $data['compareURL'] = url('compare');
+        $data['aboutusURL'] = url('aboutus');
+        $data['calculateURL'] = url('calculator');
+
+
         return $data;
+    }
+
+    public static function getSearchResults($type, $brand, $year, $model, $priceFrom, $priceTo){
+        $query = Car::join('models', 'CAR_MODL_ID', '=', 'models.id')->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
+                            ->join('types', 'MODL_TYPE_ID', '=', 'types.id');
+        if($type && is_numeric($type)){
+            CarType::findOrFail($type);
+            $query = $query->where("MODL_TYPE_ID", $type);
+        }
+
+        if($brand && is_numeric($brand)){
+            Brand::findOrFail($brand);
+            $query = $query->where("MODL_BRND_ID", $brand);
+        }
+
+        if($model && is_numeric($model)){
+            CarModel::findOrFail($model);
+            $query = $query->where("models.id", $model);
+        }
+
+        if($year && is_numeric($year)){
+            $query = $query->where("MODL_YEAR", $year);
+        }
+
+        if($priceFrom && is_numeric($priceFrom)){
+            $query = $query->where("CAR_PRCE", ">=", $priceFrom);
+        }
+
+        if($priceTo && is_numeric($priceTo)){
+            $query = $query->where("CAR_PRCE", "<=", $priceTo);
+        }
+
+        return $query->get();
     }
 }

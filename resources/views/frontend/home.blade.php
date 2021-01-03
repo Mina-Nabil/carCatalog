@@ -6,8 +6,7 @@
   <div class="container">
     <div class="main_bg white-text">
       <h3>Find Your Dream Car</h3>
-
-      <form action="#" method="get">
+      <form action="{{$searchURL}}" method="post">
         <div class="row">
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
@@ -126,7 +125,7 @@
           @foreach ($type->cars as $car)
           <div class="col-list-3">
             <div class="recent-car-list">
-              <div class="car-info-box"> <a href="#"><img src="{{(isset($car->model->MODL_IMGE)) ? asset( 'storage/'. $car->model->MODL_IMGE ) : 'assets/images/600x380.jpg'}}" class="img-fluid"
+              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img src="{{(isset($car->model->MODL_IMGE)) ? asset( 'storage/'. $car->model->MODL_IMGE ) : 'assets/images/600x380.jpg'}}" class="img-fluid"
                     alt="image"></a>
                 <div class="compare_item">
                   <div class="checkbox">
@@ -141,7 +140,7 @@
                 </ul>
               </div>
               <div class="car-title-m">
-                <h6><a href="#">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
+                <h6><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
                 <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
               </div>
               <div class="inventory_info_m">
@@ -216,7 +215,7 @@
       @foreach($offers as $offerCar)
       <div class="col-list-3">
         <div class="featured-car-list">
-          <div class="featured-car-img"> <a href=""><img src="{{ ($offerCar->mainImage()) ? assets('storage' . $offerCar->mainImage())  : assets('assets/frontend/images/600x380.jpg')}}"
+          <div class="featured-car-img"> <a href="{{url('car/' . $offerCar->id)}}"><img src="{{ ($offerCar->mainImage()) ? assets('storage' . $offerCar->mainImage())  : assets('assets/frontend/images/600x380.jpg')}}"
                 class="img-fluid" alt="Image"></a>
             @if($offerCar->CAR_DISC > 0)
             <div class="label_icon">- {{$offerCar->CAR_DISC}}</div>
@@ -229,7 +228,7 @@
             </div>
           </div>
           <div class="featured-car-content">
-            <h6><a href="{{url('car/' . $trendCar->id)}}">{{$offerCar->MODL_NAME}} {{$offerCar->CAR_CATG}}</a></h6>
+            <h6><a href="{{url('car/' . $offerCar->id)}}">{{$offerCar->MODL_NAME}} {{$offerCar->CAR_CATG}}</a></h6>
             <div class="price_info">
               <p class="featured-price">{{number_format($offerCar->CAR_PRCE)}}EGP</p>
             </div>

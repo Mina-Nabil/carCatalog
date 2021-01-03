@@ -59,7 +59,7 @@
         <div class="container">
           <div class="row header-row">
             <div class="navbar-header">
-              <div class="logo"> <a href="index.html"><img src="{{asset('assets/frontend/images/logo.png')}}" alt="image" /></a> </div>
+              <div class="logo"> <a href="{{url('')}}"><img src="{{asset('assets/frontend/images/logo.png')}}" alt="image" /></a> </div>
 
               <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggler" type="button">
                 <i class="fa fa-bars"></i>
@@ -77,8 +77,9 @@
                     @endforeach
                   </ul>
                 </li>
-                <li><a href="{{url('compare')}}">Compare</a></li>
-                <li><a href="{{url('aboutus')}}">About Us</a></li>
+                <li><a href="{{$compareURL}}">Compare</a></li>
+                <li><a href="{{$calculateURL}}">Calculate Loan</a></li>
+                <li><a href="{{$aboutusURL}}">About Us</a></li>
               </ul>
             </div>
             <div class="header_wrap">
@@ -182,7 +183,7 @@
               <h6>Top Cars</h6>
               <ul>
                 @foreach ($topCars as $car)
-                <li><a href="#">{{$car->model->brand->BRND_NAME}}: {{$car->model->MODL_NAME}}-{{$car->CAR_CATG}} {{$car->model->MODL_YEAR}}</a></li>
+                <li><a href="{{url('car/' .  $car->id)}}">{{$car->model->brand->BRND_NAME}}: {{$car->model->MODL_NAME}}-{{$car->CAR_CATG}} {{$car->model->MODL_YEAR}}</a></li>
 
                 @endforeach
               </ul>
