@@ -60,7 +60,7 @@ style="{{(0<=$i && $i <5) ? 'display:block' : 'display:none'}}"
     }
     for(p=0 ; p < {{$pagesCount}} ; p++){
         pageDiv = document.getElementById("page" + (startIndex/5))
-        console.log("P=" + p " " + "Index/5=" + startIndex/5)
+        console.log("P=" + p + " " + "Index/5=" + startIndex/5)
         if(p==(startIndex/5))
             pageDiv.className="current";
         else
