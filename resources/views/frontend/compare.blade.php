@@ -126,133 +126,195 @@
       <div class="compare_product_info">
         <!--Basic-Info-Table-->
         <div class="inventory_info_list">
-          <div class="listing_heading">
-            <div>BASIC INFO</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-          </div>
-          <ul>
-            <li class="info_heading">
-              <div>Model Year</div>
-              <div>Car Type</div>
-              <div>Transmission</div>
-              <div>Fuel Type</div>
-            </li>
-            <li>
-              <div>{{$cars[0]->model->MODL_YEAR}}</div>
-              <div>{{$cars[0]->model->type->TYPE_NAME}}</div>
-              <div>{{$cars[0]->CAR_TRNS}}</div>
-              <div>Petrol 92, 95</div>
-            </li>
-            <li>
-              @isset($cars[1])
-              <div>{{$cars[1]->model->MODL_YEAR}}</div>
-              <div>{{$cars[1]->model->type->TYPE_NAME}}</div>
-              <div>{{$cars[1]->CAR_TRNS}}</div>
-              <div>Petrol 92, 95</div>
-              @endisset
-            </li>
-            <li>
-              @isset($cars[2])
-              <div>{{$cars[2]->model->MODL_YEAR}}</div>
-              <div>{{$cars[2]->model->type->TYPE_NAME}}</div>
-              <div>{{$cars[2]->CAR_TRNS}}</div>
-              <div>Petrol 92, 95</div>
-              @endisset
-            </li>
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>BASIC INFO</th>
+                <div>&nbsp;</div>
+                @isset($cars[1])
+                <div>&nbsp;</div>
+                @endisset
+                @isset($cars[2])
+                <div>&nbsp;</div>
+                @endisset
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Model Year</td>
+                <td>{{$cars[0]->model->MODL_YEAR}}</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->model->MODL_YEAR}}</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->model->MODL_YEAR}}</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Car Type</td>
+                <td>{{$cars[0]->model->type->TYPE_NAME}}</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->model->type->TYPE_NAME}}</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->model->type->TYPE_NAME}}</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Transmission</td>
+                <td>{{$cars[0]->CAR_TRNS}}</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_TRNS}}</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_TRNS}}</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Fuel Type</td>
+                <td>Petrol 92, 95</td>
+                @isset($cars[1])
+                <td>Petrol 92, 95</td>
+                @endisset
+                @isset($cars[2])
+                <td>Petrol 92, 95</td>
+                @endisset
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <!--Technical-Specification-Table-->
         <div class="inventory_info_list">
-          <div class="listing_heading">
-            <div>Technical Specification</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-          </div>
-          <ul>
-            <li class="info_heading">
-              <div>Engine Horse Power</div>
-              <div>Engine Torque</div>
-              <div>Top Speed</div>
-              <div>Acceleration</div>
-              <div>Seats</div>
-              <div>Ground Clearance</div>
-              <div>Car Dimensions</div>
-            </li>
-            <li>
-              <div>{{$cars[0]->CAR_HPWR}}</div>
-              <div>{{$cars[0]->CAR_TORQ}}kW</div>
-              <div>{{$cars[0]->CAR_TPSP}}km/h</div>
-              <div>{{$cars[0]->CAR_ACC}} sec to 100km/h</div>
-              <div>{{$cars[0]->CAR_TRNK}}L</div>
-              <div>{{$cars[0]->CAR_SEAT}}</div>
-              <div>{{$cars[0]->CAR_HEIT}}</div>
-              <div>{{$cars[0]->CAR_DIMN}}</div>
-            </li>
-            <li>
-              @isset($cars[1])
-              <div>{{$cars[1]->CAR_HPWR}}</div>
-              <div>{{$cars[1]->CAR_TORQ}}kW</div>
-              <div>{{$cars[1]->CAR_TPSP}}km/h</div>
-              <div>{{$cars[1]->CAR_ACC}} sec to 100km/h</div>
-              <div>{{$cars[1]->CAR_TRNK}}L</div>
-              <div>{{$cars[1]->CAR_SEAT}}</div>
-              <div>{{$cars[1]->CAR_HEIT}}</div>
-              <div>{{$cars[1]->CAR_DIMN}}</div>
-              @endisset
-            </li>
-            <li>
-              @isset($cars[2])
-              <div>{{$cars[2]->CAR_HPWR}}</div>
-              <div>{{$cars[2]->CAR_TORQ}}kW</div>
-              <div>{{$cars[2]->CAR_TPSP}}km/h</div>
-              <div>{{$cars[2]->CAR_ACC}} sec to 100km/h</div>
-              <div>{{$cars[2]->CAR_TRNK}}L</div>
-              <div>{{$cars[2]->CAR_SEAT}}</div>
-              <div>{{$cars[2]->CAR_HEIT}}</div>
-              <div>{{$cars[2]->CAR_DIMN}}</div>
-              @endisset
-            </li>
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>Technical Specification</th>
+                <th>&nbsp;</th>
+                @isset($cars[1])
+                <div>&nbsp;</div>
+                @endisset
+                @isset($cars[2])
+                <div>&nbsp;</div>
+                @endisset
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Engine Horse Power</td>
+                <td>{{$cars[0]->CAR_HPWR}}</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_HPWR}}</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_HPWR}}</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Engine Torque</td>
+                <td>{{$cars[0]->CAR_TORQ}}kW</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_TORQ}}kW</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_TORQ}}kW</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Top Speed</td>
+                <td>{{$cars[0]->CAR_TPSP}}km/h</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_TPSP}}km/h</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_TPSP}}km/h</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Acceleration</td>
+                <td>{{$cars[0]->CAR_ACC}}s to 100km/h</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_ACC}}s to 100km/h</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_ACC}}s to 100km/h</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Gas Trunk</td>
+                <td>{{$cars[0]->CAR_TRNK}}L</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_TRNK}}L</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_TRNK}}L</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Seats</td>
+                <td>{{$cars[0]->CAR_SEAT}}</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_SEAT}}</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_SEAT}}</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Ground Clearance</td>
+                <td>{{$cars[0]->CAR_HEIT}}</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_HEIT}}</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_HEIT}}</td>
+                @endisset
+              </tr>
+              <tr>
+                <td>Car Dimensions</td>
+                <td>{{$cars[0]->CAR_DIMN}}</td>
+                @isset($cars[1])
+                <td>{{$cars[1]->CAR_DIMN}}</td>
+                @endisset
+                @isset($cars[2])
+                <td>{{$cars[2]->CAR_DIMN}}</td>
+                @endisset
+              </tr>
+            </tbody>
+          </table>
         </div>
-
         <!--Accessories-->
         <div class="inventory_info_list">
-          <div class="listing_heading">
-            <div>Accessories</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-          </div>
-          <ul>
-            <li class="info_heading">
-              @foreach($cars[0]['accessories'] as $accessory)
-              <div>{{$accessory['ACSR_NAME']}}</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Accessories</th>
+                <th></th>
+                @isset($cars[1])
+                <th></th>
+                @endisset
+                @isset($cars[2])
+                <th></th>
+                @endisset
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($cars[0]['accessories'] as $key => $accessory)
+              <tr>
+                <td>{{$accessory['ACSR_NAME']}}</td>
+                <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
+                @isset($cars[1])
+                <td><i class="{{($cars[1]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[1]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
+                </td>
+                @endisset
+                @isset($cars[2])
+                <td><i class="{{($cars[2]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[2]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
+                </td>
+                @endisset
+              </tr>
               @endforeach
-            </li>
-            <li>
-              @foreach($cars[0]['accessories'] as $accessory)
-              <div><i  class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</div>
-              @endforeach
-            </li>
-            @isset($cars[1])
-            <li>
-              @foreach($cars[1]['accessories'] as $accessory)
-              <div><i  class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</div>
-              @endforeach
-            </li>
-            @endisset
-            @isset($cars[2])
-            <li>
-              @foreach($cars[2]['accessories'] as $accessory)
-              <div><i  class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</div>
-              @endforeach
-            </li>
-            @endisset
-          </ul>
+            </tbody>
+          </table>
         </div>
         <div class="inventory_info_list text-center">
           <ul>
