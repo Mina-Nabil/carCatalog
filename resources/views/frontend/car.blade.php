@@ -252,7 +252,7 @@
                                     <tbody>
                                         @foreach($carAccessories as $accessory)
                                         <tr>
-                                            <td>{{$accessory['ACSR_NAME']}}</td>
+                                            <td>{{$accessory['ACSR_NAME']/$accessory/['ACSR_ARBC_NAME']}}</td>
                                             <td><i  class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
                                         </tr>
                                         @endforeach
