@@ -52,7 +52,7 @@
                     data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="margin-top:4em">
                   <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
                 </div>
               </form>
@@ -104,13 +104,13 @@
                 </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" >
                 <label class="form-label">Price Range ({{number_format($carsMin)}} to {{number_format($carsMax)}} EGP)</label>
                 <input id="price_range1" type="text" name="priceRange" data-slider-min="{{$carsMin}}" data-slider-max="{{$carsMax}}" data-slider-step="5"
                   data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
               </div>
 
-              <div class="form-group">
+              <div class="form-group" style="margin-top:4em">
                 <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
               </div>
             </form>

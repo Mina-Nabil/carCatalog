@@ -124,19 +124,11 @@ $(function(e) {
 	Price-Range
 	-------------------------------------------------------------------*/
 	$(function(e){ 	
-		$("#price_range").slider({
-			tooltip: "show",
-			tooltip_split: true,
-			tooltip_position: "bottom"
-		});
+		$("#price_range").slider({});
 	 });
 	 
 	 $(function(e){ 	
-		$("#price_range1").slider({
-			tooltip: "show",
-			tooltip_split: true,
-			tooltip_position: "bottom"
-		});
+		$("#price_range1").slider({});
 	 });
 
 /*------------------------------------------------------------------
