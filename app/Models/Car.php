@@ -50,7 +50,7 @@ class Car extends Model
     {
         return $this->join('accessories_cars', 'cars.id', '=', 'ACCR_CAR_ID')
             ->join('accessories', 'ACCR_ACSR_ID', '=', 'accessories.id')
-            ->select('ACCR_VLUE', 'ACCR_ACSR_ID', 'ACCR_CAR_ID', 'ACSR_NAME')
+            ->select('ACCR_VLUE', 'ACCR_ACSR_ID', 'ACCR_CAR_ID', 'ACSR_NAME', 'ACSR_ARBC_NAME')
             ->where('ACCR_CAR_ID', $this->id)
             ->get();
     }
