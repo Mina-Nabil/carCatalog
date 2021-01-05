@@ -22,6 +22,8 @@
   <link href="{{asset('assets/frontend/css/bootstrap-slider.min.css')}}" rel="stylesheet">
   <!--FontAwesome Font Style -->
   <link href="{{asset('assets/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
+  {{-- Toaster CSS --}}
+  <link href="{{ asset('assets/frontend/extensions/toast-master/css/jquery.toast.css') }}" rel="stylesheet" type="text/css" />
 
 
   <!-- Custom Colors -->
@@ -268,7 +270,40 @@
     <!--Slider-JS-->
     <script src="{{asset('assets/frontend/js/slick.min.js')}}"></script>
     <script src="{{asset('assets/frontend/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/frontend/extensions/toast-master/js/jquery.toast.js') }}"></script>
 
+    <script>
+      function addToCompare(checkaya, carID){
+          var http = new XMLHttpRequest();
+        if(checkaya.checked==true){
+          var url = "{{$addToCompareURL}}" ;
+        } else {
+          var url = "{{$removeFromCompareURL}}" ;
+        }
+          var formdata = new FormData();
+          formdata.append('carID',carID);
+          formdata.append('_token','{{ csrf_token() }}');
+          http.open('POST', url, true);
+          http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              if(checkaya.checked==true){
+                $.toast({
+                        heading: 'Car ready for Compare',
+                        text: 'You can now visit the compare page to check the latest 3 cars marked for comparison.',
+                        position: 'top-right',
+                        loaderBg:'blue',
+                        icon: 'success',
+                        hideAfter: 5000, 
+                        stack: 6,
+                        type: 'success'
+                    });
+              }
+          }
+          }
+          
+          http.send(formdata, true);
+      }
+    </script>
 </body>
 
 </html>

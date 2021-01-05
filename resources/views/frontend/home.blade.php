@@ -126,12 +126,16 @@
           @foreach ($type->cars as $car)
           <div class="col-list-3">
             <div class="recent-car-list">
-              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img src="{{(isset($car->model->MODL_IMGE)) ? asset( 'storage/'. $car->model->MODL_IMGE ) : 'assets/images/600x380.jpg'}}" class="img-fluid"
+              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : 'assets/images/600x380.jpg'}}" class="img-fluid"
                     alt="image"></a>
                 <div class="compare_item">
                   <div class="checkbox">
-                    <input type="checkbox" id="compare4">
-                    <label for="compare4">Compare</label>
+                    <input type="checkbox" id="compare{{$car->id}}" onchange="addToCompare(this, '{{$car->id}}')"
+                    @if(in_array($car->id, $compareArr)) 
+                    checked
+                    @endif
+                    >
+                    <label for="compare{{$car->id}}">Compare</label>
                   </div>
                 </div>
                 <ul>
@@ -223,8 +227,12 @@
             @endif
             <div class="compare_item">
               <div class="checkbox">
-                <input type="checkbox" id="compare">
-                <label for="compare">Compare</label>
+                <input type="checkbox" id="compare{{$offerCar->id}}" onchange="addToCompare(this, '{{$offerCar->id}}')"
+                @if(in_array($offerCar->id, $compareArr)) 
+                checked
+                @endif
+                >
+                <label for="compare{{$offerCar->id}}">Compare</label>
               </div>
             </div>
           </div>

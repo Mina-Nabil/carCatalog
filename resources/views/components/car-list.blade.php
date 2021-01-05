@@ -10,13 +10,16 @@
         <div class="label_icon">New</div>
         <div class="compare_item">
             <div class="checkbox">
-                <input type="checkbox" value="" id="compare22">
-                <label for="compare22">Compare</label>
+                <input type="checkbox" value="" id="compare{{$car->id}}" onchange="addToCompare(this, '{{$car->id}}')" @if(in_array($car->id, $compareArr))
+                checked
+                @endif
+                >
+                <label for="compare{{$car->id}}">Compare</label>
             </div>
         </div>
     </div>
     <div class="product-listing-content">
-        <h5><a href="#">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h5>
+        <h5><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h5>
         <p class="list-price">{{number_format($car->CAR_PRCE)}}EGP</p>
         <ul>
             <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}</li>

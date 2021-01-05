@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class CarList extends Component
 {
     public $cars;
+    public $compareArr;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($cars)
+    public function __construct($cars, $compareArr=[])
     {
         $this->cars = $cars;
+        $this->compareArr = $compareArr;
     }
 
     /**

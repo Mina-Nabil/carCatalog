@@ -70,7 +70,7 @@
                         <div class=row>
                             <div class="col-12 b-r">
                                 <strong>Overview</strong>
-                                <p class="text-muted">{{$model->MODL_NOTE ?? ''}}</p>
+                                <p class="text-muted">{{$model->MODL_OVRV ?? ''}}</p>
                             </div>
                         </div>
                         <hr>

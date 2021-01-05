@@ -9,7 +9,11 @@
           <div class="car-location"><span> {{$car->model->brand->BRND_NAME}} {{$car->model->MODL_NAME}} {{$car->CAR_CATG}} {{$car->model->MODL_YEAR}}</span></div>
           <div class="add_compare">
             <div class="checkbox">
-              <input value="" id="compare14" type="checkbox">
+              <input value="" id="compare14" type="checkbox" onchange="addToCompare(compare14, '{{$car->id}}')"
+              @if(in_array($car->id, $compareArr)) 
+              checked
+              @endif
+              >
               <label for="compare14">Add to Compare</label>
             </div>
         
@@ -200,10 +204,6 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Engine Type</td>
-                                                <td>TDCI Diesel Engine</td>
-                                            </tr>
-                                            <tr>
                                                 <td>Engine Horse Power</td>
                                                 <td>{{$car->CAR_HPWR}}</td>
                                             </tr>
@@ -333,7 +333,11 @@
                                     alt="image" /> </a>
                             <div class="compare_item">
                                 <div class="checkbox">
-                                    <input type="checkbox" value="" id="compare13">
+                                    <input type="checkbox" id="compare13" onchange="addToCompare(this, '{{$car->id}}'" 
+                                    @if(in_array($car->id, $compareArr)) 
+                                    checked
+                                    @endif
+                                    >
                                     <label for="compare13">Compare</label>
                                 </div>
                             </div>

@@ -60,7 +60,7 @@
           </div>
         </div>
 
-        <x-car-list :cars="$carList" />
+        <x-car-list :cars="$carList" :compareArr="$compareArr" />
       </div>
 
       <!--Side-Bar-->
