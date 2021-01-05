@@ -130,12 +130,12 @@
             <thead>
               <tr>
                 <th>BASIC INFO</th>
-                <div>&nbsp;</div>
+                <th>&nbsp;</th>
                 @isset($cars[1])
-                <div>&nbsp;</div>
+                <th>&nbsp;</th>
                 @endisset
                 @isset($cars[2])
-                <div>&nbsp;</div>
+                <th>&nbsp;</th>
                 @endisset
               </tr>
             </thead>
@@ -192,10 +192,10 @@
                 <th>Technical Specification</th>
                 <th>&nbsp;</th>
                 @isset($cars[1])
-                <div>&nbsp;</div>
+                <th>&nbsp;</th>
                 @endisset
                 @isset($cars[2])
-                <div>&nbsp;</div>
+                <th>&nbsp;</th>
                 @endisset
               </tr>
             </thead>
