@@ -85,12 +85,12 @@
         <div class="inventory_info_list">
           <ul>
             <li id="filter_toggle" class="search_other_inventory"><i class="fa fa-search" style="color: white" aria-hidden="true"></i> Search Other Inventory</li>
-            <li><a href="{{url('car/' . $cars[0]->id)}}"><img src="{{(isset($cars[0]->image)) ? asset( 'storage/'. $cars[0]->image ) : 'assets/images/600x380.jpg'}}" alt="image"></a></li>
+            <li><a href="{{url('car/' . $cars[0]->id)}}"><img src="{{(isset($cars[0]->image)) ? asset( 'storage/'. $cars[0]->image ) : asset('assets/frontend/images/600x380.jpg')}}" alt="image"></a></li>
             @if(isset($cars[1]))
-            <li><a href="{{url('car/' . $cars[1]->id)}}"><img src="{{(isset($cars[1]->image)) ? asset( 'storage/'. $cars[1]->image ) : 'assets/images/600x380.jpg'}}" alt="image"></a></li>
+            <li><a href="{{url('car/' . $cars[1]->id)}}"><img src="{{(isset($cars[1]->image)) ? asset( 'storage/'. $cars[1]->image ) : asset('assets/frontend/images/600x380.jpg')}}" alt="image"></a></li>
             @endif
             @if(isset($cars[2]))
-            <li><a href="{{url('car/' . $cars[2]->id)}}"><img src="{{(isset($cars[2]->image)) ? asset( 'storage/'. $cars[2]->image ) : 'assets/images/600x380.jpg'}}" alt="image"></a></li>
+            <li><a href="{{url('car/' . $cars[2]->id)}}"><img src="{{(isset($cars[2]->image)) ? asset( 'storage/'. $cars[2]->image ) : asset('assets/frontend/images/600x380.jpg')}}" alt="image"></a></li>
             @endif
           </ul>
         </div>
