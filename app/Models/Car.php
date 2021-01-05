@@ -70,9 +70,9 @@ class Car extends Model
         $accessories = [];
         foreach ($allAccessories as $accessory) {
             if (key_exists($accessory->id, $carAccessories)) {
-                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => true, 'ACCR_VLUE' => $carAccessories[$accessory->id]];
+                $accessories[$accessory->id] = ['ACSR_ARBC_NAME' =>  $accessory->ACSR_ARBC_NAME, 'ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => true, 'ACCR_VLUE' => $carAccessories[$accessory->id]];
             } else {
-                $accessories[$accessory->id] = ['ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => false];
+                $accessories[$accessory->id] = ['ACSR_ARBC_NAME' =>  $accessory->ACSR_ARBC_NAME, 'ACSR_NAME' =>  $accessory->ACSR_NAME, 'isAvailable' => false];
             }
         }
         return $accessories;
