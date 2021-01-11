@@ -104,8 +104,8 @@
             <img src="{{(isset($frontendData['Landing Image']['Slide Image 1'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 1'] ) : asset('assets/frontend/images/1920x830.jpg')}}" class="img-fluid" alt="image">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
-                <h1>Buy Your New Car Or Used Car. </h1>
-                <h3>We have more than a thousand cars for you to choose. </h3>
+                <h1>{{(isset($frontendData['Landing Image']['Slide Title 1'])) ?? "Find Your Dream Car."}} </h1>
+                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 2'])) ?? "Find Your Dream Car."}} </h3>
                 <a href="#" class="btn">Read More</a>
               </div>
             </div>
@@ -113,11 +113,11 @@
 
           <!--item-2-->
           <div class="carousel-item">
-            <img src="{{asset('assets/frontend/images/1920x830.jpg')}}" alt="image" class="img-fluid">
+            <img src="{{(isset($frontendData['Landing Image']['Slide Image 2'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 2'] ) : asset('assets/frontend/images/1920x830.jpg')}}" alt="image" class="img-fluid">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
-                <h1>Find Your Dream Car.</h1>
-                <h3>We have more than a thousand cars for you to choose. </h3>
+                <h1>{{(isset($frontendData['Landing Image']['Slide Title 2'])) ?? "Find Your Dream Car."}} </h1>
+                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 2'])) ?? "Find Your Dream Car."}}</h3>
                 <a href="#" class="btn">Read More</a>
               </div>
             </div>
