@@ -118,7 +118,7 @@
 
           <!--item-2-->
           <div class="carousel-item">
-            <img src="{{(isset($frontendData['Landing Image']['Slide Image 2'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 2'] ) : asset('assets/frontend/images/1920x830.jpg')}}" alt="image" class="img-fluid">
+            <img src="{{(isset($frontendData['Landing Image']['Slide Image 2'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 2'] ) : asset('assets/frontend/images/1920x830.jpg')}}" alt="image" class="img-fluid" style="height: 830px">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{(isset($frontendData['Landing Image']['Slide Title 2'])) ?? "Find Your Dream Car."}} </h1>
@@ -143,7 +143,7 @@
     </section>
     @elseif($frontendData['Header']['Active'])
     <!--Page Header-->
-    <section class="page-header" style="background-image: url('{{$headerImage ?? asset('assets/frontend/images/1920x250.jpg')}}');">
+    <section class="page-header" style="background-image: url('{{$headerImage ?? asset('assets/frontend/images/1920x250.jpg')}}');" style="height: 250px">
       <div class="container">
         <div class="page-header_wrap">
           <div class="page-heading">
