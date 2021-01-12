@@ -126,8 +126,7 @@
           @foreach ($type->cars as $car)
           <div class="col-list-3">
             <div class="recent-car-list">
-              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><div style="height: 224px; background-repeat:no-repeat; background-size: cover;
-               background-position: center; background-image:url({{(isset($car->image)) ? asset( 'storage/'. $car->image ) : 'assets/images/600x380.jpg'}})" ></div></a>
+              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img height="224px"  style="max-height: 224px; max-width: 346px; width: auto; height:auto; display:block " height="400px" width="400px" src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : 'assets/images/600x380.jpg'}}" ></a>
                 <div class="compare_item">
                   <div class="checkbox">
                     <input type="checkbox" id="compare{{$car->id}}" onchange="addToCompare(this, '{{$car->id}}')"
