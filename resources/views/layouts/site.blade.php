@@ -106,7 +106,12 @@
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{(isset($frontendData['Landing Image']['Slide Title 1'])) ?? "Find Your Dream Car."}} </h1>
                 <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 2'])) ?? "Find Your Dream Car."}} </h3>
+                @isset($frontendData['Landing Image']['Slide Button 1'])
+                <?php 
+                $buttonArr = explode($frontendData['Landing Image']['Slide Button 1'], "->");
+                ?>
                 <a href="#" class="btn">Read More</a>
+                @endisset
               </div>
             </div>
           </div>
@@ -118,7 +123,10 @@
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{(isset($frontendData['Landing Image']['Slide Title 2'])) ?? "Find Your Dream Car."}} </h1>
                 <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 2'])) ?? "Find Your Dream Car."}}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 2'])
+                <?php  ?>
                 <a href="#" class="btn">Read More</a>
+                @endisset
               </div>
             </div>
           </div>

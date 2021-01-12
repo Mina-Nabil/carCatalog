@@ -126,7 +126,7 @@
           @foreach ($type->cars as $car)
           <div class="col-list-3">
             <div class="recent-car-list">
-              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : 'assets/images/600x380.jpg'}}" class="img-fluid"
+              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img height="200px" src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : 'assets/images/600x380.jpg'}}" class="img-fluid"
                     alt="image"></a>
                 <div class="compare_item">
                   <div class="checkbox">
