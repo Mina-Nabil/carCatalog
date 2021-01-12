@@ -101,7 +101,7 @@
         <div class="carousel-inner">
           <!--item-1-->
           <div class="carousel-item active">
-            <img src="{{(isset($frontendData['Landing Image']['Slide Image 1'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 1'] ) : asset('assets/frontend/images/1920x830.jpg')}}" class="img-fluid" alt="image">
+            <img src="{{(isset($frontendData['Landing Image']['Slide Image 1'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 1'] ) : asset('assets/frontend/images/1920x830.jpg')}}" class="img-fluid" alt="image" style="height: 830px">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{(isset($frontendData['Landing Image']['Slide Title 1'])) ?? "Find Your Dream Car."}} </h1>
