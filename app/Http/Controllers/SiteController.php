@@ -17,14 +17,16 @@ class SiteController extends Controller
     function home(Request $request)
     {
         $data = self::getDefaultSiteInfo(true, "Home", null, null, true, $request);
-        $data['mainModels']  =   CarModel::with(["brand"])->join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
+        $data['mainModels']  =   CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
+            ->select('brands.*', 'models.*')
             ->where('MODL_ACTV', 1)->where('MODL_MAIN', 1)->orderByDesc('models.id')->limit(2)->get();
         $mainModelsCount = count($data['mainModels']);
         if ($mainModelsCount == 0) {
-            $data['mainModels']  =  CarModel::with(["brand"])->join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)->orderByDesc('models.id')->limit(2)->get();
+            $data['mainModels']  =  CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
+                ->select('brands.*', 'models.*')->orderByDesc('models.id')->limit(2)->get();
         } elseif ($mainModelsCount == 1) {
-            $data['mainModels']->push(CarModel::with(["brand"])->join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
-                ->where('MODL_ACTV', 1)->where('MODL_MAIN', 0)->orderByDesc('models.id')->first());
+            $data['mainModels']->push(CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
+                ->select('brands.*', 'models.*')->where('MODL_ACTV', 1)->where('MODL_MAIN', 0)->orderByDesc('models.id')->first());
         }
         if (isset($data['frontendData']['Offers']) && $data['frontendData']['Offers']['Active']) {
             $data['offers'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
@@ -70,15 +72,15 @@ class SiteController extends Controller
     function compare(Request $request)
     {
         $data = self::getDefaultSiteInfo(false, "Compare Cars", null, "Compare up to three different cars", true, $request);
-        if(count($data['compareArr'])==0)
-        return view('frontend.nocompare', $data);
-        $i = 0 ;
-        foreach($data['compareArr'] as $carID){
+        if (count($data['compareArr']) == 0)
+            return view('frontend.nocompare', $data);
+        $i = 0;
+        foreach ($data['compareArr'] as $carID) {
             $data['cars'][$i] = Car::with('model', 'model.brand', 'model.type')->findOrFail($carID);
             $data['cars'][$i]['accessories'] = $data['cars'][$i]->getFullAccessoriesArray();
             $i++;
         }
-        
+
         return view('frontend.compare', $data);
     }
 
@@ -116,7 +118,7 @@ class SiteController extends Controller
 
         //Search Form
         $data['models']   =   CarModel::with(["brand"])->join("brands", "MODL_BRND_ID", '=', 'brands.id')
-            ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->select("brands.BRND_NAME",'models.*')->get();
+            ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->select("brands.BRND_NAME", 'models.*')->get();
         $data['brands'] = Brand::where('BRND_ACTV', 1)->get();
         $data['types'] = CarType::with(['cars', 'cars.model'])->get();
         $data['years'] = CarModel::getModelYears();
