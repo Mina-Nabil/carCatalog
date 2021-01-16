@@ -49,6 +49,7 @@ class SiteController extends Controller
     function model(Request $request, $id)
     {
         $model = CarModel::with('cars', 'type', 'brand', 'colorImages')->findOrFail($id);
+        $model->id = $id;
         $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories', true, $request);
         $data['carList'] = $model->cars;
         $data['model'] = $model;
@@ -115,7 +116,7 @@ class SiteController extends Controller
 
         //Search Form
         $data['models']   =   CarModel::with(["brand"])->join("brands", "MODL_BRND_ID", '=', 'brands.id')
-            ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->select('models.*', "brands.BRND_NAME")->get();
+            ->where('MODL_ACTV', 1)->where('BRND_ACTV', 1)->select("brands.BRND_NAME",'models.*')->get();
         $data['brands'] = Brand::where('BRND_ACTV', 1)->get();
         $data['types'] = CarType::with(['cars', 'cars.model'])->get();
         $data['years'] = CarModel::getModelYears();
