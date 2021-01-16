@@ -224,7 +224,7 @@
                                     <input type="number" class="form-control" placeholder="Example: 900" name=value value="{{ (isset($car)) ? $car->CAR_VLUE : old('value') ?? 500}}" required>
                                 </div>
                                 <small class="text-muted">Default is 500, the image with the higher value appears before other image</small>
-                                <small class="text-danger">{{$errors->first('price')}}</small>
+                                <small class="text-danger">{{$errors->first('value')}}</small>
                             </div>
                             <div class="form-group">
                                 <label for="input-file-now-custom-1">New Photo</label>
@@ -255,15 +255,21 @@
                                     <tbody>
                                         @foreach ($car->images as $image)
                                         <tr>
-                                            <td> {{$image->CIMG_VLUE}} </td>
+                                            <td id="imageValue{{$image->id}}">{{$image->CIMG_VLUE}}</td>
                                             <td> <img src="{{ asset( 'storage/'. $image->CIMG_URL ) }} " width="60px"> </td>
                                             <td><a target="_blank" href="{{ asset( 'storage/'. $image->CIMG_URL ) }}">
                                                     {{(strlen($image->CIMG_URL) < 25) ? $image->CIMG_URL : substr($image->CIMG_URL, 0, 25).'..' }}
                                                 </a></td>
                                             <td>
-                                                <a href="javascript:void(0);" onclick="deleteImage({{$image->id}})">
-                                                    <img src="{{ asset('images/del.png') }}" width=25 height=25>
-                                                </a>
+                                                <div class=" row justify-content-center ">
+                                                    <a href="javascript:void(0)" class="openEditImage" data-toggle="modal" data-id="{{$image->id}}" data-target="#edit-image">
+                                                        <img src="{{ asset('images/edit.png') }}" width=25 height=25>
+                                                    </a>
+
+                                                    <a href="javascript:void(0);" onclick="deleteImage({{$image->id}})">
+                                                        <img src="{{ asset('images/del.png') }}" width=25 height=25>
+                                                    </a>
+                                                </div>
                                             </td>
                                         <tr>
                                             @endforeach
@@ -277,7 +283,7 @@
                 <div class="tab-pane" id="settings" role="tabpanel">
                     <div class="card">
                         <div class="card-body">
-                            <form class="form pt-3" method="post" action="{{ url($formURL) }}" enctype="multipart/form-data">
+                            <form class="form pt-3" method="post" action="{{ $formURL }}" enctype="multipart/form-data">
                                 @csrf
                                 @isset($car)
                                 <input type=hidden name=id value="{{(isset($car)) ? $car->id : ''}}">
@@ -640,6 +646,31 @@
                             <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Submit</button>
                         </div>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="edit-image" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Image</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <input type=hidden name=id id=modalImageID value="">
+
+                <div class="form-group col-md-12 m-t-0">
+                    <h5>Value</h5>
+                    <input type="text" class="form-control form-control-line" name=value id=sortModal>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="form-group col-12 m-t-10">
+                        <button onclick="updateImageInfo()" class="btn btn-success waves-effect waves-light m-r-20">Submit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -676,8 +707,8 @@
     http.send();
 }
     function submitAccessoryForm(){
-        var http = new XMLHttpRequest();
-        var url = "{{$linkAccessoryURL}}" ;
+        let http = new XMLHttpRequest();
+        let url = "{{$linkAccessoryURL}}" ;
         var formdata = new FormData();
         formdata.append('carID',{{$car->id}});
         var accessIDVal = document.getElementById('accessIDField').value;
@@ -719,13 +750,12 @@
             })
         }
     };
-
     http.send(formdata, true);
-}
+    }
 
     function unlinkAccessory(id){
-            var http = new XMLHttpRequest();
-            var url = "{{$unlinkAccessoryURL}}" + '/' + {{$car->id}} + '/' +  id;
+            let http = new XMLHttpRequest();
+            let url = "{{$unlinkAccessoryURL}}" + '/' + {{$car->id}} + '/' +  id;
             http.open('GET', url, true);
             //Send the proper header information along with the request
             http.onreadystatechange = function() {
@@ -784,8 +814,8 @@
   
     function importCarProfile(){
 
-        var http = new XMLHttpRequest();
-        var url = '{{$loadCarURL}}';
+        let http = new XMLHttpRequest();
+        let url = '{{$loadCarURL}}';
         http.open('POST', url, true);
         //Send the proper header information along with the request
         //http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -799,7 +829,7 @@
 
             if (IsValidJSONString(this.responseText)) {
             var json = JSON.parse(this.responseText);
-            console.log(json)
+
             Swal.fire({
                 title: "Success!",
                 text: "Car Specs loaded",
@@ -828,6 +858,49 @@
 
         http.send(formdata, true);
 }
+
+
+function updateImageInfo(){
+        let http = new XMLHttpRequest();
+        let url = "{{$updateImageInfoURL}}" ;
+
+        var imageID = $('#modalImageID').val();
+        var sort = $('#sortModal').val();
+
+        var formdata = new FormData();
+        formdata.append('_token','{{ csrf_token() }}');
+        formdata.append('id',imageID);
+        formdata.append('value',sort);
+   
+        http.open('POST', url, true);
+        //Send the proper header information along with the request
+        http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText=='1'){
+                Swal.fire({
+                title: "Success!",
+                text: "Image successfully updated",
+                icon: "success"
+            })
+            $('#imageValue'+imageID).html(sort);
+            } else {
+                Swal.fire({
+                title: "No Change!",
+                text: "Something went wrong.. Please refresh",
+                icon: "warning"
+            })
+            }
+
+        } else {
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong.. Please refresh",
+                icon: "error"
+            })
+        }
+    };
+    http.send(formdata, true);
+    }
 </script>
 @endsection
 
@@ -837,9 +910,19 @@
   
         var accessData = $(this).data('id');
         var accessArr = accessData.split('%%');
-        console.log(accessArr[1])
         $(".modal-body #accessIDField").val( accessArr[0] );
         $(".modal-body #accessValue").val( accessArr[1] );
+
+    });
+
+
+    $('.openEditImage').on("click", function () {
+  
+        var id = $(this).data('id');
+        var sort = $('#imageValue'+id).html();
+
+        $(".modal-body #sortModal").val(sort);
+        $(".modal-body #modalImageID").val(id);
 
     });
 </script>

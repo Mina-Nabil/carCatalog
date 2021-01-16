@@ -21,6 +21,10 @@ class CarModel extends Model
         return $this->hasMany('App\Models\Car', 'CAR_MODL_ID');
     }
 
+    public function colorImages(){
+        return $this->hasMany('App\Models\ModelImage', 'MOIM_MODL_ID');
+    }
+
 
     function toggleMain(){
         if($this->MODL_MAIN == 0) {

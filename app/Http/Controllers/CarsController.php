@@ -25,7 +25,8 @@ class CarsController extends Controller
     {
         $this->initProfileArr($id);
         $this->data['formTitle'] = "Edit " . $this->data['car']->model->MODL_NAME . ' ' . $this->data['car']->CAR_CATG;
-        $this->data['formURL'] = "admin/cars/update";
+        $this->data['formURL'] = url("admin/cars/update");
+        $this->data['updateImageInfoURL'] = url("admin/cars/update/image");
         $this->data['isCancel'] = false;
         return view('cars.profile', $this->data);
     }
@@ -169,6 +170,18 @@ class CarsController extends Controller
         $image = CarImage::findOrFail($id);
         echo $image->deleteImage();
     }
+
+    public function editImage(Request $request){
+        $request->validate([
+            "id"    => "required",
+            'value' => 'required',
+        ]);
+        $image = CarImage::findOrFail($request->id);
+
+        $image->CIMG_VLUE = $request->value;
+        echo $image->save();
+
+       }
 
     public function linkAccessory(Request $request)
     {

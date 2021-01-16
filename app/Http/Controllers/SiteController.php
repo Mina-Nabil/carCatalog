@@ -48,9 +48,10 @@ class SiteController extends Controller
 
     function model(Request $request, $id)
     {
-        $model = CarModel::with('cars', 'type', 'brand')->findOrFail($id);
+        $model = CarModel::with('cars', 'type', 'brand', 'colorImages')->findOrFail($id);
         $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories', true, $request);
         $data['carList'] = $model->cars;
+        $data['model'] = $model;
 
         return view('frontend.list', $data);
     }

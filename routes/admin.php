@@ -18,8 +18,9 @@ Route::get('cars/unlink/accessory/{carID}/{accessoryID}', 'CarsController@delete
 Route::post('cars/link/accessory', 'CarsController@linkAccessory');
 Route::post('cars/load/data', 'CarsController@loadData');
 Route::post('cars/load/accessories', 'CarsController@loadAccessories');
+Route::post('cars/update/image', 'CarsController@editImage');
 
-//Accessories routes
+//Models routes
 Route::get('models/show', 'ModelsController@home');
 Route::get('models/add', 'ModelsController@add');
 Route::get('models/profile/{id}', 'ModelsController@profile');
@@ -27,6 +28,8 @@ Route::post('models/update', 'ModelsController@update');
 Route::post('models/insert', 'ModelsController@insert');
 Route::get('models/toggle/main/{id}', 'ModelsController@toggleMain');
 Route::get('models/toggle/active/{id}', 'ModelsController@toggleActive');
+Route::post('models/add/image', 'ModelsController@attachImage');
+Route::post('models/update/image', 'ModelsController@editImage');
 
 //Accessories routes
 Route::get('accessories/show', 'AccessoriesController@home');
