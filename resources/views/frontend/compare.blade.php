@@ -368,8 +368,7 @@
               $cars[1]['accessories'][$key]['ACCR_VLUE'] ||
               (isset($cars[1]) && $cars[1]['accessories'][$key]['ACCR_VLUE'] ) ||
               (isset($cars[2]) && $cars[2]['accessories'][$key]['ACCR_VLUE'] ) ||
-              (isset($cars[3]) && $cars[3]['accessories'][$key]['ACCR_VLUE'] ) ||
-              )
+              (isset($cars[3]) && $cars[3]['accessories'][$key]['ACCR_VLUE'] ) )
               <tr>
                 <td>{{$accessory['ACSR_NAME']}}/{{$accessory['ACSR_ARBC_NAME']}}</td>
                 <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
