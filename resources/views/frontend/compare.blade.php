@@ -381,16 +381,16 @@
         </div>
         <div class="inventory_info_list text-center">
           <ul>
-            <li>&nbsp;</li>
-            <li><a href="{{url('car/' . $cars[0]->id)}}" class="btn">View Detail</a></li>
+            <li style="width:{{$headerWidth}}%">&nbsp;</li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}" class="btn">View Detail</a></li>
             @isset($cars[1])
-            <li><a href="{{url('car/' . $cars[1]->id)}}" class="btn">View Detail</a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}" class="btn">View Detail</a></li>
             @endisset
             @isset($cars[2])
-            <li><a href="{{url('car/' . $cars[2]->id)}}" class="btn">View Detail</a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}" class="btn">View Detail</a></li>
             @endisset
             @isset($cars[3])
-            <li><a href="{{url('car/' . $cars[3]->id)}}" class="btn">View Detail</a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[3]->id)}}" class="btn">View Detail</a></li>
             @endisset
           </ul>
         </div>
