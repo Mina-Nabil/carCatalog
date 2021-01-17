@@ -87,16 +87,21 @@
       <div class="compare_product_img">
         <div class="inventory_info_list">
           <ul>
-            <li id="filter_toggle" class="search_other_inventory" style="height:auto; width:{{$headerWidth}}%; max-height: 145px"><i class="fa fa-search" style="color: white;" aria-hidden="true"></i> Search Other Inventory</li>
-            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}"><img src="{{(isset($cars[0]->image)) ? asset( 'storage/'. $cars[0]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
+            <li id="filter_toggle" class="search_other_inventory" style="height:auto; width:{{$headerWidth}}%; max-height: 145px"><i class="fa fa-search" style="color: white;" aria-hidden="true"></i>
+              Search Other Inventory</li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}"><img
+                  src="{{(isset($cars[0]->image)) ? asset( 'storage/'. $cars[0]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
             @if(isset($cars[1]))
-            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}"><img src="{{(isset($cars[1]->image)) ? asset( 'storage/'. $cars[1]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}"><img
+                  src="{{(isset($cars[1]->image)) ? asset( 'storage/'. $cars[1]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
             @endif
             @if(isset($cars[2]))
-            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}"><img src="{{(isset($cars[2]->image)) ? asset( 'storage/'. $cars[2]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}"><img
+                  src="{{(isset($cars[2]->image)) ? asset( 'storage/'. $cars[2]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
             @endif
             @if(isset($cars[3]))
-            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[3]->id)}}"><img src="{{(isset($cars[3]->image)) ? asset( 'storage/'. $cars[3]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[3]->id)}}"><img
+                  src="{{(isset($cars[3]->image)) ? asset( 'storage/'. $cars[3]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
             @endif
           </ul>
         </div>
@@ -107,14 +112,14 @@
           <ul>
             <li class="listing_heading" style="width:{{$headerWidth}}%">Compare <br>
               Cars <span class="td_divider"></span></li>
-            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}">{{$cars[0]->model->MODL_NAME}} {{$cars[0]->CAR_CATG}} {{$cars[0]->model->MODL_YEAR}}</a>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}">{{$cars[0]->model->MODL_NAME}} {{$cars[0]->CAR_CATG}} {{$cars[0]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[0]->CAR_PRCE)}}</p>
               @if(isset($cars[1]))
               <span class="vs">V/s</span>
               @endif
             </li>
             @if(isset($cars[1]))
-            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}">{{$cars[1]->model->MODL_NAME}} {{$cars[1]->CAR_CATG}} {{$cars[1]->model->MODL_YEAR}}</a>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}">{{$cars[1]->model->MODL_NAME}} {{$cars[1]->CAR_CATG}} {{$cars[1]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[1]->CAR_PRCE)}}</p>
               @if(isset($cars[2]))
               <span class="vs">V/s</span>
@@ -122,7 +127,7 @@
             </li>
             @endif
             @if(isset($cars[2]))
-            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}">{{$cars[2]->model->MODL_NAME}} {{$cars[2]->CAR_CATG}} {{$cars[2]->model->MODL_YEAR}}</a>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}">{{$cars[2]->model->MODL_NAME}} {{$cars[2]->CAR_CATG}} {{$cars[2]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[2]->CAR_PRCE)}}</p>
               @if(isset($cars[3]))
               <span class="vs">V/s</span>
@@ -130,7 +135,7 @@
             </li>
             @endif
             @if(isset($cars[3]))
-            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[3]->id)}}">{{$cars[3]->model->MODL_NAME}} {{$cars[3]->CAR_CATG}} {{$cars[3]->model->MODL_YEAR}}</a>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[3]->id)}}">{{$cars[3]->model->MODL_NAME}} {{$cars[3]->CAR_CATG}} {{$cars[3]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[3]->CAR_PRCE)}}</p>
             </li>
             @endif
@@ -359,6 +364,12 @@
             </thead>
             <tbody>
               @foreach($cars[0]['accessories'] as $key => $accessory)
+              @if(
+              $cars[1]['accessories'][$key]['ACCR_VLUE'] ||
+              (isset($cars[1]) && $cars[1]['accessories'][$key]['ACCR_VLUE'] ) ||
+              (isset($cars[2]) && $cars[2]['accessories'][$key]['ACCR_VLUE'] ) ||
+              (isset($cars[3]) && $cars[3]['accessories'][$key]['ACCR_VLUE'] ) ||
+              )
               <tr>
                 <td>{{$accessory['ACSR_NAME']}}/{{$accessory['ACSR_ARBC_NAME']}}</td>
                 <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
@@ -375,6 +386,7 @@
                 </td>
                 @endisset
               </tr>
+              @endif
               @endforeach
             </tbody>
           </table>
