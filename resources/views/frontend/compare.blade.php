@@ -365,10 +365,10 @@
             <tbody>
               @foreach($cars[0]['accessories'] as $key => $accessory)
               @if(
-              $cars[1]['accessories'][$key]['ACCR_VLUE'] ||
-              (isset($cars[1]) && $cars[1]['accessories'][$key]['ACCR_VLUE'] ) ||
-              (isset($cars[2]) && $cars[2]['accessories'][$key]['ACCR_VLUE'] ) ||
-              (isset($cars[3]) && $cars[3]['accessories'][$key]['ACCR_VLUE'] ) )
+              $cars[1]['accessories'][$key]['isAvailable'] ||
+              (isset($cars[1]) && $cars[1]['accessories'][$key]['isAvailable'] ) ||
+              (isset($cars[2]) && $cars[2]['accessories'][$key]['isAvailable'] ) ||
+              (isset($cars[3]) && $cars[3]['accessories'][$key]['isAvailable'] ) )
               <tr>
                 <td>{{$accessory['ACSR_NAME']}}/{{$accessory['ACSR_ARBC_NAME']}}</td>
                 <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
