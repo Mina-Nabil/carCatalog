@@ -297,7 +297,7 @@
               if(checkaya.checked==true){
                 $.toast({
                         heading: 'Car ready for Compare',
-                        text: 'You can now visit the compare page to check the latest 3 cars marked for comparison.',
+                        text: 'You can now visit the compare page to check the latest 4 cars marked for comparison.',
                         position: 'top-right',
                         loaderBg:'blue',
                         icon: 'success',
