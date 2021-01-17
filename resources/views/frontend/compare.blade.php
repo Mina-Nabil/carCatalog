@@ -124,6 +124,9 @@
             @if(isset($cars[2]))
             <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}">{{$cars[2]->model->MODL_NAME}} {{$cars[2]->CAR_CATG}} {{$cars[2]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[2]->CAR_PRCE)}}</p>
+              @if(isset($cars[3]))
+              <span class="vs">V/s</span>
+              @endif
             </li>
             @endif
             @if(isset($cars[3]))
@@ -223,6 +226,9 @@
                 @isset($cars[2])
                 <th>&nbsp;</th>
                 @endisset
+                @isset($cars[3])
+                <th>&nbsp;</th>
+                @endisset
               </tr>
             </thead>
             <tbody>
@@ -236,7 +242,7 @@
                 <td>{{$cars[2]->CAR_HPWR}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[2]->CAR_HPWR}}</td>
+                <td>{{$cars[3]->CAR_HPWR}}</td>
                 @endisset
               </tr>
               <tr>
@@ -249,7 +255,7 @@
                 <td>{{$cars[2]->CAR_TORQ}}kW</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[2]->CAR_TORQ}}kW</td>
+                <td>{{$cars[3]->CAR_TORQ}}kW</td>
                 @endisset
               </tr>
               <tr>
@@ -384,7 +390,7 @@
             <li><a href="{{url('car/' . $cars[2]->id)}}" class="btn">View Detail</a></li>
             @endisset
             @isset($cars[3])
-            <li><a href="{{url('car/' . $cars[2]->id)}}" class="btn">View Detail</a></li>
+            <li><a href="{{url('car/' . $cars[3]->id)}}" class="btn">View Detail</a></li>
             @endisset
           </ul>
         </div>
