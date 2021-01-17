@@ -382,7 +382,7 @@
         <div class="inventory_info_list text-center">
           <ul>
             <li style="width:{{$headerWidth}}%">&nbsp;</li>
-            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}" class="btn">View Detail</a></li>
+            <li class=justify-content-center style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}" class="btn">View Detail</a></li>
             @isset($cars[1])
             <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}" class="btn">View Detail</a></li>
             @endisset
