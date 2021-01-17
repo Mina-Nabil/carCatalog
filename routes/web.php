@@ -27,8 +27,8 @@ Route::post('/compare/add', function (Request $request) {
     $compareArr = $request->session()->get('compareArr') ?? [];
     if (!in_array($request->carID, $compareArr)) {
         array_push($compareArr, $request->carID);
-        if (count($compareArr) > 3) {
-            $compareArr = array_slice($compareArr, 1, 3);
+        if (count($compareArr) > 4) {
+            $compareArr = array_slice($compareArr, 1, 4);
         }
         $request->session()->put('compareArr', $compareArr);
     }

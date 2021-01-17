@@ -25,12 +25,16 @@ class SiteController extends Controller
             $data['mainModels']  =  CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
                 ->select('brands.*', 'models.*')->orderByDesc('models.id')->limit(2)->get();
         } elseif ($mainModelsCount == 1) {
-            $data['mainModels']->push(CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
-                ->select('brands.*', 'models.*')->where('MODL_ACTV', 1)->where('MODL_MAIN', 0)->orderByDesc('models.id')->first());
+            $extraModel = CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
+                ->where('MODL_ACTV', 1)->where('MODL_MAIN', 0)->select('brands.*', 'models.*')->orderByDesc('models.id')
+                ->get()->first();
+            if ($extraModel)
+                $data['mainModels']->push($extraModel);
         }
         if (isset($data['frontendData']['Offers']) && $data['frontendData']['Offers']['Active']) {
             $data['offers'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
                 ->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
+                ->select('brands.*', 'models.*', 'cars.*')
                 ->where('CAR_OFFR', 1)->where('CAR_ACTV', 1)
                 ->where('BRND_ACTV', 1)->where('MODL_ACTV', 1)
                 ->get();
@@ -38,6 +42,7 @@ class SiteController extends Controller
         if ($data['frontendData']['Trending cars']['Active']) {
             $data['trends'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
                 ->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
+                ->select('brands.*', 'models.*', 'cars.*')
                 ->where('CAR_TRND', 1)->where('CAR_ACTV', 1)
                 ->where('BRND_ACTV', 1)->where('MODL_ACTV', 1)
                 ->get();
@@ -80,6 +85,8 @@ class SiteController extends Controller
             $data['cars'][$i]['accessories'] = $data['cars'][$i]->getFullAccessoriesArray();
             $i++;
         }
+        $data['count'] = $i;
+        $data['headerWidth'] = (1/($i+1))*100;
 
         return view('frontend.compare', $data);
     }

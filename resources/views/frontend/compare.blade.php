@@ -80,17 +80,23 @@
         @if(isset($cars[2]))
         vs ({{$cars[2]->model->MODL_NAME}} {{$cars[2]->CAR_CATG}} {{$cars[2]->model->MODL_YEAR}})
         @endif
+        @if(isset($cars[3]))
+        vs ({{$cars[3]->model->MODL_NAME}} {{$cars[3]->CAR_CATG}} {{$cars[3]->model->MODL_YEAR}})
+        @endif
       </h4>
       <div class="compare_product_img">
         <div class="inventory_info_list">
           <ul>
-            <li id="filter_toggle" class="search_other_inventory"><i class="fa fa-search" style="color: white" aria-hidden="true"></i> Search Other Inventory</li>
-            <li><a href="{{url('car/' . $cars[0]->id)}}"><img src="{{(isset($cars[0]->image)) ? asset( 'storage/'. $cars[0]->image ) : asset('assets/frontend/images/600x380.jpg')}}" alt="image"></a></li>
+            <li id="filter_toggle" class="search_other_inventory" style="height:auto; width:{{$headerWidth}}%; max-height: 145px"><i class="fa fa-search" style="color: white;" aria-hidden="true"></i> Search Other Inventory</li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}"><img src="{{(isset($cars[0]->image)) ? asset( 'storage/'. $cars[0]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
             @if(isset($cars[1]))
-            <li><a href="{{url('car/' . $cars[1]->id)}}"><img src="{{(isset($cars[1]->image)) ? asset( 'storage/'. $cars[1]->image ) : asset('assets/frontend/images/600x380.jpg')}}" alt="image"></a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}"><img src="{{(isset($cars[1]->image)) ? asset( 'storage/'. $cars[1]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
             @endif
             @if(isset($cars[2]))
-            <li><a href="{{url('car/' . $cars[2]->id)}}"><img src="{{(isset($cars[2]->image)) ? asset( 'storage/'. $cars[2]->image ) : asset('assets/frontend/images/600x380.jpg')}}" alt="image"></a></li>
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}"><img src="{{(isset($cars[2]->image)) ? asset( 'storage/'. $cars[2]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
+            @endif
+            @if(isset($cars[3]))
+            <li style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[3]->id)}}"><img src="{{(isset($cars[3]->image)) ? asset( 'storage/'. $cars[3]->image ) : asset('assets/frontend/images/600x380.jpg')}}" style="max-height: 145px" alt="image"></a></li>
             @endif
           </ul>
         </div>
@@ -99,16 +105,16 @@
       <div class="compare_product_title gray-bg">
         <div class="inventory_info_list">
           <ul>
-            <li class="listing_heading">Compare <br>
+            <li class="listing_heading" style="width:{{$headerWidth}}%">Compare <br>
               Cars <span class="td_divider"></span></li>
-            <li><a href="{{url('car/' . $cars[0]->id)}}">{{$cars[0]->model->MODL_NAME}} {{$cars[0]->CAR_CATG}} {{$cars[0]->model->MODL_YEAR}}</a>
+            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[0]->id)}}">{{$cars[0]->model->MODL_NAME}} {{$cars[0]->CAR_CATG}} {{$cars[0]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[0]->CAR_PRCE)}}</p>
               @if(isset($cars[1]))
               <span class="vs">V/s</span>
               @endif
             </li>
             @if(isset($cars[1]))
-            <li><a href="{{url('car/' . $cars[1]->id)}}">{{$cars[1]->model->MODL_NAME}} {{$cars[1]->CAR_CATG}} {{$cars[1]->model->MODL_YEAR}}</a>
+            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[1]->id)}}">{{$cars[1]->model->MODL_NAME}} {{$cars[1]->CAR_CATG}} {{$cars[1]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[1]->CAR_PRCE)}}</p>
               @if(isset($cars[2]))
               <span class="vs">V/s</span>
@@ -116,8 +122,13 @@
             </li>
             @endif
             @if(isset($cars[2]))
-            <li><a href="{{url('car/' . $cars[2]->id)}}">{{$cars[2]->model->MODL_NAME}} {{$cars[2]->CAR_CATG}} {{$cars[2]->model->MODL_YEAR}}</a>
+            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[2]->id)}}">{{$cars[2]->model->MODL_NAME}} {{$cars[2]->CAR_CATG}} {{$cars[2]->model->MODL_YEAR}}</a>
               <p class="price">{{number_format($cars[2]->CAR_PRCE)}}</p>
+            </li>
+            @endif
+            @if(isset($cars[3]))
+            <li  style="width:{{$headerWidth}}%"><a href="{{url('car/' . $cars[3]->id)}}">{{$cars[3]->model->MODL_NAME}} {{$cars[3]->CAR_CATG}} {{$cars[3]->model->MODL_YEAR}}</a>
+              <p class="price">{{number_format($cars[3]->CAR_PRCE)}}</p>
             </li>
             @endif
           </ul>
@@ -137,6 +148,9 @@
                 @isset($cars[2])
                 <th>&nbsp;</th>
                 @endisset
+                @isset($cars[3])
+                <th>&nbsp;</th>
+                @endisset
               </tr>
             </thead>
             <tbody>
@@ -149,6 +163,9 @@
                 @isset($cars[2])
                 <td>{{$cars[2]->model->MODL_YEAR}}</td>
                 @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->model->MODL_YEAR}}</td>
+                @endisset
               </tr>
               <tr>
                 <td>Car Type</td>
@@ -158,6 +175,9 @@
                 @endisset
                 @isset($cars[2])
                 <td>{{$cars[2]->model->type->TYPE_NAME}}</td>
+                @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->model->type->TYPE_NAME}}</td>
                 @endisset
               </tr>
               <tr>
@@ -169,6 +189,9 @@
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_TRNS}}</td>
                 @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->CAR_TRNS}}</td>
+                @endisset
               </tr>
               <tr>
                 <td>Fuel Type</td>
@@ -177,6 +200,9 @@
                 <td>Petrol 92, 95</td>
                 @endisset
                 @isset($cars[2])
+                <td>Petrol 92, 95</td>
+                @endisset
+                @isset($cars[3])
                 <td>Petrol 92, 95</td>
                 @endisset
               </tr>
@@ -209,6 +235,9 @@
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_HPWR}}</td>
                 @endisset
+                @isset($cars[3])
+                <td>{{$cars[2]->CAR_HPWR}}</td>
+                @endisset
               </tr>
               <tr>
                 <td>Engine Torque</td>
@@ -217,6 +246,9 @@
                 <td>{{$cars[1]->CAR_TORQ}}kW</td>
                 @endisset
                 @isset($cars[2])
+                <td>{{$cars[2]->CAR_TORQ}}kW</td>
+                @endisset
+                @isset($cars[3])
                 <td>{{$cars[2]->CAR_TORQ}}kW</td>
                 @endisset
               </tr>
@@ -229,6 +261,9 @@
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_TPSP}}km/h</td>
                 @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->CAR_TPSP}}km/h</td>
+                @endisset
               </tr>
               <tr>
                 <td>Acceleration</td>
@@ -238,6 +273,9 @@
                 @endisset
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_ACC}}s to 100km/h</td>
+                @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->CAR_ACC}}s to 100km/h</td>
                 @endisset
               </tr>
               <tr>
@@ -249,6 +287,9 @@
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_TRNK}}L</td>
                 @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->CAR_TRNK}}L</td>
+                @endisset
               </tr>
               <tr>
                 <td>Seats</td>
@@ -258,6 +299,9 @@
                 @endisset
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_SEAT}}</td>
+                @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->CAR_SEAT}}</td>
                 @endisset
               </tr>
               <tr>
@@ -269,6 +313,9 @@
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_HEIT}}</td>
                 @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->CAR_HEIT}}</td>
+                @endisset
               </tr>
               <tr>
                 <td>Car Dimensions</td>
@@ -278,6 +325,9 @@
                 @endisset
                 @isset($cars[2])
                 <td>{{$cars[2]->CAR_DIMN}}</td>
+                @endisset
+                @isset($cars[3])
+                <td>{{$cars[3]->CAR_DIMN}}</td>
                 @endisset
               </tr>
             </tbody>
@@ -296,6 +346,9 @@
                 @isset($cars[2])
                 <th></th>
                 @endisset
+                @isset($cars[3])
+                <th></th>
+                @endisset
               </tr>
             </thead>
             <tbody>
@@ -311,6 +364,10 @@
                 <td><i class="{{($cars[2]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[2]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
                 </td>
                 @endisset
+                @isset($cars[3])
+                <td><i class="{{($cars[3]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[3]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
+                </td>
+                @endisset
               </tr>
               @endforeach
             </tbody>
@@ -324,6 +381,9 @@
             <li><a href="{{url('car/' . $cars[1]->id)}}" class="btn">View Detail</a></li>
             @endisset
             @isset($cars[2])
+            <li><a href="{{url('car/' . $cars[2]->id)}}" class="btn">View Detail</a></li>
+            @endisset
+            @isset($cars[3])
             <li><a href="{{url('car/' . $cars[2]->id)}}" class="btn">View Detail</a></li>
             @endisset
           </ul>

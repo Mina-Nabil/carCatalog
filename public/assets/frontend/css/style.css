@@ -638,8 +638,7 @@ table {
 }
 table th, table td {
   border: 1px solid #cccccc;
-  padding: 15px;
-  padding:18px;
+  padding: 5px;
 }
 table th img, table td img {
 	max-width:100%;
