@@ -27,7 +27,7 @@
 
                             @if(isset($car1) && isset($cars1Model))
                             @foreach($cars1Model as $car)
-                            <option value="{{$car->id}}" @if($car->id == $car1->id)
+                            <option value="{{$car->id}}%%{{$car->image}}" @if($car->id == $car1->id)
                                 selected
                                 @endif
                                 >{{$car->CAR_CATG}}</option>
@@ -179,19 +179,19 @@
             count++
         }
         if(carSel2.value != 0){
-            var valueArr = carSel1.value.split("%%");
+            var valueArr = carSel2.value.split("%%");
             var carInput2 = document.getElementById("carInput" + 2).value = valueArr[0]
             document.getElementById("carImage" + 2).src = "{{asset('storage/')}}" + valueArr[1]
             count++
         }
         if(carSel3.value != 0){
-            var valueArr = carSel1.value.split("%%");
+            var valueArr = carSel3.value.split("%%");
             var carInput3 = document.getElementById("carInput" + 3).value = valueArr[0]
             document.getElementById("carImage" + 3).src = "{{asset('storage/')}}" + valueArr[1]
             count++
         }
         if(carSel4.value != 0){
-            var valueArr = carSel1.value.split("%%");
+            var valueArr = carSel4.value.split("%%");
             var carInput4 = document.getElementById("carInput" + 4).value = valueArr[0]
             document.getElementById("carImage" + 4).src = "{{asset('storage/')}}" + valueArr[1]
             count++
