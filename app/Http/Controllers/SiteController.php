@@ -218,17 +218,17 @@ class SiteController extends Controller
         $query = Car::join('models', 'CAR_MODL_ID', '=', 'models.id')->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
             ->join('types', 'MODL_TYPE_ID', '=', 'types.id')
             ->select('cars.*', 'models.MODL_NAME', 'models.MODL_YEAR', "types.TYPE_NAME", "brands.BRND_NAME");
-        if ($type && is_numeric($type)) {
+        if ($type && is_numeric($type) && $type>0) {
             CarType::findOrFail($type);
             $query = $query->where("MODL_TYPE_ID", $type);
         }
 
-        if ($brand && is_numeric($brand)) {
+        if ($brand && is_numeric($brand) && $brand>0) {
             Brand::findOrFail($brand);
             $query = $query->where("MODL_BRND_ID", $brand);
         }
 
-        if ($model && is_numeric($model)) {
+        if ($model && is_numeric($model) && $model>0) {
             CarModel::findOrFail($model);
             $query = $query->where("CAR_MODL_ID", $model);
         }
