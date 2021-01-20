@@ -16,7 +16,7 @@
           <div class="error_icon"> <i class="fa fa-smile-o" aria-hidden="true"></i> </div>
           <div class="error_msg_div">
             <h3>Oops, <span>No Cars Found</span></h3>
-            <p>Looks like no cars found, you can return home to check more cars ;)</p>
+            <p>No problem, you can return home to check more cars ;)</p>
             <a href="{{url('')}}" class="btn">Back to Home <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
           </div>
         </div>
