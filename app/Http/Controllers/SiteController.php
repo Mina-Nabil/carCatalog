@@ -111,10 +111,6 @@ class SiteController extends Controller
         }
 
         if (count($data['compareArr']) < 2) {
-            $request->session()->remove("compareArr");
-            if (count($data['compareArr']) == 1) {
-                $data['car1'] = Car::find(array_pop($data['compareArr']));
-            }
             return $this->prepareCompare($request);
         }
         $i = 0;
@@ -133,6 +129,9 @@ class SiteController extends Controller
     {
         $data = self::getDefaultSiteInfo(false, "Compare Cars", null, "Select up to 4 cars for comparison", true, $request);
         $data['getCarsURL'] = url('get/cars');
+        if (count($data['compareArr']) == 1) {
+            $data['car1'] = Car::find(array_pop($data['compareArr']));
+        }
         return view('frontend.preparecompare', $data);
     }
 
