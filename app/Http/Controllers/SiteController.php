@@ -112,8 +112,8 @@ class SiteController extends Controller
 
         if (count($data['compareArr']) < 2) {
             $request->session()->remove("compareArr");
-            if(count($data['compareArr']) == 1){
-                $data['car1'] = Car::find($data['compareArr'][0]);
+            if (count($data['compareArr']) == 1) {
+                $data['car1'] = Car::find(array_pop($data['compareArr']));
             }
             return $this->prepareCompare($request);
         }
