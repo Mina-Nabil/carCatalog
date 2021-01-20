@@ -4020,15 +4020,12 @@ table.info-tabel tr td {
 	margin-top:-1px;
 }
 .inventory_info_list ul li.info_heading div {
-	text-align:right;	
-}
-.compare_info table td:first-child {
-	text-align:right;
+	text-align:center;	
 }
 .compare_info table td {
-	padding-left:50px;
-	padding-right:50px;	
+	text-align:center;
 }
+
 .compare_product_title {
 	margin:0 auto 15px;
 }
