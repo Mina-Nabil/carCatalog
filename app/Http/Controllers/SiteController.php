@@ -105,6 +105,7 @@ class SiteController extends Controller
         if ($formInputCount > 1) {
             $data['count'] = $formInputCount;
             $data['headerWidth'] = (1 / ($formInputCount + 1)) * 100;
+            $request->session()->remove("compareArr");
 
             return view('frontend.compare', $data);
         }
