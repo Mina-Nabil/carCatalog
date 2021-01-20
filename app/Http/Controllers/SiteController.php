@@ -212,7 +212,7 @@ class SiteController extends Controller
         return $data;
     }
 
-    public static function getSearchResults($type, $brand, $year, $model, $priceFrom, $priceTo)
+    public static function getSearchResults($type, $brand,  $model, $year, $priceFrom, $priceTo)
     {
         $query = Car::join('models', 'CAR_MODL_ID', '=', 'models.id')->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
             ->join('types', 'MODL_TYPE_ID', '=', 'types.id')
@@ -232,7 +232,7 @@ class SiteController extends Controller
             $query = $query->where("models.id", $model);
         }
 
-        if ($year && is_numeric($year)) {
+        if ($year && is_numeric($year) && $year > 2000) {
             $query = $query->where("MODL_YEAR", $year);
         }
 
