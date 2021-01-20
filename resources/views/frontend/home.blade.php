@@ -11,7 +11,7 @@
         <div class="row">
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
-              <select class="form-control">
+              <select class="form-control" name="typeID">
                 <option value=0>Type Of Car </option>
                 @foreach($types as $type)
                 <option value="{{$type->id}}">{{$type->TYPE_NAME}}</option>
@@ -21,7 +21,7 @@
           </div>
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
-              <select class="form-control">
+              <select class="form-control" name=brandID>
                 <option value=0>Select Brand</option>
                 @foreach($brands as $brand)
                 <option value="{{$brand->id}}">{{$brand->BRND_NAME}}</option>
@@ -31,7 +31,7 @@
           </div>
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
-              <select class="form-control">
+              <select class="form-control" name=modelID>
                 <option value=0>Select Model</option>
                 @foreach($models as $model)
                 <option value="{{$model->id}}">{{$model->MODL_NAME}}</option>
@@ -41,7 +41,7 @@
           </div>
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
-              <select class="form-control">
+              <select class="form-control" name=year>
                 <option value=0>Year of Model </option>
                 @foreach($years as $year)
                 <option value="{{$year}}">{{$year}}</option>
@@ -52,7 +52,7 @@
 
           <div class="form-group col-md-9 col-sm-6">
             <label class="form-label">Price Range ($) </label>
-            <input id="price_range" type="text" class="span2" value="" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]" />
+            <input id="price_range" type="text" class="span2" name="priceRange" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]" />
           </div>
 
 

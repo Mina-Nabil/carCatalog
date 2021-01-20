@@ -163,7 +163,7 @@ class SiteController extends Controller
     function search(Request $request)
     {
         $data = self::getDefaultSiteInfo(false, "Find Your Car", null, "Find your search results below", true, $request);
-        $prices = explode(',', $request->price);
+        $prices = explode(',', $request->priceRange);
         $data['carList'] = self::getSearchResults($request->typeID, $request->brandID, $request->modelID, $request->year, $prices[0] ?? $data['carsMin'], $prices[1] ?? $data['carsMax']);
         return view('frontend.list', $data);
     }
