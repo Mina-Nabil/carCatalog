@@ -136,7 +136,6 @@
             if (this.readyState == 4 && this.status == 200) {
                 try {
                     ret = JSON.parse(this.responseText)
-                    console.log("get hna")
                     loadCars(i, ret)
                     checkCompare()
                 } catch(e) {
@@ -158,7 +157,7 @@
     
             var option = document.createElement("option");
             option.text = carItem.CAR_CATG;
-            option.value = carItem.id;
+            option.value = carItem.id + "%%" + carItem.image;
             carSel.add(option)
         });
         carSel.disabled = false
@@ -174,19 +173,27 @@
         count = 0
 
         if(carSel1.value != 0){
-            var carInput1 = document.getElementById("carInput" + 1).value = carSel1.value
+            var valueArr = carSel1.value.split("%%");
+            var carInput1 = document.getElementById("carInput" + 1).value = valueArr[0]
+            document.getElementById("carImage" + 1).src = "{{asset('storage/')" + valueArr[1]
             count++
         }
         if(carSel2.value != 0){
-            var carInput2 = document.getElementById("carInput" + 2).value = carSel2.value
+            var valueArr = carSel1.value.split("%%");
+            var carInput2 = document.getElementById("carInput" + 2).value = valueArr[0]
+            document.getElementById("carImage" + 2).src = "{{asset('storage/')" + valueArr[1]
             count++
         }
         if(carSel3.value != 0){
-            var carInput3 = document.getElementById("carInput" + 3).value = carSel3.value
+            var valueArr = carSel1.value.split("%%");
+            var carInput3 = document.getElementById("carInput" + 3).value = valueArr[0]
+            document.getElementById("carImage" + 3).src = "{{asset('storage/')" + valueArr[1]
             count++
         }
         if(carSel4.value != 0){
-            var carInput4 = document.getElementById("carInput" + 4).value = carSel4.value
+            var valueArr = carSel1.value.split("%%");
+            var carInput4 = document.getElementById("carInput" + 4).value = valueArr[0]
+            document.getElementById("carImage" + 4).src = "{{asset('storage/')" + valueArr[1]
             count++
         }
 
