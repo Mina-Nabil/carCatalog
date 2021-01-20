@@ -147,7 +147,10 @@
 
     function loadCars(i, carsArr){
         var carSel = document.getElementById('car' + i);
-
+        var length = carSel.options.length;
+        for (i = length-1; i >= 0; i--) {
+            carSel.options[i] = null;
+        }
         carsArr.forEach(carItem => {
     
             var option = document.createElement("option");
