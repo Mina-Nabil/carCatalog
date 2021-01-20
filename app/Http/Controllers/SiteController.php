@@ -167,7 +167,7 @@ class SiteController extends Controller
         $data['carList'] = self::getSearchResults($request->typeID, $request->brandID, $request->modelID, $request->year, $prices[0] ?? $data['carsMin'], $prices[1] ?? $data['carsMax']);
         if ($data['carList']->count() > 0)
             return view('frontend.list', $data);
-        else return view('nocompare', $data);
+        else return view('frontend.nosearch', $data);
     }
 
     public static function getDefaultSiteInfo(bool $carouselHeader, string $pageTitle, string $headerImage = null, string $pageSubtitle = null, $isHeader = true, Request $request = null)
