@@ -24,7 +24,7 @@
   <link href="{{asset('assets/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
   {{-- Toaster CSS --}}
   <link href="{{ asset('assets/frontend/extensions/toast-master/css/jquery.toast.css') }}" rel="stylesheet" type="text/css" />
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
   <!-- Custom Colors -->
   {{-- <link rel="stylesheet" href="{{asset('assets/frontend/colors/red.css')}}"> --}}
@@ -81,7 +81,7 @@
                 </li>
                 <li><a href="{{$compareURL}}">Compare</a></li>
                 <li><a href="{{$calculateURL}}">Calculate Loan</a></li>
-                <li><a href="{{$aboutusURL}}">About Us</a></li>
+                <li><a href="{{$contactusURL}}">Contact Us</a></li>
               </ul>
             </div>
             <div class="header_wrap">
@@ -199,22 +199,22 @@
               </ul>
             </div>
             <div class="col-md-4 col-sm-6">
-              <h6>About Us</h6>
+              <h6>Contact Us</h6>
               <ul>
-                @if(isset($aboutUs['phone1']) && strlen($aboutUs['phone1'])>0 )
-                <li><a href="tel:{{$aboutUs['phone1']}}">Call us: {{$aboutUs['phone1']}}</a></li>
+                @if(isset($contactUs['phone1']) && strlen($contactUs['phone1'])>0 )
+                <li><a href="tel:{{$contactUs['phone1']}}">Call us: {{$contactUs['phone1']}}</a></li>
                 @endif
-                @if(isset($aboutUs['phone2']) && strlen($aboutUs['phone2'])>0 )
-                <li><a href="tel:{{$aboutUs['phone2']}}">Call us: {{$aboutUs['phone2']}}</a></li>
+                @if(isset($contactUs['phone2']) && strlen($contactUs['phone2'])>0 )
+                <li><a href="tel:{{$contactUs['phone2']}}">Call us: {{$contactUs['phone2']}}</a></li>
                 @endif
-                @if(isset($aboutUs['email']) && strlen($aboutUs['email'])>0 )
-                <li><a href="mailto:{{$aboutUs['email']}}">Our Mail: {{$aboutUs['email']}}</a></li>
+                @if(isset($contactUs['email']) && strlen($contactUs['email'])>0 )
+                <li><a href="mailto:{{$contactUs['email']}}">Our Mail: {{$contactUs['email']}}</a></li>
                 @endif
-                @if(isset($aboutUs['address']) && strlen($aboutUs['address'])>0 )
-                <li><a href="{{ 'javascript::void(0)'}}">Visit Us on <br>{{$aboutUs['address']}}</a></li>
+                @if(isset($contactUs['address']) && strlen($contactUs['address'])>0 )
+                <li><a href="{{ 'javascript::void(0)'}}">Visit Us on <br>{{$contactUs['address']}}</a></li>
                 @endif
-                @if(isset($aboutUs['map']) && strlen($aboutUs['map']) )
-                <?=$aboutUs['map']?>
+                @if(isset($contactUs['map']) && strlen($contactUs['map']) )
+                <?=$contactUs['map']?>
                 @endif
               </ul>
             </div>
@@ -240,20 +240,20 @@
               <div class="footer_widget">
                 <p>Connect with Us:</p>
                 <ul>
-                  @if(isset($aboutUs['facebook']) && strlen($aboutUs['facebook'])>0 )
-                  <li><a href="https://www.facebook.com/{{$aboutUs['facebook']}}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                  @if(isset($contactUs['facebook']) && strlen($contactUs['facebook'])>0 )
+                  <li><a href="https://www.facebook.com/{{$contactUs['facebook']}}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
                   @endif
-                  @if(isset($aboutUs['twitter']) && strlen($aboutUs['twitter'])>0 )
-                  <li><a href="https://www.twitter.com/{{$aboutUs['twitter']}}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                  @if(isset($contactUs['instagram']) && strlen($contactUs['instagram'])>0 )
+                  <li><a href="https://www.instagram.com/{{$contactUs['instagram']}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                   @endif
-                  @if(isset($aboutUs['linkedin']) && strlen($aboutUs['linkedin'])>0 )
-                  <li><a href="https://www.linkedin.com/in/{{$aboutUs['facebook']}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                  @if(isset($contactUs['twitter']) && strlen($contactUs['twitter'])>0 )
+                  <li><a href="https://www.twitter.com/{{$contactUs['twitter']}}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
                   @endif
-                  @if(isset($aboutUs['youtube']) && strlen($aboutUs['youtube'])>0 )
-                  <li><a href="https://www.youtube.com/c/{{$aboutUs['youtube']}}"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
+                  @if(isset($contactUs['linkedin']) && strlen($contactUs['linkedin'])>0 )
+                  <li><a href="https://www.linkedin.com/in/{{$contactUs['linkedin']}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                   @endif
-                  @if(isset($aboutUs['instagram']) && strlen($aboutUs['instagram'])>0 )
-                  <li><a href="https://www.instagram.com/{{$aboutUs['instagram']}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  @if(isset($contactUs['youtube']) && strlen($contactUs['youtube'])>0 )
+                  <li><a href="https://www.youtube.com/c/{{$contactUs['youtube']}}"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
                   @endif
                 </ul>
               </div>

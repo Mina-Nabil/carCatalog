@@ -167,7 +167,7 @@
 
                         <li> <a href="{{url('admin/manage/site')}}" aria-expanded="false"><i class="fas fa-globe"></i><span class="hide-menu">Home Page </span></a></li>
                         
-                        <li> <a href="{{url('admin/manage/about')}}" aria-expanded="false"><i class="fas fa-info"></i><span class="hide-menu">About Us </span></a></li>
+                        <li> <a href="{{url('admin/manage/contact')}}" aria-expanded="false"><i class="fas fa-info"></i><span class="hide-menu">Contact Us </span></a></li>
                         <li> <a href="{{url('admin/customers/show')}}" aria-expanded="false"><i class="fas fa-donate"></i><span class="hide-menu">Customers </span></a></li>
                         <li> <a href="{{url('admin/partners/show')}}" aria-expanded="false"><i class="fas fa-user-md"></i><span class="hide-menu">Partners </span></a></li>
 

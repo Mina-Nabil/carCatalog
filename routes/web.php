@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 /////////Website front end routes 
 
 Route::get('/compare', 'SiteController@compare');
+Route::post('/compare', 'SiteController@compare');
 Route::post('/compare/add', function (Request $request) {
     $request->validate([
         "carID" => "required|exists:cars,id"
@@ -46,10 +48,19 @@ Route::post('/compare/remove', function (Request $request) {
         $request->session()->put('compareArr', $compareArr);
     }
 });
+Route::post('/get/cars', function (Request $request) {
+    $request->validate([
+        "modelID" => "required|exists:models,id"
+    ]);
+    return json_encode(Car::where('CAR_MODL_ID', $request->modelID)->get());
+    
+});
 Route::post('/search', 'SiteController@search');
+Route::post('/send/email', 'SiteController@sendMail');
 Route::get('/car/{id}', 'SiteController@car');
 Route::get('/model/{id}', 'SiteController@model');
 Route::get('/', 'SiteController@home')->name('home');
+Route::get('/contactus', 'SiteController@contactus')->name('contactus');
 
 //unauthenticated admin login pages
 Route::get('admin/login', 'HomeController@login')->name('login')->middleware('web');

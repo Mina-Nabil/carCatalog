@@ -77,8 +77,8 @@ Route::get("dash/users/edit/{id}", 'DashUsersController@edit');
 Route::post("dash/users/update", 'DashUsersController@update');
 
 //About Us routes
-Route::get("manage/about", 'AboutController@home');
-Route::post("update/about", 'AboutController@update');
+Route::get("manage/contact", 'ContactUsController@home');
+Route::post("update/contact", 'ContactUsController@update');
 
 //Website Section route
 Route::get("manage/site", 'InfoController@home');

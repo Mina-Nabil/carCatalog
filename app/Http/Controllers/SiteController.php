@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AboutUs;
+use App\Mail\RequestInfo;
+use App\Models\ContactUs;
 use App\Models\Brand;
 use App\Models\Car;
 use App\Models\CarModel;
@@ -11,6 +12,7 @@ use App\Models\Customer;
 use App\Models\Partner;
 use App\Models\SiteInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller
 {
@@ -77,8 +79,41 @@ class SiteController extends Controller
     function compare(Request $request)
     {
         $data = self::getDefaultSiteInfo(false, "Compare Cars", null, "Compare up to three different cars", true, $request);
-        if (count($data['compareArr']) == 0)
-            return view('frontend.nocompare', $data);
+        $formInputCount = 0;
+
+        if (isset($request->car1) && $request->car1 != 0) {
+            $data['cars'][$formInputCount] = Car::with('model', 'model.brand', 'model.type')->findOrFail($request->car1);
+            $data['cars'][$formInputCount]['accessories'] = $data['cars'][$formInputCount]->getFullAccessoriesArray();
+            $formInputCount++;
+        }
+        if (isset($request->car2) && $request->car2 != 0) {
+            $data['cars'][$formInputCount] = Car::with('model', 'model.brand', 'model.type')->findOrFail($request->car2);
+            $data['cars'][$formInputCount]['accessories'] = $data['cars'][$formInputCount]->getFullAccessoriesArray();
+            $formInputCount++;
+        }
+        if (isset($request->car3) && $request->car3 != 0) {
+            $data['cars'][$formInputCount] = Car::with('model', 'model.brand', 'model.type')->findOrFail($request->car3);
+            $data['cars'][$formInputCount]['accessories'] = $data['cars'][$formInputCount]->getFullAccessoriesArray();
+            $formInputCount++;
+        }
+        if (isset($request->car4) && $request->car4 != 0) {
+            $data['cars'][$formInputCount] = Car::with('model', 'model.brand', 'model.type')->findOrFail($request->car4);
+            $data['cars'][$formInputCount]['accessories'] = $data['cars'][$formInputCount]->getFullAccessoriesArray();
+            $formInputCount++;
+        }
+
+        if ($formInputCount > 1) {
+            $data['count'] = $formInputCount;
+            $data['headerWidth'] = (1 / ($formInputCount + 1)) * 100;
+            $request->session()->remove("compareArr");
+
+            return view('frontend.compare', $data);
+        }
+
+        if (count($data['compareArr']) < 2) {
+            $request->session()->remove("compareArr");
+            return $this->prepareCompare($request);
+        }
         $i = 0;
         foreach ($data['compareArr'] as $carID) {
             $data['cars'][$i] = Car::with('model', 'model.brand', 'model.type')->findOrFail($carID);
@@ -86,17 +121,40 @@ class SiteController extends Controller
             $i++;
         }
         $data['count'] = $i;
-        $data['headerWidth'] = (1/($i+1))*100;
+        $data['headerWidth'] = (1 / ($i + 1)) * 100;
 
         return view('frontend.compare', $data);
+    }
+
+    function prepareCompare(Request $request)
+    {
+        $data = self::getDefaultSiteInfo(false, "Compare Cars", null, "Select up to 4 cars for comparison", true, $request);
+        $data['getCarsURL'] = url('get/cars');
+        return view('frontend.preparecompare', $data);
     }
 
     function calculator()
     {
     }
 
-    function aboutus()
+    function contactus(Request $request)
     {
+        $data = self::getDefaultSiteInfo(false, "Contact Us", null, "We are looking to hear from you :)", true, $request);
+        $data['sendMailURL'] = url('send/email');
+        return view("frontend.contactus", $data);
+    }
+
+    function sendMail(Request $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "email" => "required|email",
+            "phone" => "required",
+            "message" => "required|min:20"
+        ]);
+
+        Mail::to("mina9492@hotmail.com")->send(new RequestInfo($request->name, $request->email, $request->phone, $request->message));
+        echo "1";
     }
 
     function search(Request $request)
@@ -118,7 +176,7 @@ class SiteController extends Controller
         $data['isHeader'] = $isHeader;
         $data['topCars']  =   Car::with(["model", "model.brand"])->orderByDesc('CAR_VLUE')->limit(5)->get();
 
-        $data['aboutUs']  =   AboutUs::getAboutUs();
+        $data['contactUs']  =   ContactUs::getContactUs();
         $data['frontendData'] =   SiteInfo::getSiteInfo();
         $data['partners'] =   Partner::all();
 
@@ -136,7 +194,7 @@ class SiteController extends Controller
         //URLs
         $data['searchURL'] = url('search');
         $data['compareURL'] = url('compare');
-        $data['aboutusURL'] = url('aboutus');
+        $data['contactusURL'] = url('contactus');
         $data['calculateURL'] = url('calculator');
         $data['addToCompareURL'] = url('compare/add');
         $data['removeFromCompareURL'] = url('compare/remove');
