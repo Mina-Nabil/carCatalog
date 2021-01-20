@@ -245,6 +245,6 @@ class SiteController extends Controller
             $query = $query->where("CAR_PRCE", "<=", $priceTo);
         }
 
-        return [$query->toSql(), $query->getBindings()];
+        return $query->get();
     }
 }
