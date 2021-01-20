@@ -229,7 +229,7 @@ class SiteController extends Controller
 
         if ($model && is_numeric($model)) {
             CarModel::findOrFail($model);
-            $query = $query->where("models.id", $model);
+            $query = $query->where("CAR_MODL_ID", $model);
         }
 
         if ($year && is_numeric($year) && $year > 2000) {
