@@ -138,6 +138,7 @@
                     ret = JSON.parse(this.responseText)
                     console.log("get hna")
                     loadCars(i, ret)
+                    checkCompare()
                 } catch(e) {
                     ret = false;
                 }
