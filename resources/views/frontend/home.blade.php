@@ -52,7 +52,7 @@
 
           <div class="form-group col-md-9 col-sm-6">
             <label class="form-label">Price Range ($) </label>
-            <input id="price_range" type="text" class="span2" name="priceRange" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]" />
+            <input id="price_range" type="text" class="span2" name="priceRange" data-slider-min="{{$carsMin}}" data-slider-max="{{$carsMax}}" data-slider-step="5" data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
           </div>
 
 
