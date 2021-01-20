@@ -23,8 +23,8 @@
                         </select>
                     </div>
                     <div class="form-group select">
-                        <select id=car1 class="form-control" onchange="checkCompare()" disabled>
-                            <option value=0 disabled selected>Select A Car</option>
+                        <select id=car1 class="form-control" onchange="checkCompare()" @if(isset($car1) && isset($cars1Model)) disabled @endif>
+
                             @if(isset($car1) && isset($cars1Model))
                             @foreach($cars1Model as $car)
                             <option value="{{$car->id}}" @if($car->id == $car1->id)
@@ -32,6 +32,8 @@
                                 @endif
                                 >{{$car->CAR_CATG}}}}</option>
                             @endforeach
+                            @else
+                            <option value=0 disabled selected>Select A Car</option>
                             @endif
                         </select>
                     </div>

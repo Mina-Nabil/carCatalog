@@ -131,6 +131,7 @@ class SiteController extends Controller
         $data['getCarsURL'] = url('get/cars');
         if (count($data['compareArr']) == 1) {
             $data['car1'] = Car::find(array_pop($data['compareArr']));
+            $data['cars1Model'] = Car::where('CAR_MODL_ID', $data['car1']->CAR_MODL_ID)->get();
         }
         return view('frontend.preparecompare', $data);
     }
