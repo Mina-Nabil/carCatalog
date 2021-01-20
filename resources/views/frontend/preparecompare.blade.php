@@ -30,7 +30,7 @@
                             <option value="{{$car->id}}" @if($car->id == $car1->id)
                                 selected
                                 @endif
-                                >{{$car->CAR_CATG}}}}</option>
+                                >{{$car->CAR_CATG}}</option>
                             @endforeach
                             @else
                             <option value=0 disabled selected>Select A Car</option>
@@ -106,7 +106,7 @@
         <form method="post" action="{{$compareURL}}">
             <div class="row">
                 @csrf
-                <input type="hidden" name=car1 id=carInput1 value=0>
+                <input type="hidden" name=car1 id=carInput1 value={{isset($car1) ? $car1->id : '0'}}>
                 <input type="hidden" name=car2 id=carInput2 value=0>
                 <input type="hidden" name=car3 id=carInput3 value=0>
                 <input type="hidden" name=car4 id=carInput4 value=0>
