@@ -15,13 +15,24 @@
                         <select id=carModel1 class="form-control" onchange="getCars(1)">
                             <option value=0 disabled selected>Select A Model</option>
                             @foreach($models as $model)
-                            <option value="{{$model->id}}">{{$model->BRND_NAME}}: {{$model->MODL_NAME}}</option>
+                            <option @if(isset($car1) && $car1->CAR_MODL_ID == $model->id)
+                                selected
+                                @endif
+                                value="{{$model->id}}">{{$model->BRND_NAME}}: {{$model->MODL_NAME}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group select">
                         <select id=car1 class="form-control" onchange="checkCompare()" disabled>
                             <option value=0 disabled selected>Select A Car</option>
+                            @if(isset($car1) && isset($cars1Model))
+                            @foreach($cars1Model as $car)
+                            <option value="{{$car->id}}" @if($car->id == $car1->id)
+                                selected
+                                @endif
+                                >{{$car->CAR_CATG}}}}</option>
+                            @endforeach
+                            @endif
                         </select>
                     </div>
                 </div>
