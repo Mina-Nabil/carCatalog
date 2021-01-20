@@ -165,7 +165,7 @@ class SiteController extends Controller
         $data = self::getDefaultSiteInfo(false, "Find Your Car", null, "Find your search results below", true, $request);
         $prices = explode(',', $request->priceRange);
         $data['carList'] = self::getSearchResults($request->typeID, $request->brandID, $request->modelID, $request->year, $prices[0] ?? $data['carsMin'], $prices[1] ?? $data['carsMax']);
-        if (count($data['carList'] > 0))
+        if ($data['carList']->count() > 0)
             return view('frontend.list', $data);
         else return view('nocompare', $data);
     }
