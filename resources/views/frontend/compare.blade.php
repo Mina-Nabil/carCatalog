@@ -148,70 +148,70 @@
           <table>
             <thead>
               <tr>
-                <th>BASIC INFO</th>
-                <th>&nbsp;</th>
+                <th style="width:{{$headerWidth}}%">BASIC INFO</th>
+                <th style="width:{{$headerWidth}}%">&nbsp;</th>
                 @isset($cars[1])
-                <th>&nbsp;</th>
+                <th style="width:{{$headerWidth}}%">&nbsp;</th>
                 @endisset
                 @isset($cars[2])
-                <th>&nbsp;</th>
+                <th style="width:{{$headerWidth}}%">&nbsp;</th>
                 @endisset
                 @isset($cars[3])
-                <th>&nbsp;</th>
+                <th style="width:{{$headerWidth}}%">&nbsp;</th>
                 @endisset
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Model Year</td>
-                <td>{{$cars[0]->model->MODL_YEAR}}</td>
+                <td  style="width:{{$headerWidth}}%" >Model Year</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->model->MODL_YEAR}}</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->model->MODL_YEAR}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->model->MODL_YEAR}}</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->model->MODL_YEAR}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->model->MODL_YEAR}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->model->MODL_YEAR}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->model->MODL_YEAR}}</td>
                 @endisset
               </tr>
               <tr>
-                <td>Car Type</td>
-                <td>{{$cars[0]->model->type->TYPE_NAME}}</td>
+                <td  style="width:{{$headerWidth}}%" >Car Type</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->model->type->TYPE_NAME}}</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->model->type->TYPE_NAME}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->model->type->TYPE_NAME}}</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->model->type->TYPE_NAME}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->model->type->TYPE_NAME}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->model->type->TYPE_NAME}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->model->type->TYPE_NAME}}</td>
                 @endisset
               </tr>
               <tr>
-                <td>Transmission</td>
-                <td>{{$cars[0]->CAR_TRNS}}</td>
+                <td  style="width:{{$headerWidth}}%" >Transmission</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_TRNS}}</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_TRNS}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_TRNS}}</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_TRNS}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_TRNS}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_TRNS}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_TRNS}}</td>
                 @endisset
               </tr>
               <tr>
-                <td>Fuel Type</td>
-                <td>Petrol 92, 95</td>
+                <td  style="width:{{$headerWidth}}%" >Fuel Type</td>
+                <td  style="width:{{$headerWidth}}%" >Petrol 92, 95</td>
                 @isset($cars[1])
-                <td>Petrol 92, 95</td>
+                <td  style="width:{{$headerWidth}}%" >Petrol 92, 95</td>
                 @endisset
                 @isset($cars[2])
-                <td>Petrol 92, 95</td>
+                <td  style="width:{{$headerWidth}}%" >Petrol 92, 95</td>
                 @endisset
                 @isset($cars[3])
-                <td>Petrol 92, 95</td>
+                <td  style="width:{{$headerWidth}}%" >Petrol 92, 95</td>
                 @endisset
               </tr>
             </tbody>
@@ -238,107 +238,107 @@
             </thead>
             <tbody>
               <tr>
-                <td>Engine Horse Power</td>
-                <td>{{$cars[0]->CAR_HPWR}}</td>
+                <td  style="width:{{$headerWidth}}%" >Engine Horse Power</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_HPWR}}</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_HPWR}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_HPWR}}</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_HPWR}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_HPWR}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_HPWR}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_HPWR}}</td>
                 @endisset
               </tr>
               <tr>
-                <td>Engine Torque</td>
-                <td>{{$cars[0]->CAR_TORQ}}kW</td>
+                <td  style="width:{{$headerWidth}}%" >Engine Torque</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_TORQ}}kW</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_TORQ}}kW</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_TORQ}}kW</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_TORQ}}kW</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_TORQ}}kW</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_TORQ}}kW</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_TORQ}}kW</td>
                 @endisset
               </tr>
               <tr>
-                <td>Top Speed</td>
-                <td>{{$cars[0]->CAR_TPSP}}km/h</td>
+                <td  style="width:{{$headerWidth}}%" >Top Speed</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_TPSP}}km/h</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_TPSP}}km/h</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_TPSP}}km/h</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_TPSP}}km/h</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_TPSP}}km/h</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_TPSP}}km/h</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_TPSP}}km/h</td>
                 @endisset
               </tr>
               <tr>
-                <td>Acceleration</td>
-                <td>{{$cars[0]->CAR_ACC}}s to 100km/h</td>
+                <td  style="width:{{$headerWidth}}%" >Acceleration</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_ACC}}s to 100km/h</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_ACC}}s to 100km/h</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_ACC}}s to 100km/h</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_ACC}}s to 100km/h</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_ACC}}s to 100km/h</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_ACC}}s to 100km/h</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_ACC}}s to 100km/h</td>
                 @endisset
               </tr>
               <tr>
-                <td>Gas Trunk</td>
-                <td>{{$cars[0]->CAR_TRNK}}L</td>
+                <td  style="width:{{$headerWidth}}%" >Gas Trunk</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_TRNK}}L</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_TRNK}}L</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_TRNK}}L</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_TRNK}}L</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_TRNK}}L</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_TRNK}}L</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_TRNK}}L</td>
                 @endisset
               </tr>
               <tr>
-                <td>Seats</td>
-                <td>{{$cars[0]->CAR_SEAT}}</td>
+                <td  style="width:{{$headerWidth}}%" >Seats</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_SEAT}}</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_SEAT}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_SEAT}}</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_SEAT}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_SEAT}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_SEAT}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_SEAT}}</td>
                 @endisset
               </tr>
               <tr>
-                <td>Ground Clearance</td>
-                <td>{{$cars[0]->CAR_HEIT}}</td>
+                <td  style="width:{{$headerWidth}}%" >Ground Clearance</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_HEIT}}</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_HEIT}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_HEIT}}</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_HEIT}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_HEIT}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_HEIT}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_HEIT}}</td>
                 @endisset
               </tr>
               <tr>
-                <td>Car Dimensions</td>
-                <td>{{$cars[0]->CAR_DIMN}}</td>
+                <td  style="width:{{$headerWidth}}%" >Car Dimensions</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[0]->CAR_DIMN}}</td>
                 @isset($cars[1])
-                <td>{{$cars[1]->CAR_DIMN}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[1]->CAR_DIMN}}</td>
                 @endisset
                 @isset($cars[2])
-                <td>{{$cars[2]->CAR_DIMN}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[2]->CAR_DIMN}}</td>
                 @endisset
                 @isset($cars[3])
-                <td>{{$cars[3]->CAR_DIMN}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$cars[3]->CAR_DIMN}}</td>
                 @endisset
               </tr>
             </tbody>
@@ -370,18 +370,18 @@
               (isset($cars[2]) && $cars[2]['accessories'][$key]['isAvailable'] ) ||
               (isset($cars[3]) && $cars[3]['accessories'][$key]['isAvailable'] ) )
               <tr>
-                <td>{{$accessory['ACSR_NAME']}}/{{$accessory['ACSR_ARBC_NAME']}}</td>
-                <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
+                <td  style="width:{{$headerWidth}}%" >{{$accessory['ACSR_NAME']}}/{{$accessory['ACSR_ARBC_NAME']}}</td>
+                <td  style="width:{{$headerWidth}}%" ><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
                 @isset($cars[1])
-                <td><i class="{{($cars[1]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[1]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
+                <td  style="width:{{$headerWidth}}%" ><i class="{{($cars[1]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[1]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
                 </td>
                 @endisset
                 @isset($cars[2])
-                <td><i class="{{($cars[2]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[2]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
+                <td  style="width:{{$headerWidth}}%" ><i class="{{($cars[2]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[2]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
                 </td>
                 @endisset
                 @isset($cars[3])
-                <td><i class="{{($cars[3]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[3]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
+                <td  style="width:{{$headerWidth}}%" ><i class="{{($cars[3]['accessories'][$key]['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$cars[3]['accessories'][$key]['ACCR_VLUE'] ?? ''}}
                 </td>
                 @endisset
               </tr>
