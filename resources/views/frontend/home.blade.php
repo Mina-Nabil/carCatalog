@@ -130,7 +130,7 @@
           @foreach ($type->cars as $car)
           <div class="col-list-3" style="max-width: 346px; width: 346px;">
             <div class="recent-car-list">
-              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 346px; width: 346px; height:224px; display:block; object-fit:fill "
+              <div class="car-info-box" style="max-width: 346px; width: 346px;"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 346px; width: 346px; height:224px; display:block; object-fit:fill "
                     src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : asset( 'assets/images/600x380.jpg' )}}"></a>
                 <div class="compare_item">
                   <div class="checkbox">
