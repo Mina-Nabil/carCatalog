@@ -2,9 +2,9 @@
 
 @section('content')
 <section class="listing_detail_header"  
-
+@if($car->model->MODL_BIMG)
 style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
-
+@endif
 >
     <div class="container">
       <div class="listing_detail_head white-text div_zindex row">
