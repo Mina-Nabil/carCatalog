@@ -68,7 +68,17 @@ Route::post('customers/insert', 'CustomersController@insert');
 Route::get('customers/toggle/{id}', 'CustomersController@toggle');
 Route::get('customers/delete/{id}', 'CustomersController@delete');
 
-
+//Calculator routes
+Route::get('manage/calculator', 'CalculatorController@index');
+Route::post('add/bank', 'CalculatorController@addBank');
+Route::post('edit/bank', 'CalculatorController@editBank');
+Route::post('delete/bank', 'CalculatorController@deleteBank');
+Route::post('add/insurance', 'CalculatorController@addInsurance');
+Route::post('edit/insurance', 'CalculatorController@editInsurance');
+Route::post('delete/insurance', 'CalculatorController@deleteInsurance');
+Route::post('add/plan', 'CalculatorController@addPlan');
+Route::post('edit/plan', 'CalculatorController@editPlan');
+Route::get('delete/plan/{id}', 'CalculatorController@deletePlan');
 
 //Dashboard users
 Route::get("dash/users/all", 'DashUsersController@index');

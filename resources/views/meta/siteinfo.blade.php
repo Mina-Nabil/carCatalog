@@ -281,7 +281,7 @@
                         <div class="col-9">
                             <label for="input-file-now-custom-1">{{$row->MAIN_ITEM}}</label>
                             <div class="input-group mb-3">
-                                <input type="file" name=photo class="dropify" id="Field{{$row->id}}" data-default-file="{{ (isset($row->MAIN_ITEM)) ? asset( 'storage/'. $row->MAIN_CNTN ) : ''}}" />
+                                <input type="file" name=photo class="dropify" id="Field{{$row->id}}" data-default-file="{{ (isset($row->MAIN_CNTN)) ? asset( 'storage/'. $row->MAIN_CNTN ) : ''}}" />
                             </div>
                         </div>
                         <div class="col-3 align-self-end">

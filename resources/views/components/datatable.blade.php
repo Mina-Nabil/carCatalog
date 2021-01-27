@@ -39,8 +39,16 @@
                         @if(is_array($att))
                         @if(array_key_exists('edit', $att))
                         <td><a href="{{ url( $att['edit']['url'] . $item->{$att['edit']['att']}) }}"><img src="{{ asset('images/edit.png') }}" width=25 height=25></a></td>
+                        @elseif(array_key_exists('editJS', $att))
+                        <td>
+                            <div onclick="{{$att['editJS']['func']}}({{$item->id}})"><a href="javascript:void(0)"><img src="{{ asset('images/edit.png') }}" width=25 height=25></a>
+                            </div>
+                        </td>
                         @elseif(array_key_exists('del', $att))
-                        <td><div onclick="confirmAndGoTo('{{url( $att['del']['url'] . $item->{$att['del']['att']})}}', '{{$att['del']['msg'] ?? 'delete this row'}}')" ><a href="javascript::void(0)"><img src="{{ asset('images/del.png') }}" width=25 height=25></a></div></td>
+                        <td>
+                            <div onclick="confirmAndGoTo('{{url( $att['del']['url'] . $item->{$att['del']['att']})}}', '{{$att['del']['msg'] ?? 'delete this row'}}')"><a
+                                    href="javascript:void(0)"><img src="{{ asset('images/del.png') }}" width=25 height=25></a></div>
+                        </td>
                         @elseif(array_key_exists('foreign', $att))
                         <td>{{ $item->{$att['foreign']['rel']}->{$att['foreign']['att']} ?? '' }}</td>
                         @elseif(array_key_exists('sumForeign', $att))
@@ -53,10 +61,10 @@
                         @elseif(array_key_exists('verified', $att))
                         <td>{{ $item->{$att['verified']['att']}  }}
                             @if($item->{$att['verified']['isVerified']})
-                                <i class="fas fa-check-circle" style="color:lightgreen">
-                            @else
+                            <i class="fas fa-check-circle" style="color:lightgreen">
+                                @else
                                 <i class=" fas fa-exclamation-circle" style="color:red">
-                            @endif
+                                    @endif
                         </td>
                         @elseif(array_key_exists('dynamicUrl', $att))
                         <td><a href="{{ url($att['dynamicUrl']['baseUrl'].$item->{$att['dynamicUrl']['val']}) }}">{{ $item->{$att['dynamicUrl']['att']}  }}</a></td>
@@ -96,7 +104,8 @@
                         <td>{{ $item->{$att['urlOrStatic']['static']}  }}</td>
                         @endisset
                         @elseif(array_key_exists('foreignUrl', $att))
-                        <td><a href="{{ url($att['foreignUrl']['baseUrl'] . '/' . $item->{$att['foreignUrl']['urlAtt']}) }}">{{ $item->{$att['foreignUrl']['rel']}->{$att['foreignUrl']['att']}  }}</a></td>
+                        <td><a href="{{ url($att['foreignUrl']['baseUrl'] . '/' . $item->{$att['foreignUrl']['urlAtt']}) }}">{{ $item->{$att['foreignUrl']['rel']}->{$att['foreignUrl']['att']}  }}</a>
+                        </td>
                         @elseif(array_key_exists('assetImg', $att))
                         <td>
                             @isset($item->{$att['assetImg']['att']})
@@ -105,9 +114,14 @@
                         </td>
                         @elseif(array_key_exists('comment', $att))
                         <td>
-                            <button type="button" style="padding:.1rem" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{$item->{$att['comment']['att']} }}" data-original-title="{{ $att['comment']['title'] ?? 'Comment:'}}">  <i class="far fa-list-alt"></i>
+                            <button type="button" style="padding:.1rem" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom"
+                                data-content="{{$item->{$att['comment']['att']} }}" data-original-title="{{ $att['comment']['title'] ?? 'Comment:'}}"> <i class="far fa-list-alt"></i>
                             </button>
                         </td>
+                        @elseif(array_key_exists('hidden', $att))
+                        <input type=hidden id="{{ $att['hidden']['id'] }}{{ $item->id }}" value="{{ $item->{$att['hidden']['valueAtt']} }}" />
+                        @elseif(array_key_exists('hiddenRel', $att))
+                        <input type=hidden id="{{ $att['hiddenRel']['id']}}{{$item->id }}" value="{{$item->{$att['hiddenRel']['rel']}->{$att['hiddenRel']['valueAtt']} }}" />
                         @endif
                         @else
                         <td>{{ $item->{$att} }}</td>

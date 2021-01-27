@@ -118,7 +118,7 @@
 <!-- /Error-404-->
 
 <script>
-    function getCars(i, modelID){
+    function getCars(i){
         var modelSel = document.getElementById('carModel' + i)
         var modelID = modelSel.value;
         var http = new XMLHttpRequest();

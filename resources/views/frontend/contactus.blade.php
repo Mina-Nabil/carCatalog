@@ -47,10 +47,12 @@
                             <div class="contact_info_m">{{$contactUs['address'] ?? ''}}</div>
                         </li>
                         @endif
+                        @if(isset($contactUs['phone1']) && strlen($contactUs['phone1'])>0 )
                         <li>
                             <div class="icon_wrap"><i class="fa fa-phone" aria-hidden="true"></i></div>
                             <div class="contact_info_m"><a target="_blank" href="tel:{{$contactUs['phone1']}}">{{$contactUs['phone1']}}</a></div>
                         </li>
+                        @endif
                         @if(isset($contactUs['phone2']) && strlen($contactUs['phone2'])>0 )
                         <li>
                             <div class="icon_wrap"><i class="fa fa-phone" aria-hidden="true"></i></div>

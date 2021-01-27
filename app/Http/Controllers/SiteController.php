@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Mail\RequestInfo;
+use App\Models\Bank;
 use App\Models\ContactUs;
 use App\Models\Brand;
 use App\Models\Car;
 use App\Models\CarModel;
 use App\Models\CarType;
 use App\Models\Customer;
+use App\Models\Downpayment;
+use App\Models\Insurance;
 use App\Models\Partner;
+use App\Models\Plan;
 use App\Models\SiteInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -70,9 +74,20 @@ class SiteController extends Controller
     {
         $car = Car::with('model', 'model.brand', 'model.type')->findOrFail($id);
         $data = self::getDefaultSiteInfo(false, $car->model->MODL_NAME . ' ' . $car->CAR_CATG, null, null, false, $request);
-        $data['similar'] = Car::with('model', 'model.brand')->where("CAR_MODL_ID", $id)->where("cars.id", "!=", $id)->get();
+        $data['similar'] = Car::with('model', 'model.brand')->where("CAR_MODL_ID", $car->model->id)->where("cars.id", "!=", $id)->get();
         $data['car'] = $car;
         $data['carAccessories'] = $car->getFullAccessoriesArray();
+
+        //loan calculator 
+        $data['downpayments']   =   Downpayment::all();
+        $data['insurances']     =   Insurance::all(); 
+
+        //URLs
+        $data['getCarsURL'] = url('get/cars');
+        $data['getYearsURL'] = url('get/years');
+        $data['getPlansURL'] = url('get/plans');
+        $data['getCarsURL'] = url('get/cars');
+        
         return view('frontend.car', $data);
     }
 
@@ -136,8 +151,19 @@ class SiteController extends Controller
         return view('frontend.preparecompare', $data);
     }
 
-    function calculator()
+    function calculator(Request $request)
     {
+        $data = self::getDefaultSiteInfo(false, "Car Loans", null, "Select your car & Calculate Loan Plans", true, $request);
+        $data['downpayments']   =   Downpayment::all();
+        $data['insurances']     =   Insurance::all(); 
+
+        //URLs
+        $data['getCarsURL'] = url('get/cars');
+        $data['getYearsURL'] = url('get/years');
+        $data['getPlansURL'] = url('get/plans');
+        $data['getCarsURL'] = url('get/cars');
+
+        return view('frontend.calculator', $data);
     }
 
     function contactus(Request $request)

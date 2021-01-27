@@ -25,6 +25,7 @@
     <link href="{{ asset('assets/node_modules/dropify/dist/css/dropify.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/frontend/extensions/toast-master/css/jquery.toast.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oregano" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
@@ -165,8 +166,9 @@
                             </ul>
                         </li>
 
-                        <li> <a href="{{url('admin/manage/site')}}" aria-expanded="false"><i class="fas fa-globe"></i><span class="hide-menu">Home Page </span></a></li>
-                        
+                        <li> <a href="{{url('admin/manage/site')}}" aria-expanded="false"><i class="fas fa-globe"></i><span class="hide-menu">Images & Data </span></a></li>
+
+                        <li> <a href="{{url('admin/manage/calculator')}}" aria-expanded="false"><i class="fas fa-calculator"></i><span class="hide-menu">Calculator </span></a></li>
                         <li> <a href="{{url('admin/manage/contact')}}" aria-expanded="false"><i class="fas fa-info"></i><span class="hide-menu">Contact Us </span></a></li>
                         <li> <a href="{{url('admin/customers/show')}}" aria-expanded="false"><i class="fas fa-donate"></i><span class="hide-menu">Customers </span></a></li>
                         <li> <a href="{{url('admin/partners/show')}}" aria-expanded="false"><i class="fas fa-user-md"></i><span class="hide-menu">Partners </span></a></li>
@@ -333,8 +335,8 @@
     <!-- Form JS -->
     <script src="{{ asset('dist/js/pages/jasny-bootstrap.js') }}"></script>
     <script src="{{ asset('assets/node_modules/dropify/dist/js/dropify.min.js')}}"></script>
-    <script src="{{ asset('assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript">
-    </script>
+    <script src="{{ asset('assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{asset('assets/frontend/extensions/toast-master/js/jquery.toast.js') }}"></script>
 
     <!-- Start Table Search Script -->
     <script>
@@ -394,104 +396,7 @@
         const day = d.getDay();
         const month = d.getMonth();
         const formatted = day + "/" + month + "/" + year;
-        // $(function () {
-        //     $(function () {
-
-        //         var table = $('#myTable').DataTable({
-        //             "displayLength": 25,
-        //             dom: 'Bfrtip',
-        //             buttons: [
-        //                 {
-        //                     extend: 'print',
-        //                     text: 'Print',
-        //                     title: 'Veneto',
-        //                     footer: true,
-        //                     messageTop: "Date: " + formatted,
-        //                     customize: function (win) {
-        //                         $(win.document.body)
-        //                             .prepend('<center><img src="{{asset('images / dark - logo.png')}}" style="position:absolute; margin: auto; ; margin-top: 460px ; left: 0; right: 0; opacity:0.2" /></center>')
-        //                             .css('font-size', '24px')
-
-        //                         //$('#stampHeader' ).addClass( 'stampHeader' );
-        //                         $(win.document.body).find('table')
-        //                             .css('border', 'solid')
-        //                             .css('margin-top', '20px')
-        //                             .css('font-size', 'inherit');
-        //                         $(win.document.body).find('th')
-        //                             .css('border', 'solid')
-        //                             .css('border', '!important')
-        //                             .css('border-width', '1px')
-        //                             .css('font-size', 'inherit')
-        //                         $(win.document.body).find('td')
-        //                             .css('border', 'solid')
-        //                             .css('border', '!important')
-        //                             .css('border-width', '1px');
-        //                         $(win.document.body).find('tr')
-        //                             .css('border', 'solid')
-        //                             .css('border', '!important')
-        //                             .css('border-width', '1px')
-        //                     }
-        //                 }, {
-        //                     extend: 'excel',
-        //                     title: 'Veneto',
-        //                     footer: true,
-
-        //                 }
-        //             ]
-        //         });
-        //         var table = $('#myTable2').DataTable({
-        //             "displayLength": 25,
-        //             dom: 'Bfrtip',
-        //             buttons: [
-        //                 {
-        //                     extend: 'print',
-        //                     text: 'Print',
-        //                     title: 'Veneto',
-        //                     footer: true,
-        //                     messageTop: "Date: " + formatted,
-        //                     customize: function (win) {
-        //                         $(win.document.body)
-        //                             .prepend('<center><img src="{{asset('images / dark - logo.png')}}" style="position:absolute; margin: auto; ; margin-top: 460px ; left: 0; right: 0; opacity:0.2" /></center>')
-        //                             .css('font-size', '24px')
-
-        //                         //$('#stampHeader' ).addClass( 'stampHeader' );
-        //                         $(win.document.body).find('table')
-        //                             .css('border', 'solid')
-        //                             .css('margin-top', '20px')
-        //                             .css('font-size', 'inherit');
-        //                         $(win.document.body).find('th')
-        //                             .css('border', 'solid')
-        //                             .css('border', '!important')
-        //                             .css('border-width', '1px')
-        //                             .css('font-size', 'inherit')
-        //                         $(win.document.body).find('td')
-        //                             .css('border', 'solid')
-        //                             .css('border', '!important')
-        //                             .css('border-width', '1px');
-        //                         $(win.document.body).find('tr')
-        //                             .css('border', 'solid')
-        //                             .css('border', '!important')
-        //                             .css('border-width', '1px')
-        //                     }
-        //                 }, {
-        //                     extend: 'excel',
-        //                     title: 'Veneto',
-        //                     footer: true,
-
-        //                 }
-        //             ]
-        //         });
-        //         // Order by the grouping
-        //         $('#example tbody').on('click', 'tr.group', function () {
-        //             var currentOrder = table.order()[0];
-        //             if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-        //                 table.order([2, 'desc']).draw();
-        //             } else {
-        //                 table.order([2, 'asc']).draw();
-        //             }
-        //         });
-        //     });
-        // });
+     
 
 
         $(' .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-info mr-1');

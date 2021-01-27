@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Car;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 /////////Website front end routes 
 
+Route::get('/calculator', 'SiteController@calculator');
+
+////////compare links
 Route::get('/compare', 'SiteController@compare');
 Route::post('/compare', 'SiteController@compare');
 Route::post('/compare/add', function (Request $request) {
@@ -55,10 +59,30 @@ Route::post('/get/cars', function (Request $request) {
     return json_encode(Car::where('CAR_MODL_ID', $request->modelID)->get());
     
 });
+Route::post('get/years', function (Request $request) {
+    $request->validate([
+        "downID" => "required|exists:downpayments,id"
+    ]);
+    return json_encode(Plan::getYearsByDownpayment($request->downID));
+});
+
+Route::post('get/plans', function (Request $request) {
+    $request->validate([
+        "downID" => "required|exists:downpayments,id",
+        "year" => "required",
+        "isEmployed" => "required",
+    ]);
+    return json_encode(Plan::getPlansByDownpaymentAndYear($request->downID, $request->year, $request->isEmployed));
+});
+
 Route::post('/search', 'SiteController@search');
 Route::post('/send/email', 'SiteController@sendMail');
+
+//cars urls
 Route::get('/car/{id}', 'SiteController@car');
 Route::get('/model/{id}', 'SiteController@model');
+
+//main pages
 Route::get('/', 'SiteController@home')->name('home');
 Route::get('/contactus', 'SiteController@contactus')->name('contactus');
 

@@ -5554,9 +5554,6 @@ h5 {
     line-height: 30px;
     padding: 0 15px;
 }
-.sidebar_3{
-	height:390px;
-}
 @media (max-width:992px) {
 .sidebar_3{
 	height:auto;

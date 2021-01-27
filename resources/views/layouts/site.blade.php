@@ -26,6 +26,8 @@
   <link href="{{ asset('assets/frontend/extensions/toast-master/css/jquery.toast.css') }}" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+  @yield('css_content')
+
   <!-- Custom Colors -->
   {{-- <link rel="stylesheet" href="{{asset('assets/frontend/colors/red.css')}}"> --}}
   <!--<link rel="stylesheet" href="{{asset('assets/frontend/colors/orange.css')}}">-->
