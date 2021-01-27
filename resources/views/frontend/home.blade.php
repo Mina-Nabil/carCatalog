@@ -284,7 +284,7 @@
 </section>
 @endif
 
-@if($frontendData['Customers']['Active'])
+@if(isset($frontendData['Customers']) && $frontendData['Customers']['Active'])
 <section class="section-padding testimonial-section parallex-bg">
   <div class="container div_zindex">
     <div class="section-header white-text text-center">
