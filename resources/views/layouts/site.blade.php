@@ -16,7 +16,6 @@
   <!--OWL Carousel slider-->
   <link rel="stylesheet" href="{{asset('assets/frontend/css/owl.carousel.css')}}" type="text/css">
   <link rel="stylesheet" href="{{asset('assets/frontend/css/owl.transitions.css')}}" type="text/css">
-  <link href="{{ asset('dist/css/pages/tab-page.css')}}" rel="stylesheet">
   <!--slick-slider -->
   <link href="{{asset('assets/frontend/css/slick.css')}}" rel="stylesheet">
   <!--bootstrap-slider -->
@@ -314,6 +313,12 @@
           
           http.send(formdata, true);
       }
+
+      $( document ).ready(function() {
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+      });
     </script>
 </body>
 
