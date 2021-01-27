@@ -299,20 +299,20 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                                 <label>Years</label>
                                 <div class="select">
                                     <select class="form-control" id="yearsSel" title="Installament Years" disabled onchange="getPlans()">
-                                        <option value="0" disabled selected> Please set downpayment</option>
+                                        <option value="0" disabled selected> Available options</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Loan Guarantee </label>
                                 <div class=row>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="employeeRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
                                             <label class="custom-control-label" for="employeeRadio">Employee</label>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input"  onchange="getPlans()">
                                             <label class="custom-control-label" for="selfRadio">Self-Employed</label>
