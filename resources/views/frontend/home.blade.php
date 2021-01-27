@@ -52,7 +52,8 @@
 
           <div class="form-group col-md-9 col-sm-6">
             <label class="form-label">Price Range ($) </label>
-            <input id="price_range" type="text" class="span2" name="priceRange" data-slider-min="{{$carsMin}}" data-slider-max="{{$carsMax}}" data-slider-step="5" data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
+            <input id="price_range" type="text" class="span2" name="priceRange" data-slider-min="{{$carsMin}}" data-slider-max="{{$carsMax}}" data-slider-step="5"
+              data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
           </div>
 
 
@@ -116,7 +117,10 @@
           @endforeach
         </ul>
       </div>
-      <!-- Recently Listed New Cars -->
+    </div>
+    <!-- Recently Listed New Cars -->
+    <div class="row">
+
       <div class="tab-content">
         <?php $i=0?>
         @foreach ($types as $type)
@@ -126,11 +130,11 @@
           @foreach ($type->cars as $car)
           <div class="col-list-3" style="max-width: 346px; width: auto;">
             <div class="recent-car-list">
-              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 346px; width: auto; height:224px; display:block; object-fit:fill " src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : asset( 'assets/images/600x380.jpg' )}}" ></a>
+              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 346px; width: auto; height:224px; display:block; object-fit:fill "
+                    src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : asset( 'assets/images/600x380.jpg' )}}"></a>
                 <div class="compare_item">
                   <div class="checkbox">
-                    <input type="checkbox" id="compare{{$car->id}}" onchange="addToCompare(this, '{{$car->id}}')"
-                    @if(in_array($car->id, $compareArr)) 
+                    <input type="checkbox" id="compare{{$car->id}}" onchange="addToCompare(this, '{{$car->id}}')" @if(in_array($car->id, $compareArr))
                     checked
                     @endif
                     >
@@ -158,6 +162,7 @@
         @endforeach
       </div>
     </div>
+  </div>
   </div>
 </section>
 @endif
@@ -219,15 +224,14 @@
       @foreach($offers as $offerCar)
       <div class="col-list-3">
         <div class="featured-car-list">
-          <div class="featured-car-img"> <a href="{{url('car/' . $offerCar->id)}}"><img src="{{ ($offerCar->mainImage()) ? assets('storage' . $offerCar->mainImage())  : assets('assets/frontend/images/600x380.jpg')}}"
-                class="img-fluid" alt="Image"></a>
+          <div class="featured-car-img"> <a href="{{url('car/' . $offerCar->id)}}"><img
+                src="{{ ($offerCar->mainImage()) ? assets('storage' . $offerCar->mainImage())  : assets('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="Image"></a>
             @if($offerCar->CAR_DISC > 0)
             <div class="label_icon">- {{$offerCar->CAR_DISC}}</div>
             @endif
             <div class="compare_item">
               <div class="checkbox">
-                <input type="checkbox" id="compare{{$offerCar->id}}" onchange="addToCompare(this, '{{$offerCar->id}}')"
-                @if(in_array($offerCar->id, $compareArr)) 
+                <input type="checkbox" id="compare{{$offerCar->id}}" onchange="addToCompare(this, '{{$offerCar->id}}')" @if(in_array($offerCar->id, $compareArr))
                 checked
                 @endif
                 >
