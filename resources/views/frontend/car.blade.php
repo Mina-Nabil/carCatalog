@@ -3,7 +3,7 @@
 @section('content')
 <section class="listing_detail_header"  
 
-style="background-image: url('{{asset('storage/' . $model->MODL_BGIM )}}')"
+style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
 
 >
     <div class="container">
