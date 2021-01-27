@@ -128,9 +128,9 @@
         <div role="tabpanel" class="tab-pane {{($i==0) ? 'active' : ''}}" id="type{{$type->id}}">
           <?php $i++?>
           @foreach ($type->cars as $car)
-          <div class="col-list-3" style="max-width: 326px; width: 326px;">
+          <div class="col-list-3" style="max-width: 306px; width: 306px;">
             <div class="recent-car-list">
-              <div class="car-info-box" style="max-width: 326px; width: 326px;"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 326px; width: 326px; height:224px; display:block; object-fit:fill "
+              <div class="car-info-box" style="max-width: 306px; width: 306px;"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 306px; width: 306px; height:224px; display:block; object-fit:fill "
                     src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : asset( 'assets/images/600x380.jpg' )}}"></a>
                 <div class="compare_item">
                   <div class="checkbox">
@@ -147,11 +147,11 @@
                   <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
                 </ul>
               </div>
-              <div class="car-title-m" style="max-width: 326px; width: 326px;">
+              <div class="car-title-m" style="max-width: 306px; width: 306px;">
                 <h6><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
                 <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
               </div>
-              <div class="inventory_info_m" style="max-width: 326px; width: 326px;">
+              <div class="inventory_info_m" style="max-width: 306px; width: 306px;">
                 <p>Transmission type: {{$car->CAR_TRNS}}. Car model {{$car->model->MODL_YEAR}}.</p>
               </div>
             </div>
