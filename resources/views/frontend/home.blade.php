@@ -147,9 +147,6 @@
                 <h6><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
                 <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
               </div>
-              <div class="inventory_info_m">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              </div>
             </div>
           </div>
           @endforeach
