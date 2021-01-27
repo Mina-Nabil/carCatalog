@@ -147,6 +147,9 @@
                 <h6><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
                 <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
               </div>
+              <div class="inventory_info_m">
+                <p>Transmission type: {{$car->CAR_TRNS}}. Car model {{$car->model->MODL_YEAR}}.</p>
+              </div>
             </div>
           </div>
           @endforeach
