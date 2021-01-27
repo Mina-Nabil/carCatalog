@@ -73,7 +73,7 @@ class SiteController extends Controller
     function car(Request $request, $id)
     {
         $car = Car::with('model', 'model.brand', 'model.type')->findOrFail($id);
-        $data = self::getDefaultSiteInfo(false, $car->model->MODL_NAME . ' ' . $car->CAR_CATG, $car->model->MODL_BGIM ? asset('storage/' . $car->model->MODL_BGIM ) : null, null, false, $request);
+        $data = self::getDefaultSiteInfo(false, $car->model->MODL_NAME . ' ' . $car->CAR_CATG, null, null, false, $request);
         $data['similar'] = Car::with('model', 'model.brand')->where("CAR_MODL_ID", $car->model->id)->where("cars.id", "!=", $id)->get();
         $data['car'] = $car;
         $data['carAccessories'] = $car->getFullAccessoriesArray();

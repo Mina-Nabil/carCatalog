@@ -1,7 +1,11 @@
 @extends('layouts.site')
 
 @section('content')
-<section class="listing_detail_header">
+<section class="listing_detail_header"  
+@if($car->model->MODL_BIMG)
+style="background-image: url('{{asset('storage/' . $model->MODL_BGIM )}}')"
+@endif
+>
     <div class="container">
       <div class="listing_detail_head white-text div_zindex row">
         <div class="col-md-9">
