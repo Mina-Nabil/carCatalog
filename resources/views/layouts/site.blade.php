@@ -272,7 +272,7 @@
 
     <!-- Scripts -->
     <script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/frontend/js/popper.min.js')}}"></script>
+    <script src="{{ asset('assets/node_modules/popper/popper.min.js') }}"></script>
     <script src="{{asset('assets/frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/frontend/js/interface.js')}}"></script>
     <!--bootstrap-slider-JS-->
