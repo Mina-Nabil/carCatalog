@@ -103,7 +103,6 @@
         believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
     </div>
     <div class="row">
-
       <!-- Nav tabs -->
       <div class="recent-tab">
         <ul class="nav nav-tabs" role="tablist">
@@ -120,7 +119,6 @@
     </div>
     <!-- Recently Listed New Cars -->
     <div class="row">
-
       <div class="tab-content">
         <?php $i=0?>
         @foreach ($types as $type)

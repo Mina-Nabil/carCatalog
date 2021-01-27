@@ -63,7 +63,7 @@ class SiteController extends Controller
     {
         $model = CarModel::with('cars', 'type', 'brand', 'colorImages')->findOrFail($id);
         $model->id = $id;
-        $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories', true, $request);
+        $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, $model->MODL_BGIM ?? null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories', true, $request);
         $data['carList'] = $model->cars;
         $data['model'] = $model;
 
