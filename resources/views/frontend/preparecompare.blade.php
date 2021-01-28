@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-3" >
                 <div>
-                    <img id=carImage1 style="width: 100%; height:180px;" src="{{isset($car1) ?  asset('storage/' . $car1->image ) : asset('images/def-car.png')}}">
+                    <img id=carImage1 style="width: 100%; height:160px;" src="{{isset($car1) ?  asset('storage/' . $car1->image ) : asset('images/def-car.png')}}">
                 </div>
                 <div class="faq_text">
                     <h4>Select a car</h4>
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-3">
                 <div>
-                    <img id=carImage2 style="width: 100%; max-height:180px; height:auto;" src="{{asset('images/def-car.png')}}">
+                    <img id=carImage2 style="width: 100%;  height:160px;" src="{{asset('images/def-car.png')}}">
                 </div>
                 <div class="faq_text">
                     <h4>Select a car</h4>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-md-3">
                 <div>
-                    <img id=carImage3 style="width: 100%; max-height:180px; height:auto;" src="{{asset('images/def-car.png')}}">
+                    <img id=carImage3 style="width: 100%;  height:160px;" src="{{asset('images/def-car.png')}}">
                 </div>
                 <div class="faq_text">
                     <h4>Select a car</h4>
@@ -83,7 +83,7 @@
             </div>
             <div class="col-md-3">
                 <div>
-                    <img id=carImage4 style="width: 100%; max-height:180px; height:auto;" src="{{asset('images/def-car.png')}}">
+                    <img id=carImage4 style="width: 100%;  height:160px;" src="{{asset('images/def-car.png')}}">
                 </div>
                 <div class="faq_text">
                     <h4>Select a car</h4>
