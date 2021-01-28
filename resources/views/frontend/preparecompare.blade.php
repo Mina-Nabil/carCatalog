@@ -5,7 +5,7 @@
 <section class="faq section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" style="height: 180px">
                 <div>
                     <img id=carImage1 style="width: 100%; max-height:180px; height:auto;" src="{{isset($car1) ?  asset('storage/' . $car1->image ) : asset('images/def-car.png')}}">
                 </div>
