@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-<section class="listing_detail_header"  
+<section class="listing_detail_header"  title = "{{$car->model->MODL_BIMG}}"
 @if($car->model->MODL_BIMG)
 style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
 @endif
