@@ -4,7 +4,7 @@
 <section class="listing_detail_header"  
 @if(isset($car->model->MODL_BIMG) && str_len($car->model->MODL_BIMG) > 0 )
 style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
-@if
+@endif
 >
     <div class="container">
       <div class="listing_detail_head white-text div_zindex row">
