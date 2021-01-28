@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="listing_detail_header"  
-@if(isset($car->model->MODL_BGIM) && str_len($car->model->MODL_BGIM) > 0 )
+@if(isset($car->model->MODL_BGIM) && strlen($car->model->MODL_BGIM) > 0 )
 style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
 @endif
 >
