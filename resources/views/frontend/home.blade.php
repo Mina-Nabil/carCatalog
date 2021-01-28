@@ -119,7 +119,7 @@
     </div>
     <!-- Recently Listed New Cars -->
     <div class="row">
-      <div class="tab-content">
+      <div class="tab-content" style="width: 100%">
         <?php $i=0?>
         @foreach ($types as $type)
         @if ($type->TYPE_MAIN)
