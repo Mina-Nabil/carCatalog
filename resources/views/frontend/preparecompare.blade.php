@@ -5,9 +5,9 @@
 <section class="faq section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-3" style="height: 220px">
+            <div class="col-md-3" >
                 <div>
-                    <img id=carImage1 style="width: 100%; max-height:180px; height:auto;" src="{{isset($car1) ?  asset('storage/' . $car1->image ) : asset('images/def-car.png')}}">
+                    <img id=carImage1 style="width: 100%; height:180px;" src="{{isset($car1) ?  asset('storage/' . $car1->image ) : asset('images/def-car.png')}}">
                 </div>
                 <div class="faq_text">
                     <h4>Select a car</h4>
