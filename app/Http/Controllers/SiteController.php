@@ -73,7 +73,6 @@ class SiteController extends Controller
     function car(Request $request, $id)
     {
         $car = Car::with('model', 'model.brand', 'model.type')->findOrFail($id);
-        dd($car->model);
         $data = self::getDefaultSiteInfo(false, $car->model->MODL_NAME . ' ' . $car->CAR_CATG, null, null, false, $request);
         $data['similar'] = Car::with('model', 'model.brand')->where("CAR_MODL_ID", $car->model->id)->where("cars.id", "!=", $id)->get();
         $data['car'] = $car;
