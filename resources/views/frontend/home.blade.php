@@ -125,8 +125,8 @@
         @if ($type->TYPE_MAIN)
         <div role="tabpanel" class="tab-pane {{($i==0) ? 'active' : ''}}" id="type{{$type->id}}">
           <?php $i++?>
-          @foreach ($type->cars as $car)
           <div class=row>
+            @foreach ($type->cars as $car)
             <div class="col-list-3">
               <div class="recent-car-list">
                 <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 346px; width: auto; height:224px; display:block; object-fit:fill "
@@ -155,8 +155,8 @@
                 </div>
               </div>
             </div>
+            @endforeach
           </div>
-          @endforeach
         </div>
         @endif
         @endforeach
