@@ -163,9 +163,11 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                         <div class="tab-content">
                             <!-- vehicle-overview -->
                             <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
-                                @if(isset($model->MODL_BRCH))
+                                @if(isset($car->model->MODL_BRCH))
                                 <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
                                     frameborder="0" allowfullscreen=""></iframe>
+                                @elseif(isset($car->model->MODL_PDF))
+                                <iframe style="border: 1px solid #777; width:100% " src="{{asset('storage/' . $car->model->MODL_PDF)}}" height="371px" frameborder="0" allowfullscreen=""></iframe>
                                 @endif
                             </div>
 
