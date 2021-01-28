@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+{{dd($frontEndData)}}
 <section id="intro-3" @isset($frontEndData['Calculator Page']['Calculator Background Image'])
     style="background-image: url({{asset('storage/' . $frontEndData['Calculator Page']['Calculator Background Image'])}}) !important" @endisset>
     <div class="container">
