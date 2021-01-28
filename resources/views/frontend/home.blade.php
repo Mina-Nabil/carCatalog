@@ -126,31 +126,33 @@
         <div role="tabpanel" class="tab-pane {{($i==0) ? 'active' : ''}}" id="type{{$type->id}}">
           <?php $i++?>
           @foreach ($type->cars as $car)
-          <div class="col-list-3">
-            <div class="recent-car-list">
-              <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 346px; width: auto; height:224px; display:block; object-fit:fill "
-                    src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : asset( 'assets/images/600x380.jpg' )}}"></a>
-                <div class="compare_item">
-                  <div class="checkbox">
-                    <input type="checkbox" id="compare{{$car->id}}" onchange="addToCompare(this, '{{$car->id}}')" @if(in_array($car->id, $compareArr))
-                    checked
-                    @endif
-                    >
-                    <label for="compare{{$car->id}}">Compare</label>
+          <div class=row>
+            <div class="col-list-3">
+              <div class="recent-car-list">
+                <div class="car-info-box"> <a href="{{url('car/' . $car->id)}}"><img style="max-width: 346px; width: auto; height:224px; display:block; object-fit:fill "
+                      src="{{(isset($car->image)) ? asset( 'storage/'. $car->image ) : asset( 'assets/images/600x380.jpg' )}}"></a>
+                  <div class="compare_item">
+                    <div class="checkbox">
+                      <input type="checkbox" id="compare{{$car->id}}" onchange="addToCompare(this, '{{$car->id}}')" @if(in_array($car->id, $compareArr))
+                      checked
+                      @endif
+                      >
+                      <label for="compare{{$car->id}}">Compare</label>
+                    </div>
                   </div>
+                  <ul>
+                    <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}</li>
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}}</li>
+                    <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
+                  </ul>
                 </div>
-                <ul>
-                  <li><i class="fa fa-database" aria-hidden="true"></i>{{$car->CAR_ENCC}}</li>
-                  <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->MODL_YEAR}}</li>
-                  <li><i class="fa fa-rocket" aria-hidden="true"></i>{{$car->CAR_HPWR}} hp</li>
-                </ul>
-              </div>
-              <div class="car-title-m">
-                <h6><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
-                <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
-              </div>
-              <div class="inventory_info_m">
-                <p>Transmission type: {{$car->CAR_TRNS}}. Car model {{$car->model->MODL_YEAR}}.</p>
+                <div class="car-title-m">
+                  <h6><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
+                  <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
+                </div>
+                <div class="inventory_info_m">
+                  <p>Transmission type: {{$car->CAR_TRNS}}. Car model {{$car->model->MODL_YEAR}}.</p>
+                </div>
               </div>
             </div>
           </div>
