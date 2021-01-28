@@ -45,7 +45,7 @@ class SiteController extends Controller
                 ->where('BRND_ACTV', 1)->where('MODL_ACTV', 1)
                 ->get();
         }
-        if (isset($data['frontendData']['rending cars']) && $data['frontendData']['Trending cars']['Active']) {
+        if (isset($data['frontendData']['Trending cars']) && $data['frontendData']['Trending cars']['Active']) {
             $data['trends'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
                 ->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
                 ->select('brands.*', 'models.*', 'cars.*')
