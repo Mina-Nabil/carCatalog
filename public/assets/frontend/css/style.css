@@ -2636,7 +2636,7 @@ table.info-tabel tr td {
 	font-size:18px;
 	font-weight:400;
 	line-height:66px;
-	padding:22px 65px;
+	/* padding:22px 65px; */
 	background:none;
 	color:#555;
 }
