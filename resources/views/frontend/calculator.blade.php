@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="col-6 align-self-center">
-                                <label>Bank Expenses</label>
+                                <label>Administrative Fees</label>
                             </div>
                             <div class="form-group col-md-6">
                                 <input class="form-control" id=expensesInput type="text" disabled readonly>
