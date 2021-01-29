@@ -388,7 +388,7 @@
             var expenses = parseFloat(planData[1]) ?? 0
             var insurance = parseFloat(planData[2]) ?? 0
     
-            if(remaining > 0 && interest>0 && expenses>0 && years>0){
+            if(remaining > 0 && interest>0 && expenses>=0 && years>0){
                 var installament = (remaining + (remaining*(interest/100)*years) ) / (12*years)
                 $('#monthlyPayments').val(installament)
                 $('#expensesInput').val(expenses/100*remaining)
