@@ -153,8 +153,8 @@
                     <div class="listing_detail_wrap">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs gray-bg" role="tablist">
-                            <li role="presentation"><a class="active" href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
-                            <li role="presentation"><a href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
+                            <li role="presentation"><a class="active" href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
+                            <li role="presentation"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
                             <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
                             <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
                         </ul>
@@ -162,7 +162,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <!-- vehicle-overview -->
-                            <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
+                            <div role="tabpanel" class="tab-pane" id="vehicle-overview">
                                 @if(isset($car->model->MODL_BRCH))
                                 <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$car->model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
                                     frameborder="0" allowfullscreen=""></iframe>
@@ -171,7 +171,7 @@
                                 @endif
                             </div>
 
-                            <div role="tabpanel" class="tab-pane" id="colors">
+                            <div role="tabpanel" class="tab-pane active" id="colors">
                                 <section class="listing-detail">
                                     <div class="container">
                                         <div class="row">
