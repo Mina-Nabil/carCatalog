@@ -314,9 +314,6 @@
           http.send(formdata, true);
       }
 
-      $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
-      });
     </script>
 </body>
 
