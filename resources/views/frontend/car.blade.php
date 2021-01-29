@@ -179,8 +179,7 @@
                                                 <div class="listing_images">
                                                     <div id="listing_images_slider2" class="listing_images_slider">
                                                         @foreach($car->model->colorImages as $carImage)
-                                                        <div title="{{$carImage->MOIM_COLR}}"><img height="560px"
-                                                                src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
+                                                        <div><img height="560px" title="{{$carImage->MOIM_COLR}}" src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
                                                         </div>
                                                         @endforeach
                                                     </div>
