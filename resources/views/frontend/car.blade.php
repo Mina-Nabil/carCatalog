@@ -1,40 +1,38 @@
 @extends('layouts.site')
 
 @section('content')
-<section class="listing_detail_header"  
-@if(isset($car->model->MODL_BGIM) && strlen($car->model->MODL_BGIM) > 0 )
-style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
-@endif
->
+<section class="listing_detail_header" @if(isset($car->model->MODL_BGIM) && strlen($car->model->MODL_BGIM) > 0 )
+    style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
+    @endif
+    >
     <div class="container">
-      <div class="listing_detail_head white-text div_zindex row">
-        <div class="col-md-9">
-          <h2>{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</h2>
-          <div class="car-location"><span> {{$car->model->brand->BRND_NAME}} {{$car->model->MODL_NAME}} {{$car->CAR_CATG}} {{$car->model->MODL_YEAR}}</span></div>
-          <div class="add_compare">
-            <div class="checkbox">
-              <input value="" id="compare14" type="checkbox" onchange="addToCompare(compare14, '{{$car->id}}')"
-              @if(in_array($car->id, $compareArr)) 
-              checked
-              @endif
-              >
-              <label for="compare14">Add to Compare</label>
+        <div class="listing_detail_head white-text div_zindex row">
+            <div class="col-md-9">
+                <h2>{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</h2>
+                <div class="car-location"><span> {{$car->model->brand->BRND_NAME}} {{$car->model->MODL_NAME}} {{$car->CAR_CATG}} {{$car->model->MODL_YEAR}}</span></div>
+                <div class="add_compare">
+                    <div class="checkbox">
+                        <input value="" id="compare14" type="checkbox" onchange="addToCompare(compare14, '{{$car->id}}')" @if(in_array($car->id, $compareArr))
+                        checked
+                        @endif
+                        >
+                        <label for="compare14">Add to Compare</label>
+                    </div>
+
+                </div>
             </div>
-        
-          </div>
+            <div class="col-md-3">
+                <div class="price_info">
+                    <p>{{number_format($car->CAR_PRCE-$car->CAR_DISC)}}EGP</p>
+                    @if($car->CAR_DISC > 0)
+                    <p class="old_price">{{number_format($car->CAR_PRCE)}}EGP</p>
+                    @endif
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-          <div class="price_info">
-            <p>{{number_format($car->CAR_PRCE-$car->CAR_DISC)}}EGP</p>
-            @if($car->CAR_DISC > 0)
-            <p class="old_price">{{number_format($car->CAR_PRCE)}}EGP</p>
-            @endif
-          </div>
-        </div>
-      </div>
     </div>
     <div class="dark-overlay"></div>
-  </section>
+</section>
 <section class="listing_other_info secondary-bg">
     <div class="container">
         <div id="filter_toggle" class="search_other"> <i class="fa fa-filter" aria-hidden="true"></i> Search Cars </div>
@@ -96,7 +94,8 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                 </div>
                 <div class="form-group col-md-9 col-sm-6 black_input">
                     <label class="form-label">Price Range ({{number_format($carsMin)}} to {{number_format($carsMax)}} EGP)</label>
-                    <input id="price_range" type="text" name="priceRange" data-slider-min="{{$carsMin}}" data-slider-max="{{$carsMax}}" data-slider-step="5" data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
+                    <input id="price_range" type="text" name="priceRange" data-slider-min="{{$carsMin}}" data-slider-max="{{$carsMax}}" data-slider-step="5"
+                        data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
                 </div>
                 <div class="form-group col-md-3 col-sm-6">
                     <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car </button>
@@ -155,6 +154,7 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs gray-bg" role="tablist">
                             <li role="presentation"><a class="active" href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
+                            <li role="presentation"><a href="#colors" aria-controls="accessories" role="tab" data-toggle="tab">Colors</a></li>
                             <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
                             <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
                         </ul>
@@ -169,6 +169,27 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                                 @elseif(isset($car->model->MODL_PDF))
                                 <iframe style="border: 1px solid #777; width:100% " src="{{asset('storage/' . $car->model->MODL_PDF)}}" height="371px" frameborder="0" allowfullscreen=""></iframe>
                                 @endif
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="specification">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="listing_images">
+                                            <div id="listing_images_slider" class="listing_images_slider">
+                                                @foreach($car->model->colorImages as $carImage)
+                                                <div data-toggle="tooltip" data-placement="top"><img height="560px" title="{{$carImage->MOIM_COLR}}"
+                                                        src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image"></div>
+                                                @endforeach
+                                            </div>
+                                            <div id="listing_images_slider_nav" class="listing_images_slider_nav">
+                                                @foreach($model->colorImages as $carImage)
+                                                <div data-toggle="tooltip" data-placement="top"><img width="300px" title="{{$carImage->MOIM_COLR}}"
+                                                        src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image"></div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Technical-Specification -->
@@ -224,7 +245,7 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                                             <tr>
                                                 <td>Acceleration</td>
                                                 <td>{{$car->CAR_ACC}} sec to 100km/h</td>
-                                            </tr>  
+                                            </tr>
                                             <tr>
                                                 <td>Fuel Tank Capacity</td>
                                                 <td>{{$car->CAR_TRNK}}</td>
@@ -260,7 +281,7 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                                         @if($accessory['isAvailable'])
                                         <tr>
                                             <td>{{$accessory['ACSR_NAME']. "/" .$accessory['ACSR_ARBC_NAME']}}</td>
-                                            <td><i  class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
+                                            <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
                                         </tr>
                                         @endif
                                         @endforeach
@@ -281,7 +302,7 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                     </div>
                     <div class="financing_calculatoe">
                         <div class="row">
-                      
+
                             <div class="form-group col-md-12">
                                 <label>Car Price</label>
                                 <input class="form-control" title="Car Price" id=priceInput type="text" value={{$car->CAR_PRCE - $car->CAR_DISC }} disabled readonly>
@@ -316,7 +337,7 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                                     </div>
                                     <div class="col-12">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input"  onchange="getPlans()">
+                                            <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
                                             <label class="custom-control-label" for="selfRadio">Self-Employed</label>
                                         </div>
                                     </div>
@@ -360,7 +381,7 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-md-6" id=insuranceDiv2 style="display: none"> 
+                            <div class="form-group col-md-6" id=insuranceDiv2 style="display: none">
                                 <input class="form-control" id=insuranceInput type="text" disabled readonly>
                             </div>
 
@@ -389,12 +410,11 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
                 @foreach($similar as $simCar)
                 <div class="col-md-3 grid_listing">
                     <div class="product-listing-m gray-bg">
-                        <div class="product-listing-img"> <a href="#"><img src="{{($simCar->image) ? asset('storage/' . $simCar->image) : asset('assets/frontend/images/600x380.jpg')}}" class="img-fluid"
-                                    alt="image" /> </a>
+                        <div class="product-listing-img"> <a href="#"><img src="{{($simCar->image) ? asset('storage/' . $simCar->image) : asset('assets/frontend/images/600x380.jpg')}}"
+                                    class="img-fluid" alt="image" /> </a>
                             <div class="compare_item">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="compare13" onchange="addToCompare(this, '{{$simCar->id}}'" 
-                                    @if(in_array($simCar->id, $compareArr)) 
+                                    <input type="checkbox" id="compare13" onchange="addToCompare(this, '{{$simCar->id}}'" @if(in_array($simCar->id, $compareArr))
                                     checked
                                     @endif
                                     >
@@ -422,9 +442,8 @@ style="background-image: url('{{asset('storage/' . $car->model->MODL_BGIM )}}')"
     </div>
 </section>
 
-<script> 
-
-function getYears(){
+<script>
+    function getYears(){
       
       var downID = $('#downpaymentSel :selected').val();
       setRemaining()
