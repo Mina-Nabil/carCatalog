@@ -185,7 +185,7 @@
                                                         @endforeach
                                                     </div>
                                                     <div id="listing_images_slider_nav" class="listing_images_slider_nav">
-                                                        @foreach($model->colorImages as $carImage)
+                                                        @foreach($car->model->colorImages as $carImage)
                                                         <div data-toggle="tooltip" data-placement="top"><img width="300px" title="{{$carImage->MOIM_COLR}}"
                                                                 src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
                                                         </div>
