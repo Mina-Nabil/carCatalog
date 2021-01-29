@@ -172,24 +172,30 @@
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="colors">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="listing_images">
-                                            <div id="listing_images_slider" class="listing_images_slider">
-                                                @foreach($car->model->colorImages as $carImage)
-                                                <div data-toggle="tooltip" data-placement="top"><img height="560px" title="{{$carImage->MOIM_COLR}}"
-                                                        src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image"></div>
-                                                @endforeach
-                                            </div>
-                                            <div id="listing_images_slider_nav" class="listing_images_slider_nav">
-                                                @foreach($model->colorImages as $carImage)
-                                                <div data-toggle="tooltip" data-placement="top"><img width="300px" title="{{$carImage->MOIM_COLR}}"
-                                                        src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image"></div>
-                                                @endforeach
+                                <section class="listing-detail">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="listing_images">
+                                                    <div id="listing_images_slider" class="listing_images_slider">
+                                                        @foreach($car->model->colorImages as $carImage)
+                                                        <div data-toggle="tooltip" data-placement="top"><img height="560px" title="{{$carImage->MOIM_COLR}}"
+                                                                src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div id="listing_images_slider_nav" class="listing_images_slider_nav">
+                                                        @foreach($model->colorImages as $carImage)
+                                                        <div data-toggle="tooltip" data-placement="top"><img width="300px" title="{{$carImage->MOIM_COLR}}"
+                                                                src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </section>
                             </div>
 
                             <!-- Technical-Specification -->
