@@ -154,7 +154,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs gray-bg" role="tablist">
                             <li role="presentation"><a class="active" href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
-                            <li role="presentation"><a href="#colors" aria-controls="accessories" role="tab" data-toggle="tab">Colors</a></li>
+                            <li role="presentation"><a href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
                             <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
                             <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
                         </ul>
@@ -171,9 +171,9 @@
                                 @endif
                             </div>
 
-                            <div role="tabpanel" class="tab-pane" id="specification">
+                            <div role="tabpanel" class="tab-pane" id="colors">
                                 <div class="row">
-                                    <div class="col-md-9">
+                                    <div class="col-md-12">
                                         <div class="listing_images">
                                             <div id="listing_images_slider" class="listing_images_slider">
                                                 @foreach($car->model->colorImages as $carImage)
