@@ -20,7 +20,7 @@ class CreateLoansTables extends Migration
         });
 
         DB::table('downpayments')->insert([
-            ['DOWN_VLUE' => "20"], ['DOWN_VLUE' => "30"], ['DOWN_VLUE' => "40"], ['DOWN_VLUE' => "50"], ['DOWN_VLUE' => "60"], ['DOWN_VLUE' => "70"],
+            ['DOWN_VLUE' => "20"], ['DOWN_VLUE' => "30"], ['DOWN_VLUE' => "35"],['DOWN_VLUE' => "40"],['DOWN_VLUE' => "45"], ['DOWN_VLUE' => "50"], ['DOWN_VLUE' => "60"], ['DOWN_VLUE' => "70"],
         ]);
 
         Schema::create('banks', function (Blueprint $table) {

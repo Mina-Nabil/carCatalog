@@ -163,7 +163,7 @@ class CalculatorController extends Controller
     {
         $data['banks']          = Bank::all();
         $data['insurances']     = Insurance::all();
-        $data['downpayments']   = Downpayment::all();
+        $data['downpayments']   = Downpayment::orderBy("DOWN_VLUE")->get();
         $data['items']          = Plan::with("bank", "downpayment")->get();
 
         $data['title'] = "Available Brands";
