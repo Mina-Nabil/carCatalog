@@ -131,7 +131,8 @@
             </div>
             <div class="col-md-7">
                 <div class="intro-img-wp">
-                    <img @if(isset($frontendData['Calculator Page']['Calculator Car Image']) && strlen($frontendData['Calculator Page']['Calculator Car Image'])>0)
+                    <img style="height: 532px"
+                    @if(isset($frontendData['Calculator Page']['Calculator Car Image']) && strlen($frontendData['Calculator Page']['Calculator Car Image'])>0)
                     src="{{asset('storage/' . $frontendData['Calculator Page']['Calculator Car Image'])}}"
                     @else
                     src="{{asset('assets/frontend/images/1243x532.png')}}"
