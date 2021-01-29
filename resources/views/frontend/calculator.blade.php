@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input"  onchange="getPlans()">
+                                            <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
                                             <label class="custom-control-label" for="selfRadio">Self-Employed</label>
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-md-6" id=insuranceDiv2 style="display: none"> 
+                            <div class="form-group col-md-6" id=insuranceDiv2 style="display: none">
                                 <input class="form-control" id=insuranceInput type="text" disabled readonly>
                             </div>
 
@@ -131,8 +131,7 @@
             </div>
             <div class="col-md-7">
                 <div class="intro-img-wp">
-                    <img style="height: 532px"
-                    @if(isset($frontendData['Calculator Page']['Calculator Car Image']) && strlen($frontendData['Calculator Page']['Calculator Car Image'])>0)
+                    <img style="height: 532px" @if(isset($frontendData['Calculator Page']['Calculator Car Image']) && strlen($frontendData['Calculator Page']['Calculator Car Image'])>0)
                     src="{{asset('storage/' . $frontendData['Calculator Page']['Calculator Car Image'])}}"
                     @else
                     src="{{asset('assets/frontend/images/1243x532.png')}}"
@@ -390,8 +389,8 @@
     
             if(remaining > 0 && interest>0 && expenses>=0 && years>0){
                 var installament = (remaining + (remaining*(interest/100)*years) ) / (12*years)
-                $('#monthlyPayments').val(installament)
-                $('#expensesInput').val(expenses/100*remaining)
+                $('#monthlyPayments').val(round5(installament))
+                $('#expensesInput').val(round5(expenses/100*remaining))
                 if(insurance == 1){
                     showInsurance()
                     calculateInsurance()
@@ -432,9 +431,14 @@
         var insurance = parseFloat($('#insuranceSel :selected').val())
         var remaining = parseFloat($('#remainingInput').val())
         if(insurance > 0 && remaining > 0) {
-            $('#insuranceInput').val(insurance/100*remaining)
+            $('#insuranceInput').val(round5(insurance/100*remaining))
             $('#printButton').removeAttr('disabled')
         }
+    }
+
+    function round5(x)
+    {
+        return Math.ceil(x/5)*5;
     }
 
 
