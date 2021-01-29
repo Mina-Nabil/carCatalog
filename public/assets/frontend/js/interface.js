@@ -118,6 +118,21 @@ $(function(e) {
 	  centerMode: true,
 	  focusOnSelect: true
 	});
+	$('#listing_images_slider2').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  arrows: false,
+	  fade: true,
+	  asNavFor: '#listing_images_slider_nav2'
+	});
+	$('#listing_images_slider_nav2').slick({
+	  slidesToShow: 4,
+	  slidesToScroll: 1,
+	  asNavFor: '#listing_images_slider2',
+	  dots: false,
+	  centerMode: true,
+	  focusOnSelect: true
+	});
 	
 
 /*------------------------------------------------------------------
