@@ -179,19 +179,17 @@
                                                 <div class="listing_images">
                                                     <div id="listing_images_slider2" class="listing_images_slider">
                                                         @foreach($car->model->colorImages as $carImage)
-                                                        <div >
-                                                            <div data-toggle="tooltip" data-placement="top" title="{{$carImage->MOIM_COLR}}"><img height="560px" 
-                                                                    src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
-                                                            </div>
+                                                        <div title="{{$carImage->MOIM_COLR}}"><img height="560px"
+                                                                src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
                                                         </div>
                                                         @endforeach
                                                     </div>
                                                     <div id="listing_images_slider_nav2" class="listing_images_slider_nav">
                                                         @foreach($car->model->colorImages as $carImage)
                                                         <div>
-                                                            <div data-toggle="tooltip" data-placement="top" title="{{$carImage->MOIM_COLR}}"><img width="300px" 
-                                                                    src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
-                                                            </div>
+                                                            <img width="300px" src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}"
+                                                                alt="image">
+                                                            <label>{{$carImage->MOIM_COLR}}</label>
                                                         </div>
                                                         @endforeach
                                                     </div>
