@@ -135,12 +135,74 @@
                 <h1>{{(isset($frontendData['Landing Image']['Slide Title 2'])) ?? "Find Your Dream Car."}} </h1>
                 <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 2'])) ?? "Find Your Dream Car."}}</h3>
                 @isset($frontendData['Landing Image']['Slide Button 2'])
-                <?php  ?>
-                <a href="#" class="btn">Read More</a>
+                <?php 
+                $buttonArr = explode($frontendData['Landing Image']['Slide Button 3'], "->");
+                ?>
+                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endisset
               </div>
             </div>
           </div>
+
+          @if(isset($frontendData['Landing Image']['Slide Image 3']) && (strlen($frontendData['Landing Image']['Slide Image 3'])>0) )
+          <div class="carousel-item">
+            <img
+              src="{{(isset($frontendData['Landing Image']['Slide Image 3'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 3'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
+              alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
+            <div class="carousel-caption">
+              <div class="banner_text text-center div_zindex white-text">
+                <h1>{{(isset($frontendData['Landing Image']['Slide Title 3'])) ?? "Find Your Dream Car."}} </h1>
+                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 3'])) ?? "Find Your Dream Car."}}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 3'])
+                <?php 
+                $buttonArr = explode($frontendData['Landing Image']['Slide Button 3'], "->");
+                ?>
+                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                @endisset
+              </div>
+            </div>
+          </div>
+          @endif
+
+          @if(isset($frontendData['Landing Image']['Slide Image 4']) && (strlen($frontendData['Landing Image']['Slide Image 4'])>0) )
+          <div class="carousel-item">
+            <img
+              src="{{(isset($frontendData['Landing Image']['Slide Image 4'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 4'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
+              alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
+            <div class="carousel-caption">
+              <div class="banner_text text-center div_zindex white-text">
+                <h1>{{(isset($frontendData['Landing Image']['Slide Title 4'])) ?? "Find Your Dream Car."}} </h1>
+                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 4'])) ?? "Find Your Dream Car."}}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 4'])
+                <?php 
+                $buttonArr = explode($frontendData['Landing Image']['Slide Button 4'], "->");
+                ?>
+                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                @endisset
+              </div>
+            </div>
+          </div>
+          @endif
+
+          @if(isset($frontendData['Landing Image']['Slide Image 5']) && (strlen($frontendData['Landing Image']['Slide Image 5'])>0) )
+          <div class="carousel-item">
+            <img
+              src="{{(isset($frontendData['Landing Image']['Slide Image 5'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 5'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
+              alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
+            <div class="carousel-caption">
+              <div class="banner_text text-center div_zindex white-text">
+                <h1>{{(isset($frontendData['Landing Image']['Slide Title 5'])) ?? "Find Your Dream Car."}} </h1>
+                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 5'])) ?? "Find Your Dream Car."}}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 5'])
+                <?php 
+                $buttonArr = explode($frontendData['Landing Image']['Slide Button 5'], "->");
+                ?>
+                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                @endisset
+              </div>
+            </div>
+          </div>
+          @endif
         </div>
 
         <!-- Controls -->
