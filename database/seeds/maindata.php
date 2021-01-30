@@ -16,7 +16,7 @@ class maindata extends Seeder
         //type 1 text 2 paragraph 3 image 4 readmore button
 
         DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
+            'MAIN_SECT_ID'  =>  1 ,      //landing image
             "MAIN_ITEM"     =>  'Logo',
             "MAIN_TYPE"     =>  3 ,       // image  
             "MAIN_HINT"     =>  "Logo size should be 153*43"  
@@ -71,80 +71,80 @@ class maindata extends Seeder
         //     "MAIN_HINT"     =>  "First read more button -- enter url redirect url"  
         // ]);
 
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Title 3',
-            "MAIN_TYPE"     =>  1 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Title Shown in home page on the third slide"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Subtitle 3',
-            "MAIN_TYPE"     =>  1 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Subtitle Text Shown in home page on the third slide under the title"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Image 3',
-            "MAIN_TYPE"     =>  3 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Backgroung Image Shown in home page for the third slide -- 1920*830"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Button 3',
-            "MAIN_TYPE"     =>  4 ,       // button  
-            "MAIN_HINT"     =>  "First read more button -- enter url redirect url"  
-        ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Title 3',
+        //     "MAIN_TYPE"     =>  1 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Title Shown in home page on the third slide"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Subtitle 3',
+        //     "MAIN_TYPE"     =>  1 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Subtitle Text Shown in home page on the third slide under the title"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Image 3',
+        //     "MAIN_TYPE"     =>  3 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Backgroung Image Shown in home page for the third slide -- 1920*830"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Button 3',
+        //     "MAIN_TYPE"     =>  4 ,       // button  
+        //     "MAIN_HINT"     =>  "First read more button -- enter url redirect url"  
+        // ]);
 
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Title 4',
-            "MAIN_TYPE"     =>  1 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Title Shown in home page on the fourth slide"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Subtitle 4',
-            "MAIN_TYPE"     =>  1 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Subtitle Text Shown in home page on the fourth slide under the title"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Image 4',
-            "MAIN_TYPE"     =>  3 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Backgroung Image Shown in home page for the fourth slide -- 1920*830"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Button 4',
-            "MAIN_TYPE"     =>  4 ,       // string (text)  
-            "MAIN_HINT"     =>  "First read more button -- enter url redirect url"  
-        ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Title 4',
+        //     "MAIN_TYPE"     =>  1 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Title Shown in home page on the fourth slide"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Subtitle 4',
+        //     "MAIN_TYPE"     =>  1 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Subtitle Text Shown in home page on the fourth slide under the title"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Image 4',
+        //     "MAIN_TYPE"     =>  3 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Backgroung Image Shown in home page for the fourth slide -- 1920*830"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Button 4',
+        //     "MAIN_TYPE"     =>  4 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "First read more button -- enter url redirect url"  
+        // ]);
 
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Title 5',
-            "MAIN_TYPE"     =>  1 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Title Shown in home page on the fifth slide"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Subtitle 5',
-            "MAIN_TYPE"     =>  1 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Subtitle Text Shown in home page on the fifth slide under the title"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Image 5',
-            "MAIN_TYPE"     =>  3 ,       // string (text)  
-            "MAIN_HINT"     =>  "Header Backgroung Image Shown in home page for the fifth slide -- 1920*830"  
-        ]);
-        DB::table('maindata')->insert([
-            'MAIN_SECT_ID'  =>  2 ,      //landing image
-            "MAIN_ITEM"     =>  'Slide Button 5',
-            "MAIN_TYPE"     =>  4 ,       // string (text)  
-            "MAIN_HINT"     =>  "First read more button -- enter url redirect url"  
-        ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Title 5',
+        //     "MAIN_TYPE"     =>  1 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Title Shown in home page on the fifth slide"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Subtitle 5',
+        //     "MAIN_TYPE"     =>  1 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Subtitle Text Shown in home page on the fifth slide under the title"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Image 5',
+        //     "MAIN_TYPE"     =>  3 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "Header Backgroung Image Shown in home page for the fifth slide -- 1920*830"  
+        // ]);
+        // DB::table('maindata')->insert([
+        //     'MAIN_SECT_ID'  =>  2 ,      //landing image
+        //     "MAIN_ITEM"     =>  'Slide Button 5',
+        //     "MAIN_TYPE"     =>  4 ,       // string (text)  
+        //     "MAIN_HINT"     =>  "First read more button -- enter url redirect url"  
+        // ]);
 
 
         // DB::table('maindata')->insert([
