@@ -112,7 +112,7 @@
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 1'], "->");
                 ?>
-                <a href="#" class="btn">Read More</a>
+                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endisset
               </div>
             </div>
