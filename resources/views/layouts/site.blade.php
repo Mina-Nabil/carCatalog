@@ -63,7 +63,12 @@
         <div class="container">
           <div class="row header-row">
             <div class="navbar-header">
-              <div class="logo"> <a href="{{url('')}}"><img src="{{asset('assets/frontend/images/logo.png')}}" alt="image" /></a> </div>
+              <div class="logo"> <a href="{{url('')}}"><img @if(isset($frondendData['Header']['Logo']) && (strlen($frondendData['Header']['Logo'])>0) )
+                  src="{{asset('storage/' . $frondendData['Header']['Logo'])}}"
+                  @else
+                  src="{{asset('assets/frontend/images/logo.png')}}"
+                  @endif
+                  alt="image" /></a> </div>
 
               <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggler" type="button">
                 <i class="fa fa-bars"></i>
@@ -103,7 +108,9 @@
         <div class="carousel-inner">
           <!--item-1-->
           <div class="carousel-item active">
-            <img src="{{(isset($frontendData['Landing Image']['Slide Image 1'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 1'] ) : asset('assets/frontend/images/1920x830.jpg')}}" class="img-fluid" alt="image" style="max-height: 830px; height:auto; width:100%">
+            <img
+              src="{{(isset($frontendData['Landing Image']['Slide Image 1'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 1'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
+              class="img-fluid" alt="image" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{(isset($frontendData['Landing Image']['Slide Title 1'])) ?? "Find Your Dream Car."}} </h1>
@@ -120,7 +127,9 @@
 
           <!--item-2-->
           <div class="carousel-item">
-            <img src="{{(isset($frontendData['Landing Image']['Slide Image 2'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 2'] ) : asset('assets/frontend/images/1920x830.jpg')}}" alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
+            <img
+              src="{{(isset($frontendData['Landing Image']['Slide Image 2'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 2'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
+              alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{(isset($frontendData['Landing Image']['Slide Title 2'])) ?? "Find Your Dream Car."}} </h1>
@@ -316,11 +325,11 @@
 
     </script>
 
-<script>
-  $(function () {
+    <script>
+      $(function () {
       $('[data-toggle="tooltip"]').tooltip();
   });
-</script>
+    </script>
 </body>
 
 </html>
