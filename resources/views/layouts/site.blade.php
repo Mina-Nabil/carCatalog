@@ -119,7 +119,7 @@
           </div>
 
           <!--item-2-->
-          <div class="carousel-item">
+          {{-- <div class="carousel-item">
             <img src="{{(isset($frontendData['Landing Image']['Slide Image 2'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 2'] ) : asset('assets/frontend/images/1920x830.jpg')}}" alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
@@ -131,7 +131,7 @@
                 @endisset
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
 
         <!-- Controls -->
