@@ -212,6 +212,9 @@ class SiteController extends Controller
         $data['frontendData'] =   SiteInfo::getSiteInfo();
         $data['partners'] =   Partner::all();
 
+        if($data['headerImage'] == null) {
+            $data['headerImage'] = $data['frontendData']['Header']['Default Header'] ?? null;
+        }
 
         //Search Form
         $data['models']   =   CarModel::with(["brand"])->join("brands", "MODL_BRND_ID", '=', 'brands.id')
