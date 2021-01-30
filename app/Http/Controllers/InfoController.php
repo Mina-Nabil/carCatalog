@@ -66,7 +66,7 @@ class InfoController extends Controller
         $siteInfoRow = SiteInfo::findOrFail($request->id);
         if($request->hasFile('content')){
             $siteInfoRow->MAIN_CNTN = $request->content->store('images/site/' . $request->id, 'public');
-        } elseif($request->content == "undefinded") {
+        } elseif($request->content == "undefined") {
             $siteInfoRow->MAIN_CNTN = NULL;
         } else {
             $siteInfoRow->MAIN_CNTN = $request->content ?? NULL;
