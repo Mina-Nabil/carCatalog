@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(sections::class);
         // $this->call(maindata::class);
-        $this->call(CalculatorSectionsSeeder::class);
+        // $this->call(CalculatorSectionsSeeder::class);
 
     }
 }

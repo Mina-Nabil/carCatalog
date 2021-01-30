@@ -441,7 +441,7 @@ blockquote,
   z-index: 1;
 }
 .dark-overlay {
-  background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.55) none repeat scroll 0 0;
   content: "";
   height: 100%;
   left: 0;
@@ -518,7 +518,7 @@ blockquote,
   margin: 0 auto 8px;
 }
 .form-control {
-  background: #eeeeee none repeat scroll 0 0;
+  /* background: #eeeeee none repeat scroll 0 0; */
   border: 0 none;
   border-radius: 3px;
   box-shadow: none;

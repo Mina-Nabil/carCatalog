@@ -41,7 +41,7 @@
                                 <input class="form-control" title="Car Price" id=priceInput type="text" disabled readonly>
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Downpayment</label>
+                                <label>Downpayment %</label>
                                 <div class="select">
                                     <select class="form-control" id=downpaymentSel title="Downpayment" onchange="getYears()">
                                         <option value="0" disabled selected>20%-70% </option>
@@ -76,8 +76,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label>Remaining Payment</label>
+                            <div class="form-group col-md-6">
+                                <label>Downpayment(EGP)</label>
+                                <input class="form-control" title="Amount to be paid as the downpayment" id=paidInput type="text" disabled readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Remaining</label>
                                 <input class="form-control" title="Remaining Payment After Downpayment" id=remainingInput type="text" disabled readonly>
                             </div>
                             <div class="form-group col-md-12">
@@ -282,9 +286,12 @@
     }
 
     function setRemaining(){
-        percentage = $('#downpaymentSel :selected').text().substr(0,4)
-        if($('#priceInput').val() > 0 && percentage>0)
-        $('#remainingInput').val( $('#priceInput').val() - ($('#priceInput').val() * parseFloat(percentage) / 100 ) )
+        var percentage = $('#downpaymentSel :selected').text().substr(0,4)
+        if($('#priceInput').val() > 0 && percentage>0){
+            var remaining = $('#priceInput').val() - ($('#priceInput').val() * parseFloat(percentage) / 100 )
+            $('#remainingInput').val( remaining )
+            $('#paidInput').val( $('#priceInput').val() - remaining )
+        }
         setPlan()
     }
 
