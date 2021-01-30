@@ -63,8 +63,8 @@
         <div class="container">
           <div class="row header-row">
             <div class="navbar-header">
-              <div class="logo"> <a href="{{url('')}}"><img @if(isset($frondendData['Header']['Logo']) && (strlen($frondendData['Header']['Logo'])>0) )
-                  src="{{asset('storage/' . $frondendData['Header']['Logo'])}}"
+              <div class="logo"> <a href="{{url('')}}"><img @if(isset($frontendData['Header']['Logo']) && (strlen($frontendData['Header']['Logo'])>0) )
+                  src="{{asset('storage/' . $frontendData['Header']['Logo'])}}"
                   @else
                   src="{{asset('assets/frontend/images/logo.png')}}"
                   @endif
