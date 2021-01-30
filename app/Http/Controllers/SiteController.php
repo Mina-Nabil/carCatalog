@@ -213,7 +213,7 @@ class SiteController extends Controller
         $data['partners'] =   Partner::all();
 
         if($data['headerImage'] == null) {
-            $data['headerImage'] = $data['frontendData']['Header']['Default Header'] ?? null;
+            $data['headerImage'] = (isset($data['frontendData']['Header']['Default Header']) && strlen($data['frontendData']['Header']['Default Header']) > 0 ) ? asset('storage/' . $data['frontendData']['Header']['Default Header']) : null;
         }
 
         //Search Form
