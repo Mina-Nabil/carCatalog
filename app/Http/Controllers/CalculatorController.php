@@ -64,6 +64,13 @@ class CalculatorController extends Controller
         $plan->delete();
         return redirect('admin/manage/calculator');
     }
+
+    function togglePlan($id){
+        $plan = Plan::findOrFail($id);
+        $plan->toggle();
+        return back();
+    }
+
     ///banks functions
     function addBank(Request $request)
     {
@@ -205,6 +212,24 @@ class CalculatorController extends Controller
                     "text" => [
                         "1" => "Employed",
                         "0" => "Self-employed",
+                    ],
+                ]
+            ],
+            [
+                'toggle' => [
+                    "att"   =>  "PLAN_ACTV",
+                    "url"   =>  "admin/plan/toggle/",
+                    "states" => [
+                        "1" => "True",
+                        "0" => "False",
+                    ],
+                    "actions" => [
+                        "1" => "disable the plan",
+                        "0" => "activate the plan",
+                    ],
+                    "classes" => [
+                        "1" => "label-success",
+                        "0" => "label-danger",
                     ],
                 ]
             ],

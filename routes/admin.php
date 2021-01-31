@@ -79,6 +79,7 @@ Route::post('delete/insurance', 'CalculatorController@deleteInsurance');
 Route::post('add/plan', 'CalculatorController@addPlan');
 Route::post('edit/plan', 'CalculatorController@editPlan');
 Route::get('delete/plan/{id}', 'CalculatorController@deletePlan');
+Route::get('plan/toggle/{id}', 'CalculatorController@togglePlan');
 
 //Dashboard users
 Route::get("dash/users/all", 'DashUsersController@index');

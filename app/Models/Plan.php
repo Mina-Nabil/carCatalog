@@ -19,6 +19,11 @@ class Plan extends Model
         return $this->belongsTo("App\Models\Downpayment", "PLAN_DOWN_ID");
     }
 
+    function toggle(){
+        $this->PLAN_ACTV = (1 + $this->PLAN_ACTV) % 2;
+        $this->save();
+    }
+
     static function getYearsByDownpayment($downpaymentID)
     {
         return self::where("PLAN_DOWN_ID", $downpaymentID)->where("PLAN_ACTV", 1)->selectRaw("DISTINCT PLAN_YEAR")->get();
