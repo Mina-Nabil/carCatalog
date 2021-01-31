@@ -213,9 +213,8 @@
 <section class="section-padding">
   <div class="container">
     <div class="section-header text-center">
-      <h2>Featured Cars <span>Special Offers</span></h2>
-      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+      <h2>{{$frontendData['Offers']['Offers Section Title'] ?? ''}}</h2>
+      <p>{{$frontendData['Offers']['Offer Section Subtitle'] ?? ''}} </p>
     </div>
     <div class="row">
       @foreach($offers as $offerCar)
@@ -262,9 +261,8 @@
 <section class="section-padding gray-bg">
   <div class="container">
     <div class="section-header text-center">
-      <h2>Trending <span>Cars</span></h2>
-      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+      <h2>{{$frontendData['Trending cars']['Trending Section Title'] ?? ''}}</h2>
+      <p>{{$frontendData['Trending cars']['Trending Section Subtitle'] ?? ''}} </p>
     </div>
     <div class="row">
       <div class="col-lg-12">
@@ -289,9 +287,8 @@
 <section class="section-padding testimonial-section parallex-bg">
   <div class="container div_zindex">
     <div class="section-header white-text text-center">
-      <h2>Our Satisfied <span>Customers</span></h2>
-      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
-        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+      <h2>{{$frontendData['Customers']['Customers Section Title']}}</h2>
+      <p>{{$frontendData['Customers']['Customers Section Subtitle']}}</p>
     </div>
     <div class="row">
       <div id="testimonial-slider">
