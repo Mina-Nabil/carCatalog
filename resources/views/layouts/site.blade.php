@@ -113,9 +113,9 @@
               class="img-fluid" alt="image" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
-                <h1>{{(isset($frontendData['Landing Image']['Slide Title 1'])) ?? "Find Your Dream Car."}} </h1>
-                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 2'])) ?? "Find Your Dream Car."}} </h3>
-                @isset($frontendData['Landing Image']['Slide Button 1'])
+                <h1>{{$frontendData['Landing Image']['Slide Title 1'] ?? "" }}</h1>
+                <h3>{{$frontendData['Landing Image']['Slide Subtitle 2'] ?? "" }}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 1'] && (strlen($frontendData['Landing Image']['Slide Button 1'])>0) )
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 1'], "->");
                 ?>
@@ -132,9 +132,9 @@
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
-                <h1>{{(isset($frontendData['Landing Image']['Slide Title 2'])) ?? "Find Your Dream Car."}} </h1>
-                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 2'])) ?? "Find Your Dream Car."}}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 2'])
+                <h1>{{$frontendData['Landing Image']['Slide Title 2'] ?? ""}}</h1>
+                <h3>{{$frontendData['Landing Image']['Slide Subtitle 2'] ?? "" }}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 2'] && strlen($frontendData['Landing Image']['Slide Button 2']))
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 3'], "->");
                 ?>
@@ -151,9 +151,9 @@
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
-                <h1>{{(isset($frontendData['Landing Image']['Slide Title 3'])) ?? "Find Your Dream Car."}} </h1>
-                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 3'])) ?? "Find Your Dream Car."}}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 3'])
+                <h1>{{$frontendData['Landing Image']['Slide Title 3'] ?? ""}} </h1>
+                <h3>{{$frontendData['Landing Image']['Slide Subtitle 3'] ?? ""}}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 3'] && strlen($frontendData['Landing Image']['Slide Button 3'])>0 )
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 3'], "->");
                 ?>
@@ -171,9 +171,9 @@
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
-                <h1>{{(isset($frontendData['Landing Image']['Slide Title 4'])) ?? "Find Your Dream Car."}} </h1>
-                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 4'])) ?? "Find Your Dream Car."}}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 4'])
+                <h1>{{$frontendData['Landing Image']['Slide Title 4'] ?? ""}} </h1>
+                <h3>{{$frontendData['Landing Image']['Slide Subtitle 4'] ?? ""}}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 4'] && strlen($frontendData['Landing Image']['Slide Button 4'])>0)
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 4'], "->");
                 ?>
@@ -191,9 +191,9 @@
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
-                <h1>{{(isset($frontendData['Landing Image']['Slide Title 5'])) ?? "Find Your Dream Car."}} </h1>
-                <h3>{{(isset($frontendData['Landing Image']['Slide Subtitle 5'])) ?? "Find Your Dream Car."}}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 5'])
+                <h1>{{$frontendData['Landing Image']['Slide Title 5'] ?? ""}} </h1>
+                <h3>{{$frontendData['Landing Image']['Slide Subtitle 5'] ?? ""}}</h3>
+                @isset($frontendData['Landing Image']['Slide Button 5'] && strlen($frontendData['Landing Image']['Slide Button 5'])>0 )
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 5'], "->");
                 ?>
