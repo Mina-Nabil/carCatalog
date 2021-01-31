@@ -154,7 +154,7 @@ class SiteController extends Controller
     function calculator(Request $request)
     {
         $data = self::getDefaultSiteInfo(false, "Car Loans", null, "Select your car & Calculate Loan Plans", true, $request);
-        $data['downpayments']   =   Downpayment::all();
+        $data['downpayments']   =   Downpayment::orderBy("DOWN_VLUE")->get();
         $data['insurances']     =   Insurance::all(); 
 
         //URLs

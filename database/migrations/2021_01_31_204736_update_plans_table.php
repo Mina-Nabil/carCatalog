@@ -19,7 +19,7 @@ class UpdatePlansTable extends Migration
         ]);
 
         Schema::table('plans', function (Blueprint $table) {
-            $table->tinyInteger('PLAN_ACTV');
+            $table->tinyInteger('PLAN_ACTV')->default(1);
         });
     }
 
