@@ -175,7 +175,7 @@ class CalculatorController extends Controller
 
         $data['title'] = "Available Brands";
         $data['subTitle'] = "Check all Available Loan Plans";
-        $data['cols'] = ['%', 'Years', 'Bank', 'Interest', 'Insurance', 'Employed', 'Edit', 'Delete'];
+        $data['cols'] = ['%', 'Years', 'Bank', 'Interest', 'Insurance', 'Employed', 'On?', 'Edit', 'Delete'];
         $data['atts'] = [
             ['foreign' => ['rel' => 'downpayment', 'att' => 'DOWN_VLUE']],
             'PLAN_YEAR',
