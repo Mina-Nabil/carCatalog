@@ -189,8 +189,8 @@
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
           <div class="cell">
-            <h2><i class="fa fa-car" aria-hidden="true"></i>{{$frontendData['Showroom stats']['New Cars for Sale - Stats'] ?? ''}}+</h2>
-            <p>New Cars for Sale</p>
+            <h2><i class="fa fa-car" aria-hidden="true"></i>{{$frontendData['Showroom stats']['Number of Sold Cars - Stats'] ?? ''}}+</h2>
+            <p>Number of Sold Cars</p>
           </div>
         </div>
       </div>
