@@ -115,12 +115,12 @@
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 1'] ?? "" }}</h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 2'] ?? "" }}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 1'] && (strlen($frontendData['Landing Image']['Slide Button 1'])>0) )
+                @if(($frontendData['Landing Image']['Slide Button 1']) && (strlen($frontendData['Landing Image']['Slide Button 1'])>0) )
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 1'], "->");
                 ?>
                 <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
-                @endisset
+                @endif
               </div>
             </div>
           </div>
@@ -134,12 +134,12 @@
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 2'] ?? ""}}</h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 2'] ?? "" }}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 2'] && strlen($frontendData['Landing Image']['Slide Button 2']))
+                @if(($frontendData['Landing Image']['Slide Button 2']) && strlen($frontendData['Landing Image']['Slide Button 2']))
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 3'], "->");
                 ?>
                 <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
-                @endisset
+                @endif
               </div>
             </div>
           </div>
@@ -153,12 +153,12 @@
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 3'] ?? ""}} </h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 3'] ?? ""}}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 3'] && strlen($frontendData['Landing Image']['Slide Button 3'])>0 )
+                @if(($frontendData['Landing Image']['Slide Button 3']) && strlen($frontendData['Landing Image']['Slide Button 3'])>0 )
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 3'], "->");
                 ?>
                 <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
-                @endisset
+                @endif
               </div>
             </div>
           </div>
@@ -173,12 +173,12 @@
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 4'] ?? ""}} </h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 4'] ?? ""}}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 4'] && strlen($frontendData['Landing Image']['Slide Button 4'])>0)
+                @if(($frontendData['Landing Image']['Slide Button 4']) && strlen($frontendData['Landing Image']['Slide Button 4'])>0)
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 4'], "->");
                 ?>
                 <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
-                @endisset
+                @endif
               </div>
             </div>
           </div>
@@ -193,12 +193,12 @@
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 5'] ?? ""}} </h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 5'] ?? ""}}</h3>
-                @isset($frontendData['Landing Image']['Slide Button 5'] && strlen($frontendData['Landing Image']['Slide Button 5'])>0 )
+                @if(($frontendData['Landing Image']['Slide Button 5']) && strlen($frontendData['Landing Image']['Slide Button 5'])>0 )
                 <?php 
                 $buttonArr = explode($frontendData['Landing Image']['Slide Button 5'], "->");
                 ?>
                 <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
-                @endisset
+                @endif
               </div>
             </div>
           </div>
