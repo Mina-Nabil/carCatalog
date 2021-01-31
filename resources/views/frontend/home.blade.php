@@ -173,7 +173,7 @@
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
           <div class="cell">
-            <h2><i class="fa fa-calendar" aria-hidden="true"></i>40+</h2>
+            <h2><i class="fa fa-calendar" aria-hidden="true"></i>{{$frontendData['Showroom stats']['Years In Business - Stats'] ?? ''}}+</h2>
             <p>Years In Business</p>
           </div>
         </div>
@@ -181,7 +181,7 @@
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
           <div class="cell">
-            <h2><i class="fa fa-car" aria-hidden="true"></i>1200+</h2>
+            <h2><i class="fa fa-car" aria-hidden="true"></i>{{$frontendData['Showroom stats']['New Cars for Sale - Stats'] ?? ''}}+</h2>
             <p>New Cars For Sale</p>
           </div>
         </div>
@@ -189,16 +189,16 @@
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
           <div class="cell">
-            <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2>
-            <p>Used Cars For Sale</p>
+            <h2><i class="fa fa-car" aria-hidden="true"></i>{{$frontendData['Showroom stats']['New Cars for Sale - Stats'] ?? ''}}+</h2>
+            <p>New Cars for Sale</p>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
           <div class="cell">
-            <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>600+</h2>
-            <p>Satisfied Customers</p>
+            <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{$frontendData['Showroom stats']['Number of clients - Stats'] ?? ''}}+</h2>
+            <p>Number of clients</p>
           </div>
         </div>
       </div>
