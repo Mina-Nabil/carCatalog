@@ -164,7 +164,7 @@
           </div>
           @endif
 
-          @if(isset($frontendData['Landing Image']['Slide Image 4']) && (strlen($frontendData['Landing Image']['Slide Image 4'])>0) )
+          {{-- @if(isset($frontendData['Landing Image']['Slide Image 4']) && (strlen($frontendData['Landing Image']['Slide Image 4'])>0) )
           <div class="carousel-item">
             <img
               src="{{(isset($frontendData['Landing Image']['Slide Image 4'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 4'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
@@ -202,7 +202,7 @@
               </div>
             </div>
           </div>
-          @endif
+          @endif --}}
         </div>
 
         <!-- Controls -->
