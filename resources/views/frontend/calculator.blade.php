@@ -462,7 +462,7 @@
         mywindow.focus(); // necessary for IE >= 10*/
 
         mywindow.print();
-        mywindow.close();
+      
 
         return true;
     }
