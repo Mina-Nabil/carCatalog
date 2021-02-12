@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-5">
 
-                <div class="sidebar_widget ">
+                <div class="sidebar_widget " id=printArea>
                     <div class="widget_heading">
                         <h5><i class="fa fa-calculator" aria-hidden="true"></i>Loan Calculator</h5>
                     </div>
@@ -125,7 +125,7 @@
 
                             <div class="col-md-3"></div>
                             <div class="form-group col-md-6">
-                                <button type="submit" class="btn btn-block" id=printButton disabled><i class="fa fa-print" aria-hidden="true"></i> &nbsp; Print </button>
+                                <button type="submit" class="btn btn-block" id=printButton onclick="print()" disabled><i class="fa fa-print" aria-hidden="true"></i> &nbsp; Print </button>
                             </div>
                             <div class="col-md-3"></div>
                         </div>
@@ -446,6 +446,25 @@
     function round5(x)
     {
         return Math.ceil(x/5)*5;
+    }
+
+
+    function print(){
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head><title>نظام التقسيط</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>نظام التقسيط</h1>');
+        mywindow.document.write(document.getElementById("printArea").innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
     }
 
 
