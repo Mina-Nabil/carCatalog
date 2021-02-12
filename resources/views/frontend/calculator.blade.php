@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-5">
 
-                <div class="sidebar_widget sidebar_3">
+                <div class="sidebar_widget ">
                     <div class="widget_heading">
                         <h5><i class="fa fa-calculator" aria-hidden="true"></i>Loan Calculator</h5>
                     </div>
@@ -88,7 +88,7 @@
                                 <label>Plan</label>
                                 <div class="select">
                                     <select class="form-control" id=plansSel onchange="setPlan()" disabled>
-                                        <option value="0" disabled selected>Loan Plans Available </option>
+                                        <option value="0" disabled selected>Please set all the above </option>
                                     </select>
                                 </div>
                             </div>
