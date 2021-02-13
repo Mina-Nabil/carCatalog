@@ -283,7 +283,7 @@ class SiteController extends Controller
     {
         $request->validate([
             "carID" => "required",
-            "bankID" => "required",
+            "planID" => "required",
             "loanGuarantee" => "required",
             "downID" => "required",
             "paid" => "required",
@@ -299,7 +299,7 @@ class SiteController extends Controller
         $data['class'] = 'info';
 
         $data['car'] = Car::with('model', 'model.brand')->findOrFail($request->carID);
-        $data['bank'] = Bank::findOrFail($request->bankID);
+        $data['bank'] = Plan::findOrFail($request->planID)->bank;
 
         $data['loanGuarantee'] = ($request->loanGuarantee == 0) ? "وظيـفه" : "صـاحب عمل" ;
         $down = Downpayment::findOrFail($request->downID);

@@ -357,7 +357,7 @@
             if(plan.PLAN_INSR == 1){
                 option.text += " (Mandatory Insurance)"
             }
-            option.value = plan.PLAN_INTR + "%&%" + plan.BANK_EXPN + "%&%" + plan.PLAN_INSR;
+            option.value = plan.PLAN_INTR + "%&%" + plan.BANK_EXPN + "%&%" + plan.PLAN_INSR + "%&%" + plan.id;
             plansSel.add(option)
         });
         plansSel.disabled = false
@@ -470,6 +470,7 @@
         var planString = $('#plansSel').val()
         var planData =   planString.split("%&%")
         var rate = parseFloat(planData[0]) ?? 0
+        var planID = parseFloat(planData[3]) ?? 0
 
         var isEmployed = $('#employeeRadio:checked').val();
         var selfEmployed = $('#selfRadio:checked').val();
@@ -489,7 +490,7 @@
 
         formdata.append('_token','{{ csrf_token() }}');
         formdata.append('carID', carID);
-        formdata.append('bankID', bankID);
+        formdata.append('planID', planID);
         formdata.append('loanGuarantee', isEmployed);
         formdata.append('downID', downID);
         formdata.append('years', years);
@@ -519,25 +520,5 @@
     }
 
 </script>
-
-@endsection
-
-@section('js_content')
-
-<script>
-    $(document).ready(function () {
-        $("#printButton").click(function () {
-            var mode = 'iframe'; //popup
-            var close = mode == "popup";
-            var options = {
-                mode: mode,
-                popClose: close
-            };
-            $("div.printableArea").printArea(options);
-        });
-    });
-
-</script>
-
 
 @endsection
