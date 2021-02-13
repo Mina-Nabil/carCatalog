@@ -389,9 +389,11 @@
 
     <script>
       $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-  });
+        $('[data-toggle="tooltip"]').tooltip();
+      });
     </script>
+
+    @yield('js_content')
 </body>
 
 </html>
