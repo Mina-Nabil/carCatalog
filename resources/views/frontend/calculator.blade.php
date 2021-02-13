@@ -471,7 +471,7 @@
         //print request
         valStrg = $('#carsSel :selected').val()
         carInfo = valStrg.split("%&%")
-        carID = carInfo[0]
+        $('#carIDHidden').val( carInfo[0] )
 
         $('#downIDHidden').val( $('#downpaymentSel :selected').val())
         $('#remainingHidden').val( parseFloat($('#remainingInput').val()))
@@ -492,9 +492,9 @@
         var selfEmployed = $('#selfRadio:checked').val();
 
         if(isEmployed == "on"){
-            $('#loanGuarantee').val( 1 )
+            $('#loanGuaranteeHidden').val( 1 )
         } else if(selfEmployed == "on") {
-            $('#loanGuarantee').val( 0 )
+            $('#loanGuaranteeHidden').val( 0 )
         } else {
                 isEmployed = undefined
         }
