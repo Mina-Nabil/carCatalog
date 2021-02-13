@@ -147,6 +147,7 @@
         </div>
     </div>
     <form id="invisible_form" action="{{$printLoanURL}}" method="post" target="_blank">
+        @csrf
         <input id="carIDHidden" name="carID" type="hidden">
         <input id="planIDHidden" name="planID" type="hidden">
         <input id="loanGuaranteeHidden" name="loanGuarantee" type="hidden">
