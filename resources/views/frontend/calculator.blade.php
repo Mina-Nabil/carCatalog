@@ -146,6 +146,20 @@
             </div>
         </div>
     </div>
+    <form id="invisible_form" action="{{$printLoanURL}}" method="post" target="_blank">
+        <input id="carIDHidden" name="carID" type="hidden">
+        <input id="planIDHidden" name="planID" type="hidden">
+        <input id="loanGuaranteeHidden" name="loanGuarantee" type="hidden">
+        <input id="downIDHidden" name="downID" type="hidden">
+        <input id="paidHidden" name="paid" type="hidden">
+        <input id="remainingHidden" name="remaining" type="hidden">
+        <input id="yearsHidden" name="years" type="hidden">
+        <input id="rateHidden" name="rate" type="hidden">
+        <input id="installHidden" name="install" type="hidden">
+        <input id="adminFeesHidden" name="adminFees" type="hidden">
+        <input id="insuranceCompHidden" name="insuranceComp" type="hidden">
+        <input id="insuranceFeesHidden" name="insuranceFees" type="hidden">
+    </form>
 </section>
 
 <script>
@@ -457,66 +471,33 @@
         carInfo = valStrg.split("%&%")
         carID = carInfo[0]
 
-        var downID = $('#downpaymentSel :selected').val();
-        var remaining = parseFloat($('#remainingInput').val())
-        var years = parseInt($('#yearsSel').val())
-        var downID = $('#downpaymentSel :selected').val();
-        var install = $('#monthlyPayments').val()
-        var adminFees = $('#expensesInput').val()
-        var paid = $('#paidInput').val()
-        var insuranceFees =  $('#insuranceInput').val()
-        var insuranceComp =  $('#insuranceSel :selected').html()
+        $('#downIDHidden').val( $('#downpaymentSel :selected').val())
+        $('#remainingHidden').val( parseFloat($('#remainingInput').val()))
+        $('#yearsHidden').val( parseInt($('#yearsSel').val()))
+        $('#installHidden').val( $('#monthlyPayments').val())
+        $('#adminFeesHidden').val( $('#expensesInput').val())
+        $('#paidHidden').val( $('#paidInput').val())
+        $('#insuranceFeesHidden').val(  $('#insuranceInput').val())
+        $('#insuranceCompHidden').val(  $('#insuranceSel :selected').html())
 
         var planString = $('#plansSel').val()
         var planData =   planString.split("%&%")
-        var rate = parseFloat(planData[0]) ?? 0
-        var planID = parseFloat(planData[3]) ?? 0
+       
+        $('#rateHidden').val(parseFloat(planData[0]) ?? 0)
+        $('#planIDHidden').val(parseFloat(planData[3]) ?? 0)
 
         var isEmployed = $('#employeeRadio:checked').val();
         var selfEmployed = $('#selfRadio:checked').val();
 
         if(isEmployed == "on"){
-                isEmployed = 1
+            $('#loanGuarantee').val( 1 )
         } else if(selfEmployed == "on") {
-                isEmployed = 0
+            $('#loanGuarantee').val( 0 )
         } else {
                 isEmployed = undefined
         }
         
-        var http = new XMLHttpRequest();
-        var url = "{{$printLoanURL}}" ;
-        var ret = false;
-        var formdata = new FormData();
-
-        formdata.append('_token','{{ csrf_token() }}');
-        formdata.append('carID', carID);
-        formdata.append('planID', planID);
-        formdata.append('loanGuarantee', isEmployed);
-        formdata.append('downID', downID);
-        formdata.append('years', years);
-        formdata.append('rate', rate);
-        formdata.append('paid', paid);
-        formdata.append('install', install);
-        formdata.append('adminFees', adminFees);
-        formdata.append('insuranceComp', insuranceComp);
-        formdata.append('insuranceFees', insuranceFees);
-
-    
-
-        http.open('POST', url, true);
-
-        http.onreadystatechange = function(ret) {
-            if (this.readyState == 4 && this.status == 200) {
-                try {
-                    ret = JSON.parse(this.responseText)
-                    loadYears(ret)
-                } catch(e) {
-                    ret = false;
-                }
-            }
-        };
-        http.send(formdata);
-        return ret;
+        $('#invisible_form').submit();
     }
 
 </script>
