@@ -81,27 +81,27 @@
                                     </tr>
                                     <tr>
                                         <td>Installament Years</td>
-                                        <td></td>
+                                        <td>{{$years}}</td>
                                         <td>عـدد سـنـوات الـتـقـسـيـط</td>
                                     </tr>
                                     <tr>
                                         <td>Monthly Installament</td>
-                                        <td></td>
+                                        <td>{{$install}}</td>
                                         <td>الـقـسـط الـشـهـرى</td>
                                     </tr>
                                     <tr>
                                         <td>Bank Administrative Fees</td>
-                                        <td></td>
+                                        <td>{{$adminFees}}</td>
                                         <td>مـصـاريـف اداريــة</td>
                                     </tr>
                                     <tr>
                                         <td>Insurance Company</td>
-                                        <td></td>
+                                        <td>{{$insuranceComp}}</td>
                                         <td>شـركـه الـتـأمـيـن</td>
                                     </tr>
                                     <tr>
                                         <td>Insurance Fees</td>
-                                        <td></td>
+                                        <td>{{$insuranceFees}}</td>
                                         <td>تـأمـيـن اجـبـارى</td>
                                     </tr>
                                 </tbody>
