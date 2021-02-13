@@ -308,6 +308,7 @@ class SiteController extends Controller
         $data['paid'] =   $request->paid;
         $data['interestRate'] = $request->rate . "%";
         $data['install'] = $request->install;
+        $data['years'] = $request->years;
         $data['adminFees'] = $request->adminFees;
         $data['insuranceComp'] = $request->insuranceComp;
         $data['insuranceFees'] = $request->insuranceFees;
