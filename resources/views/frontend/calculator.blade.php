@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-5">
 
-                <div class="sidebar_widget " id=printArea>
+                <div class="sidebar_widget " id=printableArea>
                     <div class="widget_heading">
                         <h5><i class="fa fa-calculator" aria-hidden="true"></i>Loan Calculator</h5>
                     </div>
@@ -448,24 +448,17 @@
         return Math.ceil(x/5)*5;
     }
 
-
-    function print(){
-        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
-
-        mywindow.document.write('<html><head><title>نظام التقسيط</title>');
-        mywindow.document.write('</head><body >');
-        mywindow.document.write('<h1>نظام التقسيط</h1>');
-        mywindow.document.write(document.getElementById("printArea").innerHTML);
-        mywindow.document.write('</body></html>');
-
-        mywindow.document.close(); // necessary for IE >= 10
-        mywindow.focus(); // necessary for IE >= 10*/
-
-        mywindow.print();
-      
-
-        return true;
-    }
+    $(document).ready(function () {
+            $("#print").click(function () {
+                var mode = 'iframe'; //popup
+                var close = mode == "popup";
+                var options = {
+                    mode: mode,
+                    popClose: close
+                };
+                $("div.printableArea").printArea(options);
+            });
+        });
 
 
 
