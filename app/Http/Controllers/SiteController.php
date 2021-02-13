@@ -296,8 +296,6 @@ class SiteController extends Controller
             "insuranceFees" => "required"
         ]);
 
-        dd($request);
-
         $data['class'] = 'info';
 
         $data['car'] = Car::with('model', 'model.brand')->findOrFail($request->carID);
