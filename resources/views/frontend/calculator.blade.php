@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-5">
 
-                <div class="sidebar_widget " id=printableArea>
+                <div class="sidebar_widget ">
                     <div class="widget_heading">
                         <h5><i class="fa fa-calculator" aria-hidden="true"></i>Loan Calculator</h5>
                     </div>
@@ -190,7 +190,8 @@
     
             var option = document.createElement("option");
             option.text = carItem.CAR_CATG;
-            option.value = carItem.CAR_PRCE - carItem.CAR_DISC;
+            carPrice =  carItem.CAR_PRCE - carItem.CAR_DISC;
+            option.value = carItem.id + "%&%" + carPrice;
             carSel.add(option)
         });
         carSel.disabled = false
@@ -209,7 +210,9 @@
 
     function setPrice(){
         console.log($('#carsSel :selected').val() )
-        $('#priceInput').val( $('#carsSel :selected').val() )
+        valStrg = $('#carsSel :selected').val()
+        carInfo = valStrg.split("%&%")
+        $('#priceInput').val( carInfo[1] )
         setRemaining()
 
     }
@@ -446,6 +449,73 @@
     function round5(x)
     {
         return Math.ceil(x/5)*5;
+    }
+
+    function print(){
+        //print request
+        valStrg = $('#carsSel :selected').val()
+        carInfo = valStrg.split("%&%")
+        carID = carInfo[0]
+
+        var downID = $('#downpaymentSel :selected').val();
+        var remaining = parseFloat($('#remainingInput').val())
+        var years = parseInt($('#yearsSel').val())
+        var downID = $('#downpaymentSel :selected').val();
+        var install = $('#monthlyPayments').val()
+        var adminFees = $('#expensesInput').val()
+        var paid = $('#paidInput').val()
+        var insuranceFees =  $('#insuranceInput').val()
+        var insuranceComp =  $('#insuranceSel :selected').html()
+
+        var planString = $('#plansSel').val()
+        var planData =   planString.split("%&%")
+        var rate = parseFloat(planData[0]) ?? 0
+
+        var isEmployed = $('#employeeRadio:checked').val();
+        var selfEmployed = $('#selfRadio:checked').val();
+
+        if(isEmployed == "on"){
+                isEmployed = 1
+        } else if(selfEmployed == "on") {
+                isEmployed = 0
+        } else {
+                isEmployed = undefined
+        }
+        
+        var http = new XMLHttpRequest();
+        var url = "{{$printLoanURL}}" ;
+        var ret = false;
+        var formdata = new FormData();
+
+        formdata.append('_token','{{ csrf_token() }}');
+        formdata.append('carID', carID);
+        formdata.append('bankID', bankID);
+        formdata.append('loanGuarantee', isEmployed);
+        formdata.append('downID', downID);
+        formdata.append('years', years);
+        formdata.append('rate', rate);
+        formdata.append('paid', paid);
+        formdata.append('install', install);
+        formdata.append('adminFees', adminFees);
+        formdata.append('insuranceComp', insuranceComp);
+        formdata.append('insuranceFees', insuranceFees);
+
+    
+
+        http.open('POST', url, true);
+
+        http.onreadystatechange = function(ret) {
+            if (this.readyState == 4 && this.status == 200) {
+                try {
+                    ret = JSON.parse(this.responseText)
+                    loadYears(ret)
+                } catch(e) {
+                    ret = false;
+                }
+            }
+        };
+        http.send(formdata);
+        return ret;
     }
 
 </script>

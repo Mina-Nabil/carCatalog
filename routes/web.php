@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 /////////Website front end routes 
 
 Route::get('/calculator', 'SiteController@calculator');
+Route::get('/calculator/print', 'SiteController@printLoan');
 
 ////////compare links
 Route::get('/compare', 'SiteController@compare');

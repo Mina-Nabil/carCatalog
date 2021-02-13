@@ -63,7 +63,7 @@ class SiteController extends Controller
     {
         $model = CarModel::with('cars', 'type', 'brand', 'colorImages')->findOrFail($id);
         $model->id = $id;
-        $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, $model->MODL_BGIM ? asset('storage/' . $model->MODL_BGIM ) : null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories', true, $request);
+        $data = self::getDefaultSiteInfo(false, $model->MODL_NAME, $model->MODL_BGIM ? asset('storage/' . $model->MODL_BGIM) : null, $model->brand->BRND_NAME . ' ' . $model->MODL_NAME . ' ' . $model->MODL_YEAR . '\'s Categories', true, $request);
         $data['carList'] = $model->cars;
         $data['model'] = $model;
 
@@ -80,13 +80,14 @@ class SiteController extends Controller
 
         //loan calculator 
         $data['downpayments']   =   Downpayment::all();
-        $data['insurances']     =   Insurance::all(); 
+        $data['insurances']     =   Insurance::all();
 
         //URLs
         $data['getCarsURL'] = url('get/cars');
         $data['getYearsURL'] = url('get/years');
         $data['getPlansURL'] = url('get/plans');
         $data['getCarsURL'] = url('get/cars');
+        $data['printLoanURL'] = url('calculator/print');
 
         return view('frontend.car', $data);
     }
@@ -155,13 +156,14 @@ class SiteController extends Controller
     {
         $data = self::getDefaultSiteInfo(false, "Car Loans", null, "Select your car & Calculate Loan Plans", true, $request);
         $data['downpayments']   =   Downpayment::orderBy("DOWN_VLUE")->get();
-        $data['insurances']     =   Insurance::all(); 
+        $data['insurances']     =   Insurance::all();
 
         //URLs
         $data['getCarsURL'] = url('get/cars');
         $data['getYearsURL'] = url('get/years');
         $data['getPlansURL'] = url('get/plans');
         $data['getCarsURL'] = url('get/cars');
+        $data['printLoanURL'] = url('calculator/print');
 
         return view('frontend.calculator', $data);
     }
@@ -212,8 +214,8 @@ class SiteController extends Controller
         $data['frontendData'] =   SiteInfo::getSiteInfo();
         $data['partners'] =   Partner::all();
 
-        if($data['headerImage'] == null) {
-            $data['headerImage'] = (isset($data['frontendData']['Header']['Default Header']) && strlen($data['frontendData']['Header']['Default Header']) > 0 ) ? asset('storage/' . $data['frontendData']['Header']['Default Header']) : null;
+        if ($data['headerImage'] == null) {
+            $data['headerImage'] = (isset($data['frontendData']['Header']['Default Header']) && strlen($data['frontendData']['Header']['Default Header']) > 0) ? asset('storage/' . $data['frontendData']['Header']['Default Header']) : null;
         }
 
         //Search Form
@@ -247,17 +249,17 @@ class SiteController extends Controller
         $query = Car::join('models', 'CAR_MODL_ID', '=', 'models.id')->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
             ->join('types', 'MODL_TYPE_ID', '=', 'types.id')
             ->select('cars.*', 'models.MODL_NAME', 'models.MODL_YEAR', "types.TYPE_NAME", "brands.BRND_NAME");
-        if ($type && is_numeric($type) && $type>0) {
+        if ($type && is_numeric($type) && $type > 0) {
             CarType::findOrFail($type);
             $query = $query->where("MODL_TYPE_ID", $type);
         }
 
-        if ($brand && is_numeric($brand) && $brand>0) {
+        if ($brand && is_numeric($brand) && $brand > 0) {
             Brand::findOrFail($brand);
             $query = $query->where("MODL_BRND_ID", $brand);
         }
 
-        if ($model && is_numeric($model) && $model>0) {
+        if ($model && is_numeric($model) && $model > 0) {
             CarModel::findOrFail($model);
             $query = $query->where("CAR_MODL_ID", $model);
         }
@@ -275,5 +277,41 @@ class SiteController extends Controller
         }
 
         return $query->get();
+    }
+
+    public static function printLoan(Request $request)
+    {
+        $request->validate([
+            "carID" => "required",
+            "bankID" => "required",
+            "loanGuarantee" => "required",
+            "downID" => "required",
+            "paid" => "required",
+            "remaining" => "required",
+            "years" => "required",
+            "rate"  => "required",
+            "install" => "required",
+            "adminFees" => "required",
+            "insuranceComp" => "required",
+            "insuranceFees" => "required"
+        ]);
+
+        $data['class'] = 'info';
+
+        $data['car'] = Car::with('model', 'model.brand')->findOrFail($request->carID);
+        $data['bank'] = Bank::findOrFail($request->bankID);
+
+        $data['loanGuarantee'] = ($request->loanGuarantee == 0) ? "وظيـفه" : "صـاحب عمل" ;
+        $down = Downpayment::findOrFail($request->downID);
+        $data['downPayment'] = "(" . $down->DOWN_VLUE . "%)" . " " . number_format(round($down->DOWN_VLUE*$data['car']->CAR_PRCE/100,5) ) . " EGP";
+        $data['remaining'] =   $request->remaining;
+        $data['paid'] =   $request->paid;
+        $data['interestRate'] = $request->rate . "%";
+        $data['install'] = $request->install;
+        $data['adminFees'] = $request->adminFees;
+        $data['insuranceComp'] = $request->insuranceComp;
+        $data['insuranceFees'] = $request->insuranceFees;
+
+        return view('frontend.printable', $data);
     }
 }
