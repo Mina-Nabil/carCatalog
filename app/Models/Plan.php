@@ -32,6 +32,6 @@ class Plan extends Model
     static function getPlansByDownpaymentAndYear($downpaymentID, $year, $isEmployed)
     {
         return self::join('banks', 'banks.id', '=', 'PLAN_BANK_ID')->where("PLAN_YEAR", $year)->where("PLAN_EMPL", $isEmployed)
-            ->where("PLAN_DOWN_ID", $downpaymentID)->where("PLAN_ACTV", 1)->select("BANK_NAME", "PLAN_INTR", "PLAN_INSR", "BANK_EXPN")->get();
+            ->where("PLAN_DOWN_ID", $downpaymentID)->where("PLAN_ACTV", 1)->select("plans.id", "BANK_NAME", "PLAN_INTR", "PLAN_INSR", "BANK_EXPN")->get();
     }
 }
