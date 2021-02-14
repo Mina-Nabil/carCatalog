@@ -608,6 +608,8 @@
             option.text = plan.BANK_NAME + " - Interest: " + plan.PLAN_INTR + "% ";
             if(plan.PLAN_INSR == 1){
                 option.text += " (Mandatory Insurance)"
+            } else {
+                option.text += " (Optional Insurance)"
             }
             option.value = plan.PLAN_INTR + "%&%" + plan.BANK_EXPN + "%&%" + plan.PLAN_INSR + "%&%" + plan.id;
             plansSel.add(option)
