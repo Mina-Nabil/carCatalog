@@ -2023,10 +2023,10 @@ input.newsletter-input {
 }
 #banner2 .carousel-caption {
   bottom: inherit;
-  left: -30%;
+  left: -35%;
   padding-bottom: 30px;
   right: 20%;
-  top: 20%;
+  top: 15%;
   transform: translateY(-50%);
 }
 #banner2 .carousel-control {
