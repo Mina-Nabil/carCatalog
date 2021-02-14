@@ -399,7 +399,7 @@
 
                             <div class="col-md-3"></div>
                             <div class="form-group col-md-6">
-                                <button type="submit" class="btn btn-block" id=printButton disabled><i class="fa fa-print" aria-hidden="true"></i> </button>
+                                <button type="submit" class="btn btn-block" id=printButton onclick="print()" disabled><i class="fa fa-print" aria-hidden="true"></i> </button>
                             </div>
                             <div class="col-md-3"></div>
                         </div>
