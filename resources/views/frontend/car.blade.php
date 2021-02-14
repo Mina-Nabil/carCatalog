@@ -609,7 +609,7 @@
             if(plan.PLAN_INSR == 1){
                 option.text += " (Mandatory Insurance)"
             }
-            option.value = plan.PLAN_INTR + "%&%" + plan.BANK_EXPN + "%&%" + plan.PLAN_INSR "%&%" + plan.id;
+            option.value = plan.PLAN_INTR + "%&%" + plan.BANK_EXPN + "%&%" + plan.PLAN_INSR + "%&%" + plan.id;
             plansSel.add(option)
         });
         plansSel.disabled = false
