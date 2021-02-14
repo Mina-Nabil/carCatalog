@@ -71,7 +71,7 @@
                                     </tr>
                                     <tr>
                                         <td>Remaining</td>
-                                        <td>{{$remaining}}</td>
+                                        <td>{{number_format($remaining)}}EGP</td>
                                         <td>المتبقي للتقسيط</td>
                                     </tr>
                                     <tr>
@@ -86,12 +86,12 @@
                                     </tr>
                                     <tr>
                                         <td>Monthly Installament</td>
-                                        <td>{{$install}}</td>
+                                        <td>{{number_format($install)}}EGP</td>
                                         <td>الـقـسـط الـشـهـرى</td>
                                     </tr>
                                     <tr>
                                         <td>Bank Administrative Fees</td>
-                                        <td>{{$adminFees}}</td>
+                                        <td>{{number_format($adminFees)}}EGP</td>
                                         <td>مـصـاريـف اداريــة</td>
                                     </tr>
                                     <tr>
@@ -101,7 +101,7 @@
                                     </tr>
                                     <tr>
                                         <td>Insurance Fees</td>
-                                        <td>{{$insuranceFees}}</td>
+                                        <td>{{number_format($insuranceFees)}}EGP</td>
                                         <td>تـأمـيـن اجـبـارى</td>
                                     </tr>
                                 </tbody>
