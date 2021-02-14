@@ -451,6 +451,21 @@
         <!--/Similar-Cars-->
 
     </div>
+    <form id="invisible_form" action="{{$printLoanURL}}" method="post" target="_blank">
+        @csrf
+        <input id="carIDHidden" name="carID" type="hidden">
+        <input id="planIDHidden" name="planID" type="hidden">
+        <input id="loanGuaranteeHidden" name="loanGuarantee" type="hidden">
+        <input id="downIDHidden" name="downID" type="hidden">
+        <input id="paidHidden" name="paid" type="hidden">
+        <input id="remainingHidden" name="remaining" type="hidden">
+        <input id="yearsHidden" name="years" type="hidden">
+        <input id="rateHidden" name="rate" type="hidden">
+        <input id="installHidden" name="install" type="hidden">
+        <input id="adminFeesHidden" name="adminFees" type="hidden">
+        <input id="insuranceCompHidden" name="insuranceComp" type="hidden">
+        <input id="insuranceFeesHidden" name="insuranceFees" type="hidden">
+    </form>
 </section>
 
 <script>
@@ -636,8 +651,8 @@
     
             if(remaining > 0 && interest>0 && expenses>=0 && years>0){
                 var installament = (remaining + (remaining*(interest/100)*years) ) / (12*years)
-                $('#monthlyPayments').val(installament)
-                $('#expensesInput').val(expenses/100*remaining)
+                $('#monthlyPayments').val(round5(installament))
+                $('#expensesInput').val(round5(expenses/100*remaining))
                 if(insurance == 1){
                     showInsurance()
                     calculateInsurance()
@@ -678,12 +693,49 @@
         var insurance = parseFloat($('#insuranceSel :selected').val())
         var remaining = parseFloat($('#remainingInput').val())
         if(insurance > 0 && remaining > 0) {
-            $('#insuranceInput').val(insurance/100*remaining)
+            $('#insuranceInput').val(round5(insurance/100*remaining))
             $('#printButton').removeAttr('disabled')
         }
     }
 
+    function round5(x)
+    {
+        return Math.ceil(x/5)*5;
+    }
 
+    function print(){
+        //print request
+
+        $('#carIDHidden').val( {{$car->id}} )
+
+        $('#downIDHidden').val( $('#downpaymentSel :selected').val())
+        $('#remainingHidden').val( parseFloat($('#remainingInput').val()))
+        $('#yearsHidden').val( parseInt($('#yearsSel').val()))
+        $('#installHidden').val( $('#monthlyPayments').val())
+        $('#adminFeesHidden').val( $('#expensesInput').val())
+        $('#paidHidden').val( $('#paidInput').val())
+        $('#insuranceFeesHidden').val(  $('#insuranceInput').val())
+        $('#insuranceCompHidden').val(  $('#insuranceSel :selected').html())
+
+        var planString = $('#plansSel').val()
+        var planData =   planString.split("%&%")
+       
+        $('#rateHidden').val(parseFloat(planData[0]) ?? 0)
+        $('#planIDHidden').val(parseFloat(planData[3]) ?? 0)
+
+        var isEmployed = $('#employeeRadio:checked').val();
+        var selfEmployed = $('#selfRadio:checked').val();
+
+        if(isEmployed == "on"){
+            $('#loanGuaranteeHidden').val( 1 )
+        } else if(selfEmployed == "on") {
+            $('#loanGuaranteeHidden').val( 0 )
+        } else {
+                isEmployed = undefined
+        }
+        
+        $('#invisible_form').submit();
+    }
 
 </script>
 @endsection

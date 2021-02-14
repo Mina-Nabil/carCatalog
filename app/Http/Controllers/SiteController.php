@@ -301,7 +301,7 @@ class SiteController extends Controller
         $data['car'] = Car::with('model', 'model.brand')->findOrFail($request->carID);
         $data['bank'] = Plan::findOrFail($request->planID)->bank;
 
-        $data['loanGuarantee'] = ($request->loanGuarantee == 0) ? "وظيـفه" : "صـاحب عمل" ;
+        $data['loanGuarantee'] = ($request->loanGuarantee == 1) ? "وظيـفه" : "صـاحب عمل" ;
         $down = Downpayment::findOrFail($request->downID);
         $data['downPayment'] = "(" . $down->DOWN_VLUE . "%)" . " " . number_format(round($down->DOWN_VLUE*$data['car']->CAR_PRCE/100,5) ) . " EGP";
         $data['remaining'] =   $request->remaining;
