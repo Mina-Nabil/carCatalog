@@ -79,7 +79,7 @@ class SiteController extends Controller
         $data['carAccessories'] = $car->getFullAccessoriesArray();
 
         //loan calculator 
-        $data['downpayments']   =   Downpayment::has("plans")->get();
+        $data['downpayments']   =   Downpayment::has("plans")->orderBy("DOWN_VLUE")->get();
         $data['insurances']     =   Insurance::all();
 
         //URLs
@@ -155,7 +155,7 @@ class SiteController extends Controller
     function calculator(Request $request)
     {
         $data = self::getDefaultSiteInfo(false, "Car Loans", null, "Select your car & Calculate Loan Plans", true, $request);
-        $data['downpayments']   =   Downpayment::orderBy("DOWN_VLUE")->get();
+        $data['downpayments']   =   Downpayment::has("plans")->orderBy("DOWN_VLUE")->get();
         $data['insurances']     =   Insurance::all();
 
         //URLs
