@@ -80,7 +80,9 @@ class SiteController extends Controller
         $data['carAccessories'] = $car->getFullAccessoriesArray();
 
         //loan calculator 
-        $data['downpayments']   =   Downpayment::has("plans")->orderBy("DOWN_VLUE")->get();
+        $data['downpayments']   =   Downpayment::has("plans", function (Builder $query) {
+                                        $query->where('PLAN_ACTV', 1);
+                                    })->orderBy("DOWN_VLUE")->get();
         $data['insurances']     =   Insurance::all();
 
         //URLs
