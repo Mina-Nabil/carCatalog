@@ -15,6 +15,7 @@ use App\Models\Insurance;
 use App\Models\Partner;
 use App\Models\Plan;
 use App\Models\SiteInfo;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -155,7 +156,9 @@ class SiteController extends Controller
     function calculator(Request $request)
     {
         $data = self::getDefaultSiteInfo(false, "Car Loans", null, "Select your car & Calculate Loan Plans", true, $request);
-        $data['downpayments']   =   Downpayment::has("plans")->orderBy("DOWN_VLUE")->get();
+        $data['downpayments']   =   Downpayment::has("plans", function (Builder $query) {
+            $query->where('PLAN_ACTV', 1);
+        })->orderBy("DOWN_VLUE")->get();
         $data['insurances']     =   Insurance::all();
 
         //URLs
@@ -301,9 +304,9 @@ class SiteController extends Controller
         $data['car'] = Car::with('model', 'model.brand')->findOrFail($request->carID);
         $data['bank'] = Plan::findOrFail($request->planID)->bank;
 
-        $data['loanGuarantee'] = ($request->loanGuarantee == 1) ? "وظيـفه" : "صـاحب عمل" ;
+        $data['loanGuarantee'] = ($request->loanGuarantee == 1) ? "وظيـفه" : "صـاحب عمل";
         $down = Downpayment::findOrFail($request->downID);
-        $data['downPayment'] = "(" . $down->DOWN_VLUE . "%)" . " " . number_format(round($down->DOWN_VLUE*$data['car']->CAR_PRCE/100,5) ) . " EGP";
+        $data['downPayment'] = "(" . $down->DOWN_VLUE . "%)" . " " . number_format(round($down->DOWN_VLUE * $data['car']->CAR_PRCE / 100, 5)) . " EGP";
         $data['remaining'] =   $request->remaining;
         $data['paid'] =   $request->paid;
         $data['interestRate'] = $request->rate . "%";
