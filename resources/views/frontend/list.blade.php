@@ -35,14 +35,7 @@
                 <div class="sidebar_filter">
                   <form action="{{$searchURL}}" method="post">
                     @csrf
-                    <div class="form-group select">
-                      <select class="form-control" name=brandID>
-                        <option value=0>Select Brand</option>
-                        @foreach($brands as $brand)
-                        <option value="{{$brand->id}}">{{$brand->BRND_NAME}}</option>
-                        @endforeach
-                      </select>
-                    </div>
+  
                     <div class="form-group select">
                       <select class="form-control" name=modelID>
                         <option value=0>Select Model</option>
