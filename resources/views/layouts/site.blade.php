@@ -114,12 +114,12 @@
             <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 1'] ?? "" }}</h1>
-                <h3>{{$frontendData['Landing Image']['Slide Subtitle 1'] ?? "" }}</h3>
+                <h3 style="margin-top: 5px"  >{{$frontendData['Landing Image']['Slide Subtitle 1'] ?? "" }}</h3>
                 @if(($frontendData['Landing Image']['Slide Button 1']) && (strlen($frontendData['Landing Image']['Slide Button 1'])>0) )
                 <?php 
                 $buttonArr = explode("->", $frontendData['Landing Image']['Slide Button 1']);
                 ?>
-                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                <a style="margin-top: 5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
             </div>
