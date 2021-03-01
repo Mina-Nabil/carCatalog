@@ -80,8 +80,8 @@ class SiteController extends Controller
         $data['carAccessories'] = $car->getFullAccessoriesArray();
 
         //loan calculator 
-        $data['downpayments']   =   Downpayment::has("plans", function (Builder $query) {
-                                        $query->where('PLAN_ACTV', 1);
+        $data['downpayments']   =   Downpayment::whereHas("plans", function (Builder $query) {
+                                        $query->where('PLAN_ACTV', '=', 1);
                                     })->orderBy("DOWN_VLUE")->get();
         $data['insurances']     =   Insurance::all();
 
@@ -158,8 +158,8 @@ class SiteController extends Controller
     function calculator(Request $request)
     {
         $data = self::getDefaultSiteInfo(false, "Car Loans", null, "Select your car & Calculate Loan Plans", true, $request);
-        $data['downpayments']   =   Downpayment::has("plans", function (Builder $query) {
-            $query->where('PLAN_ACTV', 1);
+        $data['downpayments']   =   Downpayment::whereHas("plans", function (Builder $query) {
+            $query->where('PLAN_ACTV', '=', 1);
         })->orderBy("DOWN_VLUE")->get();
         $data['insurances']     =   Insurance::all();
 
