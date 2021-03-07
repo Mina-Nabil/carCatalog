@@ -729,10 +729,10 @@
 
     function setTrending(state){
         if(state){
-            $('#trendingLabel').attr('class', 'btn btn-success');
+            $('#trendingLabel').attr('class', 'label label-success');
             $('#trendingLabel').html("Trending")
         } else {
-            $('#trendingLabel').attr('class', 'btn btn-danger');
+            $('#trendingLabel').attr('class', 'label label-danger');
             $('#trendingLabel').html("Not Trending")
         }
     }
