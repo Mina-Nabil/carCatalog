@@ -29,7 +29,7 @@ class SiteController extends Controller
             ->where('MODL_ACTV', 1)->where('MODL_MAIN', 1)->orderByDesc('models.id')->limit(2)->get();
         $mainModelsCount = count($data['mainModels']);
         if ($mainModelsCount == 0) {
-            $data['mainModels']  =  CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
+            $data['mainModels']  =  CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)->where('MODL_ACTV', 1)
                 ->select('brands.*', 'models.*')->orderByDesc('models.id')->limit(2)->get();
         } elseif ($mainModelsCount == 1) {
             $extraModel = CarModel::join('brands', 'MODL_BRND_ID', '=', 'brands.id')->where('BRND_ACTV', 1)
