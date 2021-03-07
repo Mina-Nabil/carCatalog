@@ -27,6 +27,8 @@ class CarsController extends Controller
         $this->data['formTitle'] = "Edit " . $this->data['car']->model->MODL_NAME . ' ' . $this->data['car']->CAR_CATG;
         $this->data['formURL'] = url("admin/cars/update");
         $this->data['updateImageInfoURL'] = url("admin/cars/update/image");
+        $this->data['toggleOffer'] = url("admin/cars/toggle/offer");
+        $this->data['toggleTrending'] = url("admin/cars/toggle/trending");
         $this->data['isCancel'] = false;
         return view('cars.profile', $this->data);
     }
@@ -231,6 +233,27 @@ class CarsController extends Controller
         $car->accessories()->sync($otherAccessories->all());
 
        return back();
+    }
+
+    public function toggleTrending(Request $request){
+
+        $request->validate([
+            "carID"     =>  "required"
+        ]);
+
+        $car = Car::findOrFail($request->carID);
+        echo $car->toggleTrending();
+
+    }
+
+    public function toggleOffer(Request $request){
+
+        $request->validate([
+            "carID"     =>  "required"
+        ]);
+
+        $car = Car::findOrFail($request->carID);
+        echo $car->toggleOffer();
     }
 
 

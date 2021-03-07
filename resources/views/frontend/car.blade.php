@@ -353,8 +353,8 @@
                 @foreach($similar as $simCar)
                 <div class="col-md-3 grid_listing">
                     <div class="product-listing-m gray-bg">
-                        <div class="product-listing-img"> <a href="{{url('car/' . $simCar->id)}}"><img src="{{($simCar->image) ? asset('storage/' . $simCar->image) : asset('assets/frontend/images/600x380.jpg')}}"
-                                    class="img-fluid" alt="image" /> </a>
+                        <div class="product-listing-img"> <a href="{{url('car/' . $simCar->id)}}"><img
+                                    src="{{($simCar->image) ? asset('storage/' . $simCar->image) : asset('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="image" /> </a>
                             <div class="compare_item">
                                 <div class="checkbox">
                                     <input type="checkbox" id="compare13" onchange="addToCompare(this, '{{$simCar->id}}'" @if(in_array($simCar->id, $compareArr))

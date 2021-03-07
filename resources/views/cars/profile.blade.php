@@ -41,17 +41,17 @@
                             <div title="Place in offer tab in the home page" class="col-md-3 col-xs-6 b-r"> <strong>Offer</strong>
                                 <br>
                                 @if(isset($car->CAR_OFFR))
-                                <button title="Remove from the offer tab in the home page" class="label label-success" id="unsetOfferButton">Appears in Offers</button>
+                                <button id="offerLabel" class="label label-success" id="unsetOfferButton">In Offers</button>
                                 @else
-                                <button title="Place the car in the offer tab on the home page" class="label label-danger" id="setOfferButton">Not in Offers</button>
+                                <button id="offerLabel" class="label label-danger" id="setOfferButton">Not in Offers</button>
                                 @endif
                             </div>
                             <div class="col-md-3 col-xs-6"> <strong>Trending</strong>
                                 <br>
                                 @if(isset($car->CAR_TRND))
-                                <button title="Remove from the trend tab in the home page" class="label label-success">Appears in Trending</button>
+                                <button id="trendingLabel" class="label label-success">Trending</button>
                                 @else
-                                <button title="Place the car in the trend tab on the home page" class="label label-danger">Not Trending</button>
+                                <button id="trendingLabel" class="label label-danger">Not Trending</button>
                                 @endif
                             </div>
                             <div class="col-md-3 col-xs-6 b-r"> <strong>Model Name</strong>
@@ -676,6 +676,75 @@
     </div>
 </div>
 <script>
+    function toggleOffer(){
+        var http = new XMLHttpRequest();
+        var url = "{{$toggleOffer}}" ;
+        var ret = false;
+        var formdata = new FormData();
+
+        formdata.append('_token','{{ csrf_token() }}');
+        formdata.append('carID', '{{ $car->id }}');
+
+        http.open('POST', url);
+
+        http.onreadystatechange = function(ret) {
+            if (this.readyState == 4 && this.status == 200 && isNumeric(this.responseText)) {
+                if(this.responseText == 1){
+                    setOffer(true)
+                } else {
+                    setOffer(false)
+                }
+            }
+        };
+        http.send(formdata);
+        return ret;
+    }
+
+    function toggleTrending(){
+        var http = new XMLHttpRequest();
+        var url = "{{$toggleTrending}}" ;
+        var ret = false;
+        var formdata = new FormData();
+
+        formdata.append('_token','{{ csrf_token() }}');
+        formdata.append('carID', '{{ $car->id }}');
+
+        http.open('POST', url);
+
+        http.onreadystatechange = function(ret) {
+            if (this.readyState == 4 && this.status == 200 && isNumeric(this.responseText)) {
+                if(this.responseText == 1){
+                    setTrending(true)
+                } else {
+                    setTrending(false)
+                }
+            }
+        };
+        http.send(formdata);
+        return ret;
+    }
+
+    function setOffer(state){
+        if(state){
+            $('#offerLabel').attr('class', 'btn btn-success');
+            $('#offerLabel').html("In Offers")
+        } else {
+            $('#offerLabel').attr('class', 'btn btn-danger');
+            $('#offerLabel').html("Not In Offers")
+        }
+    }
+
+    function setTrending(state){
+        if(state){
+            $('#trendingLabel').attr('class', 'btn btn-success');
+            $('#trendingLabel').html("Trending")
+        } else {
+            $('#trendingLabel').attr('class', 'btn btn-danger');
+            $('#trendingLabel').html("Not Trending")
+        }
+    }
+
+
     function deleteImage(id){
         var http = new XMLHttpRequest();
         var url = "{{$delImageUrl}}" + '/' +  id;

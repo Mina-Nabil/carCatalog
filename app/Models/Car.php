@@ -78,23 +78,25 @@ class Car extends Model
         return $accessories;
     }
 
-    public function setOffer()
+    public function toggleOffer()
     {
         if (isset($this->CAR_OFFR)) {
             $this->CAR_OFFR = null;
+            if ($this->save()) return 0;
         } else {
             $this->CAR_OFFR = new DateTime();
+            if ($this->save()) return 1;
         }
-        $this->save();
     }
 
-    public function setTrending()
+    public function toggleTrending()
     {
         if (isset($this->CAR_TRND)) {
             $this->CAR_TRND = null;
+            if ($this->save()) return 0;
         } else {
             $this->CAR_TRND = new DateTime();
+            if ($this->save()) return 1;
         }
-        $this->save();
     }
 }
