@@ -193,159 +193,155 @@
         </div>
 
         <div class=row>
-
-            <div class="listing_more_info">
-                <div class="listing_detail_wrap">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs gray-bg" role="tablist">
-                        <li role="presentation"><a class="active" href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
-                        <li role="presentation"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
-                        <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
-                        <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <!-- vehicle-overview -->
-                        <div role="tabpanel" class="tab-pane" id="vehicle-overview">
-                            @if(isset($car->model->MODL_BRCH))
-                            <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$car->model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
-                                frameborder="0" allowfullscreen=""></iframe>
-                            @elseif(isset($car->model->MODL_PDF))
-                            <iframe style="border: 1px solid #777; width:100% " src="{{asset('storage/' . $car->model->MODL_PDF)}}" height="371px" frameborder="0" allowfullscreen=""></iframe>
-                            @endif
-                        </div>
-
-                        <div role="tabpanel" class="tab-pane active" id="colors">
-                            <section class="listing-detail">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="listing_images">
-                                                <div id="listing_images_slider2" class="listing_images_slider">
-                                                    @foreach($car->model->colorImages as $carImage)
-                                                    <div><img height="560px" title="{{$carImage->MOIM_COLR}}"
-                                                            src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
+            <div class="col-12">
+                <div class="listing_more_info">
+                    <div class="listing_detail_wrap">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs gray-bg" role="tablist">
+                            <li role="presentation"><a class="active" href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
+                            <li role="presentation"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
+                            <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
+                            <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="colors">
+                                <section class="listing-detail">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="listing_images">
+                                                    <div id="listing_images_slider2" class="listing_images_slider">
+                                                        @foreach($car->model->colorImages as $carImage)
+                                                        <div><img height="560px" title="{{$carImage->MOIM_COLR}}"
+                                                                src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
+                                                        </div>
+                                                        @endforeach
                                                     </div>
-                                                    @endforeach
-                                                </div>
-                                                <div id="listing_images_slider_nav2" class="listing_images_slider_nav">
-                                                    @foreach($car->model->colorImages as $carImage)
-                                                    <div>
-                                                        <img width="300px" src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}"
-                                                            alt="image">
-                                                        <label>{{$carImage->MOIM_COLR}}</label>
+                                                    <div id="listing_images_slider_nav2" class="listing_images_slider_nav">
+                                                        @foreach($car->model->colorImages as $carImage)
+                                                        <div>
+                                                            <img width="300px" src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}"
+                                                                alt="image">
+                                                            <label>{{$carImage->MOIM_COLR}}</label>
+                                                        </div>
+                                                        @endforeach
                                                     </div>
-                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </section>
+                            </div>
+                            <!-- vehicle-overview -->
+                            <div role="tabpanel" class="tab-pane" id="vehicle-overview">
+                                @if(isset($car->model->MODL_BRCH))
+                                <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$car->model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
+                                    frameborder="0" allowfullscreen=""></iframe>
+                                @elseif(isset($car->model->MODL_PDF))
+                                <iframe style="border: 1px solid #777; width:100% " src="{{asset('storage/' . $car->model->MODL_PDF)}}" height="371px" frameborder="0" allowfullscreen=""></iframe>
+                                @endif
+                            </div>
+
+                            <!-- Technical-Specification -->
+                            <div role="tabpanel" class="tab-pane" id="specification">
+                                <div class="table-responsive">
+                                    <!--Basic-Info-Table-->
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">BASIC INFO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Model Year</td>
+                                                <td>{{$car->model->MODL_YEAR}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Car Type</td>
+                                                <td>{{$car->model->type->TYPE_NAME}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transmission</td>
+                                                <td>{{$car->CAR_TRNS}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fuel Type</td>
+                                                <td>Petrol 92, 95</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <!--Technical-Specification-Table-->
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Specification</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Engine Horse Power</td>
+                                                <td>{{$car->CAR_HPWR}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Engine Torque</td>
+                                                <td>{{$car->CAR_TORQ}}kW</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Top Speed</td>
+                                                <td>{{$car->CAR_TPSP}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Acceleration</td>
+                                                <td>{{$car->CAR_ACC}} sec to 100km/h</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fuel Tank Capacity</td>
+                                                <td>{{$car->CAR_TRNK}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Seating Capacity</td>
+                                                <td>{{$car->CAR_SEAT}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ground Clearance</td>
+                                                <td>{{$car->CAR_HEIT}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Car Dimensions</td>
+                                                <td>{{$car->CAR_DIMN}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </section>
-                        </div>
-
-                        <!-- Technical-Specification -->
-                        <div role="tabpanel" class="tab-pane" id="specification">
-                            <div class="table-responsive">
-                                <!--Basic-Info-Table-->
+                            </div>
+                            <!-- Accessories -->
+                            <div role="tabpanel" class="tab-pane" id="accessories">
+                                <!--Accessories-->
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th colspan="2">BASIC INFO</th>
+                                            <th colspan="2">Accessories</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($carAccessories as $accessory)
+                                        @if($accessory['isAvailable'])
                                         <tr>
-                                            <td>Model Year</td>
-                                            <td>{{$car->model->MODL_YEAR}}</td>
+                                            <td>{{$accessory['ACSR_NAME']. "/" .$accessory['ACSR_ARBC_NAME']}}</td>
+                                            <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Car Type</td>
-                                            <td>{{$car->model->type->TYPE_NAME}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Transmission</td>
-                                            <td>{{$car->CAR_TRNS}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fuel Type</td>
-                                            <td>Petrol 92, 95</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <!--Technical-Specification-Table-->
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2">Specification</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Engine Horse Power</td>
-                                            <td>{{$car->CAR_HPWR}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Engine Torque</td>
-                                            <td>{{$car->CAR_TORQ}}kW</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Top Speed</td>
-                                            <td>{{$car->CAR_TPSP}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Acceleration</td>
-                                            <td>{{$car->CAR_ACC}} sec to 100km/h</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fuel Tank Capacity</td>
-                                            <td>{{$car->CAR_TRNK}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Seating Capacity</td>
-                                            <td>{{$car->CAR_SEAT}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ground Clearance</td>
-                                            <td>{{$car->CAR_HEIT}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Car Dimensions</td>
-                                            <td>{{$car->CAR_DIMN}}</td>
-                                        </tr>
+                                        @endif
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-                        <!-- Accessories -->
-                        <div role="tabpanel" class="tab-pane" id="accessories">
-                            <!--Accessories-->
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">Accessories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($carAccessories as $accessory)
-                                    @if($accessory['isAvailable'])
-                                    <tr>
-                                        <td>{{$accessory['ACSR_NAME']. "/" .$accessory['ACSR_ARBC_NAME']}}</td>
-                                        <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
-                                    </tr>
-                                    @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
         <div class="space-20"></div>
         <div class="divider"></div>
