@@ -212,7 +212,7 @@
       <div class="col-list-3">
         <div class="featured-car-list">
           <div class="featured-car-img"> <a href="{{url('car/' . $offerCar->id)}}"><img
-                src="{{ ($offerCar->image) ? assets('storage' . $offerCar->image )  : assets('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="Image"></a>
+                src="{{ ($offerCar->image) ? asset('storage' . $offerCar->image )  : asset('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="Image"></a>
             @if($offerCar->CAR_DISC > 0)
             <div class="label_icon">- {{$offerCar->CAR_DISC}}</div>
             @endif
@@ -260,7 +260,7 @@
         <div id="trending_slider">
           @foreach($trends as $trendCar)
           <div class="trending-car-m">
-            <div class="trending-car-img"> <img src="{{ ($trendCar->image) ? assets('storage' . $trendCar->image)  : assets('assets/frontend/images/600x380.jpg')}}" alt="Image"
+            <div class="trending-car-img"> <img src="{{ ($trendCar->image) ? asset('storage' . $trendCar->image)  : asset('assets/frontend/images/600x380.jpg')}}" alt="Image"
                 class="img-fluid" /> </div>
             <div class="trending-hover">
               <h4><a href="{{url('car/' . $trendCar->id)}}">{{$trendCar->MODL_NAME}} {{$trendCar->CAR_CATG}}</a></h4>
@@ -286,7 +286,7 @@
         @foreach($customers as $customer)
         @if($customer->CUST_ACTV)
         <div class="testimonial-m">
-          <div class="testimonial-img"> <img src="{{ ($customer->CUST_IMGE) ? assets('storage' . $customer->CUST_IMGE)  : assets('assets/frontend/images/300x300.jpg')}}" alt="images" /> </div>
+          <div class="testimonial-img"> <img src="{{ ($customer->CUST_IMGE) ? asset('storage' . $customer->CUST_IMGE)  : asset('assets/frontend/images/300x300.jpg')}}" alt="images" /> </div>
           <div class="testimonial-content">
             <div class="testimonial-heading">
               <h5>{{$customer->CUST_NAME}}</h5>
