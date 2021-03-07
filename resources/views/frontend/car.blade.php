@@ -80,119 +80,118 @@
                         </li>
                     </ul>
                 </div>
+            </div>
 
 
-                <!--Side-Bar-->
-                <aside class="col-md-3">
-                    <div class="sidebar_widget">
-                        <div class="widget_heading">
-                            <h5><i class="fa fa-calculator" aria-hidden="true"></i> Loan Calculator </h5>
-                        </div>
-                        <div class="financing_calculatoe">
-                            <div class="row">
+            <!--Side-Bar-->
+            <aside class="col-md-3">
+                <div class="sidebar_widget">
+                    <div class="widget_heading">
+                        <h5><i class="fa fa-calculator" aria-hidden="true"></i> Loan Calculator </h5>
+                    </div>
+                    <div class="financing_calculatoe">
+                        <div class="row">
 
-                                <div class="form-group col-md-12">
-                                    <label>Car Price</label>
-                                    <input class="form-control" title="Car Price" id=priceInput type="text" value={{$car->CAR_PRCE - $car->CAR_DISC }} disabled readonly>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Downpayment</label>
-                                    <div class="select">
-                                        <select class="form-control" id=downpaymentSel title="Downpayment" onchange="getYears()">
-                                            <option value="0" disabled selected>20%-70% </option>
-                                            @foreach($downpayments as $down)
-                                            <option value="{{$down->id}}">{{$down->DOWN_VLUE}}%</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Years</label>
-                                    <div class="select">
-                                        <select class="form-control" id="yearsSel" title="Installament Years" disabled onchange="getPlans()">
-                                            <option value="0" disabled selected> Available options</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label>Loan Guarantee </label>
-                                    <div class=row>
-                                        <div class="col-12">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="employeeRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
-                                                <label class="custom-control-label" for="employeeRadio">Employee</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
-                                                <label class="custom-control-label" for="selfRadio">Self-Employed</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Paid</label>
-                                    <input class="form-control" title="Amount to be paid as the downpayment" id=paidInput type="text" disabled readonly>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Remaining</label>
-                                    <input class="form-control" title="Remaining Payment After Downpayment" id=remainingInput type="text" disabled readonly>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label>Plan</label>
-                                    <div class="select">
-                                        <select class="form-control" id=plansSel onchange="setPlan()" disabled>
-                                            <option value="0" disabled selected>Loan Plans Available </option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 align-self-center">
-                                    <label>Monthly Payments</label>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input class="form-control" id=monthlyPayments type="text" disabled readonly>
-                                </div>
-
-                                <div class="col-6 align-self-center">
-                                    <label>Bank Expenses</label>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input class="form-control" id=expensesInput type="text" disabled readonly>
-                                </div>
-
-
-                                <div class="form-group col-md-6" id=insuranceDiv1 style="display: none">
-                                    <div class="select" id=insuranceSel onchange="calculateInsurance()">
-                                        <select class="form-control">
-                                            <option value="0" disabled selected>Insurance </option>
-                                            @foreach($insurances as $insurance)
-                                            <option value="{{$insurance->INSR_VLUE}}">{{$insurance->INSR_NAME}} </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6" id=insuranceDiv2 style="display: none">
-                                    <input class="form-control" id=insuranceInput type="text" disabled readonly>
-                                </div>
-
-
-                                <div class="col-md-3"></div>
-                                <div class="form-group col-md-6">
-                                    <button type="submit" class="btn btn-block" id=printButton onclick="print()" disabled><i class="fa fa-print" aria-hidden="true"></i> </button>
-                                </div>
-                                <div class="col-md-3"></div>
+                            <div class="form-group col-md-12">
+                                <label>Car Price</label>
+                                <input class="form-control" title="Car Price" id=priceInput type="text" value={{$car->CAR_PRCE - $car->CAR_DISC }} disabled readonly>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label>Downpayment</label>
+                                <div class="select">
+                                    <select class="form-control" id=downpaymentSel title="Downpayment" onchange="getYears()">
+                                        <option value="0" disabled selected>20%-70% </option>
+                                        @foreach($downpayments as $down)
+                                        <option value="{{$down->id}}">{{$down->DOWN_VLUE}}%</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Years</label>
+                                <div class="select">
+                                    <select class="form-control" id="yearsSel" title="Installament Years" disabled onchange="getPlans()">
+                                        <option value="0" disabled selected> Available options</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Loan Guarantee </label>
+                                <div class=row>
+                                    <div class="col-12">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="employeeRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
+                                            <label class="custom-control-label" for="employeeRadio">Employee</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
+                                            <label class="custom-control-label" for="selfRadio">Self-Employed</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Paid</label>
+                                <input class="form-control" title="Amount to be paid as the downpayment" id=paidInput type="text" disabled readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Remaining</label>
+                                <input class="form-control" title="Remaining Payment After Downpayment" id=remainingInput type="text" disabled readonly>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Plan</label>
+                                <div class="select">
+                                    <select class="form-control" id=plansSel onchange="setPlan()" disabled>
+                                        <option value="0" disabled selected>Loan Plans Available </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6 align-self-center">
+                                <label>Monthly Payments</label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input class="form-control" id=monthlyPayments type="text" disabled readonly>
+                            </div>
+
+                            <div class="col-6 align-self-center">
+                                <label>Bank Expenses</label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input class="form-control" id=expensesInput type="text" disabled readonly>
+                            </div>
+
+
+                            <div class="form-group col-md-6" id=insuranceDiv1 style="display: none">
+                                <div class="select" id=insuranceSel onchange="calculateInsurance()">
+                                    <select class="form-control">
+                                        <option value="0" disabled selected>Insurance </option>
+                                        @foreach($insurances as $insurance)
+                                        <option value="{{$insurance->INSR_VLUE}}">{{$insurance->INSR_NAME}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" id=insuranceDiv2 style="display: none">
+                                <input class="form-control" id=insuranceInput type="text" disabled readonly>
+                            </div>
+
+
+                            <div class="col-md-3"></div>
+                            <div class="form-group col-md-6">
+                                <button type="submit" class="btn btn-block" id=printButton onclick="print()" disabled><i class="fa fa-print" aria-hidden="true"></i> </button>
+                            </div>
+                            <div class="col-md-3"></div>
                         </div>
                     </div>
+                </div>
 
 
-                </aside>
-            </div>
-            <!--/Side-Bar-->
-
+            </aside>
         </div>
+
         <div class=row>
 
             <div class="listing_more_info">
