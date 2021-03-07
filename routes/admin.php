@@ -31,7 +31,7 @@ Route::get('models/toggle/main/{id}', 'ModelsController@toggleMain');
 Route::get('models/toggle/active/{id}', 'ModelsController@toggleActive');
 Route::post('models/add/image', 'ModelsController@attachImage');
 Route::post('models/update/image', 'ModelsController@editImage');
-Route::get('models/image/delete', 'ModelsController@delImage');
+Route::get('models/image/delete/{id}', 'ModelsController@delImage');
 
 //Accessories routes
 Route::get('accessories/show', 'AccessoriesController@home');
