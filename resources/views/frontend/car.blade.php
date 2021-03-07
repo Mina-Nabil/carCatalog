@@ -33,70 +33,9 @@
     </div>
     <div class="dark-overlay"></div>
 </section>
-<section class="listing_other_info secondary-bg">
-    <div class="container">
-        <div id="filter_toggle" class="search_other"> <i class="fa fa-filter" aria-hidden="true"></i> Search Cars </div>
-        <div id="other_info"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
-        {{-- <div id="info_toggle">
-        <button type="button" data-toggle="modal" data-target="#schedule"> <i class="fa fa-car" aria-hidden="true"></i> Schedule Test Drive </button>
-        <button type="button" data-toggle="modal" data-target="#make_offer"> <i class="fa fa-money" aria-hidden="true"></i> Make an Offer </button>
-        <button type="button" data-toggle="modal" data-target="#email_friend"> <i class="fa fa-envelope" aria-hidden="true"></i> Email to a Friend </button>
-        <button type="button" data-toggle="modal" data-target="#more_info"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Request More Info </button>
-      </div> --}}
-    </div>
-</section>
-<section id="filter_form" class="inner-filter gray-bg">
-    <div class="container">
-        <h3>Find Your Dream Car <span>(Easy search from here)</span></h3>
 
-        <form action="{{$searchURL}}" method="post">
-            @csrf
-            <div class="row">
-                <div class="form-group col-md-3 col-sm-6 black_input">
-                    <div class="select">
-                        <select class="form-control" name=typeID>
-                            <option value=0>Type of Car </option>
-                            @foreach($types as $type)
-                            <option value="{{$type->id}}">{{$type->TYPE_NAME}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-  
-                <div class="form-group col-md-3 col-sm-6 black_input">
-                    <div class="select">
-                        <select class="form-control" name=modelID>
-                            <option value=0>Select Model</option>
-                            @foreach($models as $model)
-                            <option value="{{$model->id}}">{{$model->MODL_NAME}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group col-md-3 col-sm-6 black_input">
-                    <div class="select">
-                        <select class="form-control" name=year>
-                            <option value=0>Year of Model </option>
-                            @foreach($years as $year)
-                            <option value="{{$year}}">{{$year}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group col-md-3 col-sm-6">
-                    <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car </button>
-                </div>
-                <div class="form-group col-md-9 col-sm-6 black_input">
-                    <label class="form-label">Price Range ({{number_format($carsMin)}} to {{number_format($carsMax)}} EGP)</label>
-                    <input id="price_range" type="text" name="priceRange" data-slider-min="{{$carsMin}}" data-slider-max="{{$carsMax}}" data-slider-step="5"
-                        data-slider-value="[{{$carsMin+$carsShwya}},{{$carsMax-$carsShwya}}]" />
-                </div>
-           
-            </div>
-        </form>
 
-    </div>
-</section>
+
 <section class="listing-detail">
     <div class="container">
         <div class="row">

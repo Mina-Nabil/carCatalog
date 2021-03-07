@@ -138,7 +138,7 @@
                 <?php 
                 $buttonArr = explode( "->", $frontendData['Landing Image']['Slide Button 2']);
                 ?>
-                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
             </div>
@@ -157,7 +157,7 @@
                 <?php 
                 $buttonArr = explode( "->", $frontendData['Landing Image']['Slide Button 3']);
                 ?>
-                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
             </div>
@@ -177,7 +177,7 @@
                 <?php 
                 $buttonArr = explode("->", $frontendData['Landing Image']['Slide Button 4']);
                 ?>
-                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
             </div>
@@ -197,7 +197,7 @@
                 <?php 
                 $buttonArr = explode( "->", $frontendData['Landing Image']['Slide Button 5']);
                 ?>
-                <a href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
+                <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
             </div>
