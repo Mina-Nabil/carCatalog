@@ -42,7 +42,7 @@ class SiteController extends Controller
             $data['offers'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
                 ->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
                 ->select('brands.*', 'models.*', 'cars.*')
-                ->whereNotNull('CAR_OFFR')->where('CAR_ACTV', 1)
+                ->whereNotNull('CAR_OFFR')
                 ->where('BRND_ACTV', 1)->where('MODL_ACTV', 1)
                 ->get();
         }
@@ -50,7 +50,7 @@ class SiteController extends Controller
             $data['trends'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
                 ->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
                 ->select('brands.*', 'models.*', 'cars.*')
-                ->whereNotNull('CAR_TRND')->where('CAR_ACTV', 1)
+                ->whereNotNull('CAR_TRND')
                 ->where('BRND_ACTV', 1)->where('MODL_ACTV', 1)
                 ->get();
         }

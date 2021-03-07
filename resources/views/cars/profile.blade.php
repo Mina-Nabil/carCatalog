@@ -545,10 +545,10 @@
                                 @endif
                             </form>
                             <hr>
-                            <h4 class="card-title">Delete User</h4>
-                            <button type="button" onclick="confirmAndGoTo('{{url('users/delete/'.$car->model->id )}}', 'delete this User and all his attendance and payment ?')"
+                            <h4 class="card-title">Delete Car</h4>
+                            <button type="button" onclick="confirmAndGoTo('{{url('users/delete/'.$car->model->id )}}', 'delete this Car and all its data ?')"
                                 class="btn btn-danger mr-2">Delete
-                                All User Data</button>
+                                All Car Data</button>
                         </div>
                     </div>
                 </div>
