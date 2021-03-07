@@ -212,7 +212,7 @@
       <div class="col-list-3">
         <div class="featured-car-list">
           <div class="featured-car-img"> <a href="{{url('car/' . $offerCar->id)}}"><img
-                src="{{ ($offerCar->mainImage()) ? assets('storage' . $offerCar->mainImage())  : assets('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="Image"></a>
+                src="{{ ($offerCar->image ? assets('storage' . $offerCar->image)  : assets('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="Image"></a>
             @if($offerCar->CAR_DISC > 0)
             <div class="label_icon">- {{$offerCar->CAR_DISC}}</div>
             @endif
@@ -260,7 +260,7 @@
         <div id="trending_slider">
           @foreach($trends as $trendCar)
           <div class="trending-car-m">
-            <div class="trending-car-img"> <img src="{{ ($trendCar->mainImage()) ? assets('storage' . $trendCar->mainImage())  : assets('assets/frontend/images/600x380.jpg')}}" alt="Image"
+            <div class="trending-car-img"> <img src="{{ ($trendCar->image) ? assets('storage' . $trendCar->image)  : assets('assets/frontend/images/600x380.jpg')}}" alt="Image"
                 class="img-fluid" /> </div>
             <div class="trending-hover">
               <h4><a href="{{url('car/' . $trendCar->id)}}">{{$trendCar->MODL_NAME}} {{$trendCar->CAR_CATG}}</a></h4>
