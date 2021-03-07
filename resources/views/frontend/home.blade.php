@@ -212,7 +212,7 @@
       <div class="col-list-3">
         <div class="featured-car-list">
           <div class="featured-car-img"> <a href="{{url('car/' . $offerCar->id)}}"><img
-                src="{{ ($offerCar->image ? assets('storage' . $offerCar->image)  : assets('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="Image"></a>
+                src="{{ ($offerCar->image) ? assets('storage' . $offerCar->image )  : assets('assets/frontend/images/600x380.jpg')}}" class="img-fluid" alt="Image"></a>
             @if($offerCar->CAR_DISC > 0)
             <div class="label_icon">- {{$offerCar->CAR_DISC}}</div>
             @endif
