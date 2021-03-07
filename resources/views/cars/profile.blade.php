@@ -681,7 +681,7 @@
         http.open('POST', url);
 
         http.onreadystatechange = function(ret) {
-            if (this.readyState == 4 && this.status == 200 && isNumeric(this.responseText)) {
+            if (this.readyState == 4 && this.status == 200 && IsNumeric(this.responseText)) {
                 if(this.responseText == 1){
                     setOffer(true)
                 } else {
@@ -705,7 +705,7 @@
         http.open('POST', url);
 
         http.onreadystatechange = function(ret) {
-            if (this.readyState == 4 && this.status == 200 && isNumeric(this.responseText)) {
+            if (this.readyState == 4 && this.status == 200 && IsNumeric(this.responseText)) {
                 if(this.responseText == 1){
                     setTrending(true)
                 } else {
