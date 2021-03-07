@@ -24,6 +24,7 @@ class ModelsController extends Controller
         $this->data['formURL'] = url("admin/models/update");
         $this->data['imageFormURL'] = url("admin/models/add/image");
         $this->data['updateImageInfoURL'] = url("admin/models/update/image");
+        $this->data['delImageInfoURL'] = url("admin/models/image/delete/");
         $this->data['isCancel'] = false;
         return view('models.profile', $this->data);
     }

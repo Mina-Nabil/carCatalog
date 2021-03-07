@@ -418,6 +418,39 @@
     </div>
 </div>
 <script>
+
+function deleteImage(id){
+            var http = new XMLHttpRequest();
+            var url = "{{$delImageUrl}}" + '/' +  id;
+            http.open('GET', url, true);
+            //Send the proper header information along with the request
+            http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseText=='1')
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Image will disappear after reload..",
+                    icon: "success"
+                })
+                else 
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong..",
+                    icon: "error"
+                })
+            } else {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong.. Please refresh",
+                    icon: "error"
+                })
+            }
+        };
+
+        http.send();
+    }
+
+
     function updateImageInfo(){
         var http = new XMLHttpRequest();
         var url = "{{$updateImageInfoURL}}" ;

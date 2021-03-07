@@ -20,6 +20,7 @@ Route::post('cars/load/data', 'CarsController@loadData');
 Route::post('cars/load/accessories', 'CarsController@loadAccessories');
 Route::post('cars/update/image', 'CarsController@editImage');
 
+
 //Models routes
 Route::get('models/show', 'ModelsController@home');
 Route::get('models/add', 'ModelsController@add');
@@ -30,6 +31,7 @@ Route::get('models/toggle/main/{id}', 'ModelsController@toggleMain');
 Route::get('models/toggle/active/{id}', 'ModelsController@toggleActive');
 Route::post('models/add/image', 'ModelsController@attachImage');
 Route::post('models/update/image', 'ModelsController@editImage');
+Route::post('models/image/delete', 'ModelsController@delImage');
 
 //Accessories routes
 Route::get('accessories/show', 'AccessoriesController@home');
