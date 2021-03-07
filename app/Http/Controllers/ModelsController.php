@@ -170,7 +170,7 @@ class ModelsController extends Controller
     }
 
 
-    public function deleteImage($id)
+    public function delImage($id)
     {
         $image = ModelImage::findOrFail($id);
         echo $image->deleteImage();
