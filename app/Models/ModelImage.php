@@ -10,6 +10,16 @@ class ModelImage extends Model
     protected $table = "model_images";
     public $timestamps = false;
 
+    public function deleteImage()
+    {
+        try {
+            unlink(public_path('storage/' . $this->MOIM_URL));
+        } catch (Exception $e) {
+        }
+        $this->delete();
+        return 1;
+    }
+
 
     public function compress()
     {
