@@ -38,13 +38,14 @@ class SiteController extends Controller
             if ($extraModel)
                 $data['mainModels']->push($extraModel);
         }
-        if (isset($data['frontendData']['Offers']) && $data['frontendData']['Offers']['Active']) {
+        if (isset($data['frontendData']['Offers']) && $data['frontendData']['Offers']['Active']) { 
             $data['offers'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
                 ->join('brands', 'MODL_BRND_ID', '=', 'brands.id')
                 ->select('brands.*', 'models.*', 'cars.*')
                 ->whereNotNull('CAR_OFFR')
                 ->where('BRND_ACTV', 1)->where('MODL_ACTV', 1)
                 ->get();
+                dd($data['offers']);
         }
         if (isset($data['frontendData']['Trending cars']) && $data['frontendData']['Trending cars']['Active']) {
             $data['trends'] = Car::join('models', 'CAR_MODL_ID', '=', 'cars.id')
