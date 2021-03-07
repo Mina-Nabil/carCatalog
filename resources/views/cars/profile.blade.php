@@ -719,10 +719,10 @@
 
     function setOffer(state){
         if(state){
-            $('#offerLabel').attr('class', 'btn btn-success');
+            $('#offerLabel').attr('class', 'label label-success');
             $('#offerLabel').html("In Offers")
         } else {
-            $('#offerLabel').attr('class', 'btn btn-danger');
+            $('#offerLabel').attr('class', 'label label-danger');
             $('#offerLabel').html("Not In Offers")
         }
     }
