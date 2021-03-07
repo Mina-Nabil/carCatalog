@@ -341,6 +341,10 @@
 
     <!-- Start Table Search Script -->
     <script>
+        function IsNumeric(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        } 
+
         $(document).ready(function () {
             $("#print").click(function () {
                 var mode = 'iframe'; //popup
