@@ -40,19 +40,12 @@
                             </div>
                             <div title="Place in offer tab in the home page" class="col-md-3 col-xs-6 b-r"> <strong>Offer</strong>
                                 <br>
-                                @if(isset($car->CAR_OFFR))
-                                <button id="offerLabel" class="label label-success" id="unsetOfferButton">In Offers</button>
-                                @else
-                                <button id="offerLabel" class="label label-danger" id="setOfferButton">Not in Offers</button>
-                                @endif
+                                <button id="offerLabel" class="label label-{{($car->CAR_OFFR) ? 'success' : 'danger'}}"
+                                    onclick="toggleOffer()">{{($car->CAR_OFFR) ? 'In Offers' : 'Not in Offers'}}</button>
                             </div>
                             <div class="col-md-3 col-xs-6"> <strong>Trending</strong>
                                 <br>
-                                @if(isset($car->CAR_TRND))
-                                <button id="trendingLabel" class="label label-success">Trending</button>
-                                @else
-                                <button id="trendingLabel" class="label label-danger">Not Trending</button>
-                                @endif
+                                <button id="trendingLabel" class="label label-{{($car->CAR_TRND) ? 'success' : 'danger'}}"  onclick="toggleTrending()">{{($car->CAR_TRND) ? 'Trending' : 'Not Trending'}}</button>
                             </div>
                             <div class="col-md-3 col-xs-6 b-r"> <strong>Model Name</strong>
                                 <br>
