@@ -80,266 +80,272 @@
                         </li>
                     </ul>
                 </div>
-                <div class="listing_more_info">
-                    <div class="listing_detail_wrap">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs gray-bg" role="tablist">
-                            <li role="presentation"><a class="active" href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
-                            <li role="presentation"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
-                            <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
-                            <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
-                        </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <!-- vehicle-overview -->
-                            <div role="tabpanel" class="tab-pane" id="vehicle-overview">
-                                @if(isset($car->model->MODL_BRCH))
-                                <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$car->model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
-                                    frameborder="0" allowfullscreen=""></iframe>
-                                @elseif(isset($car->model->MODL_PDF))
-                                <iframe style="border: 1px solid #777; width:100% " src="{{asset('storage/' . $car->model->MODL_PDF)}}" height="371px" frameborder="0" allowfullscreen=""></iframe>
-                                @endif
+
+                <!--Side-Bar-->
+                <aside class="col-md-3">
+                    <div class="sidebar_widget">
+                        <div class="widget_heading">
+                            <h5><i class="fa fa-calculator" aria-hidden="true"></i> Loan Calculator </h5>
+                        </div>
+                        <div class="financing_calculatoe">
+                            <div class="row">
+
+                                <div class="form-group col-md-12">
+                                    <label>Car Price</label>
+                                    <input class="form-control" title="Car Price" id=priceInput type="text" value={{$car->CAR_PRCE - $car->CAR_DISC }} disabled readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Downpayment</label>
+                                    <div class="select">
+                                        <select class="form-control" id=downpaymentSel title="Downpayment" onchange="getYears()">
+                                            <option value="0" disabled selected>20%-70% </option>
+                                            @foreach($downpayments as $down)
+                                            <option value="{{$down->id}}">{{$down->DOWN_VLUE}}%</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Years</label>
+                                    <div class="select">
+                                        <select class="form-control" id="yearsSel" title="Installament Years" disabled onchange="getPlans()">
+                                            <option value="0" disabled selected> Available options</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Loan Guarantee </label>
+                                    <div class=row>
+                                        <div class="col-12">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="employeeRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
+                                                <label class="custom-control-label" for="employeeRadio">Employee</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
+                                                <label class="custom-control-label" for="selfRadio">Self-Employed</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Paid</label>
+                                    <input class="form-control" title="Amount to be paid as the downpayment" id=paidInput type="text" disabled readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Remaining</label>
+                                    <input class="form-control" title="Remaining Payment After Downpayment" id=remainingInput type="text" disabled readonly>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Plan</label>
+                                    <div class="select">
+                                        <select class="form-control" id=plansSel onchange="setPlan()" disabled>
+                                            <option value="0" disabled selected>Loan Plans Available </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 align-self-center">
+                                    <label>Monthly Payments</label>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" id=monthlyPayments type="text" disabled readonly>
+                                </div>
+
+                                <div class="col-6 align-self-center">
+                                    <label>Bank Expenses</label>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" id=expensesInput type="text" disabled readonly>
+                                </div>
+
+
+                                <div class="form-group col-md-6" id=insuranceDiv1 style="display: none">
+                                    <div class="select" id=insuranceSel onchange="calculateInsurance()">
+                                        <select class="form-control">
+                                            <option value="0" disabled selected>Insurance </option>
+                                            @foreach($insurances as $insurance)
+                                            <option value="{{$insurance->INSR_VLUE}}">{{$insurance->INSR_NAME}} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6" id=insuranceDiv2 style="display: none">
+                                    <input class="form-control" id=insuranceInput type="text" disabled readonly>
+                                </div>
+
+
+                                <div class="col-md-3"></div>
+                                <div class="form-group col-md-6">
+                                    <button type="submit" class="btn btn-block" id=printButton onclick="print()" disabled><i class="fa fa-print" aria-hidden="true"></i> </button>
+                                </div>
+                                <div class="col-md-3"></div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div role="tabpanel" class="tab-pane active" id="colors">
-                                <section class="listing-detail">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="listing_images">
-                                                    <div id="listing_images_slider2" class="listing_images_slider">
-                                                        @foreach($car->model->colorImages as $carImage)
-                                                        <div><img height="560px" title="{{$carImage->MOIM_COLR}}" src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
-                                                        </div>
-                                                        @endforeach
+
+                </aside>
+            </div>
+            <!--/Side-Bar-->
+
+        </div>
+        <div class=row>
+
+            <div class="listing_more_info">
+                <div class="listing_detail_wrap">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs gray-bg" role="tablist">
+                        <li role="presentation"><a class="active" href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
+                        <li role="presentation"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
+                        <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
+                        <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- vehicle-overview -->
+                        <div role="tabpanel" class="tab-pane" id="vehicle-overview">
+                            @if(isset($car->model->MODL_BRCH))
+                            <iframe style="border: 1px solid #777; width:100% " src="https://indd.adobe.com/embed/{{$car->model->MODL_BRCH}}?startpage=1&allowFullscreen=false" height="371px"
+                                frameborder="0" allowfullscreen=""></iframe>
+                            @elseif(isset($car->model->MODL_PDF))
+                            <iframe style="border: 1px solid #777; width:100% " src="{{asset('storage/' . $car->model->MODL_PDF)}}" height="371px" frameborder="0" allowfullscreen=""></iframe>
+                            @endif
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane active" id="colors">
+                            <section class="listing-detail">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="listing_images">
+                                                <div id="listing_images_slider2" class="listing_images_slider">
+                                                    @foreach($car->model->colorImages as $carImage)
+                                                    <div><img height="560px" title="{{$carImage->MOIM_COLR}}"
+                                                            src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}" alt="image">
                                                     </div>
-                                                    <div id="listing_images_slider_nav2" class="listing_images_slider_nav">
-                                                        @foreach($car->model->colorImages as $carImage)
-                                                        <div>
-                                                            <img width="300px" src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}"
-                                                                alt="image">
-                                                            <label>{{$carImage->MOIM_COLR}}</label>
-                                                        </div>
-                                                        @endforeach
+                                                    @endforeach
+                                                </div>
+                                                <div id="listing_images_slider_nav2" class="listing_images_slider_nav">
+                                                    @foreach($car->model->colorImages as $carImage)
+                                                    <div>
+                                                        <img width="300px" src="{{($carImage->MOIM_URL) ? asset('storage/' . $carImage->MOIM_URL) : asset('assets/frontend/images/900x560.jpg')}}"
+                                                            alt="image">
+                                                        <label>{{$carImage->MOIM_COLR}}</label>
                                                     </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </section>
-                            </div>
-
-                            <!-- Technical-Specification -->
-                            <div role="tabpanel" class="tab-pane" id="specification">
-                                <div class="table-responsive">
-                                    <!--Basic-Info-Table-->
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">BASIC INFO</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Model Year</td>
-                                                <td>{{$car->model->MODL_YEAR}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Car Type</td>
-                                                <td>{{$car->model->type->TYPE_NAME}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Transmission</td>
-                                                <td>{{$car->CAR_TRNS}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Fuel Type</td>
-                                                <td>Petrol 92, 95</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <!--Technical-Specification-Table-->
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Specification</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Engine Horse Power</td>
-                                                <td>{{$car->CAR_HPWR}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Engine Torque</td>
-                                                <td>{{$car->CAR_TORQ}}kW</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Top Speed</td>
-                                                <td>{{$car->CAR_TPSP}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Acceleration</td>
-                                                <td>{{$car->CAR_ACC}} sec to 100km/h</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Fuel Tank Capacity</td>
-                                                <td>{{$car->CAR_TRNK}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Seating Capacity</td>
-                                                <td>{{$car->CAR_SEAT}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ground Clearance</td>
-                                                <td>{{$car->CAR_HEIT}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Car Dimensions</td>
-                                                <td>{{$car->CAR_DIMN}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
-                            </div>
+                            </section>
+                        </div>
 
-                            <!-- Accessories -->
-                            <div role="tabpanel" class="tab-pane" id="accessories">
-                                <!--Accessories-->
+                        <!-- Technical-Specification -->
+                        <div role="tabpanel" class="tab-pane" id="specification">
+                            <div class="table-responsive">
+                                <!--Basic-Info-Table-->
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th colspan="2">Accessories</th>
+                                            <th colspan="2">BASIC INFO</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($carAccessories as $accessory)
-                                        @if($accessory['isAvailable'])
                                         <tr>
-                                            <td>{{$accessory['ACSR_NAME']. "/" .$accessory['ACSR_ARBC_NAME']}}</td>
-                                            <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
+                                            <td>Model Year</td>
+                                            <td>{{$car->model->MODL_YEAR}}</td>
                                         </tr>
-                                        @endif
-                                        @endforeach
+                                        <tr>
+                                            <td>Car Type</td>
+                                            <td>{{$car->model->type->TYPE_NAME}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Transmission</td>
+                                            <td>{{$car->CAR_TRNS}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fuel Type</td>
+                                            <td>Petrol 92, 95</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!--Technical-Specification-Table-->
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Specification</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Engine Horse Power</td>
+                                            <td>{{$car->CAR_HPWR}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Engine Torque</td>
+                                            <td>{{$car->CAR_TORQ}}kW</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Top Speed</td>
+                                            <td>{{$car->CAR_TPSP}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Acceleration</td>
+                                            <td>{{$car->CAR_ACC}} sec to 100km/h</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fuel Tank Capacity</td>
+                                            <td>{{$car->CAR_TRNK}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Seating Capacity</td>
+                                            <td>{{$car->CAR_SEAT}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ground Clearance</td>
+                                            <td>{{$car->CAR_HEIT}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Car Dimensions</td>
+                                            <td>{{$car->CAR_DIMN}}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-
-            <!--Side-Bar-->
-            <aside class="col-md-3">
-                <div class="sidebar_widget">
-                    <div class="widget_heading">
-                        <h5><i class="fa fa-calculator" aria-hidden="true"></i> Loan Calculator </h5>
-                    </div>
-                    <div class="financing_calculatoe">
-                        <div class="row">
-
-                            <div class="form-group col-md-12">
-                                <label>Car Price</label>
-                                <input class="form-control" title="Car Price" id=priceInput type="text" value={{$car->CAR_PRCE - $car->CAR_DISC }} disabled readonly>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Downpayment</label>
-                                <div class="select">
-                                    <select class="form-control" id=downpaymentSel title="Downpayment" onchange="getYears()">
-                                        <option value="0" disabled selected>20%-70% </option>
-                                        @foreach($downpayments as $down)
-                                        <option value="{{$down->id}}">{{$down->DOWN_VLUE}}%</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Years</label>
-                                <div class="select">
-                                    <select class="form-control" id="yearsSel" title="Installament Years" disabled onchange="getPlans()">
-                                        <option value="0" disabled selected> Available options</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Loan Guarantee </label>
-                                <div class=row>
-                                    <div class="col-12">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="employeeRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
-                                            <label class="custom-control-label" for="employeeRadio">Employee</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="selfRadio" name="customRadio" class="custom-control-input" onchange="getPlans()">
-                                            <label class="custom-control-label" for="selfRadio">Self-Employed</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Paid</label>
-                                <input class="form-control" title="Amount to be paid as the downpayment" id=paidInput type="text" disabled readonly>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Remaining</label>
-                                <input class="form-control" title="Remaining Payment After Downpayment" id=remainingInput type="text" disabled readonly>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Plan</label>
-                                <div class="select">
-                                    <select class="form-control" id=plansSel onchange="setPlan()" disabled>
-                                        <option value="0" disabled selected>Loan Plans Available </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-6 align-self-center">
-                                <label>Monthly Payments</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input class="form-control" id=monthlyPayments type="text" disabled readonly>
-                            </div>
-
-                            <div class="col-6 align-self-center">
-                                <label>Bank Expenses</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input class="form-control" id=expensesInput type="text" disabled readonly>
-                            </div>
-
-
-                            <div class="form-group col-md-6" id=insuranceDiv1 style="display: none">
-                                <div class="select" id=insuranceSel onchange="calculateInsurance()">
-                                    <select class="form-control">
-                                        <option value="0" disabled selected>Insurance </option>
-                                        @foreach($insurances as $insurance)
-                                        <option value="{{$insurance->INSR_VLUE}}">{{$insurance->INSR_NAME}} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6" id=insuranceDiv2 style="display: none">
-                                <input class="form-control" id=insuranceInput type="text" disabled readonly>
-                            </div>
-
-
-                            <div class="col-md-3"></div>
-                            <div class="form-group col-md-6">
-                                <button type="submit" class="btn btn-block" id=printButton onclick="print()" disabled><i class="fa fa-print" aria-hidden="true"></i> </button>
-                            </div>
-                            <div class="col-md-3"></div>
+                        <!-- Accessories -->
+                        <div role="tabpanel" class="tab-pane" id="accessories">
+                            <!--Accessories-->
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Accessories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($carAccessories as $accessory)
+                                    @if($accessory['isAvailable'])
+                                    <tr>
+                                        <td>{{$accessory['ACSR_NAME']. "/" .$accessory['ACSR_ARBC_NAME']}}</td>
+                                        <td><i class="{{($accessory['isAvailable']) ? 'fa fa-check' : 'fa fa-close'}}" aria-hidden="true"> </i> &nbsp; {{$accessory['ACCR_VLUE'] ?? ''}}</td>
+                                    </tr>
+                                    @endif
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-
-            </aside>
-            <!--/Side-Bar-->
+            </div>
 
         </div>
         <div class="space-20"></div>
