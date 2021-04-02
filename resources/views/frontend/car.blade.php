@@ -201,7 +201,7 @@
                             <li role="presentation"><a class="active" href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Colors</a></li>
                             <li role="presentation"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab"> Brochure </a></li>
                             <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specs</a></li>
-                            <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
+                            <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Options</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
@@ -323,7 +323,7 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th colspan="2">Accessories</th>
+                                            <th colspan="2">Car Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>

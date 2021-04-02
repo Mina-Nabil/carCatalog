@@ -231,7 +231,7 @@ class SiteController extends Controller
         $data['years'] = CarModel::getModelYears();
         $data['carsMin'] = Car::selectRaw('MIN(CAR_PRCE) as mini')->first()->mini ?? 0;
         $data['carsMax'] = Car::selectRaw('MAX(CAR_PRCE) as maxi')->first()->maxi ?? 1000000;
-        $data['carsShwya'] = round(($data['carsMax'] - $data['carsMin']) / 5);
+        $data['carsShwya'] = 0;  //use to adjust price margin
 
         //URLs
         $data['searchURL'] = url('search');
