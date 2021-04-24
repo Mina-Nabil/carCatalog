@@ -5,7 +5,7 @@
 <!-- Filter-Form -->
 <section id="filter_form" class="inner-filter gray-bg">
   <div class="container">
-    <h3>Find Your Dream Car <span>(Easy search from here)</span></h3>
+    <h3>Filter Cars <span>(Easy search from here)</span></h3>
     <div class="row">
       <form action="{{$searchURL}}" method="post">
         @csrf

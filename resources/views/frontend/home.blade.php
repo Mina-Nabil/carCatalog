@@ -5,7 +5,7 @@
 <section id="filter_form2">
   <div class="container">
     <div class="main_bg white-text">
-      <h3>Find Your Dream Car</h3>
+      <h3>Browse Our Cars</h3>
       <form action="{{$searchURL}}" method="post">
         @csrf
         <div class="row">
@@ -139,9 +139,6 @@
               <div class="car-title-m">
                 <h6><a href="{{url('car/' . $car->id)}}">{{$car->model->MODL_NAME}} {{$car->CAR_CATG}}</a></h6>
                 <span class="price">{{number_format($car->CAR_PRCE)}}EGP</span>
-              </div>
-              <div class="inventory_info_m">
-                <p>Transmission type: {{$car->CAR_TRNS}}. Car model {{$car->model->MODL_YEAR}}.</p>
               </div>
             </div>
           </div>

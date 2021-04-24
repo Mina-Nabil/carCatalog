@@ -30,7 +30,7 @@
             <aside class="col-md-3 col-md-pull-9">
               <div class="sidebar_widget sidebar_search_wrap">
                 <div class="widget_heading">
-                  <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Car </h5>
+                  <h5><i class="fa fa-filter" aria-hidden="true"></i> Cars Filter </h5>
                 </div>
                 <div class="sidebar_filter">
                   <form action="{{$searchURL}}" method="post">
