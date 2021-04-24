@@ -82,7 +82,7 @@
                 <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cars</a>
                   <ul class="dropdown-menu">
                     @foreach ($models as $model)
-                    <li><a href="{{url('model/' . $model->id)}}">{{$model->MODL_NAME}} - {{$model->MODL_YEAR}}</a></li>
+                    <li><a href="{{url('model/' . $model->id)}}">{{$model->MODL_NAME}}</a></li>
                     @endforeach
                   </ul>
                 </li>
