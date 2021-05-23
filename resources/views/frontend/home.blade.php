@@ -193,7 +193,7 @@
     </div>
   </div>
   <!-- Dark Overlay-->
-  <div class="dark-overlay"></div>
+  <div class="stats-overlay"></div>
 </section>
 @endif
 

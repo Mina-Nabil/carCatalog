@@ -449,6 +449,15 @@ blockquote,
   top: 0;
   width: 100%;
 }
+.stats-overlay {
+  background: rgb(132 132 132 / 45%) none repeat scroll 0 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 
 
 /*-------------------------------------
@@ -1360,7 +1369,7 @@ nav.navbar {
 	3.5. Fun-Facts
 -----------------------------*/
 .fun-facts-section {
-  background: rgba(0, 0, 0, 0.4) no-repeat scroll center center;
+  background: rgba(0, 0, 0, 0.2) no-repeat scroll center center;
   padding: 100px 0;
   position: relative;
 }
