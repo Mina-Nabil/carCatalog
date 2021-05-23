@@ -19,7 +19,7 @@
               </select>
             </div>
           </div>
-      
+
           <div class="form-group col-md-3 col-sm-6">
             <div class="select">
               <select class="form-control" name=modelID>
@@ -153,10 +153,10 @@
 @endif
 
 @if(isset($frontendData['Showroom stats']) && $frontendData['Showroom stats']['Active'])
-<section class="fun-facts-section" style='background-image: {{ (isset($frontendData['Showroom stats']['Background Image'])) ? 
+<section class="fun-facts-section" style='opacity: 0.4; background-image: {{ (isset($frontendData['Showroom stats']['Background Image'])) ? 
  'url(' . asset('storage/' . $frontendData['Showroom stats']['Background Image']) . ')' :
  'url(' . asset('assets/frontend/images/1920x400.jpg') . ')' }} !important'>
-  <div class="container div_zindex dark-overlay">
+  <div class="container div_zindex ">
     <div class="row">
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
@@ -257,8 +257,8 @@
         <div id="trending_slider">
           @foreach($trends as $trendCar)
           <div class="trending-car-m">
-            <div class="trending-car-img"> <img src="{{ ($trendCar->image) ? asset('storage/' . $trendCar->image)  : asset('assets/frontend/images/600x380.jpg')}}" alt="Image"
-                class="img-fluid" /> </div>
+            <div class="trending-car-img"> <img src="{{ ($trendCar->image) ? asset('storage/' . $trendCar->image)  : asset('assets/frontend/images/600x380.jpg')}}" alt="Image" class="img-fluid" />
+            </div>
             <div class="trending-hover">
               <h4><a href="{{url('car/' . $trendCar->id)}}">{{$trendCar->MODL_NAME}} {{$trendCar->CAR_CATG}}</a></h4>
             </div>
