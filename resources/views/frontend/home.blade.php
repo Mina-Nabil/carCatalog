@@ -156,7 +156,7 @@
 <section class="fun-facts-section" style='background-image: {{ (isset($frontendData['Showroom stats']['Background Image'])) ? 
  'url(' . asset('storage/' . $frontendData['Showroom stats']['Background Image']) . ')' :
  'url(' . asset('assets/frontend/images/1920x400.jpg') . ')' }} !important'>
-  <div class="container div_zindex">
+  <div class="container div_zindex dark-overlay">
     <div class="row">
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
