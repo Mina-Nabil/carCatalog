@@ -153,7 +153,7 @@
 @endif
 
 @if(isset($frontendData['Showroom stats']) && $frontendData['Showroom stats']['Active'])
-<section class="fun-facts-section" style='opacity: 0.4; background-image: {{ (isset($frontendData['Showroom stats']['Background Image'])) ? 
+<section class="fun-facts-section" style='background-image: {{ (isset($frontendData['Showroom stats']['Background Image'])) ? 
  'url(' . asset('storage/' . $frontendData['Showroom stats']['Background Image']) . ')' :
  'url(' . asset('assets/frontend/images/1920x400.jpg') . ')' }} !important'>
   <div class="container div_zindex ">

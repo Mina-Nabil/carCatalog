@@ -1360,7 +1360,7 @@ nav.navbar {
 	3.5. Fun-Facts
 -----------------------------*/
 .fun-facts-section {
-  background: rgba(0, 0, 0, 0) no-repeat scroll center center;
+  background: rgba(0, 0, 0, 0.4) no-repeat scroll center center;
   padding: 100px 0;
   position: relative;
 }
