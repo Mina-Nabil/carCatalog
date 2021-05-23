@@ -111,7 +111,7 @@
             <img
               src="{{(isset($frontendData['Landing Image']['Slide Image 1'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 1'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
               class="img-fluid" alt="image" style="max-height: 830px; height:auto; width:100%">
-            <div class="carousel-caption">
+            {{-- <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1 style="margin:3px" >{{$frontendData['Landing Image']['Slide Title 1'] ?? "" }}</h1>
                 <h3 style="margin-top: -5px"  >{{$frontendData['Landing Image']['Slide Subtitle 1'] ?? "" }}</h3>
@@ -122,7 +122,7 @@
                 <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
-            </div>
+            </div> --}}
           </div>
 
           <!--item-2-->
@@ -130,7 +130,7 @@
             <img
               src="{{(isset($frontendData['Landing Image']['Slide Image 2'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 2'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
-            <div class="carousel-caption">
+            {{-- <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 2'] ?? ""}}</h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 2'] ?? "" }}</h3>
@@ -141,7 +141,7 @@
                 <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
-            </div>
+            </div> --}}
           </div>
 
           @if(isset($frontendData['Landing Image']['Slide Image 3']) && (strlen($frontendData['Landing Image']['Slide Image 3'])>0) )
@@ -149,7 +149,7 @@
             <img
               src="{{(isset($frontendData['Landing Image']['Slide Image 3'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 3'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
-            <div class="carousel-caption">
+            {{-- <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 3'] ?? ""}} </h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 3'] ?? ""}}</h3>
@@ -160,7 +160,7 @@
                 <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
-            </div>
+            </div> --}}
           </div>
           @endif
 
@@ -169,7 +169,7 @@
             <img
               src="{{(isset($frontendData['Landing Image']['Slide Image 4'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 4'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
-            <div class="carousel-caption">
+            {{-- <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 4'] ?? ""}} </h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 4'] ?? ""}}</h3>
@@ -180,7 +180,7 @@
                 <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
-            </div>
+            </div> --}}
           </div>
           @endif
 
@@ -189,7 +189,7 @@
             <img
               src="{{(isset($frontendData['Landing Image']['Slide Image 5'])) ? asset('storage/' . $frontendData['Landing Image']['Slide Image 5'] ) : asset('assets/frontend/images/1920x830.jpg')}}"
               alt="image" class="img-fluid" style="max-height: 830px; height:auto; width:100%">
-            <div class="carousel-caption">
+            {{-- <div class="carousel-caption">
               <div class="banner_text text-center div_zindex white-text">
                 <h1>{{$frontendData['Landing Image']['Slide Title 5'] ?? ""}} </h1>
                 <h3>{{$frontendData['Landing Image']['Slide Subtitle 5'] ?? ""}}</h3>
@@ -200,7 +200,7 @@
                 <a style="margin-top: -5px" href="{{url($buttonArr[1])}}" class="btn">{{$buttonArr[0]}}</a>
                 @endif
               </div>
-            </div>
+            </div> --}}
           </div>
           @endif
         </div>
